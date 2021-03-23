@@ -1,0 +1,186 @@
+/*-------------------------------------
+ GT3 YITH Woocommerce Popup customizing
+---------------------------------------*/
+.ypop-modal{
+	z-index: 1000;
+}
+.ypop-wrapper{
+	display: flex;
+    align-items: stretch;
+    max-height: 90vh;
+    max-width: 90vw;
+}
+.ypop-wrapper .ypop-header{
+	width: 50%;
+	display: flex;
+	position: relative;
+    align-items: center;
+    justify-content: center;
+    background-size: cover;
+    background-position: center;
+}
+.ypop-wrapper .ypop-container-inner{
+	width: 50%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    position: relative;
+}
+.ypop-wrapper .ypop-container-inner > div{
+	margin: 0px 47px;
+}
+.ypop-wrapper .ypop-title{
+	display: block;
+}
+.ypop-wrapper .group{
+	position: relative;
+}
+.ypop-wrapper .group li{
+	position: relative;
+	margin: 0;
+}
+.ypop-wrapper .group li label{
+	position: absolute;
+	line-height: 49px;
+	left: 18px;
+	top: 0;
+	font-size: 12px;
+	font-weight: 200;
+    margin: 1px 0 0 0;
+    cursor: auto;
+    opacity: 1;
+    visibility: visible;
+    -webkit-transition: opacity .3s, left .3s, visibility .3s;
+    transition: opacity .3s, left .3s, visibility .3s;
+}
+.ypop-wrapper .group li label.hide{
+    visibility: hidden;
+	left: 20%;
+	opacity: 0;
+}
+.ypop-wrapper .group li input{
+	padding-left: 17px;
+	padding-right: 17px;
+}
+.ypop-wrapper .group li.ypop-submit{
+	opacity: .8;
+    -webkit-transition: opacity .2s;
+    transition: opacity .2s;
+}
+.ypop-wrapper .group li.ypop-submit:nth-of-type(2){
+	position: absolute;
+	margin: 0;
+	right: 0;
+	bottom: 0;
+	height: 50px;
+}
+.ypop-wrapper .group li.ypop-submit:hover{
+	opacity: 1;
+}
+.ypop-wrapper .group li.ypop-submit button{
+	padding: 0 17px;
+	margin: 0;
+    height: 100%;
+    width: 100%;
+    border: none;
+}
+.ypop-wrapper .group li.ypop-submit button:before{
+	content: '\f003';
+	font-family: 'fontawesome';
+	display: inline;
+}
+.ypop-wrapper .ypop-content{
+	margin: 0 0 32px 0;
+}
+.ypop-wrapper .ypop-content h2{
+	margin: 33px 0px;
+}
+.ypop-modal .ypop-wrapper a.close{
+	display: block;
+	cursor: pointer;
+	right: 35px;
+	top: 35px;
+	position: absolute;
+	width: 36px;
+	height: 36px;
+	background-color: transparent;
+	background-image: none;
+}
+.ypop-modal .ypop-wrapper a.close:before,
+.ypop-modal .ypop-wrapper a.close:after{
+	content: '';
+	width: 100%;
+	height: 2px;
+    display: block;
+	background-color: #cdcdcd;
+	-webkit-transform: rotate(45deg);
+	transform: rotate(45deg);
+	-webkit-transform-origin: center center;
+	transform-origin: center center;
+	position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    margin: auto;
+    -webkit-transition: background-color .3s;
+    transition: background-color .3s;
+}
+.ypop-modal .ypop-wrapper a.close:after{
+	-webkit-transform: rotate(-45deg);
+	transform: rotate(-45deg);
+}
+.ypop-modal .ypop-wrapper a.close:hover:before,
+.ypop-modal .ypop-wrapper a.close:hover:after{
+	background-color: #000;
+}
+.ypop-checkzone{
+	height: 10px;
+}
+.ypop-checkzone input.no-view+span{
+	float: none;
+    vertical-align: sub;
+}
+.ypop-checkzone label{
+    position: absolute;
+    bottom: 20px;
+    margin: auto;
+    right: 30px;
+    font-weight: 400;
+}
+@media screen and (max-width: 768px){
+	body .ypop-wrapper{
+		flex-direction: column;
+		overflow-y: auto;
+	}
+	body .ypop-modal.open{
+		overflow-y: auto
+	}
+	.ypop-wrapper .ypop-header,
+	.ypop-wrapper .ypop-container-inner{
+		width: 100%;
+    	min-height: 25vh;
+	}
+	.ypop-wrapper .ypop-title{
+		margin: 33px 0px;
+	}
+	.ypop-modal .ypop-wrapper a.close{
+	    top: 27px;
+	    right: 27px;
+	}
+	.ypop-modal .ypop-wrapper a.close:before, .ypop-modal .ypop-wrapper a.close:after{
+    	-webkit-box-shadow: 0 0 1px 0px #fff;
+    	box-shadow: 0 0 1px 0px #fff;
+	}
+}
+@media screen and (max-width: 480px){
+	.ypop-wrapper .ypop-header,
+	.ypop-wrapper .ypop-container-inner{
+	    min-height: 1px;
+	    background-image: none;
+	}
+	.ypop-wrapper .ypop-container-inner > div {
+	    margin: 0px 15px;
+	}
+
+}

@@ -1,0 +1,37 @@
+	/*
+  	Flaticon icon font: Flaticon
+  	Creation date: 05/04/2017 11:10
+  	*/
+
+@font-face {
+  font-family: "Theme_icon";
+  src: url("./Flaticon.eot");
+  src: url("./Flaticon.eot?#iefix") format("embedded-opentype"),
+       url("./Flaticon.woff") format("woff"),
+       url("./Flaticon.ttf") format("truetype"),
+       url("./Flaticon.svg#Flaticon") format("svg");
+  font-weight: normal;
+  font-style: normal;
+}
+
+@media screen and (-webkit-min-device-pixel-ratio:0) {
+  @font-face {
+    font-family: "Theme_icon";
+    src: url("./Flaticon.svg#Flaticon") format("svg");
+  }
+}
+
+[class^="theme_icon-"]:before, [class*=" theme_icon-"]:before,
+[class^="theme_icon-"]:after, [class*=" theme_icon-"]:after {   
+  font-family: Theme_icon;
+        font-size: 20px;
+font-style: normal;
+margin-left: 20px;
+}
+
+.theme_icon-cancel:before { content: "\f100"; }
+.theme_icon-favorite:before { content: "\f101"; }
+.theme_icon-medical:before { content: "\f102"; }
+.theme_icon-social:before { content: "\f103"; }
+.theme_icon-magnifying-glass:before { content: "\f104"; }
+.theme_icon-shop:before { content: "\f105"; }

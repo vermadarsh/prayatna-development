@@ -1,0 +1,477 @@
+/*
+Theme Name: Optima - Child
+Author: GT3themes
+Author URI: http://gt3themes.com
+Description: -
+Version: 1.0
+Template: optima
+*/
+@import url("../optima/style.css");
+
+.gt3_header_builder_cart_component {
+    display: none !important;
+}
+.vc_general.vc_cta3.vc_cta3-style-custom.call-to-action-button .vc_btn3-style-custom:hover {
+    color: #f58634 !important;
+    background-color: #ffffff!important;
+}
+
+.header_side .header_side_container {
+    line-height: 12px;
+}
+.custom-box .vc_column-inner{ background-size: cover !important; background-repeat: no-repeat;}
+.custom-box .vc_column-inner:after {background: rgba(28,177,158,.95);
+    width: 100%;
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 0;
+    content: "";
+    height: 100%;
+    display: block;
+    z-index: -1;}
+    .custom-box:after {
+        position: absolute;
+        content: "";
+        width: 93%;
+        height: 93%;
+        left: 0;
+        top:8px;
+        border: 1.5px dashed rgba(255,255,255, .44);
+        z-index: 0;
+        display: block;
+        margin: 0 auto;
+        text-align: center;
+        right: 0;
+    }
+
+    .custom-box.cb02 .vc_column-inner:after {background: rgba(247,117,98,.89);}
+    .custom-box.cb03 .vc_column-inner:after {background: rgba(0,129,184,.89);}
+    .custom-box.cb04 .vc_column-inner:after {background: rgba(8,87,97,.89);}
+    .custom-box.cb05 .vc_column-inner:after {background: rgba(231,172,14,.89);}
+    /*Service page verticle tabs*/
+    .verticle-nav-tab ul li a {
+        text-align: left !important;
+        padding: 11px 16px !important;
+    }
+    body.wpb-js-composer .vc_tta.vc_general.vc_tta-tabs .vc_tta-tab.vc_active a, body .vc_tta.vc_tta-tabs .vc_tta-panel.vc_active .vc_tta-panel-heading .vc_tta-panel-title>a{ background-color:#0077bd !important;}
+     .vc_row-has-fill> .vc_column_container> .vc_column-inner{ padding-top: 0 !important;}
+
+  
+    .service-right-img {
+        position: relative;
+        padding: 12px;
+    }
+    .service-right-img:after {
+        background: #fff;
+        width: 60px;
+        height: 60px;
+        content: "";
+        top: 0;
+        right: 0;
+        position: absolute;
+        z-index: -1;
+        border-right: 9px solid #eed6b4;
+        border-top:9px solid #eed6b4;
+        border-radius: 7px;
+    }
+    .service-right-img:before {
+        background: #fff;
+        width:60px;
+        height:60px;
+        content: "";
+        bottom:1px;
+        left: 0;
+        position: absolute;
+        z-index: -1;
+        border-left: 9px solid #eed6b4;
+        border-bottom: 9px solid #eed6b4;
+        border-radius: 7px;
+    }
+
+    .main-popup-content {
+        max-width: 849px;
+        background: #ccc;
+        margin: 0 auto;
+    }
+
+    ul.pop-inner {
+        list-style: none;
+        padding: 0;
+        margin: 0;
+        display: flex;
+    }
+
+    .main-popup-content img {
+        height: 100%;
+        width: 100%;
+        transition: 300ms all ease;
+        -webkit-transition: 300ms all ease;
+    }
+
+    ul.pop-inner li:hover img {
+        transform: scale(1.05);
+    }
+
+    ul.pop-inner li {
+        position: relative;
+        overflow: hidden;
+
+    }
+
+    ul.pop-inner li h2 {
+        position: absolute;
+        bottom: 40px;
+        color: #fff;
+        font-size: 24px;
+        padding-left: 15px;
+        z-index: 2;
+        line-height: 30px;
+        font-weight: 500;
+        transition: 250ms all ease;
+        -webkit-transition: 250ms all ease;
+    }
+    ul.pop-inner li:hover h2{ bottom:35px;}
+    ul.pop-inner li:after {
+        position: absolute;
+        bottom: 0;
+        top: 0;
+        height: 100%;
+        width: 100%;
+        content: "";
+        left: 0;
+        z-index: 0;
+
+    }
+    span.age-ratio {
+        position: absolute;
+        color: #fff;
+        z-index: 999;
+        bottom: 16px;
+        font-size: 13px;
+        left: 17px;
+    }
+
+    ul.pop-inner li.bx01:after {
+        background: linear-gradient(to bottom, rgba(255, 255, 255, 0.1) 0%, rgba(255, 255, 255, 0.1) 40%, rgba(255, 255, 255, 0.1) 24%, rgba(28, 177, 157, 1) 80%);
+    }
+
+    ul.pop-inner li.bx02:after {
+        background: linear-gradient(to bottom, rgba(255, 255, 255, 0.1) 0%, rgba(255, 255, 255, 0.1) 40%, rgba(255, 255, 255, 0.1) 24%, rgba(247, 118, 98, 1) 80%);
+    }
+
+    ul.pop-inner li.bx03:after {
+        background: linear-gradient(to bottom, rgba(255, 255, 255, 0.1) 0%, rgba(255, 255, 255, 0.1) 40%, rgba(255, 255, 255, 0.1) 24%, rgba(0, 129, 184, 1) 80%);
+    }
+
+    ul.pop-inner li.bx04:after {
+        background: linear-gradient(to bottom, rgba(255, 255, 255, 0.1) 0%, rgba(255, 255, 255, 0.1) 40%, rgba(255, 255, 255, 0.1) 24%, rgba(8, 87, 97, 1) 80%);
+    }
+
+    ul.pop-inner li.bx05:after {
+        background: linear-gradient(to bottom, rgba(255, 255, 255, 0.1) 0%, rgba(255, 255, 255, 0.1) 40%, rgba(255, 255, 255, 0.1) 24%, rgba(231, 173, 14, 1) 80%);
+    }
+
+    .bx-link {
+        position: absolute;
+        left: 0;
+        top: 0;
+        height: 100%;
+        width: 100%;
+        z-index: 9;
+    }
+    .custom-box { min-height: 260px !important;}
+    .page-content h3{ margin-bottom:20px; color:#f58634 !important;}
+    .tabb-content h4 , .page-content h4{ font-size: 22px; color: #0077bd; margin-bottom: 20px;}
+    .page-content {padding-bottom: 20px;}
+
+    /* occupational therapy*/
+    .ot-box-list { list-style: none; display: flex; flex-wrap: wrap; padding: 0; margin: 0;}
+    .ot-box-list li::before{ display: none !important;}
+    .ot-box-list li { position: relative; width:33.33%;}
+    .ot-short-descr {
+        position: absolute;
+        bottom: -20px;
+        transition: all 350ms ease-in-out;
+        color: #fff;
+    }
+    .ot-box {
+        border: 1px solid #ccc;
+        padding: 10px 15px;
+        min-height: 110px;
+        position: relative;
+        overflow: hidden;
+        display: flex;
+        justify-content: center;
+        transition: all 350ms ease-in-out;
+        cursor: pointer;
+        margin: 0 4px;
+    }
+    .ot-box h4 {
+        margin-bottom: 0;
+        top: 50%;
+        transform: translateY(-50%);
+        position: absolute;
+        transition: all 350ms ease-in-out;
+        color:#fff;
+    }
+    .ot-box.ot1{ background: #1cb19e;}
+    .ot-box.ot2{ background: #085761;}
+    .ot-box.ot3{ background: #e7b025;}
+    .ot-box.ot4{ background: #f47f6b;}
+    .ot-box.ot5{ background: #198cbe;}
+    .ot-box.ot6{ background: #f58634;}
+
+    .ot-box:hover h4{ top: 30%; transform: translateY(-30%);}
+    .ot-box:hover .ot-short-descr {bottom: 30px}
+    .gt3_team_list .gt3_team_list__image-holder  .gt3_team_list__image_link:before, .gt3_team_list__item .gt3_team_list__item--content_on_bottom .gt3_team_list__image_link:before {
+        opacity: 0.3 !important;
+    }
+    .gt3_team_list .gt3_team_list__image_link:before, .gt3_team_list.gt3_team_list__item--content_on_bottom:before, .gt3_team_list__item.gt3_team_list__item--content_on_bottom a.gt3_team_list__image_link:after{background: #e1e1e1 !important;}
+    .gt3_team_list__item .gt3_team_list__content {
+        visibility: visible !important;
+        opacity: 1!important;
+        padding: 0 20px!important;
+    }
+    .gt3_team_list__title , .gt3_team_list__item .gt3_team_list_social__item { color:#666!important;}
+    .gt3_team_list__position{ color:#555!important;}
+    .gt3_team_list__item .gt3_team_list_social {
+        opacity: 1!important;
+        bottom: 64px!important;
+        transition: 0.5s all!important;
+        visibility: visible!important;
+    }
+    .vc_col-sm-4 > .gt3_single_team_info {
+        padding-left: 0 !important;
+    }
+ 
+    .bullet-text li {
+        position: relative;
+        padding: 0 0 7px 20px!important;
+    }
+    .bullet-text li:before {
+        content: "\2022";
+        display: inline-block;
+        font-size: 19px;
+        line-height: 20px;
+        vertical-align: middle;
+        margin-right: 17px;
+        margin-top: -3px;
+        position: absolute;
+        top: 6px;
+        left: 0;
+    }
+
+    @media (min-width: 768px){
+    .gt3_single_team_header .vc_col-sm-4 {
+        width: 90% !important;
+    }
+}
+    .gt3_single_team_info__item h4 { min-width: 245px !important;}
+    .gt3_single_team_info__item span{ text-align: left !important;}
+
+    .larg-text { font-size: 22px; margin-bottom: 25px !important; display: block;}
+    .main_wrapper .ad-defination li{ font-size: 26px; padding: 0 0 20px 0;}
+    .pl-left {
+        padding-left: 26px !important;
+    }
+    .main_wrapper .page-content ul li, .wpb_wrapper ul.home-list li{padding: 0 0 7px 20px !important; }
+    .wpb_wrapper .page-content  ul li:before, .wpb_wrapper ul.home-list li:before{ margin-left: -20px !important;     margin-right: 10px !important;}
+    
+    .wpb_wrapper ul.home-list li:before {color:#fff !important;}
+    ul.home-list li span { display: inline-block; min-width: 90px;}
+    .main_wrapper ul.ot-box-list li{ padding: 0 0 7px 0 !important;}
+    .home-service-box .gt3_icon_box__text {min-height: 70px;}
+
+  
+
+
+    .testimo-list {
+        max-width: 70%;
+        margin: 0 auto;
+        text-align: center;
+        box-shadow: 1px 0 10px rgba(0, 0, 0, .1);
+        padding: 26px 20px;
+        margin-bottom: 20px !important;
+        font-size: 16px;
+        position: relative;
+    }
+    .testimo-list .fa {
+        font-size: 26px;
+        margin: 0 6px;
+        color: #bddaeb;
+    }
+    .testimo-list span {
+        display: block;
+        padding: 0 15px;
+        position: relative;
+    }
+    .testimo-list span .fa-quote-right {
+        position: absolute;
+        bottom: -9px;
+    }
+
+    .search-results h3 { font-size: 25px;}
+  .main-menu ul li ul li ul .menu-item.current-menu-item > a{ color:#333 !important;}
+  .main-menu ul li > ul .menu-item.current-menu-item > a,.main-menu ul li ul li ul .menu-item.current-menu-item:hover > a{ color:#0077bd !important;}
+  .verticle-nav-tab ul li a {
+    word-break: break-word !important;
+}
+.share_wrap ul li:before {
+    display: none !important;
+}
+#home-list li a{ color:#fff !important;}
+.snti-sh h3 {padding-bottom: 0 !important; font-size: 12px !important; margin-top: 20px;}
+span.ad {margin-bottom: -10px; display: block;}
+.covid-meassage{
+    padding: 9px 12px 11px 9px;
+    text-align: center;
+}
+.covid-meassage span{
+    font-size: 33px;
+    line-height: 40px;
+    color: #f58634;
+    display: block;
+    margin-bottom: 13px;
+}
+.covid-meassage p{
+    color: #0077bd;
+    font-size: 18px;
+}
+
+    /*Media Query*/
+    @media only screen and (max-width: 991px) { #home-banner {background-position:73% center !important;}}
+    @media only screen and (max-width: 767px) {
+        .mobile_logo_enable {  padding: 8px 0;}
+        .main-popup-content {max-width:280px;}
+        ul.pop-inner li h2 {
+            bottom: 30px;
+            font-size: 10px;
+            padding-left: 6px;
+            line-height: 13px;
+        }
+        span.age-ratio {
+            position: absolute;
+            color: #fff;
+            z-index: 999;
+            bottom: 8px;
+            font-size: 9px;
+            left: 7px;
+            line-height: 9px;
+        }
+        .module_testimonial.type3 .testimonials-text { font-size: 16px !important; line-height: 1.5; margin-bottom: 0 !important;}
+        .logo_container.mobile_logo_enable .mobile_logo { height: 44px !important;}
+        .home-main-banner:before {
+            content: "";
+            width: 100%;
+            height: 100%;
+            background: rgba(0,0,0,0.5);
+            position: absolute;
+            left: 0;
+            top: 0;
+        }
+        .custom-box {
+            min-height: 170px !important;
+        }
+        #row-id-02 .vc_column-inner{ padding-left: 15px !important;}
+        .ot-box-list li{ width: 100%;}
+        body.wpb-js-composer .vc_tta.vc_general.vc_tta-tabs.vc_tta-tabs-position-left .vc_tta-panel-body {
+            padding: 0 0 0 0 !important;
+        }
+
+        .wpb-js-composer .vc_tta.vc_tta-tabs .vc_tta-tabs-container,.wpb-js-composer .vc_tta-tabs.vc_tta-tabs-position-left {
+            display: block !important;
+        }
+        body.wpb-js-composer .vc_tta.vc_general .vc_tta-panel-heading{ display: none!important;}
+        body.wpb-js-composer .vc_tta.vc_general.vc_tta-tabs .vc_tta-tabs-list .vc_tta-tab > a{ max-width: 100% !important;}
+        .wpb-js-composer .vc_tta.vc_general .vc_tta-tabs-list{ display: flex!important; flex-wrap: wrap !important; margin-bottom: 20px !important;}
+        body.wpb-js-composer .vc_general.vc_tta.vc_tta-tabs .vc_tta-tabs-container .vc_tta-tabs-list .vc_tta-tab {max-width: 47% !important;}
+        body.wpb-js-composer .vc_tta.vc_general.vc_tta-tabs .vc_tta-tabs-list .vc_tta-tab > a{ height: 100% !important;}
+        .tabb-content h4, .page-content h4{ font-size: 18px; line-height: 22px;}
+        .main_wrapper .ad-defination li{ font-size: 15px;}
+        .gt3_team_list__title{ font-size: 16px !important;}
+        .gt3_team_list__position{ font-size: 14px!important;}
+        div#row-id-01{margin-bottom:30px !important;}
+        div#row-id-02 {margin-bottom:20px !important;}
+        #row-id-03, #row-id-04,#row-id-05,#row-id-06, #row-id-07 { padding-top: 40px !important;}
+        #row-id-07{ padding-bottom: 10px !important;}
+        .gt3_team_list__item {margin-bottom: 0 !important;}
+        .testimo-list {max-width: 90%;}
+        #expect-from-you .vc_column-inner {
+            padding-left: 15px !important;
+        }
+        .verticle-nav-tab ul li a {
+            padding: 8px 10px !important;
+        }
+        .verticle-nav-tab ul li a span br { display: none;}
+        .gt3-page-title {  height: 140px !important;}
+        #call-action-mob h2 span { display: block;}
+        .gt3_single_team_info__item { display: block !important;}
+        .gt3_team_single .vc_column-inner {
+            padding-left: 0 !important;
+            padding-right: 0 !important;
+        }
+        .gt3_single_team_header{ padding-bottom: 0 !important;}
+
+        .covid-19 {
+            min-width: 200px !important;
+        }
+        .covid-meassage span {
+            font-size: 20px;
+            line-height: 27px;
+            margin-bottom: 4px;
+        }
+        .covid-meassage p{ font-size: 14px; margin-bottom: 10px;}
+        .covid-meassage h3 { font-size: 23px;}
+
+    }
+    @media only screen and (max-width: 414px) {
+        .gt3_single_team_info {font-size: 11px;}
+        .main_footer .widget-title{ padding-bottom: 0 !important;}
+        body.wpb-js-composer .verticle-nav-tab.vc_general.vc_tta-tabs .vc_tta-tabs-list .vc_tta-tab > a {width: 100%;}
+        body.wpb-js-composer .verticle-nav-tab.vc_tta.vc_general.vc_tta-tabs .vc_tta-tabs-list .vc_tta-tab > a { width: 100%;}
+
+          body.wpb-js-composer .verticle-nav-tab.vc_general.vc_tta.vc_tta-tabs .vc_tta-tabs-container .vc_tta-tabs-list .vc_tta-tab {
+            max-width: 100% !important;
+            margin-right: 0 !important;
+        }
+        span.note-text {
+            display: block;
+            line-height: 15px !important;
+            margin-top: 10px;
+        }
+        div#custom_html-2 {
+            padding-bottom: 0;
+        }
+        .top_footer .row [class*=span] + [class*=span] {
+            margin-top: 12px !important;
+        }
+        h2#nk-title, h2#nk-title span {
+            font-size: 25px !important;
+        }
+        #call-action-mob h2, #call-action-mob h2 span {
+            font-size: 22px !important;
+        }
+        #call-action-mob.vc_cta3-container,#call-action-mob .vc_btn3-container{ margin-bottom: 0 !important;}
+        .page-content h3{ font-size: 22px; line-height: 28px;}
+        .gt3_team_title h3 {font-size: 20px;}
+        .gt3_single_team_socials {display: none;}
+        .gt3_single_team_info__item h4{    margin-bottom: 5px;}
+        h2.mob-h2, h2.mob-h2 span {font-size: 25px;}
+       
+        .covid-meassage span{font-size: 14px;}
+        .covid-meassage p {font-size: 13px; line-height: 14px;}
+        .covid-meassage h3 {font-size: 16px;}
+
+    }
+    a.book-inline-link {
+        font-size: 15px !important;
+        display: block;
+        line-height: 30px !important;
+    }
+    span.note-text {
+        font-size: 13px !important;
+        color: #0077bd;
+        display: block;
+        line-height: 17px !important;
+    }

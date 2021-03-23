@@ -1,0 +1,14 @@
+/*
+Theme Name: Optima - Child
+Author: GT3themes
+Author URI: http://gt3themes.com
+Description: -
+Version: 1.0
+Template: optima
+*/
+@import url("../css/optima/css/theme.css");
+
+.vc_general.vc_cta3.vc_cta3-style-custom .vc_btn3-style-custom:hover {
+    color: #000000 !important;
+    background-color: #ffffff!important;
+}

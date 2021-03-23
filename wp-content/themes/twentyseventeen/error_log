@@ -1,0 +1,42 @@
+[02-Apr-2020 20:59:11 UTC] PHP Fatal error:  Uncaught Error: Call to undefined function get_template_part() in /home/frile0yww2az/public_html/wp-content/themes/twentyseventeen/footer.php:22
+Stack trace:
+#0 {main}
+  thrown in /home/frile0yww2az/public_html/wp-content/themes/twentyseventeen/footer.php on line 22
+[02-Apr-2020 21:22:52 UTC] PHP Fatal error:  Uncaught Error: Call to undefined function get_template_part() in /home/frile0yww2az/public_html/wp-content/themes/twentyseventeen/footer.php:22
+Stack trace:
+#0 {main}
+  thrown in /home/frile0yww2az/public_html/wp-content/themes/twentyseventeen/footer.php on line 22
+[02-Apr-2020 21:48:05 UTC] PHP Fatal error:  Uncaught Error: Call to undefined function get_header() in /home/frile0yww2az/public_html/wp-content/themes/twentyseventeen/404.php:13
+Stack trace:
+#0 {main}
+  thrown in /home/frile0yww2az/public_html/wp-content/themes/twentyseventeen/404.php on line 13
+[03-Apr-2020 08:13:23 UTC] PHP Notice:  Undefined index: wp_version in /home/frile0yww2az/public_html/wp-content/themes/twentyseventeen/functions.php on line 15
+[03-Apr-2020 08:13:23 UTC] PHP Fatal error:  Uncaught Error: Call to undefined function get_template_directory() in /home/frile0yww2az/public_html/wp-content/themes/twentyseventeen/functions.php:16
+Stack trace:
+#0 {main}
+  thrown in /home/frile0yww2az/public_html/wp-content/themes/twentyseventeen/functions.php on line 16
+[22-Sep-2020 22:55:00 UTC] PHP Fatal error:  Uncaught Error: Call to undefined function get_header() in /home/frile0yww2az/public_html/wp-content/themes/twentyseventeen/404.php:13
+Stack trace:
+#0 {main}
+  thrown in /home/frile0yww2az/public_html/wp-content/themes/twentyseventeen/404.php on line 13
+[26-Dec-2020 03:20:40 UTC] PHP Fatal error:  Uncaught Error: Call to undefined function get_template_part() in /home/frile0yww2az/public_html/wp-content/themes/twentyseventeen/footer.php:22
+Stack trace:
+#0 {main}
+  thrown in /home/frile0yww2az/public_html/wp-content/themes/twentyseventeen/footer.php on line 22
+[28-Dec-2020 12:44:11 UTC] PHP Fatal error:  Uncaught Error: Call to undefined function get_template_part() in /home/frile0yww2az/public_html/wp-content/themes/twentyseventeen/footer.php:22
+Stack trace:
+#0 {main}
+  thrown in /home/frile0yww2az/public_html/wp-content/themes/twentyseventeen/footer.php on line 22
+[29-Dec-2020 19:29:32 UTC] PHP Fatal error:  Uncaught Error: Call to undefined function get_header() in /home/frile0yww2az/public_html/wp-content/themes/twentyseventeen/404.php:13
+Stack trace:
+#0 {main}
+  thrown in /home/frile0yww2az/public_html/wp-content/themes/twentyseventeen/404.php on line 13
+[30-Dec-2020 05:49:01 UTC] PHP Notice:  Undefined index: wp_version in /home/frile0yww2az/public_html/wp-content/themes/twentyseventeen/functions.php on line 15
+[30-Dec-2020 05:49:01 UTC] PHP Fatal error:  Uncaught Error: Call to undefined function get_template_directory() in /home/frile0yww2az/public_html/wp-content/themes/twentyseventeen/functions.php:16
+Stack trace:
+#0 {main}
+  thrown in /home/frile0yww2az/public_html/wp-content/themes/twentyseventeen/functions.php on line 16
+[03-Mar-2021 02:58:02 UTC] PHP Fatal error:  Uncaught Error: Call to undefined function get_header() in /home/frile0yww2az/public_html/wp-content/themes/twentyseventeen/404.php:13
+Stack trace:
+#0 {main}
+  thrown in /home/frile0yww2az/public_html/wp-content/themes/twentyseventeen/404.php on line 13
