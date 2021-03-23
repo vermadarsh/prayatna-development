@@ -20,7 +20,7 @@
  * Author URI:        https://github.com/vermadarsh/
  * License:           GPL-2.0+
  * License URI:       http://www.gnu.org/licenses/gpl-2.0.txt
- * Text Domain:       prayatna-new
+ * Text Domain:       prayatna-new1
  * Domain Path:       /languages
  */
 
