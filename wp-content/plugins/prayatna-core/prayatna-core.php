@@ -12,7 +12,7 @@
  * @package           Prayatna_Core
  *
  * @wordpress-plugin
- * Plugin Name:       Prayatna Core By Adarsh for Testing!
+ * Plugin Name:       Prayatna Core By Adarsh Again!
  * Plugin URI:        https://github.com/vermadarsh/prayatna/
  * Description:       This is a short description of what the plugin does. It's displayed in the WordPress admin area.
  * Version:           1.0.0
