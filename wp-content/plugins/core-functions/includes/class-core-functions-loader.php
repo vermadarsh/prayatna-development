@@ -6,8 +6,8 @@
  * @link       https://github.com/vermadarsh/
  * @since      1.0.0
  *
- * @package    Prayatna_Core
- * @subpackage Prayatna_Core/includes
+ * @package    Core_Functions
+ * @subpackage Core_Functions/includes
  */
 
 /**
@@ -17,11 +17,11 @@
  * the plugin, and register them with the WordPress API. Call the
  * run function to execute the list of actions and filters.
  *
- * @package    Prayatna_Core
- * @subpackage Prayatna_Core/includes
+ * @package    Core_Functions
+ * @subpackage Core_Functions/includes
  * @author     Adarsh Verma <adarsh.srmcem@gmail.com>
  */
-class Prayatna_Core_Loader {
+class Core_Functions_Loader {
 
 	/**
 	 * The array of actions registered with WordPress.

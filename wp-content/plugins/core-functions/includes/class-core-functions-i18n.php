@@ -9,8 +9,8 @@
  * @link       https://github.com/vermadarsh/
  * @since      1.0.0
  *
- * @package    Prayatna_Core
- * @subpackage Prayatna_Core/includes
+ * @package    Core_Functions
+ * @subpackage Core_Functions/includes
  */
 
 /**
@@ -20,11 +20,11 @@
  * so that it is ready for translation.
  *
  * @since      1.0.0
- * @package    Prayatna_Core
- * @subpackage Prayatna_Core/includes
+ * @package    Core_Functions
+ * @subpackage Core_Functions/includes
  * @author     Adarsh Verma <adarsh.srmcem@gmail.com>
  */
-class Prayatna_Core_i18n {
+class Core_Functions_i18n {
 
 
 	/**
@@ -35,7 +35,7 @@ class Prayatna_Core_i18n {
 	public function load_plugin_textdomain() {
 
 		load_plugin_textdomain(
-			'prayatna-core',
+			'core-functions',
 			false,
 			dirname( dirname( plugin_basename( __FILE__ ) ) ) . '/languages/'
 		);

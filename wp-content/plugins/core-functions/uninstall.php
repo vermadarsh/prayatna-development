@@ -22,7 +22,7 @@
  * @link       https://github.com/vermadarsh/
  * @since      1.0.0
  *
- * @package    Prayatna_Core
+ * @package    Core_Functions
  */
 
 // If uninstall not called from WordPress, then exit.
