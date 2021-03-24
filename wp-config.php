@@ -58,6 +58,8 @@ define('FS_METHOD','direct');
 define('WPLANG', '');
 define('FS_CHMOD_DIR', (0775 & ~ umask()));
 define('FS_CHMOD_FILE', (0664 & ~ umask()));
+
+define( 'DISALLOW_FILE_EDIT', true );
 /**
  * For developers: WordPress debugging mode.
  *
