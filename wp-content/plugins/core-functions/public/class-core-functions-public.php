@@ -72,7 +72,7 @@ class Core_Functions_Public {
 			CF_PLUGIN_URL . 'public/js/core-functions-public.js',
 			array( 'jquery' ),
 			filemtime( CF_PLUGIN_PATH . 'public/js/core-functions-public.js' ),
-			false
+			true
 		);
 
 		// Localize public script.
