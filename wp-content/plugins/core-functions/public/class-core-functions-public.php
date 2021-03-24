@@ -143,8 +143,6 @@ class Core_Functions_Public {
 					'page_title' => __( 'Prayatna Settings', 'core-functions' ),
 					'menu_title' => __( 'Prayatna Settings', 'core-functions' ),
 					'menu_slug'  => 'prayatna-settings',
-					'capability' => false,
-					'redirect'   => false
 				)
 			);
 		}
