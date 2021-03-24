@@ -59,7 +59,8 @@ define('WPLANG', '');
 define('FS_CHMOD_DIR', (0775 & ~ umask()));
 define('FS_CHMOD_FILE', (0664 & ~ umask()));
 
-define( 'DISALLOW_FILE_EDIT', true );
+// define( 'DISALLOW_FILE_EDIT', true );
+define( 'DISALLOW_FILE_MODS', true );
 /**
  * For developers: WordPress debugging mode.
  *
