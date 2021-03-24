@@ -31,8 +31,8 @@ function cf_get_time_based_text() {
 	$text         = '';
 	$current_time = gmdate( 'H:i:s' );
 
-	if ( have_rows( 'goodmorning_good_evening_texts', 'option' ) ) {
-		while( have_rows( 'goodmorning_good_evening_texts', 'option' ) ) {
+	if ( have_rows( 'good_morning_good_evening_texts', 'option' ) ) {
+		while( have_rows( 'good_morning_good_evening_texts', 'option' ) ) {
 			the_row();
 			$start_time = get_sub_field( 'start_time' );
 			$end_time   = get_sub_field( 'end_time' );
