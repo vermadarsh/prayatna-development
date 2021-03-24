@@ -11,8 +11,8 @@
 defined( 'ABSPATH' ) || exit; // Exit if accessed directly.
 
 $user_id      = get_current_user_id();
-$fullname     = cognify_get_user_full_name( $user_id );
-$welcome_text = cognify_get_time_based_text();
+$fullname     = cf_get_user_full_name( $user_id );
+$welcome_text = cf_get_time_based_text();
 $welcome_text = str_replace( '{name}', $fullname, $welcome_text );
 ?>
 <div class="cognify-already-loggedin">

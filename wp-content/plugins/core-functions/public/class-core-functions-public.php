@@ -130,4 +130,23 @@ class Core_Functions_Public {
 		}
 		return ob_get_clean();
 	}
+
+	/**
+	 * Do something when WordPress initiates.
+	 */
+	public function cf_init_callback() {
+		// Create custom settings pages for ACF Pro.
+		if ( function_exists( 'acf_add_options_page' ) ) {
+			// Theme options page.
+			acf_add_options_page(
+				array(
+					'page_title' => __( 'Prayatna Settings', 'core-functions' ),
+					'menu_title' => __( 'Prayatna Settings', 'core-functions' ),
+					'menu_slug'  => 'prayatna-settings',
+					'capability' => false,
+					'redirect'   => false
+				)
+			);
+		}
+	}
 }
