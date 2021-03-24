@@ -151,6 +151,8 @@ class Core_Functions {
 		$plugin_public = new Core_Functions_Public( $this->get_plugin_name(), $this->get_version() );
 
 		$this->loader->add_action( 'wp_enqueue_scripts', $plugin_public, 'cf_wp_enqueue_scripts_callback' );
+		$this->loader->add_shortcode( 'register_as_therapist', $plugin_public, 'cf_register_as_therapist_callback' );
+		$this->loader->add_shortcode( 'register_as_client', $plugin_public, 'cf_register_as_client_callback' );
 	}
 
 	/**
