@@ -18,6 +18,13 @@ jQuery(document).ready( function( $ ) {
 		}
 	} );
 
+	// Input masking the dob field.
+	$( '.cf__date__field' ).inputmask(
+		{
+			'mask': '99-99-9999'
+		}
+	);
+
 	/**
 	 * Block element.
 	 *

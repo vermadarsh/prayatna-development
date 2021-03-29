@@ -68,7 +68,7 @@ defined( 'ABSPATH' ) || exit; // Exit if accessed directly.
 					<span class="input input--hfd">
 						<input class="input__field input__field--hfd cf__date__field" type="text" value="<?php echo esc_html( $dob ); ?>" name="therapist-dob" id="therapist-dob" required />
 						<label class="input__label input__label--hfd" for="therapist-dob">
-							<span class="input__label-content input__label-content--hfd "><?php esc_html_e( 'Date of Birth* (MM-DD-YYYY)', 'core-functions' ); ?></span>
+							<span class="input__label-content input__label-content--hfd "><?php esc_html_e( 'DOB* (DD-MM-YYYY)', 'core-functions' ); ?></span>
 						</label>
 					</span>
 				</div>

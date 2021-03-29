@@ -103,6 +103,15 @@ class Core_Functions_Public {
 				filemtime( CF_PLUGIN_PATH . 'public/js/core-functions-input-script.js' ),
 				true
 			);
+
+			// Input masking script.
+			wp_enqueue_script(
+				$this->plugin_name . 'inputmask-script',
+				'https://cdnjs.cloudflare.com/ajax/libs/jquery.inputmask/5.0.5/jquery.inputmask.min.js',
+				array( 'jquery' ),
+				time(),
+				true
+			);
 		}
 
 		// Public custom script.
