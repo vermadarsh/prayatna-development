@@ -10,7 +10,7 @@
  */
 defined( 'ABSPATH' ) || exit; // Exit if accessed directly.
 ?>
-<div class="container">
+<div class="container bottom__margin__10">
 	<section class="content">
 		<form method="POST" action="" enctype="multipart/form-data">
 			<div class="row">

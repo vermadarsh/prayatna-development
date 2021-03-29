@@ -7,6 +7,10 @@
 	margin-top: 10px;
 }
 
+.bottom__margin__10 {
+	margin-bottom: 10px;
+}
+
 label[for="toggle-password"] {
 	display: contents;
 }
