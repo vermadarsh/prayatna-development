@@ -76,6 +76,12 @@ class Core_Functions_Public {
 			);
 		}
 
+		// jQuery UI style.
+		wp_enqueue_style(
+			'cognify-jquery-ui-style',
+			'//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css'
+		);
+
 		// Public custom style.
 		wp_enqueue_style(
 			$this->plugin_name,
@@ -118,7 +124,7 @@ class Core_Functions_Public {
 		wp_enqueue_script(
 			$this->plugin_name,
 			CF_PLUGIN_URL . 'public/js/core-functions-public.js',
-			array( 'jquery' ),
+			array( 'jquery', 'jquery-ui-datepicker' ),
 			filemtime( CF_PLUGIN_PATH . 'public/js/core-functions-public.js' ),
 			true
 		);

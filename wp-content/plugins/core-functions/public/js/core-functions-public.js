@@ -18,12 +18,18 @@ jQuery(document).ready( function( $ ) {
 		}
 	} );
 
-	// Input masking the dob field.
-	$( '.cf__date__field' ).inputmask(
-		{
-			'mask': '99-99-9999'
-		}
-	);
+	// Datepicker for date of birth fields.
+	if ( $( '.cf__date__field' ).length ) {
+		$( '.cf__date__field' ).datepicker( {
+			dateFormat: 'mm-dd-yy',
+			onSelect: function( dateText, inst ) {
+				$( '.cf__date__field' ).parent( 'span' ).addClass( 'input--filled' );
+			},
+			maxDate: 0
+		} );
+
+		$( '.cf__date__field' ).inputmask( { 'mask': '99-99-9999'} );
+	}
 
 	/**
 	 * Block element.
