@@ -85,6 +85,10 @@ defined( 'ABSPATH' ) || exit; // Exit if accessed directly.
 				<div class="col-md-6 top__margin__10">
 					<textarea required name="therapist-temporary-address" placeholder="<?php esc_html_e( 'Temporary address', 'cognify-core' ); ?>" class="form-control therapist-temporary-address" rows="3"></textarea>
 				</div>
+				<!-- PERMANENT ADDRESS -->
+				<div class="col-md-6 top__margin__10">
+					<textarea required name="therapist-permanent-address" placeholder="<?php esc_html_e( 'Permanent address', 'cognify-core' ); ?>" class="form-control therapist-permanent-address" rows="3"></textarea>
+				</div>
 				<!-- PROFILE PICTURE -->
 				<div class="col-md-12 top__margin__10">
 					<div class="custom-file therapist-profile-picture">
