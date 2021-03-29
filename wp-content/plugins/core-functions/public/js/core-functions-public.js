@@ -6,15 +6,15 @@ jQuery(document).ready( function( $ ) {
 	var show_password_text = CF_Public_JS_Script_Vars.show_password_text;
 	var hide_password_text = CF_Public_JS_Script_Vars.hide_password_text;
 
-	cf_show_notification( 'fa fa-warning', 'Error', 'Sample error message', 'error' );
-	setTimeout(function () {
-		cf_hide_notification();
-	}, 3000);
+	// cf_show_notification( 'fa fa-warning', 'Error', 'Sample error message', 'error' );
+	// setTimeout( function () {
+	// 	cf_hide_notification();
+	// }, 5000 );
 
-// cf_show_notification('fa fa-check', 'Success', 'Invoice created[' + response.data.invoice_id + ']', 'success');
-//                     setTimeout(function () {
-//                         cf_hide_notification();
-//                     }, 4000);
+	cf_show_notification( 'fa fa-check', 'Success', 'Invoice created', 'success' );
+	setTimeout( function () {
+		cf_hide_notification();
+	}, 5000 );
 
 	// Show hide password.
 	$( document ).on( 'click', '#toggle-password', function() {
