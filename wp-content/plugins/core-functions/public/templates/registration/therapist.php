@@ -19,7 +19,7 @@ defined( 'ABSPATH' ) || exit; // Exit if accessed directly.
 					<span class="input input--hfd">
 						<input class="input__field input__field--hfd" type="text" value="<?php echo esc_html( $first_name ); ?>" name="therapist-first-name" id="therapist-first-name" required onkeypress="return /[a-z]/i.test(event.key)" />
 						<label class="input__label input__label--hfd" for="therapist-first-name">
-							<span class="input__label-content input__label-content--hfd cognify-text-color"><?php esc_html_e( 'First Name*', 'cognify-core' ); ?></span>
+							<span class="input__label-content input__label-content--hfd "><?php esc_html_e( 'First Name*', 'cognify-core' ); ?></span>
 						</label>
 					</span>
 				</div>
@@ -28,7 +28,7 @@ defined( 'ABSPATH' ) || exit; // Exit if accessed directly.
 					<span class="input input--hfd">
 						<input class="input__field input__field--hfd" type="text" value="<?php echo esc_html( $last_name ); ?>" name="therapist-last-name" id="therapist-last-name" required onkeypress="return /[a-z]/i.test(event.key)" />
 						<label class="input__label input__label--hfd" for="therapist-last-name">
-							<span class="input__label-content input__label-content--hfd cognify-text-color"><?php esc_html_e( 'Last Name*', 'cognify-core' ); ?></span>
+							<span class="input__label-content input__label-content--hfd "><?php esc_html_e( 'Last Name*', 'cognify-core' ); ?></span>
 						</label>
 					</span>
 				</div>
@@ -37,30 +37,51 @@ defined( 'ABSPATH' ) || exit; // Exit if accessed directly.
 					<span class="input input--hfd">
 						<input class="input__field input__field--hfd" type="text" value="<?php echo esc_html( $phone ); ?>" maxlength="10" name="therapist-phone" id="therapist-phone" required onkeypress="return /[0-9]/i.test(event.key)" />
 						<label class="input__label input__label--hfd" for="therapist-phone">
-							<span class="input__label-content input__label-content--hfd cognify-text-color"><?php esc_html_e( 'Phone*', 'cognify-core' ); ?></span>
+							<span class="input__label-content input__label-content--hfd "><?php esc_html_e( 'Phone*', 'cognify-core' ); ?></span>
 						</label>
 					</span>
 				</div>
-				<!-- SEND OTP -->
-				<!-- <div class="col-md-6 top__margin__10 cognify_send_otp_button_field dnone">
-					<input type="hidden" id="registration_user" value="therapist" />
-					<button type="button" class="btn btn-secondary cognify-button" data-toggle="modal" data-target="#cognify_send_otp_modal"><?php // esc_html_e( 'Send OTP', 'cognify-core' ); ?></button>
-				</div> -->
 				<!-- EMAIL -->
 				<div class="col-md-6 top__margin__10 cognify_user_registration_email_field">
 					<span class="input input--hfd">
 						<input class="input__field input__field--hfd" type="email" value="<?php echo esc_html( $email ); ?>" name="therapist-email" id="therapist-email" required />
 						<label class="input__label input__label--hfd" for="therapist-email">
-							<span class="input__label-content input__label-content--hfd cognify-text-color"><?php esc_html_e( 'Email*', 'cognify-core' ); ?></span>
+							<span class="input__label-content input__label-content--hfd "><?php esc_html_e( 'Email*', 'cognify-core' ); ?></span>
 						</label>
 					</span>
+				</div>
+				<!-- PASSWORD -->
+				<div class="col-md-6 top__margin__10">
+					<span class="input input--hfd">
+						<input class="input__field input__field--hfd" type="password" name="therapist-password" id="therapist-password" required />
+						<label class="input__label input__label--hfd" for="therapist-password">
+							<span class="input__label-content input__label-content--hfd "><?php esc_html_e( 'Password*', 'cognify-core' ); ?></span>
+						</label>
+					</span>
+					<div class="cognify-toggle-password">
+						<input type="checkbox" id="toggle-password" />
+						<label for="toggle-password" class=""><?php esc_html_e( 'Show Password', 'cognify-core' ); ?></label>
+					</div>
+				</div>
+				<!-- CONFIRM PASSWORD -->
+				<div class="col-md-6 top__margin__10">
+					<span class="input input--hfd">
+						<input class="input__field input__field--hfd" type="password" name="therapist-confirm-password" id="therapist-confirm-password" required />
+						<label class="input__label input__label--hfd" for="therapist-confirm-password">
+							<span class="input__label-content input__label-content--hfd "><?php esc_html_e( 'Confirm Password*', 'cognify-core' ); ?></span>
+						</label>
+					</span>
+					<div class="cognify-toggle-password">
+						<input type="checkbox" id="toggle-password" />
+						<label for="toggle-password" class=""><?php esc_html_e( 'Show Password', 'cognify-core' ); ?></label>
+					</div>
 				</div>
 				<!-- DOB -->
 				<div class="col-md-6 top__margin__10">
 					<span class="input input--hfd">
 						<input class="input__field input__field--hfd cognify__date__field" type="text" value="<?php echo esc_html( $dob ); ?>" name="therapist-dob" id="therapist-dob" required />
 						<label class="input__label input__label--hfd" for="therapist-dob">
-							<span class="input__label-content input__label-content--hfd cognify-text-color"><?php esc_html_e( 'Date of Birth* (MM-DD-YYYY)', 'cognify-core' ); ?></span>
+							<span class="input__label-content input__label-content--hfd "><?php esc_html_e( 'Date of Birth* (MM-DD-YYYY)', 'cognify-core' ); ?></span>
 						</label>
 					</span>
 				</div>
@@ -72,25 +93,12 @@ defined( 'ABSPATH' ) || exit; // Exit if accessed directly.
 						<option <?php echo ( ! empty( $gender ) && 'other' === $gender ) ? 'selected' : ''; ?> value="other"><?php esc_html_e( 'Other', 'cognify-core' ); ?></option>
 					</select>
 				</div>
-				<!-- PASSWORD -->
-				<div class="col-md-6 top__margin__10">
-					<span class="input input--hfd">
-						<input class="input__field input__field--hfd" type="password" name="therapist-password" id="therapist-password" required />
-						<label class="input__label input__label--hfd" for="therapist-password">
-							<span class="input__label-content input__label-content--hfd cognify-text-color"><?php esc_html_e( 'Password*', 'cognify-core' ); ?></span>
-						</label>
-					</span>
-					<div class="cognify-toggle-password">
-						<input type="checkbox" id="toggle-password" />
-						<label for="toggle-password" class="cognify-text-color"><?php esc_html_e( 'Show Password', 'cognify-core' ); ?></label>
-					</div>
-				</div>
 				<!-- QUALIFICATION -->
 				<div class="col-md-6 top__margin__10">
 					<span class="input input--hfd">
 						<input class="input__field input__field--hfd" type="text" value="<?php echo esc_html( $qualification ); ?>" name="therapist-qualification" id="therapist-qualification" required />
 						<label class="input__label input__label--hfd" for="therapist-qualification">
-							<span class="input__label-content input__label-content--hfd cognify-text-color"><?php esc_html_e( 'Qualification*', 'cognify-core' ); ?></span>
+							<span class="input__label-content input__label-content--hfd "><?php esc_html_e( 'Qualification*', 'cognify-core' ); ?></span>
 						</label>
 					</span>
 				</div>
@@ -99,19 +107,10 @@ defined( 'ABSPATH' ) || exit; // Exit if accessed directly.
 					<span class="input input--hfd">
 						<input class="input__field input__field--hfd" type="number" value="<?php echo esc_html( $experience ); ?>" step="0.1" min="0.1" name="therapist-experience" id="therapist-experience" required />
 						<label class="input__label input__label--hfd" for="therapist-experience">
-							<span class="input__label-content input__label-content--hfd cognify-text-color"><?php esc_html_e( 'Years of Experience*', 'cognify-core' ); ?></span>
+							<span class="input__label-content input__label-content--hfd "><?php esc_html_e( 'Years of Experience*', 'cognify-core' ); ?></span>
 						</label>
 					</span>
 				</div>
-				<!-- CONSULTATION FEES -->
-				<!-- <div class="col-md-6 top__margin__10">
-					<span class="input input--hfd">
-						<input class="input__field input__field--hfd" type="number" value="<?php // echo esc_html( $fees ); ?>" step="0.01" min="0.01" name="therapist-fees" id="therapist-fees" required />
-						<label class="input__label input__label--hfd" for="therapist-fees">
-							<span class="input__label-content input__label-content--hfd cognify-text-color"><?php // esc_html_e( 'Consultation Fees*', 'cognify-core' ); ?></span>
-						</label>
-					</span>
-				</div> -->
 				<!-- BRIEF DESCRIPTION -->
 				<div class="col-md-6 top__margin__10">
 					<textarea required name="therapist-brief-description" placeholder="<?php esc_html_e( 'Write something about yourself..', 'cognify-core' ); ?>" class="form-control therapist-brief-description" rows="3"><?php echo esc_html( $short_desc ); ?></textarea>
