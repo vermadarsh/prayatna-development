@@ -7,14 +7,26 @@ jQuery(document).ready( function( $ ) {
 	var hide_password_text = CF_Public_JS_Script_Vars.hide_password_text;
 
 	// Show hide password.
-	$( document ).on( 'click', '.cf-toggle-password input[type="checkbox"]', function() {
+	$( document ).on( 'click', '#toggle-password', function() {
 		var this_checkbox = $( this );
 		if ( ( this_checkbox ).is( ':checked' ) ) {
-			$( '#counselee-password, #counselor-password' ).attr( 'type', 'text' );
-			$( '.cf-toggle-password label' ).text( hide_password_text );
+			$( '#therapist-password, #client-password' ).attr( 'type', 'text' );
+			this_checkbox.next( 'label' ).text( hide_password_text );
 		} else {
-			$( '#counselee-password, #counselor-password' ).attr( 'type', 'password' );
-			$( '.cf-toggle-password label' ).text( show_password_text );
+			$( '#therapist-password, #client-password' ).attr( 'type', 'password' );
+			this_checkbox.next( 'label' ).text( show_password_text );
+		}
+	} );
+
+	// Show hide confirm password.
+	$( document ).on( 'click', '#toggle-confirm-password', function() {
+		var this_checkbox = $( this );
+		if ( ( this_checkbox ).is( ':checked' ) ) {
+			$( '#therapist-confirm-password, #client-confirm-password' ).attr( 'type', 'text' );
+			this_checkbox.next( 'label' ).text( hide_password_text );
+		} else {
+			$( '#therapist-confirm-password, #client-confirm-password' ).attr( 'type', 'password' );
+			this_checkbox.next( 'label' ).text( show_password_text );
 		}
 	} );
 

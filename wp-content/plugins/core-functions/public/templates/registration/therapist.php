@@ -72,8 +72,8 @@ defined( 'ABSPATH' ) || exit; // Exit if accessed directly.
 						</label>
 					</span>
 					<div class="cf-toggle-password">
-						<input type="checkbox" id="toggle-password" />
-						<label for="toggle-password" class=""><?php esc_html_e( 'Show Password', 'core-functions' ); ?></label>
+						<input type="checkbox" id="toggle-confirm-password" />
+						<label for="toggle-confirm-password" class=""><?php esc_html_e( 'Show Password', 'core-functions' ); ?></label>
 					</div>
 				</div>
 				<!-- DOB -->
