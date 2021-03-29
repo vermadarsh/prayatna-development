@@ -6,11 +6,6 @@ jQuery(document).ready( function( $ ) {
 	var show_password_text = CF_Public_JS_Script_Vars.show_password_text;
 	var hide_password_text = CF_Public_JS_Script_Vars.hide_password_text;
 
-	// cf_show_notification( 'fa fa-warning', 'Error', 'Sample error message', 'error' );
-	// setTimeout( function () {
-	// 	cf_hide_notification();
-	// }, 5000 );
-
 	// cf_show_notification( 'fa fa-check', 'Success', 'Invoice created', 'success' );
 	// setTimeout( function () {
 	// 	cf_hide_notification();
@@ -45,6 +40,28 @@ jQuery(document).ready( function( $ ) {
 		var temporary_address = $( '.therapist-temporary-address' ).val();
 		var permanent_address = $( '.therapist-permanent-address' ).val();
 		var agree_tos         = ( $( '#therapist-registration-terms-n-conditions-acceptance' ).is( 'checked' ) ) ? true : false;
+		var error_message     = '';
+
+		// Validate first name.
+		if ( -1 === is_valid_string( first_name ) ) {
+			error_message += '<li>First name is required.</li>';
+		}
+
+		// Validate last name.
+		if ( -1 === is_valid_string( last_name ) ) {
+			error_message += '<li>First name is required.</li>';
+		}
+
+		// Display the error message if there are.
+		if ( 0 < error_message.length ) {
+			error_message = '<ol>' + error_message + '</ol>';
+			cf_show_notification( 'fa fa-warning', 'Error', error_message, 'error' );
+			setTimeout( function () {
+				cf_hide_notification();
+			}, 5000 );
+
+			return false;
+		}
 
 		console.log( 'first_name', first_name );
 		console.log( 'last_name', last_name );
@@ -109,6 +126,20 @@ jQuery(document).ready( function( $ ) {
 	 */
 	function is_valid_number( data ) {
 		if ( '' === data || undefined === data || isNaN( data ) || 0 === data ) {
+			return -1;
+		} else {
+			return 1;
+		}
+	}
+
+	/**
+	 * Check if email is valid.
+	 * 
+	 * @param {string} email 
+	 */
+	 function is_valid_email( email ) {
+		var email_regex = /^([a-zA-Z0-9_\.\-\+])+\@(([a-zA-Z0-9\-])+\.)+([a-zA-Z0-9]{2,4})+$/;
+		if ( ! email_regex.test( email ) ) {
 			return -1;
 		} else {
 			return 1;

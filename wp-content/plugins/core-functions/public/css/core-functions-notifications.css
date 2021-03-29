@@ -67,11 +67,11 @@
 	line-height: normal;
 }
 
-.notification_popup .notification_message ul {
+.notification_popup .notification_message ol {
 	margin: 0
 }
 
-.notification_popup .notification_message ul li {
+.notification_popup .notification_message ol li {
 	margin-bottom: 3px;
 }
 
