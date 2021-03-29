@@ -28,6 +28,11 @@ jQuery(document).ready( function( $ ) {
 		}
 	} );
 
+	// Close the notification.
+	$( document ).on( 'click', '.notification_close', function() {
+		cf_hide_notification();
+	} );
+
 	// Datepicker for date of birth fields.
 	if ( $( '.cf__date__field' ).length ) {
 		$( '.cf__date__field#therapist-dob' ).datepicker( {
