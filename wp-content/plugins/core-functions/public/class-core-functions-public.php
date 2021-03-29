@@ -57,6 +57,14 @@ class Core_Functions_Public {
 	 * @since    1.0.0
 	 */
 	public function cf_wp_enqueue_scripts_callback() {
+		// Bootstrap css.
+		wp_enqueue_style(
+			$this->plugin_name . '-bootstrap-style',
+			CF_PLUGIN_URL . 'public/css/bootstrap.min.css',
+			array(),
+			filemtime( CF_PLUGIN_PATH . 'public/css/bootstrap.min.css' )
+		);
+
 		// Enqueue the custom input styles.
 		if ( is_page( 'register-as-therapist' ) || is_page( 'register-as-client' ) ) {
 			// Public custom style.
@@ -74,6 +82,15 @@ class Core_Functions_Public {
 			CF_PLUGIN_URL . 'public/css/core-functions-public.css',
 			array(),
 			filemtime( CF_PLUGIN_PATH . 'public/css/core-functions-public.css' )
+		);
+
+		// Bootstrap script.
+		wp_enqueue_script(
+			$this->plugin_name . '-bootstrap-script',
+			CF_PLUGIN_URL . 'public/js/bootstrap.min.js',
+			array( 'jquery' ),
+			filemtime( CF_PLUGIN_PATH . 'public/js/bootstrap.min.js' ),
+			true
 		);
 
 		// Public custom script.
