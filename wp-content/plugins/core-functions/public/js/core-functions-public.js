@@ -5,6 +5,7 @@ jQuery(document).ready( function( $ ) {
 	var ajaxurl            = CF_Public_JS_Script_Vars.ajaxurl;
 	var show_password_text = CF_Public_JS_Script_Vars.show_password_text;
 	var hide_password_text = CF_Public_JS_Script_Vars.hide_password_text;
+	var gender_text        = CF_Public_JS_Script_Vars.gender_text;
 
 	// Show hide password.
 	$( document ).on( 'click', '#toggle-password', function() {
@@ -30,6 +31,13 @@ jQuery(document).ready( function( $ ) {
 		} );
 
 		$( '.cf__date__field' ).inputmask( { 'mask': '99-99-9999'} );
+	}
+
+	// Gender selectpicker.
+	if ( $( '.gender-selectpicker' ).length ) {
+		$( '.gender-selectpicker' ).selectpicker( {
+			noneSelectedText : gender_text,
+		} );
 	}
 
 	/**
