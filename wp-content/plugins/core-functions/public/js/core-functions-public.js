@@ -2,7 +2,21 @@ jQuery(document).ready( function( $ ) {
 	'use strict';
 
 	// Localized variables.
-	var ajaxurl = CF_Public_JS_Script_Vars.ajaxurl;
+	var ajaxurl            = CF_Public_JS_Script_Vars.ajaxurl;
+	var show_password_text = CF_Public_JS_Script_Vars.show_password_text;
+	var hide_password_text = CF_Public_JS_Script_Vars.hide_password_text;
+
+	// Show hide password.
+	$( document ).on( 'click', '.cf-toggle-password input[type="checkbox"]', function() {
+		var this_checkbox = $( this );
+		if ( ( this_checkbox ).is( ':checked' ) ) {
+			$( '#counselee-password, #counselor-password' ).attr( 'type', 'text' );
+			$( '.cf-toggle-password label' ).text( hide_password_text );
+		} else {
+			$( '#counselee-password, #counselor-password' ).attr( 'type', 'password' );
+			$( '.cf-toggle-password label' ).text( show_password_text );
+		}
+	} );
 
 	/**
 	 * Block element.
