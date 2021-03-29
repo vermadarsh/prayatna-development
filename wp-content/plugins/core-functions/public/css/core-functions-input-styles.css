@@ -100,7 +100,6 @@
 
 .input__field--hfd:focus + .input__label--hfd .input__label-content--hfd,
 .input--filled .input__label--hfd .input__label-content--hfd {
-	color: #5A2A73;
 	-webkit-transform: translate3d(0, -1.5em, 0) scale3d(0.75, 0.75, 1);
 	transform: translate3d(0, -1.5em, 0) scale3d(0.75, 0.75, 1) translateZ(1px);
 	padding-top: 1.5em;
