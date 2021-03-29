@@ -11,10 +11,10 @@ jQuery(document).ready( function( $ ) {
 	// 	cf_hide_notification();
 	// }, 5000 );
 
-	cf_show_notification( 'fa fa-check', 'Success', 'Invoice created', 'success' );
-	setTimeout( function () {
-		cf_hide_notification();
-	}, 5000 );
+	// cf_show_notification( 'fa fa-check', 'Success', 'Invoice created', 'success' );
+	// setTimeout( function () {
+	// 	cf_hide_notification();
+	// }, 5000 );
 
 	// Show hide password.
 	$( document ).on( 'click', '#toggle-password', function() {
@@ -31,6 +31,16 @@ jQuery(document).ready( function( $ ) {
 	// Close the notification.
 	$( document ).on( 'click', '.notification_close', function() {
 		cf_hide_notification();
+	} );
+
+	// Submit the data for therapist registration.
+	$( document ).on( 'click', 'input[name="register-therapist-button"]', function() {
+		var first_name = $( '#therapist-first-name' ).val();
+		var last_name  = $( '#therapist-last-name' ).val();
+		var phone      = $( '#therapist-phone' ).val();
+		var password   = $( '#therapist-password' ).val();
+		var email      = $( '#therapist-email' ).val();
+		var dob        = $( '#therapist-dob' ).val();
 	} );
 
 	// Datepicker for date of birth fields.
