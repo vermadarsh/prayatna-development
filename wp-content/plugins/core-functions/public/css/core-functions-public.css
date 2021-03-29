@@ -10,3 +10,7 @@
 label[for="toggle-password"] {
 	display: contents;
 }
+
+#therapist-email {
+	width: 100%;
+}
