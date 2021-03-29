@@ -74,12 +74,6 @@ class Core_Functions_Public {
 				array(),
 				filemtime( CF_PLUGIN_PATH . 'public/css/core-functions-input-styles.css' )
 			);
-
-			// Bootstrap select style.
-			wp_enqueue_style(
-				$this->plugin_name . 'bootstrap-select-style',
-				'https://cdn.jsdelivr.net/npm/bootstrap-select@1.13.9/dist/css/bootstrap-select.min.css'
-			);
 		}
 
 		// jQuery UI style.
@@ -120,15 +114,6 @@ class Core_Functions_Public {
 			wp_enqueue_script(
 				$this->plugin_name . 'inputmask-script',
 				'https://cdnjs.cloudflare.com/ajax/libs/jquery.inputmask/5.0.5/jquery.inputmask.min.js',
-				array( 'jquery' ),
-				time(),
-				true
-			);
-
-			// Bootstrap select script.
-			wp_enqueue_script(
-				$this->plugin_name . 'bootstrap-select-script',
-				'https://cdn.jsdelivr.net/npm/bootstrap-select@1.13.9/dist/js/bootstrap-select.min.js',
 				array( 'jquery' ),
 				time(),
 				true

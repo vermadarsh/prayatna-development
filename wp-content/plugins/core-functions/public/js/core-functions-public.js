@@ -32,13 +32,6 @@ jQuery(document).ready( function( $ ) {
 		$( '.cf__date__field' ).inputmask( { 'mask': '99-99-9999'} );
 	}
 
-	// Gender selectpicker.
-	// if ( $( '.gender-selectpicker' ).length ) {
-	// 	$( '.gender-selectpicker' ).selectpicker( {
-	// 		noneSelectedText : gender_text,
-	// 	} );
-	// }
-
 	/**
 	 * Block element.
 	 *

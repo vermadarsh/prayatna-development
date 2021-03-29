@@ -75,9 +75,10 @@ defined( 'ABSPATH' ) || exit; // Exit if accessed directly.
 				<!-- GENDER -->
 				<div class="col-md-6 top__margin__10 therapist-gender-div">
 					<select name="therapist-gender" class="gender-selectpicker">
-						<option <?php echo ( ! empty( $gender ) && 'male' === $gender ) ? 'selected' : ''; ?> value="male"><?php esc_html_e( 'Male', 'core-functions' ); ?></option>
-						<option <?php echo ( ! empty( $gender ) && 'female' === $gender ) ? 'selected' : ''; ?> value="female"><?php esc_html_e( 'Female', 'core-functions' ); ?></option>
-						<option <?php echo ( ! empty( $gender ) && 'other' === $gender ) ? 'selected' : ''; ?> value="other"><?php esc_html_e( 'Other', 'core-functions' ); ?></option>
+						<option value=""><?php esc_html_e( 'Gender', 'core-functions' ); ?></option>
+						<option value="male"><?php esc_html_e( 'Male', 'core-functions' ); ?></option>
+						<option value="female"><?php esc_html_e( 'Female', 'core-functions' ); ?></option>
+						<option value="other"><?php esc_html_e( 'Other', 'core-functions' ); ?></option>
 					</select>
 				</div>
 				<!-- PROFILE PICTURE -->
