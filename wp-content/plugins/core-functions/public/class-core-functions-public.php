@@ -57,13 +57,23 @@ class Core_Functions_Public {
 	 * @since    1.0.0
 	 */
 	public function cf_wp_enqueue_scripts_callback() {
+		// Enqueue the custom input styles.
+		if ( is_page( 'register-as-therapist' ) || is_page( 'register-as-client' ) ) {
+			// Public custom style.
+			wp_enqueue_style(
+				$this->plugin_name . '-input-styles',
+				CF_PLUGIN_URL . 'public/css/core-functions-input-styles.css',
+				array(),
+				filemtime( CF_PLUGIN_PATH . 'public/css/core-functions-input-styles.css' )
+			);
+		}
+
 		// Public custom style.
 		wp_enqueue_style(
 			$this->plugin_name,
 			CF_PLUGIN_URL . 'public/css/core-functions-public.css',
 			array(),
-			filemtime( CF_PLUGIN_PATH . 'public/css/core-functions-public.css' ),
-			'all'
+			filemtime( CF_PLUGIN_PATH . 'public/css/core-functions-public.css' )
 		);
 
 		// Public custom script.
