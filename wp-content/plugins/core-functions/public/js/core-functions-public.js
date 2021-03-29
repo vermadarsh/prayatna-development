@@ -49,7 +49,14 @@ jQuery(document).ready( function( $ ) {
 
 		// Validate last name.
 		if ( -1 === is_valid_string( last_name ) ) {
-			error_message += '<li>First name is required.</li>';
+			error_message += '<li>Last name is required.</li>';
+		}
+
+		// Validate password.
+		if ( -1 === is_valid_string( password ) ) {
+			error_message += '<li>Password is required.</li>';
+		} else if ( 8 > password.length ) {
+			error_message += '<li>Password should be min. 8 characters length.</li>';
 		}
 
 		// Display the error message if there are.
