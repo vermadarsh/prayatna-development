@@ -18,18 +18,6 @@ jQuery(document).ready( function( $ ) {
 		}
 	} );
 
-	// Show hide confirm password.
-	$( document ).on( 'click', '#toggle-confirm-password', function() {
-		var this_checkbox = $( this );
-		if ( ( this_checkbox ).is( ':checked' ) ) {
-			$( '#therapist-confirm-password, #client-confirm-password' ).attr( 'type', 'text' );
-			this_checkbox.next( 'label' ).text( hide_password_text );
-		} else {
-			$( '#therapist-confirm-password, #client-confirm-password' ).attr( 'type', 'password' );
-			this_checkbox.next( 'label' ).text( show_password_text );
-		}
-	} );
-
 	/**
 	 * Block element.
 	 *

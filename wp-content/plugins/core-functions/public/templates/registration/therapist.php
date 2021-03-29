@@ -41,15 +41,6 @@ defined( 'ABSPATH' ) || exit; // Exit if accessed directly.
 						</label>
 					</span>
 				</div>
-				<!-- EMAIL -->
-				<div class="col-md-6 top__margin__10 cf_user_registration_email_field">
-					<span class="input input--hfd">
-						<input class="input__field input__field--hfd" type="email" value="<?php echo esc_html( $email ); ?>" name="therapist-email" id="therapist-email" required />
-						<label class="input__label input__label--hfd" for="therapist-email">
-							<span class="input__label-content input__label-content--hfd "><?php esc_html_e( 'Email*', 'core-functions' ); ?></span>
-						</label>
-					</span>
-				</div>
 				<!-- PASSWORD -->
 				<div class="col-md-6 top__margin__10">
 					<span class="input input--hfd">
@@ -63,18 +54,14 @@ defined( 'ABSPATH' ) || exit; // Exit if accessed directly.
 						<label for="toggle-password" class=""><?php esc_html_e( 'Show Password', 'core-functions' ); ?></label>
 					</div>
 				</div>
-				<!-- CONFIRM PASSWORD -->
-				<div class="col-md-6 top__margin__10">
+				<!-- EMAIL -->
+				<div class="col-md-12 top__margin__10 cf_user_registration_email_field">
 					<span class="input input--hfd">
-						<input class="input__field input__field--hfd" type="password" name="therapist-confirm-password" id="therapist-confirm-password" required />
-						<label class="input__label input__label--hfd" for="therapist-confirm-password">
-							<span class="input__label-content input__label-content--hfd "><?php esc_html_e( 'Confirm Password*', 'core-functions' ); ?></span>
+						<input class="input__field input__field--hfd" type="email" value="<?php echo esc_html( $email ); ?>" name="therapist-email" id="therapist-email" required />
+						<label class="input__label input__label--hfd" for="therapist-email">
+							<span class="input__label-content input__label-content--hfd "><?php esc_html_e( 'Email*', 'core-functions' ); ?></span>
 						</label>
 					</span>
-					<div class="cf-toggle-password">
-						<input type="checkbox" id="toggle-confirm-password" />
-						<label for="toggle-confirm-password" class=""><?php esc_html_e( 'Show Password', 'core-functions' ); ?></label>
-					</div>
 				</div>
 				<!-- DOB -->
 				<div class="col-md-6 top__margin__10">
