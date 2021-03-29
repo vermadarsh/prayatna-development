@@ -20,8 +20,9 @@ jQuery(document).ready( function( $ ) {
 
 	// Datepicker for date of birth fields.
 	if ( $( '.cf__date__field' ).length ) {
-		$( '.cf__date__field' ).datepicker( {
+		$( '.cf__date__field#therapist-dob' ).datepicker( {
 			dateFormat: 'mm-dd-yy',
+			maxDate: '0',
 			onSelect: function( dateText, inst ) {
 				$( '.cf__date__field' ).parent( 'span' ).addClass( 'input--filled' );
 			},
