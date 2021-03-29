@@ -94,7 +94,6 @@
 
 .input__field--hfd:focus + .input__label--hfd::before,
 .input--filled .input__label--hfd::before {
-	border-color: #5A2A73;
 	border-left-width: 0.2em;
 }
 
