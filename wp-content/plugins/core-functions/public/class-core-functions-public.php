@@ -113,7 +113,7 @@ class Core_Functions_Public {
 		if ( is_user_logged_in() ) {
 			require_once CF_PLUGIN_PATH . 'public/templates/registration/already-logged-in.php';
 		} else {
-			require_once CF_PLUGIN_PATH . 'public/templates/registration/counselee.php';
+			require_once CF_PLUGIN_PATH . 'public/templates/registration/therapist.php';
 		}
 		return ob_get_clean();
 	}
