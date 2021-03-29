@@ -42,6 +42,17 @@ jQuery(document).ready( function( $ ) {
 		var agree_tos         = ( $( '#therapist-registration-terms-n-conditions-acceptance' ).is( 'checked' ) ) ? true : false;
 		var error_message     = '';
 
+		console.log( 'first_name', first_name );
+		console.log( 'last_name', last_name );
+		console.log( 'phone', phone );
+		console.log( 'password', password );
+		console.log( 'email', email );
+		console.log( 'dob', dob );
+		console.log( 'gender', gender );
+		console.log( 'temporary_address', temporary_address );
+		console.log( 'permanent_address', permanent_address );
+		console.log( 'agree_tos', agree_tos );
+
 		// Validate first name.
 		if ( -1 === is_valid_string( first_name ) ) {
 			error_message += '<li>First name is required.</li>';
@@ -69,17 +80,6 @@ jQuery(document).ready( function( $ ) {
 
 			return false;
 		}
-
-		console.log( 'first_name', first_name );
-		console.log( 'last_name', last_name );
-		console.log( 'phone', phone );
-		console.log( 'password', password );
-		console.log( 'email', email );
-		console.log( 'dob', dob );
-		console.log( 'gender', gender );
-		console.log( 'temporary_address', temporary_address );
-		console.log( 'permanent_address', permanent_address );
-		console.log( 'agree_tos', agree_tos );
 	} );
 
 	// Datepicker for date of birth fields.
