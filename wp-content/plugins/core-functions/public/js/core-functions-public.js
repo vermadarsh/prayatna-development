@@ -35,12 +35,27 @@ jQuery(document).ready( function( $ ) {
 
 	// Submit the data for therapist registration.
 	$( document ).on( 'click', 'input[name="register-therapist-button"]', function() {
-		var first_name = $( '#therapist-first-name' ).val();
-		var last_name  = $( '#therapist-last-name' ).val();
-		var phone      = $( '#therapist-phone' ).val();
-		var password   = $( '#therapist-password' ).val();
-		var email      = $( '#therapist-email' ).val();
-		var dob        = $( '#therapist-dob' ).val();
+		var first_name        = $( '#therapist-first-name' ).val();
+		var last_name         = $( '#therapist-last-name' ).val();
+		var phone             = $( '#therapist-phone' ).val();
+		var password          = $( '#therapist-password' ).val();
+		var email             = $( '#therapist-email' ).val();
+		var dob               = $( '#therapist-dob' ).val();
+		var gender            = $( '#therapist-gender' ).val();
+		var temporary_address = $( '.therapist-temporary-address' ).val();
+		var permanent_address = $( '.therapist-permanent-address' ).val();
+		var agree_tos         = ( $( '#therapist-registration-terms-n-conditions-acceptance' ).is( 'checked' ) ) ? true : false;
+
+		console.log( 'first_name', first_name );
+		console.log( 'last_name', last_name );
+		console.log( 'phone', phone );
+		console.log( 'password', password );
+		console.log( 'email', email );
+		console.log( 'dob', dob );
+		console.log( 'gender', gender );
+		console.log( 'temporary_address', temporary_address );
+		console.log( 'permanent_address', permanent_address );
+		console.log( 'agree_tos', agree_tos );
 	} );
 
 	// Datepicker for date of birth fields.
