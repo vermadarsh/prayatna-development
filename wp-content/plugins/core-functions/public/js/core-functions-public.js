@@ -33,11 +33,11 @@ jQuery(document).ready( function( $ ) {
 	}
 
 	// Gender selectpicker.
-	if ( $( '.gender-selectpicker' ).length ) {
-		$( '.gender-selectpicker' ).selectpicker( {
-			noneSelectedText : gender_text,
-		} );
-	}
+	// if ( $( '.gender-selectpicker' ).length ) {
+	// 	$( '.gender-selectpicker' ).selectpicker( {
+	// 		noneSelectedText : gender_text,
+	// 	} );
+	// }
 
 	/**
 	 * Block element.

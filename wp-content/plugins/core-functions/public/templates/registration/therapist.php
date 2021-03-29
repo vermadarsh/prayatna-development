@@ -74,7 +74,7 @@ defined( 'ABSPATH' ) || exit; // Exit if accessed directly.
 				</div>
 				<!-- GENDER -->
 				<div class="col-md-6 top__margin__10 therapist-gender-div">
-					<select multiple data-max-options="1" name="therapist-gender" data-style="px-4 py-3 shadow-sm" class="gender-selectpicker w-75">
+					<select name="therapist-gender" class="gender-selectpicker">
 						<option <?php echo ( ! empty( $gender ) && 'male' === $gender ) ? 'selected' : ''; ?> value="male"><?php esc_html_e( 'Male', 'core-functions' ); ?></option>
 						<option <?php echo ( ! empty( $gender ) && 'female' === $gender ) ? 'selected' : ''; ?> value="female"><?php esc_html_e( 'Female', 'core-functions' ); ?></option>
 						<option <?php echo ( ! empty( $gender ) && 'other' === $gender ) ? 'selected' : ''; ?> value="other"><?php esc_html_e( 'Other', 'core-functions' ); ?></option>
