@@ -67,7 +67,7 @@ class Core_Functions_Public {
 
 		// Enqueue the custom input styles.
 		if ( is_page( 'register-as-therapist' ) || is_page( 'register-as-client' ) ) {
-			// Public custom style.
+			// Custom input box styles.
 			wp_enqueue_style(
 				$this->plugin_name . '-input-styles',
 				CF_PLUGIN_URL . 'public/css/core-functions-input-styles.css',
@@ -92,6 +92,18 @@ class Core_Functions_Public {
 			filemtime( CF_PLUGIN_PATH . 'public/js/bootstrap.min.js' ),
 			true
 		);
+
+		// Enqueue the custom input script.
+		if ( is_page( 'register-as-therapist' ) || is_page( 'register-as-client' ) ) {
+			// Custom input box script.
+			wp_enqueue_script(
+				$this->plugin_name . '-input-script',
+				CF_PLUGIN_URL . 'public/js/core-functions-input-script.js',
+				array( 'jquery' ),
+				filemtime( CF_PLUGIN_PATH . 'public/js/core-functions-input-script.js' ),
+				true
+			);
+		}
 
 		// Public custom script.
 		wp_enqueue_script(
