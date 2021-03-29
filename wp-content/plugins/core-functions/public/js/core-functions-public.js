@@ -8,7 +8,7 @@ jQuery(document).ready( function( $ ) {
 
 	cf_show_notification( 'fa fa-warning', 'Error', 'Sample error message', 'error' );
 	setTimeout(function () {
-		cf_hide_notification();
+		// cf_hide_notification();
 	}, 3000);
 
 // cf_show_notification('fa fa-check', 'Success', 'Invoice created[' + response.data.invoice_id + ']', 'success');
