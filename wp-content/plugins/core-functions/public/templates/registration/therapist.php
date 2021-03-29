@@ -138,14 +138,6 @@ defined( 'ABSPATH' ) || exit; // Exit if accessed directly.
 						<label class="custom-file-label cognify-text-light-color" for="therapist-profile-picture"><?php esc_html_e( 'Upload Your Profile Picture. (maximum size 500Kb)*', 'cognify-core' ); ?></label>
 					</div>
 				</div>
-				<!-- QUALIFICATION DOCUMENT(S) -->
-				<div class="col-md-12 top__margin__10">
-					<div class="custom-file therapist-qualification-document">
-						<input type="file" class="custom-file-input" id="therapist-qualification-document" name="therapist-qualification-document[]" multiple required>
-						<label class="custom-file-label cognify-text-light-color" for="therapist-qualification-document"><?php esc_html_e( 'Upload your qualification document(s)*', 'cognify-core' ); ?></label>
-						<span class="cognify-therapist-qualification-documents-error" style="display: none;"><?php esc_html_e( 'You can upload only 5 files at maximum.', 'cognify-core' ); ?></span>
-					</div>
-				</div>
 				<!-- TERMS & CONDITIONS ACCEPTANCE -->
 				<div class="col-md-12 top__margin__10">
 					<div class="custom-control custom-checkbox counselee-registration-acceptance">
