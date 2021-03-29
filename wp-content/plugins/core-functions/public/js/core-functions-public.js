@@ -5,7 +5,16 @@ jQuery(document).ready( function( $ ) {
 	var ajaxurl            = CF_Public_JS_Script_Vars.ajaxurl;
 	var show_password_text = CF_Public_JS_Script_Vars.show_password_text;
 	var hide_password_text = CF_Public_JS_Script_Vars.hide_password_text;
-	var gender_text        = CF_Public_JS_Script_Vars.gender_text;
+
+	cf_show_notification( 'fa fa-warning', 'Error', 'Sample error message', 'error' );
+	setTimeout(function () {
+		cf_hide_notification();
+	}, 3000);
+
+// cf_show_notification('fa fa-check', 'Success', 'Invoice created[' + response.data.invoice_id + ']', 'success');
+//                     setTimeout(function () {
+//                         cf_hide_notification();
+//                     }, 4000);
 
 	// Show hide password.
 	$( document ).on( 'click', '#toggle-password', function() {
@@ -75,4 +84,33 @@ jQuery(document).ready( function( $ ) {
 			return 1;
 		}
 	}
+
+	/**
+     * Function to hide notification
+     */
+	 function cf_hide_notification() {
+        $( '.notification_popup' ).removeClass( 'active' );
+    }
+
+    /**
+     * Function defined to show the notification.
+     *
+     * @param icon_class
+     * @param header_text
+     * @param message
+     * @param success_or_error
+     */
+    function cf_show_notification( icon_class, header_text, message, success_or_error ) {
+		$( '.notification_popup .notification_icon i' ).removeClass().addClass( icon_class );
+		$( '.notification_popup .notification_message h3' ).html( header_text );
+		$( '.notification_popup .notification_message p' ).html( message );
+		$( '.notification_popup').removeClass( 'is-success is-error' );
+		
+		// Add classes based on success|error.
+		if ( 'error' === success_or_error ) {
+			$( '.notification_popup' ).addClass( 'active is-error' );
+		} else if ( 'success' === success_or_error ) {
+			$( '.notification_popup' ).addClass( 'active is-success' );
+		}
+    }
 } );

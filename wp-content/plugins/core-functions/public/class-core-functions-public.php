@@ -82,6 +82,14 @@ class Core_Functions_Public {
 			'//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css'
 		);
 
+		// Custom notifications style.
+		wp_enqueue_style(
+			$this->plugin_name . 'custom-notifications',
+			CF_PLUGIN_URL . 'public/css/core-functions-notifications.css',
+			array(),
+			filemtime( CF_PLUGIN_PATH . 'public/css/core-functions-notifications.css' )
+		);
+
 		// Public custom style.
 		wp_enqueue_style(
 			$this->plugin_name,
@@ -137,7 +145,6 @@ class Core_Functions_Public {
 				'ajaxurl'            => admin_url( 'admin-ajax.php' ),
 				'show_password_text' => __( 'Show Password', 'core-functions' ),
 				'hide_password_text' => __( 'Hide Password', 'core-functions' ),
-				'gender_text'        => __( 'Gender', 'core-functions' ),
 			)
 		);
 	}
@@ -203,5 +210,24 @@ class Core_Functions_Public {
 				)
 			);
 		}
+	}
+
+	/**
+	 * Load custom assets in the footer.
+	 */
+	public function cf_wp_footer_callback() {
+		// Notification HTML.
+		ob_start();
+		?>
+		<div class="notification_popup">
+			<span class="notification_close"></span>
+			<div class="notification_icon"><i class="fa fa-shield" aria-hidden="true"></i></div>
+			<div class="notification_message">
+				<h3 class="title"></h3>
+				<p class="message"></p>
+			</div>
+		</div>
+		<?php
+		echo ob_get_clean();
 	}
 }
