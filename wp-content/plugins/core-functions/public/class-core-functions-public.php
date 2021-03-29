@@ -119,7 +119,9 @@ class Core_Functions_Public {
 			$this->plugin_name,
 			'CF_Public_JS_Script_Vars',
 			array(
-				'ajaxurl' => admin_url( 'admin-ajax.php' ),
+				'ajaxurl'            => admin_url( 'admin-ajax.php' ),
+				'show_password_text' => __( 'Show Password', 'core-functions' ),
+				'hide_password_text' => __( 'Hide Password', 'core-functions' ),
 			)
 		);
 	}
