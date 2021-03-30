@@ -42,6 +42,8 @@ jQuery(document).ready( function( $ ) {
 		var agree_tos         = ( $( '#therapist-registration-terms-n-conditions-acceptance' ).is( 'checked' ) ) ? true : false;
 		var error_message     = '';
 
+		console.log( 'agree_tos', agree_tos );
+
 		// Validate first name.
 		if ( -1 === is_valid_string( first_name ) ) {
 			error_message += '<li>First name is required.</li>';
