@@ -39,10 +39,8 @@ jQuery(document).ready( function( $ ) {
 		var gender            = $( '#therapist-gender' ).val();
 		var temporary_address = $( '.therapist-temporary-address' ).val();
 		var permanent_address = $( '.therapist-permanent-address' ).val();
-		var agree_tos         = ( $( '#therapist-registration-terms-n-conditions-acceptance' ).is( 'checked' ) ) ? true : false;
+		var agree_tos         = ( $( '#therapist-registration-terms-n-conditions-acceptance' ).is( ':checked' ) ) ? true : false;
 		var error_message     = '';
-
-		console.log( 'agree_tos', $( '#therapist-registration-terms-n-conditions-acceptance' ).is( 'checked' ) );
 
 		// Validate first name.
 		if ( -1 === is_valid_string( first_name ) ) {
