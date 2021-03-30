@@ -2,9 +2,10 @@ jQuery(document).ready( function( $ ) {
 	'use strict';
 
 	// Localized variables.
-	var ajaxurl            = CF_Public_JS_Script_Vars.ajaxurl;
-	var show_password_text = CF_Public_JS_Script_Vars.show_password_text;
-	var hide_password_text = CF_Public_JS_Script_Vars.hide_password_text;
+	var ajaxurl               = CF_Public_JS_Script_Vars.ajaxurl;
+	var show_password_text    = CF_Public_JS_Script_Vars.show_password_text;
+	var hide_password_text    = CF_Public_JS_Script_Vars.hide_password_text;
+	var registering_user_text = CF_Public_JS_Script_Vars.registering_user_text;
 
 	// cf_show_notification( 'fa fa-check', 'Success', 'Invoice created', 'success' );
 	// setTimeout( function () {
@@ -31,6 +32,7 @@ jQuery(document).ready( function( $ ) {
 	// Submit the data for therapist registration.
 	$( document ).on( 'click', 'input[name="register-therapist-button"]', function() {
 		var this_button       = $( this );
+		var this_button_text  = this_button.text();
 		var first_name        = $( '#therapist-first-name' ).val();
 		var last_name         = $( '#therapist-last-name' ).val();
 		var phone             = $( '#therapist-phone' ).val();
@@ -97,6 +99,9 @@ jQuery(document).ready( function( $ ) {
 		// Block the element now.
 		block_element( this_button );
 
+		// Change button text.
+		this_button.text( registering_user_text );
+
 		// Send the AJAX now.
 		var data = {
 			action: 'register_therapist',
@@ -120,6 +125,9 @@ jQuery(document).ready( function( $ ) {
 				if ( 'user-exists' === response.data.code ) {
 					// Unblock the element.
 					unblock_element( this_button );
+
+					// Change button text.
+					this_button.text( this_button_text );
 
 					// Show the notification now.
 					cf_show_notification( 'fa fa-warning', 'Error', response.data.notification_text, 'error' );

@@ -142,9 +142,10 @@ class Core_Functions_Public {
 			$this->plugin_name,
 			'CF_Public_JS_Script_Vars',
 			array(
-				'ajaxurl'            => admin_url( 'admin-ajax.php' ),
-				'show_password_text' => __( 'Show Password', 'core-functions' ),
-				'hide_password_text' => __( 'Hide Password', 'core-functions' ),
+				'ajaxurl'               => admin_url( 'admin-ajax.php' ),
+				'show_password_text'    => __( 'Show Password', 'core-functions' ),
+				'hide_password_text'    => __( 'Hide Password', 'core-functions' ),
+				'registering_user_text' => __( 'We\'re getting you registered. Please wait...', 'core-functions' ),
 			)
 		);
 	}
@@ -244,13 +245,13 @@ class Core_Functions_Public {
 		}
 
 		// Posted data.
-		$first_name = filter_input( INPUT_POST, 'first_name', FILTER_SANITIZE_STRING );
-		$last_name = filter_input( INPUT_POST, 'last_name', FILTER_SANITIZE_STRING );
-		$phone = filter_input( INPUT_POST, 'phone', FILTER_SANITIZE_STRING );
-		$password = filter_input( INPUT_POST, 'password', FILTER_SANITIZE_STRING );
-		$dob = filter_input( INPUT_POST, 'dob', FILTER_SANITIZE_STRING );
-		$email = filter_input( INPUT_POST, 'email', FILTER_SANITIZE_STRING );
-		$gender = filter_input( INPUT_POST, 'gender', FILTER_SANITIZE_STRING );
+		$first_name        = filter_input( INPUT_POST, 'first_name', FILTER_SANITIZE_STRING );
+		$last_name         = filter_input( INPUT_POST, 'last_name', FILTER_SANITIZE_STRING );
+		$phone             = filter_input( INPUT_POST, 'phone', FILTER_SANITIZE_STRING );
+		$password          = filter_input( INPUT_POST, 'password', FILTER_SANITIZE_STRING );
+		$dob               = filter_input( INPUT_POST, 'dob', FILTER_SANITIZE_STRING );
+		$email             = filter_input( INPUT_POST, 'email', FILTER_SANITIZE_STRING );
+		$gender            = filter_input( INPUT_POST, 'gender', FILTER_SANITIZE_STRING );
 		$temporary_address = filter_input( INPUT_POST, 'temporary_address', FILTER_SANITIZE_STRING );
 		$permanent_address = filter_input( INPUT_POST, 'permanent_address', FILTER_SANITIZE_STRING );
 
