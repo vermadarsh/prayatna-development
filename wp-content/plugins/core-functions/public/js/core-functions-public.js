@@ -68,6 +68,11 @@ jQuery(document).ready( function( $ ) {
 			error_message += '<li>Email is of invalid format.</li>';
 		}
 
+		// Validate gender.
+		if ( -1 === is_valid_string( gender ) ) {
+			error_message += '<li>Gender is required.</li>';
+		}
+
 		// Validate permanent address.
 		if ( -1 === is_valid_string( permanent_address ) ) {
 			error_message += '<li>Permanent address is required.</li>';
