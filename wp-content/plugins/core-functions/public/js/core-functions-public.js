@@ -30,6 +30,7 @@ jQuery(document).ready( function( $ ) {
 
 	// Submit the data for therapist registration.
 	$( document ).on( 'click', 'input[name="register-therapist-button"]', function() {
+		var this_button       = $( this );
 		var first_name        = $( '#therapist-first-name' ).val();
 		var last_name         = $( '#therapist-last-name' ).val();
 		var phone             = $( '#therapist-phone' ).val();
@@ -93,16 +94,41 @@ jQuery(document).ready( function( $ ) {
 		}
 
 		// If you're here, means everything is OK, proceed for registering the user.
-		console.log( 'first_name', first_name );
-		console.log( 'last_name', last_name );
-		console.log( 'phone', phone );
-		console.log( 'password', password );
-		console.log( 'email', email );
-		console.log( 'dob', dob );
-		console.log( 'gender', gender );
-		console.log( 'temporary_address', temporary_address );
-		console.log( 'permanent_address', permanent_address );
-		console.log( 'agree_tos', agree_tos );
+		// Block the element now.
+		block_element( this_button );
+
+		// Send the AJAX now.
+		var data = {
+			action: 'register_therapist',
+			first_name: first_name,
+			last_name: last_name,
+			phone: phone,
+			password: password,
+			dob: dob,
+			email: email,
+			gender: gender,
+			temporary_address: temporary_address,
+			permanent_address: permanent_address,
+		};
+		$.ajax( {
+			dataType: 'JSON',
+			url: ajaxurl,
+			type: 'POST',
+			data: data,
+			success: function ( response ) {
+				// If user already exists.
+				if ( 'user-exists' === response.data.code ) {
+					// Unblock the element.
+					unblock_element( this_button );
+
+					// Show the notification now.
+					cf_show_notification( 'fa fa-warning', 'Error', response.data.notification_text, 'error' );
+					setTimeout( function () {
+						cf_hide_notification();
+					}, 8000 );
+				}
+			},
+		} );
 	} );
 
 	// Datepicker for date of birth fields.

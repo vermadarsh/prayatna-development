@@ -230,4 +230,39 @@ class Core_Functions_Public {
 		<?php
 		echo ob_get_clean();
 	}
+
+	/**
+	 * AJAX for registering the therapist.
+	 */
+	public function cf_register_therapist_callback() {
+		$action = filter_input( INPUT_POST, 'action', FILTER_SANITIZE_STRING );
+
+		// Return, if the action doesn't match.
+		if ( 'register_therapist' !== $action ) {
+			echo 0;
+			wp_die();
+		}
+
+		// Posted data.
+		$first_name = filter_input( INPUT_POST, 'first_name', FILTER_SANITIZE_STRING );
+		$last_name = filter_input( INPUT_POST, 'last_name', FILTER_SANITIZE_STRING );
+		$phone = filter_input( INPUT_POST, 'phone', FILTER_SANITIZE_STRING );
+		$password = filter_input( INPUT_POST, 'password', FILTER_SANITIZE_STRING );
+		$dob = filter_input( INPUT_POST, 'dob', FILTER_SANITIZE_STRING );
+		$email = filter_input( INPUT_POST, 'email', FILTER_SANITIZE_STRING );
+		$gender = filter_input( INPUT_POST, 'gender', FILTER_SANITIZE_STRING );
+		$temporary_address = filter_input( INPUT_POST, 'temporary_address', FILTER_SANITIZE_STRING );
+		$permanent_address = filter_input( INPUT_POST, 'permanent_address', FILTER_SANITIZE_STRING );
+
+		// Check if a user already exists with the email.
+		if ( email_exists( $email ) ) {
+			// Send the ajax response.
+			$response = array(
+				'code'              => 'user-exists',
+				'notification_text' => sprintf( __( 'Email: %1$s is already registered. Please check %2$shere%3$s to login.', 'core-functions' ), $email, '<a href="' . home_url( '/login/' ) . '">', '</a>' ),
+			);
+			wp_send_json_success( $response );
+			wp_die();
+		}
+	}
 }
