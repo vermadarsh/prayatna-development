@@ -42,17 +42,6 @@ jQuery(document).ready( function( $ ) {
 		var agree_tos         = ( $( '#therapist-registration-terms-n-conditions-acceptance' ).is( 'checked' ) ) ? true : false;
 		var error_message     = '';
 
-		console.log( 'first_name', first_name );
-		console.log( 'last_name', last_name );
-		console.log( 'phone', phone );
-		console.log( 'password', password );
-		console.log( 'email', email );
-		console.log( 'dob', dob );
-		console.log( 'gender', gender );
-		console.log( 'temporary_address', temporary_address );
-		console.log( 'permanent_address', permanent_address );
-		console.log( 'agree_tos', agree_tos );
-
 		// Validate first name.
 		if ( -1 === is_valid_string( first_name ) ) {
 			error_message += '<li>First name is required.</li>';
@@ -70,16 +59,45 @@ jQuery(document).ready( function( $ ) {
 			error_message += '<li>Password should be min. 8 characters length.</li>';
 		}
 
+		// Validate email.
+		if ( -1 === is_valid_string( email ) ) {
+			error_message += '<li>Email is required.</li>';
+		} else if ( -1 === is_valid_email( email ) ) {
+			error_message += '<li>Email is of invalid format.</li>';
+		}
+
+		// Validate permanent address.
+		if ( -1 === is_valid_string( permanent_address ) ) {
+			error_message += '<li>Permanent address is required.</li>';
+		}
+
+		// Validate the terms of service checkbox.
+		if ( false === agree_tos ) {
+			error_message += '<li>You must agree to the terms of service before proceeding for registration.</li>';
+		}
+
 		// Display the error message if there are.
 		if ( 0 < error_message.length ) {
 			error_message = '<ol>' + error_message + '</ol>';
 			cf_show_notification( 'fa fa-warning', 'Error', error_message, 'error' );
 			setTimeout( function () {
 				cf_hide_notification();
-			}, 5000 );
+			}, 8000 );
 
 			return false;
 		}
+
+		// If you're here, means everything is OK, proceed for registering the user.
+		console.log( 'first_name', first_name );
+		console.log( 'last_name', last_name );
+		console.log( 'phone', phone );
+		console.log( 'password', password );
+		console.log( 'email', email );
+		console.log( 'dob', dob );
+		console.log( 'gender', gender );
+		console.log( 'temporary_address', temporary_address );
+		console.log( 'permanent_address', permanent_address );
+		console.log( 'agree_tos', agree_tos );
 	} );
 
 	// Datepicker for date of birth fields.
