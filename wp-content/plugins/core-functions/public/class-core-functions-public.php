@@ -211,9 +211,6 @@ class Core_Functions_Public {
 				)
 			);
 		}
-
-		echo get_option( 'testing_testing' );
-		die;
 	}
 
 	/**
