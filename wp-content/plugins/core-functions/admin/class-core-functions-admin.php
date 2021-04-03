@@ -191,6 +191,7 @@ class Core_Functions_Admin {
 	 */
 	public function cf_child_for_client_log_callback() {
 		$children = cf_get_children();
+		debug( $children ); die;
 
 		// Prepare the select html markup.
 		echo '<select name="cf-child" required>';
