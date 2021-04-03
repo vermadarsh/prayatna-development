@@ -40,7 +40,8 @@ jQuery(document).ready( function( $ ) {
 		var agree_tos         = ( $( '#therapist-registration-terms-n-conditions-acceptance' ).is( ':checked' ) ) ? true : false;
 		var error_message     = '';
 
-		$( '#therapist-first-name' ).val( '' ).blur();
+		$( '#therapist-first-name' ).val( '' );
+		$( '#therapist-first-name' ).parent( 'span' ).removeClass( 'input--filled' )
 		return false;
 
 		// Hide the error notification.
