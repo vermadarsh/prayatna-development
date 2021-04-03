@@ -351,7 +351,7 @@ jQuery(document).ready( function( $ ) {
 		// Validate password.
 		if ( -1 === is_valid_string( parent_password ) ) {
 			error_message += '<li>Password is required.</li>';
-		} else if ( 8 > password.length ) {
+		} else if ( 8 > parent_password.length ) {
 			error_message += '<li>Password should be min. 8 characters length.</li>';
 		}
 
