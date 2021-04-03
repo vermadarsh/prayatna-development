@@ -113,4 +113,31 @@ class Core_Functions_Admin {
 
 		return $profile_picture_url;
 	}
+
+	/**
+	 * Check the logging in user's status while login from /wp-admin/
+	 *
+	 * @param object $user Holds the user object.
+	 * @return object
+	 */
+	public function cf_wp_authenticate_user_callback( $user ) {
+		// Return, if the user data is not available.
+		if ( empty( $user ) || empty( $user->ID ) ) {
+			return $user;
+		}
+
+		$status = get_user_meta( $user->ID, 'cf_user_status', true );
+
+		// Registration status pending.
+		if ( ! empty( $status ) && 'pending' === $status ) {
+			return new WP_Error( 'user-status-pending', sprintf( __( 'Sorry, but your account has yet not been approved. Please contact admin on: %1$s.', 'core-functions' ), get_option( 'admin_email' ) ) );
+		}
+
+		// Account suspended.
+		if ( ! empty( $status ) && 'suspended' === $status ) {
+			return new WP_Error( 'user-suspended', sprintf( __( 'Sorry, but your account has been suspended. Please contact admin on: %1$s.', 'core-functions' ), get_option( 'admin_email' ) ) );
+		}
+
+		return $user;
+	}
 }
