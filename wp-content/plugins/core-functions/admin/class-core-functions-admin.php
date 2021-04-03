@@ -84,4 +84,33 @@ class Core_Functions_Admin {
 			)
 		);
 	}
+
+	public function cf_get_avatar_url_callback( $avatar_url, $id_or_email ) {
+		/**
+		 * If the $id_or_email variable is string, means it is email.
+		 * Get the user ID from email.
+		 */
+		if ( is_string( $id_or_email ) ) {
+			$user        = get_user_by( 'user_email', $id_or_email );
+			$id_or_email = $user->ID;
+		}
+
+		// If the value reveived is integer, it is user ID.
+		$profile_picture_id = get_field( 'cf_profile_picture', "user_{$id_or_email}" );
+
+		// Return, if the attachment is not saved as ACF field value.
+		if ( null === $profile_picture_id ) {
+			return $avatar_url;
+		}
+
+		// Get the custom picture ID.
+		$profile_picture_url = cf_get_image_url_by_attachment_id( $profile_picture_id );
+
+		// Return, if the received image ID doesn't exist.
+		if ( false === $profile_picture_url ) {
+			return $avatar_url;
+		}
+
+		return $profile_picture_url;
+	}
 }

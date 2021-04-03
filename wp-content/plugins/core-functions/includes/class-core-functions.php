@@ -138,6 +138,7 @@ class Core_Functions {
 		$plugin_admin = new Core_Functions_Admin( $this->get_plugin_name(), $this->get_version() );
 
 		$this->loader->add_action( 'admin_enqueue_scripts', $plugin_admin, 'cf_admin_enqueue_scripts_callback' );
+		$this->loader->add_filter( 'get_avatar_url', $plugin_admin, 'cf_get_avatar_url_callback', 10, 2 );
 	}
 
 	/**

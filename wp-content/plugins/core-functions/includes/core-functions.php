@@ -66,3 +66,18 @@ function cf_time_is_between_two_times( $from, $till, $input ) {
 
 	return ( $f <= $i && $i <= $t ) || ( $f <= $i->modify( '+1 day' ) && $i <= $t );
 }
+
+/**
+ * Returns the image source by attachment id.
+ *
+ * @param int $attachment_id Holds the attachment ID.
+ * @return boolean|string
+ */
+function cf_get_image_url_by_attachment_id( $attachment_id ) {
+	// Return false, if the attachment ID is empty.
+	if ( empty( $attachment_id ) ) {
+		return false;
+	}
+
+	return apply_filters( 'cf_prayatna_image_source', wp_get_attachment_url( $attachment_id ), $attachment_id );
+}
