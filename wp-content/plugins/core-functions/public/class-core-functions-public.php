@@ -211,24 +211,6 @@ class Core_Functions_Public {
 				)
 			);
 		}
-
-		if ( ! is_admin() ) {
-			$index = 0;
-			$user_id = 7;
-			update_row(
-				'children_details',
-				$index + 1,
-				array(
-					'child_first_name' => 'Hello',
-					'child_last_name'  => 'Child',
-					'child_dob'        => 'test',
-					'child_gender'     => 'other',
-				),
-				"user_{$user_id}"
-			);
-
-			die;
-		}
 	}
 
 	/**
@@ -496,9 +478,10 @@ class Core_Functions_Public {
 			// Add the children.
 			if ( ! empty( $children ) && is_array( $children ) ) {
 				foreach ( $children as $index => $child_data ) {
+					$row_index = $index + 1;
 					update_row(
 						'children_details',
-						$index + 1,
+						$row_index,
 						array(
 							'child_first_name' => $child_data['first_name'],
 							'child_last_name'  => $child_data['last_name'],
