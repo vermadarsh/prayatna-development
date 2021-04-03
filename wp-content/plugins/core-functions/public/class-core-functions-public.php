@@ -259,11 +259,73 @@ class Core_Functions_Public {
 		if ( email_exists( $email ) ) {
 			// Send the ajax response.
 			$response = array(
-				'code'              => 'user-exists',
+				'code'              => 'therapist-exists',
 				'notification_text' => sprintf( __( 'Email: %1$s is already registered. Please check %2$shere%3$s to login.', 'core-functions' ), $email, '<a href="' . home_url( '/login/' ) . '">', '</a>' ),
 			);
 			wp_send_json_success( $response );
 			wp_die();
 		}
+
+		/* Register the therapist now. */
+
+		// Extract the username from the email.
+		$username = explode( '@', $email );
+		$username = $username[0];
+
+		// Create the user.
+		$user_id = wp_create_user( $username, $password, $email );
+
+		$random_number = time();
+		$response = array(
+			'code'              => 'therapist-created-upload-profile-photo',
+			'notification_text' => __( 'Therapist account has been created. Please wait while we upload your profile picture.', 'core-functions' ),
+			'random_number'     => $random_number,
+			'user_id'           => 123, // $user_id
+		);
+		wp_send_json_success( $response );
+		wp_die();
+
+		if ( $user_id ) {
+			$random_number = time();
+			update_user_meta( $user_id, 'cf_user_status', 'pending' );
+			update_user_meta( $user_id, 'cf_user_email_verification', 'pending' );
+			update_user_meta( $user_id, 'first_name', $first_name );
+			update_user_meta( $user_id, 'last_name', $last_name );
+			update_field( 'cf_contact_number', $phone, "user_{$user_id}" );
+			update_field( 'cf_date_of_birth', $dob, "user_{$user_id}" );
+			update_field( 'cf_gender', $gender, "user_{$user_id}" );
+			update_user_meta( $user_id, 'email_verification_random_number', $random_number );
+
+			// Set the user's role (and implicitly remove the previous role).
+			$user = new \WP_User( $user_id );
+			$user->set_role( 'therapist' );
+		} else {
+			$response = array(
+				'code'              => 'user-not-created',
+				'notification_text' => __( 'There is some problem creating the user. Please try again later.', 'core-functions' ),
+			);
+			wp_send_json_success( $response );
+			wp_die();
+		}
+	}
+
+	/**
+	 * AJAX for uploading therapist's profile picture.
+	 */
+	public function cf_upload_therapist_profile_picture_callback() {
+		$action = filter_input( INPUT_POST, 'action', FILTER_SANITIZE_STRING );
+
+		// Return, if the action doesn't match.
+		if ( 'upload_therapist_profile_picture' !== $action ) {
+			echo 0;
+			wp_die();
+		}
+
+		$random_number = filter_input( INPUT_POST, 'random_number', FILTER_SANITIZE_STRING );
+		$user_id       = filter_input( INPUT_POST, 'user_id', FILTER_SANITIZE_NUMBER_INT );
+
+		debug( $_FILES );
+
+		die;
 	}
 }

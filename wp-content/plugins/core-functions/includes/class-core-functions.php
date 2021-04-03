@@ -156,6 +156,7 @@ class Core_Functions {
 		$this->loader->add_action( 'init', $plugin_public, 'cf_init_callback' );
 		$this->loader->add_action( 'wp_footer', $plugin_public, 'cf_wp_footer_callback' );
 		$this->loader->add_action( 'wp_ajax_nopriv_register_therapist', $plugin_public, 'cf_register_therapist_callback' );
+		$this->loader->add_action( 'wp_ajax_nopriv_upload_therapist_profile_picture', $plugin_public, 'cf_upload_therapist_profile_picture_callback' );
 	}
 
 	/**

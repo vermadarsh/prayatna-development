@@ -7,11 +7,6 @@ jQuery(document).ready( function( $ ) {
 	var hide_password_text    = CF_Public_JS_Script_Vars.hide_password_text;
 	var registering_user_text = CF_Public_JS_Script_Vars.registering_user_text;
 
-	// cf_show_notification( 'fa fa-check', 'Success', 'Invoice created', 'success' );
-	// setTimeout( function () {
-	// 	cf_hide_notification();
-	// }, 5000 );
-
 	// Show hide password.
 	$( document ).on( 'click', '#toggle-password', function() {
 		var this_checkbox = $( this );
@@ -125,7 +120,7 @@ jQuery(document).ready( function( $ ) {
 			data: data,
 			success: function ( response ) {
 				// If user already exists.
-				if ( 'user-exists' === response.data.code ) {
+				if ( 'therapist-exists' === response.data.code || 'therapist-not-created' === response.data.code ) {
 					// Unblock the element.
 					unblock_element( this_button );
 
@@ -134,6 +129,38 @@ jQuery(document).ready( function( $ ) {
 
 					// Show the notification now.
 					cf_show_notification( 'fa fa-warning', 'Error', response.data.notification_text, 'error' );
+				}
+
+				// User is created.
+				if ( 'therapist-created-upload-profile-photo' === response.data.code ) {
+					cf_show_notification( 'fa fa-check', 'Success', response.data.notification_text, 'success' );
+					setTimeout( function () {
+						cf_hide_notification();
+					}, 4000 );
+
+					// Send the AJAX now for uploading the profile picture.
+					var fd              = new FormData();
+					var profile_picture = $( '#therapist-profile-picture' ).prop( 'files' )[0];
+
+					// Append other data.
+					fd.append( 'action', 'upload_therapist_profile_picture' );
+					fd.append( 'profile_picture', profile_picture );
+					fd.append( 'random_number', response.data.random_number );
+					fd.append( 'user_id', response.data.user_id );
+
+					$.ajax( {
+						dataType: 'JSON',
+						url: ajaxurl,
+						type: 'POST',
+						data: fd,
+						cache: false,
+						contentType: false,
+						processData: false,
+						success: function( response ) {
+							console.log( 'response', response );
+							return false;
+						},
+					});
 				}
 			},
 		} );
