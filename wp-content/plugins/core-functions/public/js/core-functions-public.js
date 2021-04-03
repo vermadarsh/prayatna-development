@@ -37,8 +37,12 @@ jQuery(document).ready( function( $ ) {
 		var gender            = $( '#therapist-gender' ).val();
 		var temporary_address = $( '.therapist-temporary-address' ).val();
 		var permanent_address = $( '.therapist-permanent-address' ).val();
+		var profile_picture   = $( '#therapist-profile-picture' ).val();
 		var agree_tos         = ( $( '#therapist-registration-terms-n-conditions-acceptance' ).is( ':checked' ) ) ? true : false;
 		var error_message     = '';
+
+		console.log( 'profile_picture', profile_picture );
+		return false;
 
 		// Hide the error notification.
 		cf_hide_notification();
