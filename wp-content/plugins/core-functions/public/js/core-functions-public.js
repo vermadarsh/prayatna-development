@@ -27,7 +27,7 @@ jQuery(document).ready( function( $ ) {
 	// Submit the data for therapist registration.
 	$( document ).on( 'click', 'input[name="register-therapist-button"]', function() {
 		var this_button       = $( this );
-		var this_button_text  = this_button.text();
+		var this_button_text  = this_button.val();
 		var first_name        = $( '#therapist-first-name' ).val();
 		var last_name         = $( '#therapist-last-name' ).val();
 		var phone             = $( '#therapist-phone' ).val();
