@@ -140,4 +140,25 @@ class Core_Functions_Admin {
 
 		return $user;
 	}
+
+	/**
+	 * Redirect the login based on user roles.
+	 *
+	 * @param string  $redirect_to Holds the redirect URL.
+	 * @param string  $requested_redirect_to Holds the requested redirect URL.
+	 * @param WP_User $user Holds the user object.
+	 * @return string
+	 */
+	public function cf_login_redirect_callback( $redirect_to, $requested_redirect_to, $user ) {
+		// If the user is logged in and roles are available to check.
+		if ( isset( $user->roles ) && is_array( $user->roles ) ) {
+			if ( in_array( 'administrator', $user->roles ) ) {
+				$redirect_to = admin_url();
+			} else {
+				$redirect_to = admin_url( 'profile.php' );
+			}
+		}
+
+		return $redirect_to;
+	}
 }
