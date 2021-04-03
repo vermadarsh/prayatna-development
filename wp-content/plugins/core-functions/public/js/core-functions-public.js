@@ -234,7 +234,7 @@ jQuery(document).ready( function( $ ) {
 					// Unblock the button.
 					unblock_element( this_button );
 
-					$( response.data.html ).insertBefore( '.cf_child_addition_button input' );
+					$( response.data.html ).insertBefore( '.cf_child_addition_button' );
 				}
 			},
 		} );
