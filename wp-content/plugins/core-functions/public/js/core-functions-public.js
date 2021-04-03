@@ -27,6 +27,9 @@ jQuery(document).ready( function( $ ) {
 	// Submit the data for therapist registration.
 	$( document ).on( 'click', 'input[name="register-therapist-button"]', function() {
 		var this_button       = $( this );
+		console.log( 'registering_user_text', registering_user_text );
+		this_button.text( registering_user_text );
+		return false;
 		var this_button_text  = this_button.text();
 		var first_name        = $( '#therapist-first-name' ).val();
 		var last_name         = $( '#therapist-last-name' ).val();
@@ -160,7 +163,7 @@ jQuery(document).ready( function( $ ) {
 							console.log( 'response', response );
 							return false;
 						},
-					});
+					} );
 				}
 			},
 		} );
