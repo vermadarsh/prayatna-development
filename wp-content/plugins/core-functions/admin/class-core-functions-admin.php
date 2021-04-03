@@ -161,4 +161,28 @@ class Core_Functions_Admin {
 
 		return $redirect_to;
 	}
+
+	/**
+	 * Add custom capabilities to custom user roles.
+	 */
+	public function cf_admin_init_callback() {
+		$roles = array( 'therapist' );
+
+		// Loop through each role and assign capabilities.
+		foreach( $roles as $_role ) {
+			$role = get_role( $_role );
+
+			$role->add_cap( 'read' );
+			$role->add_cap( 'read_client-log');
+			$role->add_cap( 'read_private_client-logs' );
+			$role->add_cap( 'edit_client-log' );
+			$role->add_cap( 'edit_client-logs' );
+			$role->add_cap( 'edit_others_client-logs' );
+			$role->add_cap( 'edit_published_client-logs' );
+			$role->add_cap( 'publish_client-logs' );
+			$role->add_cap( 'delete_others_client-logs' );
+			$role->add_cap( 'delete_private_client-logs' );
+			$role->add_cap( 'delete_published_client-logs' );
+		}
+	}
 }

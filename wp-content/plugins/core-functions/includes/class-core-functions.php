@@ -141,6 +141,7 @@ class Core_Functions {
 		$this->loader->add_filter( 'get_avatar_url', $plugin_admin, 'cf_get_avatar_url_callback', 10, 2 );
 		$this->loader->add_filter( 'wp_authenticate_user', $plugin_admin, 'cf_wp_authenticate_user_callback', 10 );
 		$this->loader->add_filter( 'login_redirect', $plugin_admin, 'cf_login_redirect_callback', 10, 3 );
+		$this->loader->add_action( 'admin_init', $plugin_admin, 'cf_admin_init_callback' );
 	}
 
 	/**
