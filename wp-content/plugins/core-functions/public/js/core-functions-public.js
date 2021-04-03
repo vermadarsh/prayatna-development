@@ -9,12 +9,10 @@ jQuery(document).ready( function( $ ) {
 
 	// On the register pages, vacate the email and password fields, that are autofilled by the browser.
 	if ( $( '#therapist-password' ).length ) {
-		console.log( 'hello' );
-		$( '#therapist-password' ).val( '' );
+		$( '#therapist-password' ).val( 'test' );
 	}
 	if ( $( '#therapist-email' ).length ) {
-		console.log( 'hello1' );
-		$( '#therapist-email' ).val( '' );
+		$( '#therapist-email' ).val( 'test' );
 	}
 
 	// cf_show_notification( 'fa fa-check', 'Success', 'Invoice created', 'success' );
