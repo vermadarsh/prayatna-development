@@ -440,6 +440,8 @@ class Core_Functions_Public {
 		$posted_array      = filter_input_array( INPUT_POST );
 		$children          = $posted_array['children'];
 
+		debug( $children ); die;
+
 		// Check if a user already exists with the email.
 		if ( email_exists( $email ) ) {
 			// Send the ajax response.
