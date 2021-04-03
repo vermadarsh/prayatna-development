@@ -382,7 +382,7 @@ class Core_Functions_Public {
 	 * @param array $args Holds the arguments array.
 	 * @return string
 	 */
-	public function cognify_email_verification_callback( $args = array() ) {
+	public function cf_email_verification_callback( $args = array() ) {
 		// Return, if it's the admin panel.
 		if ( is_admin() ) {
 			return;
@@ -390,7 +390,7 @@ class Core_Functions_Public {
 
 		// Render the filter HTML now.
 		ob_start();
-		require_once COGNIFY_PLUGIN_PATH . 'public/templates/registration/email-verification.php';
+		require_once CF_PLUGIN_PATH . 'public/templates/registration/email-verification.php';
 		return ob_get_clean();
 	}
 }
