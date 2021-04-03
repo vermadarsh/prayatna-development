@@ -136,7 +136,7 @@ function cf_get_child_profile_registration_fields_html( $index ) {
 		<!-- FIRST NAME -->
 		<div class="col-md-6">
 			<span class="input input--hfd">
-				<input class="input__field input__field--hfd" type="text" class="child-first-name" required onkeypress="return /[a-z]/i.test(event.key)" />
+				<input class="input__field input__field--hfd child-first-name" type="text" required onkeypress="return /[a-z]/i.test(event.key)" />
 				<label class="input__label input__label--hfd">
 					<span class="input__label-content input__label-content--hfd "><?php esc_html_e( 'First Name*', 'core-functions' ); ?></span>
 				</label>
@@ -145,7 +145,7 @@ function cf_get_child_profile_registration_fields_html( $index ) {
 		<!-- LAST NAME -->
 		<div class="col-md-6">
 			<span class="input input--hfd">
-				<input class="input__field input__field--hfd" type="text" class="child-last-name" required onkeypress="return /[a-z]/i.test(event.key)" />
+				<input class="input__field input__field--hfd child-last-name" type="text" required onkeypress="return /[a-z]/i.test(event.key)" />
 				<label class="input__label input__label--hfd">
 					<span class="input__label-content input__label-content--hfd "><?php esc_html_e( 'Last Name*', 'core-functions' ); ?></span>
 				</label>
@@ -154,7 +154,7 @@ function cf_get_child_profile_registration_fields_html( $index ) {
 		<!-- DOB -->
 		<div class="col-md-6 top__margin__10">
 			<span class="input input--hfd">
-				<input class="input__field input__field--hfd cf__date__field" type="text" class="child-dob" required />
+				<input class="input__field input__field--hfd cf__date__field child-dob" type="text" required />
 				<label class="input__label input__label--hfd">
 					<span class="input__label-content input__label-content--hfd"><?php esc_html_e( 'DOB* (DD-MM-YYYY)', 'core-functions' ); ?></span>
 				</label>
