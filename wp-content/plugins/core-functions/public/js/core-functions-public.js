@@ -7,6 +7,14 @@ jQuery(document).ready( function( $ ) {
 	var hide_password_text    = CF_Public_JS_Script_Vars.hide_password_text;
 	var registering_user_text = CF_Public_JS_Script_Vars.registering_user_text;
 
+	// On the register pages, vacate the email and password fields, that are autofilled by the browser.
+	if ( $( '#therapist-password' ).length ) {
+		$( '#therapist-password' ).val( '' );
+	}
+	if ( $( '#therapist-email' ).length ) {
+		$( '#therapist-email' ).val( '' );
+	}
+
 	// cf_show_notification( 'fa fa-check', 'Success', 'Invoice created', 'success' );
 	// setTimeout( function () {
 	// 	cf_hide_notification();
