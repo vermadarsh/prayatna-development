@@ -83,16 +83,16 @@ defined( 'ABSPATH' ) || exit; // Exit if accessed directly.
 		<div class="row">
 			<!-- TERMS & CONDITIONS ACCEPTANCE -->
 			<div class="col-md-12 top__margin__10">
-				<div class="custom-control custom-checkbox therapist-registration-acceptance">
-					<input type="checkbox" class="custom-control-input" id="therapist-registration-terms-n-conditions-acceptance" required />
-					<label class="custom-control-label" for="therapist-registration-terms-n-conditions-acceptance">
+				<div class="custom-control custom-checkbox client-registration-acceptance">
+					<input type="checkbox" class="custom-control-input" id="client-registration-terms-n-conditions-acceptance" required />
+					<label class="custom-control-label" for="client-registration-terms-n-conditions-acceptance">
 						<?php echo sprintf( __( 'By clicking Sign Up, you agree to our %3$sTerms of Services%2$s and %1$sPrivacy Policy%2$s. You may receive SMS/Email notifications from us and can opt out at any time.', 'core-functions' ), '<a class="" href="/privacy-policy/">', '</a>', '<a class="" href="/terms-of-services-client/">' ); ?>
 					</label>
 				</div>
 			</div>
 			<!-- SUBMIT -->
 			<div class="col-md-6 top__margin__10 cf_user_registration_button">
-				<input class="btn btn-secondary" type="button" name="register-therapist-button" value="<?php esc_html_e( 'Register as client', 'core-functions' ); ?>">
+				<input class="btn btn-secondary" type="button" name="register-client-button" value="<?php esc_html_e( 'Register as client', 'core-functions' ); ?>">
 			</div>
 		</div>
 	</section>
