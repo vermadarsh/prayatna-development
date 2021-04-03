@@ -338,6 +338,9 @@ class Core_Functions_Public {
 		$user_id       = filter_input( INPUT_POST, 'user_id', FILTER_SANITIZE_NUMBER_INT );
 		$first_name    = filter_input( INPUT_POST, 'first_name', FILTER_SANITIZE_STRING );
 
+		var_dump( $random_number, $user_id, $first_name );
+		die;
+
 		// Upload the profile picture.
 		$filename    = $_FILES['therapist-profile-picture']['name'];
 		$upload_file = wp_upload_bits( $filename, null, file_get_contents( $_FILES['therapist-profile-picture']['tmp_name'] ) );
