@@ -28,7 +28,7 @@ jQuery(document).ready( function( $ ) {
 	$( document ).on( 'click', 'input[name="register-therapist-button"]', function() {
 		var this_button       = $( this );
 		console.log( 'registering_user_text', registering_user_text );
-		this_button.text( registering_user_text );
+		this_button.val( registering_user_text );
 		return false;
 		var this_button_text  = this_button.text();
 		var first_name        = $( '#therapist-first-name' ).val();
