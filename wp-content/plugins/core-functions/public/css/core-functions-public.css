@@ -23,3 +23,7 @@ label[for="toggle-password"] {
 #client-email {
 	width: 100%;
 }
+
+.cf_child_addition_button input {
+	width: 100%;
+}
