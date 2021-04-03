@@ -173,3 +173,53 @@ function cf_get_child_profile_registration_fields_html( $index ) {
 	<?php
 	return ob_get_clean();
 }
+
+/**
+ * Register Client Log CPT.
+ */
+function cf_register_client_log_cpt() {
+	$labels = array(
+		'name'               => __( 'Client Logs', 'core-functions' ),
+		'singular_name'      => __( 'Client Log', 'core-functions' ),
+		'menu_name'          => __( 'Client Logs', 'core-functions' ),
+		'name_admin_bar'     => __( 'Client Log', 'core-functions' ),
+		'add_new'            => __( 'New Client Log', 'core-functions' ),
+		'add_new_item'       => __( 'New Client Log', 'core-functions' ),
+		'new_item'           => __( 'New Client Log', 'core-functions' ),
+		'edit_item'          => __( 'Edit Client Log', 'core-functions' ),
+		'view_item'          => __( 'View Client Log', 'core-functions' ),
+		'all_items'          => __( 'Client Logs', 'core-functions' ),
+		'search_items'       => __( 'Search Client Logs', 'core-functions' ),
+		'parent_item_colon'  => __( 'Parent Client Logs:', 'core-functions' ),
+		'not_found'          => __( 'No Client Logs Found.', 'core-functions' ),
+		'not_found_in_trash' => __( 'No Client Logs Found In Trash.', 'core-functions' )
+	);
+
+	$args = array(
+		'labels'             => $labels,
+		'public'             => false,
+		'menu_icon'          => 'dashicons-screenoptions',
+		'publicly_queryable' => true,
+		'show_ui'            => true,
+		'show_in_menu'       => true,
+		'query_var'          => true,
+		'rewrite'            => array(
+			'slug' => 'client-log'
+		),
+		'capability_type'    => 'post',
+		'has_archive'        => false,
+		'hierarchical'       => false,
+		'menu_position'      => null,
+		'supports'           => array(
+			'title', 'content', 'author'
+		)
+	);
+	register_post_type( 'client-log', $args );
+
+	$set = get_option( 'cpt_cf_client_log_flushed_rewrite_rules' );
+	
+	if ( 'yes' !== $set ) {
+		flush_rewrite_rules( false );
+		update_option( 'cpt_cf_client_log_flushed_rewrite_rules', 'yes' );
+	}
+}

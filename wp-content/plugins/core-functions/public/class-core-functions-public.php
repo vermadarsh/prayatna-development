@@ -211,6 +211,9 @@ class Core_Functions_Public {
 				)
 			);
 		}
+
+		// Register client log CPT.
+		cf_register_client_log_cpt();
 	}
 
 	/**
