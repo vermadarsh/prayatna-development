@@ -163,8 +163,11 @@ class Core_Functions_Admin {
 	}
 
 	/**
-	 * Add custom capabilities to custom user roles.
+	 * Change the author titled metabox to Therapist.
 	 */
-	public function cf_admin_init_callback() {
+	public function cf_add_meta_boxes_callback() {
+		global $wp_meta_boxes;
+
+		debug( $wp_meta_boxes ); die;
 	}
 }
