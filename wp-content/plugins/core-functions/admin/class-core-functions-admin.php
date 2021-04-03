@@ -130,7 +130,7 @@ class Core_Functions_Admin {
 
 		// Registration status pending.
 		if ( ! empty( $status ) && 'pending' === $status ) {
-			return new WP_Error( 'user-status-pending', sprintf( __( 'Sorry, but your account has yet not been approved. Please contact admin on: %1$s.', 'core-functions' ), get_option( 'admin_email' ) ) );
+			return new WP_Error( 'user-status-pending', sprintf( __( 'Sorry, but your email verification is pending. Please verify your email and try again.', 'core-functions' ), get_option( 'admin_email' ) ) );
 		}
 
 		// Account suspended.
