@@ -127,6 +127,7 @@ class Core_Functions_Admin {
 		}
 
 		$status = get_user_meta( $user->ID, 'cf_user_status', true );
+		var_dump( $status ); die;
 
 		// Registration status pending.
 		if ( ! empty( $status ) && 'pending' === $status ) {
