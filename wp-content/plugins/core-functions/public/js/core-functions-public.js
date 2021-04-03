@@ -214,11 +214,14 @@ jQuery(document).ready( function( $ ) {
 	// Add child html on client registration page.
 	$( document ).on( 'click', '.cf_child_addition_button input', function() {
 		var this_button       = $( this );
+		var this_button_text  = this_button.val();
 		var existing_profiles = $( '.child-profile-fields' ).length;
 		var index             = existing_profiles + 1;
 
 		// Block the button.
 		block_element( this_button );
+
+		this_button.val( '...' );
 
 		var data = {
 			action: 'add_child_profile_html',
@@ -233,6 +236,8 @@ jQuery(document).ready( function( $ ) {
 				if ( 'child-profile-added' === response.data.code ) {
 					// Unblock the button.
 					unblock_element( this_button );
+
+					this_button.val( this_button_text );
 
 					$( response.data.html ).insertBefore( '.cf_child_addition_button' );
 				}
