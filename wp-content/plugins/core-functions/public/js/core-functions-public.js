@@ -45,6 +45,9 @@ jQuery(document).ready( function( $ ) {
 		var agree_tos         = ( $( '#therapist-registration-terms-n-conditions-acceptance' ).is( ':checked' ) ) ? true : false;
 		var error_message     = '';
 
+		// Hide the error notification.
+		cf_hide_notification();
+
 		// Validate first name.
 		if ( -1 === is_valid_string( first_name ) ) {
 			error_message += '<li>First name is required.</li>';
@@ -131,9 +134,6 @@ jQuery(document).ready( function( $ ) {
 
 					// Show the notification now.
 					cf_show_notification( 'fa fa-warning', 'Error', response.data.notification_text, 'error' );
-					setTimeout( function () {
-						cf_hide_notification();
-					}, 8000 );
 				}
 			},
 		} );
