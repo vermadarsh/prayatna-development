@@ -40,10 +40,6 @@ jQuery(document).ready( function( $ ) {
 		var agree_tos         = ( $( '#therapist-registration-terms-n-conditions-acceptance' ).is( ':checked' ) ) ? true : false;
 		var error_message     = '';
 
-		$( '#therapist-first-name' ).val( '' );
-		$( '#therapist-first-name' ).parent( 'span' ).removeClass( 'input--filled' )
-		return false;
-
 		// Hide the error notification.
 		cf_hide_notification();
 
@@ -171,6 +167,9 @@ jQuery(document).ready( function( $ ) {
 
 									// Show the notification now.
 									cf_show_notification( 'fa fa-check', 'Success', response.data.notification_text, 'success' );
+									setTimeout( function () {
+										location.reload();
+									}, 6000 );
 								}
 							},
 						} );
