@@ -255,17 +255,6 @@ class Core_Functions_Public {
 		$temporary_address = filter_input( INPUT_POST, 'temporary_address', FILTER_SANITIZE_STRING );
 		$permanent_address = filter_input( INPUT_POST, 'permanent_address', FILTER_SANITIZE_STRING );
 
-		// Send back the response.
-		$response = array(
-			'code'              => 'therapist-created-upload-profile-photo',
-			'notification_text' => __( 'Therapist account has been created. Please wait while we upload your profile picture.', 'core-functions' ),
-			'random_number'     => time(),
-			'user_id'           => 3,
-			'first_name'        => $first_name,
-		);
-		wp_send_json_success( $response );
-		wp_die();
-
 		// Check if a user already exists with the email.
 		if ( email_exists( $email ) ) {
 			// Send the ajax response.
