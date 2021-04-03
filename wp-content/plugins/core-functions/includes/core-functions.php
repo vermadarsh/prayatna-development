@@ -233,6 +233,11 @@ function cf_register_client_log_cpt() {
 	}
 }
 
+/**
+ * Return the clients.
+ *
+ * @return array
+ */
 function cf_get_clients() {
 
 	return get_users(
@@ -245,10 +250,33 @@ function cf_get_clients() {
 
 /**
  * Get children list.
+ *
+ * @return array
  */
 function cf_get_children() {
-	$clients = cf_get_clients();
+	$clients  = cf_get_clients();
+	$children = array();
 
-	debug( $clients );
-	die;
+	// Return empty array if no client's available.
+	if ( empty( $clients ) || ! is_array( $clients ) ) {
+		return $children;
+	}
+
+	// Iterate through the client to get their children details.
+	foreach ( $clients as $client_id ) {
+		if ( ! have_rows( 'children_details', "user_{$client_id}" ) ) {
+			continue;
+		}
+
+		// Iterate through the children details to prepare array.
+		while( have_rows( 'children_details', "user_{$client_id}" ) ) {
+			$children[] = array(
+				'first_name' => get_sub_field( 'child_first_name' ),
+				'last_name'  => get_sub_field( 'child_last_name' ),
+				'dob'        => get_sub_field( 'child_dob' ),
+			);
+		}
+	}
+
+	return $children;
 }
