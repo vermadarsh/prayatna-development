@@ -41,7 +41,7 @@ jQuery(document).ready( function( $ ) {
 		var agree_tos         = ( $( '#therapist-registration-terms-n-conditions-acceptance' ).is( ':checked' ) ) ? true : false;
 		var error_message     = '';
 
-		console.log( 'profile_picture', profile_picture );
+		console.log( 'profile_picture', profile_picture, is_valid_string( profile_picture ) );
 		return false;
 
 		// Hide the error notification.
