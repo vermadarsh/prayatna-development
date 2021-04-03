@@ -15,6 +15,7 @@ label[for="toggle-password"] {
 	display: contents;
 }
 
-#therapist-email {
+#therapist-email,
+#client-email {
 	width: 100%;
 }
