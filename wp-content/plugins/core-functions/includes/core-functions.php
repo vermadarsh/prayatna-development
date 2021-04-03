@@ -121,3 +121,36 @@ function cf_is_user_client( $user_id ) {
 
 	return true;
 }
+
+/**
+ * Return child's profile registration fields.
+ *
+ * @param int $index Holds the html index.
+ * @return string
+ */
+function cf_get_child_profile_registration_fields_html( $index ) {
+	ob_start();
+	?>
+	<div class="child-<?php echo esc_attr( $index ); ?> child-profile-fields">
+		<!-- FIRST NAME -->
+		<div class="col-md-6">
+			<span class="input input--hfd">
+				<input class="input__field input__field--hfd" type="text" name="child-first-name" id="child-first-name" required onkeypress="return /[a-z]/i.test(event.key)" />
+				<label class="input__label input__label--hfd" for="child-first-name">
+					<span class="input__label-content input__label-content--hfd "><?php esc_html_e( 'First Name*', 'core-functions' ); ?></span>
+				</label>
+			</span>
+		</div>
+		<!-- LAST NAME -->
+		<div class="col-md-6">
+			<span class="input input--hfd">
+				<input class="input__field input__field--hfd" type="text" name="child-last-name" id="child-last-name" required onkeypress="return /[a-z]/i.test(event.key)" />
+				<label class="input__label input__label--hfd" for="child-last-name">
+					<span class="input__label-content input__label-content--hfd "><?php esc_html_e( 'Last Name*', 'core-functions' ); ?></span>
+				</label>
+			</span>
+		</div>
+	</div>
+	<?php
+	return ob_get_clean();
+}
