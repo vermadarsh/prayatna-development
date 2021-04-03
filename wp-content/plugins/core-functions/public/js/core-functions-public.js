@@ -179,6 +179,25 @@ jQuery(document).ready( function( $ ) {
 		$( '.cf__date__field' ).inputmask( { 'mask': '99-99-9999'} );
 	}
 
+	// Over-write the file inpur field text when user selects the file.
+	$( document ).on( 'change', '#therapist-profile-picture, #client-profile-picture', function( e ) {
+		var this_input    = $( this );
+		var this_input_id = this_input.attr( 'id' );
+		var file_name;
+
+		// If the file name is bigger than 40 characters, break it.
+		if ( 40 < e.target.files[0].name.length ) {
+			file_name     = e.target.files[0].name;
+			var extension = file_name.substring( file_name.lastIndexOf( '.' ) + 1 );
+			file_name     = file_name.substr( 0, 40 ) + '....' + extension;
+		} else {
+			file_name = e.target.files[0].name;
+		}
+
+		// Set the final file name.
+		$( 'label[for="' + this_input_id + '"]' ).text( file_name );
+	} );
+
 	/**
 	 * Block element.
 	 *
