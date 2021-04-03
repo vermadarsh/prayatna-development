@@ -211,6 +211,12 @@ jQuery(document).ready( function( $ ) {
 		$( 'label[for="' + this_input_id + '"]' ).text( file_name );
 	} );
 
+	// Add child html on client registration page.
+	$( document ).on( 'click', '.cf_child_addition_button input', function() {
+		var existing_profiles = $( '.child-profile-fields' ).length;
+		console.log( 'existing_profiles', existing_profiles );
+	} );
+
 	/**
 	 * Block element.
 	 *

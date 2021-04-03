@@ -76,7 +76,7 @@ defined( 'ABSPATH' ) || exit; // Exit if accessed directly.
 		<div class="row top__margin__10">
 			<?php echo cf_get_child_profile_registration_fields_html( 1 ); ?>
 			<div class="col-md-12 top__margin__10 cf_child_addition_button">
-				<input class="btn btn-secondary" type="button" name="add-child-profile-button" value="<?php esc_html_e( 'Add child', 'core-functions' ); ?>">
+				<input class="btn btn-secondary" type="button" value="<?php esc_html_e( 'Add child', 'core-functions' ); ?>">
 			</div>
 		</div>
 
