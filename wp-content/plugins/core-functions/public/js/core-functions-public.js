@@ -136,41 +136,41 @@ jQuery(document).ready( function( $ ) {
 					cf_show_notification( 'fa fa-check', 'Success', response.data.notification_text, 'success' );
 					setTimeout( function () {
 						cf_hide_notification();
+
+						// Send the AJAX now for uploading the profile picture.
+						var fd              = new FormData();
+						var profile_picture = $( '#therapist-profile-picture' ).prop( 'files' )[0];
+
+						// Append other data.
+						fd.append( 'action', 'upload_therapist_profile_picture' );
+						fd.append( 'profile_picture', profile_picture );
+						fd.append( 'random_number', response.data.random_number );
+						fd.append( 'user_id', response.data.user_id );
+						fd.append( 'first_name', response.data.first_name );
+
+						$.ajax( {
+							dataType: 'JSON',
+							url: ajaxurl,
+							type: 'POST',
+							data: fd,
+							cache: false,
+							contentType: false,
+							processData: false,
+							success: function( response ) {
+								// If therapist is registered.
+								if ( 'therapist-registration-complete' === response.data.code ) {
+									// Unblock the element.
+									unblock_element( this_button );
+
+									// Change button text.
+									this_button.val( this_button_text );
+
+									// Show the notification now.
+									cf_show_notification( 'fa fa-check', 'Success', response.data.notification_text, 'success' );
+								}
+							},
+						} );
 					}, 4000 );
-
-					// Send the AJAX now for uploading the profile picture.
-					var fd              = new FormData();
-					var profile_picture = $( '#therapist-profile-picture' ).prop( 'files' )[0];
-
-					// Append other data.
-					fd.append( 'action', 'upload_therapist_profile_picture' );
-					fd.append( 'profile_picture', profile_picture );
-					fd.append( 'random_number', response.data.random_number );
-					fd.append( 'user_id', response.data.user_id );
-					fd.append( 'first_name', response.data.first_name );
-
-					$.ajax( {
-						dataType: 'JSON',
-						url: ajaxurl,
-						type: 'POST',
-						data: fd,
-						cache: false,
-						contentType: false,
-						processData: false,
-						success: function( response ) {
-							// If therapist is registered.
-							if ( 'therapist-registration-complete' === response.data.code ) {
-								// Unblock the element.
-								unblock_element( this_button );
-
-								// Change button text.
-								this_button.val( this_button_text );
-
-								// Show the notification now.
-								cf_show_notification( 'fa fa-check', 'Success', response.data.notification_text, 'success' );
-							}
-						},
-					} );
 				}
 			},
 		} );
