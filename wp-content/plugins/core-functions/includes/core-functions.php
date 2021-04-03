@@ -132,6 +132,7 @@ function cf_get_child_profile_registration_fields_html( $index ) {
 	ob_start();
 	?>
 	<div class="col-md-12 top__margin__10 child-<?php echo esc_attr( $index ); ?> child-profile-fields">
+		<div class="col-md-12"><h5><?php echo sprintf( __( 'Child: %1$d', 'core-functions' ), $index ); ?></h5></div>
 		<!-- FIRST NAME -->
 		<div class="col-md-6">
 			<span class="input input--hfd">
