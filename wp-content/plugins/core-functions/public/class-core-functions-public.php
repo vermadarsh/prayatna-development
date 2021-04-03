@@ -211,6 +211,24 @@ class Core_Functions_Public {
 				)
 			);
 		}
+
+		if ( ! is_admin() ) {
+			$index = 0;
+			$user_id = 7;
+			update_row(
+				'children_details',
+				$index + 1,
+				array(
+					'child_first_name' => 'Hello',
+					'child_last_name'  => 'Child',
+					'child_dob'        => 'test',
+					'child_gender'     => 'other',
+				),
+				"user_{$user_id}"
+			);
+
+			die;
+		}
 	}
 
 	/**
@@ -439,8 +457,6 @@ class Core_Functions_Public {
 		$permanent_address = filter_input( INPUT_POST, 'permanent_address', FILTER_SANITIZE_STRING );
 		$posted_array      = filter_input_array( INPUT_POST );
 		$children          = $posted_array['children'];
-
-		debug( $children ); die;
 
 		// Check if a user already exists with the email.
 		if ( email_exists( $email ) ) {
