@@ -9,9 +9,11 @@ jQuery(document).ready( function( $ ) {
 
 	// On the register pages, vacate the email and password fields, that are autofilled by the browser.
 	if ( $( '#therapist-password' ).length ) {
+		console.log( 'hello' );
 		$( '#therapist-password' ).val( '' );
 	}
 	if ( $( '#therapist-email' ).length ) {
+		console.log( 'hello1' );
 		$( '#therapist-email' ).val( '' );
 	}
 
