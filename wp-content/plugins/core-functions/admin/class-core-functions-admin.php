@@ -168,6 +168,12 @@ class Core_Functions_Admin {
 	public function cf_add_meta_boxes_callback() {
 		global $wp_meta_boxes;
 
-		debug( $wp_meta_boxes ); die;
+		// Check for client log metaboxes.
+		if ( empty( $wp_meta_boxes['client-log']['normal']['core']['authordiv'] ) ) {
+			return;
+		}
+
+		// Change the title now.
+		$wp_meta_boxes['client-log']['normal']['core']['authordiv']['title'] = __( 'Therapist', 'core-functions' );
 	}
 }
