@@ -211,9 +211,6 @@ class Core_Functions_Public {
 				)
 			);
 		}
-
-		wp_mail( 'adarsh.srmcem@gmail.com', 'test email', 'test email from prayatna' );
-		die("pool");
 	}
 
 	/**
