@@ -171,7 +171,6 @@ class Core_Functions_Admin {
 		// Loop through each role and assign capabilities.
 		foreach( $roles as $_role ) {
 			$role = get_role( $_role );
-			debug( $role ); die;
 
 			$role->add_cap( 'read' );
 			$role->add_cap( 'read_client-log');
