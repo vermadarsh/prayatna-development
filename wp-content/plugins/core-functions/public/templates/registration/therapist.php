@@ -12,6 +12,7 @@ defined( 'ABSPATH' ) || exit; // Exit if accessed directly.
 ?>
 <div class="container bottom__margin__10">
 	<section class="content">
+		<input autocomplete="false" name="hidden" type="text" style="display:none;">
 		<div class="row">
 			<!-- FIRST NAME -->
 			<div class="col-md-6">
