@@ -285,73 +285,91 @@ jQuery(document).ready( function( $ ) {
 		var parent_permanent_address = $( '.client-permanent-address' ).val();
 		var agree_tos                = ( $( '#client-registration-terms-n-conditions-acceptance' ).is( ':checked' ) ) ? true : false;
 		var children                 = [];
+		var error_message            = '';
+		var invalid_child_data_count = 0;
 
 		// Collect the child details.
 		$( '.child-profile-fields' ).each( function() {
 			var this_div = $( this );
+
+			// Child data.
+			var child_first_name = this_div.find( '.child-first-name' ).val();
+			var child_last_name  = this_div.find( '.child-last-name' ).val();
+			var child_dob        = this_div.find( '.child-dob' ).val();
+			var child_gender     = this_div.find( '.child-gender' ).val();
+
+			// Validate child first name.
+			if ( -1 === is_valid_string( child_first_name ) ) {
+				invalid_child_data_count++;
+			}
+
+			// Validate child last name.
+			if ( -1 === is_valid_string( child_last_name ) ) {
+				invalid_child_data_count++;
+			}
+
+			// Validate child dob.
+			if ( -1 === is_valid_string( child_dob ) ) {
+				invalid_child_data_count++;
+			}
+
+			// Validate child gender.
+			if ( -1 === is_valid_string( child_gender ) ) {
+				invalid_child_data_count++;
+			}
+			
+			// Put all the data in array.
 			var temp_data = {
-				first_name: this_div.find( '.child-first-name' ).val(),
-				last_name: this_div.find( '.child-last-name' ).val(),
-				dob: this_div.find( '.child-dob' ).val(),
-				gender: this_div.find( '.child-gender' ).val(),
+				first_name: child_first_name,
+				last_name: child_last_name,
+				dob: child_dob,
+				gender: child_gender,
 			};
 
 			// Insert the data in array.
 			children.push( temp_data );
 		} );
 
-		console.log( 'children', children );
-		return false;
-
-		
-		
-		var error_message     = '';
-
 		// Hide the error notification.
 		cf_hide_notification();
 
 		// Validate first name.
-		if ( -1 === is_valid_string( first_name ) ) {
+		if ( -1 === is_valid_string( parent_first_name ) ) {
 			error_message += '<li>First name is required.</li>';
 		}
 
 		// Validate last name.
-		if ( -1 === is_valid_string( last_name ) ) {
+		if ( -1 === is_valid_string( parent_last_name ) ) {
 			error_message += '<li>Last name is required.</li>';
 		}
 
 		// Validate phone.
-		if ( '' === phone ) {
+		if ( '' === parent_phone ) {
 			error_message += '<li>Phone number is required.</li>';
 		}
 
 		// Validate password.
-		if ( -1 === is_valid_string( password ) ) {
+		if ( -1 === is_valid_string( parent_password ) ) {
 			error_message += '<li>Password is required.</li>';
 		} else if ( 8 > password.length ) {
 			error_message += '<li>Password should be min. 8 characters length.</li>';
 		}
 
 		// Validate email.
-		if ( -1 === is_valid_string( email ) ) {
+		if ( -1 === is_valid_string( parent_email ) ) {
 			error_message += '<li>Email is required.</li>';
-		} else if ( -1 === is_valid_email( email ) ) {
+		} else if ( -1 === is_valid_email( parent_email ) ) {
 			error_message += '<li>Email is of invalid format.</li>';
 		}
 
-		// Validate gender.
-		if ( -1 === is_valid_string( gender ) ) {
-			error_message += '<li>Gender is required.</li>';
-		}
-
 		// Validate permanent address.
-		if ( -1 === is_valid_string( permanent_address ) ) {
+		if ( -1 === is_valid_string( parent_permanent_address ) ) {
 			error_message += '<li>Permanent address is required.</li>';
 		}
 
-		// Validate profile picture.
-		if ( -1 === is_valid_string( profile_picture ) ) {
-			error_message += '<li>Profile picture is required.</li>';
+		// Validate children data.
+		if ( 0 < invalid_child_data_count ) {
+			error_message += '<li>Eithor of the child\'s data in empty or invalid.</li>';
 		}
 
 		// Validate the terms of service checkbox.
@@ -379,16 +397,15 @@ jQuery(document).ready( function( $ ) {
 
 		// Send the AJAX now.
 		var data = {
-			action: 'register_therapist',
-			first_name: first_name,
-			last_name: last_name,
-			phone: phone,
-			password: password,
-			dob: dob,
-			email: email,
-			gender: gender,
-			temporary_address: temporary_address,
-			permanent_address: permanent_address,
+			action: 'register_client',
+			first_name: parent_first_name,
+			last_name: parent_last_name,
+			phone: parent_phone,
+			password: parent_password,
+			email: parent_email,
+			temporary_address: parent_temporary_address,
+			permanent_address: parent_permanent_address,
+			children: children,
 		};
 		$.ajax( {
 			dataType: 'JSON',
@@ -397,7 +414,7 @@ jQuery(document).ready( function( $ ) {
 			data: data,
 			success: function ( response ) {
 				// If user already exists.
-				if ( 'therapist-exists' === response.data.code || 'therapist-not-created' === response.data.code ) {
+				if ( 'client-exists' === response.data.code || 'client-not-created' === response.data.code ) {
 					// Unblock the element.
 					unblock_element( this_button );
 
@@ -408,49 +425,19 @@ jQuery(document).ready( function( $ ) {
 					cf_show_notification( 'fa fa-warning', 'Error', response.data.notification_text, 'error' );
 				}
 
-				// User is created.
-				if ( 'therapist-created-upload-profile-photo' === response.data.code ) {
+				// If client is registered.
+				if ( 'client-registration-complete' === response.data.code ) {
+					// Unblock the element.
+					unblock_element( this_button );
+
+					// Change button text.
+					this_button.val( this_button_text );
+
+					// Show the notification now.
 					cf_show_notification( 'fa fa-check', 'Success', response.data.notification_text, 'success' );
 					setTimeout( function () {
-						cf_hide_notification();
-
-						// Send the AJAX now for uploading the profile picture.
-						var fd              = new FormData();
-						var profile_picture = $( '#therapist-profile-picture' ).prop( 'files' )[0];
-
-						// Append other data.
-						fd.append( 'action', 'upload_therapist_profile_picture' );
-						fd.append( 'profile_picture', profile_picture );
-						fd.append( 'random_number', response.data.random_number );
-						fd.append( 'user_id', response.data.user_id );
-						fd.append( 'first_name', response.data.first_name );
-
-						$.ajax( {
-							dataType: 'JSON',
-							url: ajaxurl,
-							type: 'POST',
-							data: fd,
-							cache: false,
-							contentType: false,
-							processData: false,
-							success: function( response ) {
-								// If therapist is registered.
-								if ( 'therapist-registration-complete' === response.data.code ) {
-									// Unblock the element.
-									unblock_element( this_button );
-
-									// Change button text.
-									this_button.val( this_button_text );
-
-									// Show the notification now.
-									cf_show_notification( 'fa fa-check', 'Success', response.data.notification_text, 'success' );
-									setTimeout( function () {
-										location.reload();
-									}, 6000 );
-								}
-							},
-						} );
-					}, 4000 );
+						location.reload();
+					}, 6000 );
 				}
 			},
 		} );

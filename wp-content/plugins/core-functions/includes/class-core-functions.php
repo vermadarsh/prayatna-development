@@ -160,6 +160,7 @@ class Core_Functions {
 		$this->loader->add_action( 'wp_ajax_nopriv_upload_therapist_profile_picture', $plugin_public, 'cf_upload_therapist_profile_picture_callback' );
 		$this->loader->add_shortcode( 'email_verification', $plugin_public, 'cf_email_verification_callback' );
 		$this->loader->add_action( 'wp_ajax_nopriv_add_child_profile_html', $plugin_public, 'cf_add_child_profile_html_callback' );
+		$this->loader->add_action( 'wp_ajax_register_client', $plugin_public, 'cf_register_client_callback' );
 	}
 
 	/**
