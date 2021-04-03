@@ -175,5 +175,18 @@ class Core_Functions_Admin {
 
 		// Change the title now.
 		$wp_meta_boxes['client-log']['normal']['core']['authordiv']['title'] = __( 'Therapist', 'core-functions' );
+
+		// Add a custom metabox to display all the children.
+		add_meta_box(
+			'child-for-client-log',
+			__( 'Child', 'core-functions' ),
+			array( $this, 'cf_child_for_client_log_callback' ),
+			'client-log',
+			'normal',
+		);
+	}
+
+	public function cf_child_for_client_log_callback() {
+		echo 'hello';
 	}
 }
