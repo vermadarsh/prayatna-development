@@ -27,9 +27,6 @@ jQuery(document).ready( function( $ ) {
 	// Submit the data for therapist registration.
 	$( document ).on( 'click', 'input[name="register-therapist-button"]', function() {
 		var this_button       = $( this );
-		console.log( 'registering_user_text', registering_user_text );
-		this_button.val( registering_user_text );
-		return false;
 		var this_button_text  = this_button.text();
 		var first_name        = $( '#therapist-first-name' ).val();
 		var last_name         = $( '#therapist-last-name' ).val();
@@ -101,7 +98,7 @@ jQuery(document).ready( function( $ ) {
 		block_element( this_button );
 
 		// Change button text.
-		this_button.text( registering_user_text );
+		this_button.val( registering_user_text );
 
 		// Send the AJAX now.
 		var data = {
@@ -128,7 +125,7 @@ jQuery(document).ready( function( $ ) {
 					unblock_element( this_button );
 
 					// Change button text.
-					this_button.text( this_button_text );
+					this_button.val( this_button_text );
 
 					// Show the notification now.
 					cf_show_notification( 'fa fa-warning', 'Error', response.data.notification_text, 'error' );
@@ -150,6 +147,7 @@ jQuery(document).ready( function( $ ) {
 					fd.append( 'profile_picture', profile_picture );
 					fd.append( 'random_number', response.data.random_number );
 					fd.append( 'user_id', response.data.user_id );
+					fd.append( 'first_name', response.data.first_name );
 
 					$.ajax( {
 						dataType: 'JSON',
@@ -160,8 +158,17 @@ jQuery(document).ready( function( $ ) {
 						contentType: false,
 						processData: false,
 						success: function( response ) {
-							console.log( 'response', response );
-							return false;
+							// If therapist is registered.
+							if ( 'therapist-registration-complete' === response.data.code ) {
+								// Unblock the element.
+								unblock_element( this_button );
+
+								// Change button text.
+								this_button.val( this_button_text );
+
+								// Show the notification now.
+								cf_show_notification( 'fa fa-check', 'Success', response.data.notification_text, 'success' );
+							}
 						},
 					} );
 				}

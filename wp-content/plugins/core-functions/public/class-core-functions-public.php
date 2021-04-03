@@ -275,16 +275,6 @@ class Core_Functions_Public {
 		// Create the user.
 		$user_id = wp_create_user( $username, $password, $email );
 
-		$random_number = time();
-		$response = array(
-			'code'              => 'therapist-created-upload-profile-photo',
-			'notification_text' => __( 'Therapist account has been created. Please wait while we upload your profile picture.', 'core-functions' ),
-			'random_number'     => $random_number,
-			'user_id'           => 123, // $user_id
-		);
-		wp_send_json_success( $response );
-		wp_die();
-
 		if ( $user_id ) {
 			$random_number = time();
 			update_user_meta( $user_id, 'cf_user_status', 'pending' );
@@ -299,6 +289,17 @@ class Core_Functions_Public {
 			// Set the user's role (and implicitly remove the previous role).
 			$user = new \WP_User( $user_id );
 			$user->set_role( 'therapist' );
+
+			// Send back the response.
+			$response = array(
+				'code'              => 'therapist-created-upload-profile-photo',
+				'notification_text' => __( 'Therapist account has been created. Please wait while we upload your profile picture.', 'core-functions' ),
+				'random_number'     => $random_number,
+				'user_id'           => $user_id,
+				'first_name'        => $first_name,
+			);
+			wp_send_json_success( $response );
+			wp_die();
 		} else {
 			$response = array(
 				'code'              => 'user-not-created',
@@ -321,11 +322,54 @@ class Core_Functions_Public {
 			wp_die();
 		}
 
+		// Posted data.
 		$random_number = filter_input( INPUT_POST, 'random_number', FILTER_SANITIZE_STRING );
 		$user_id       = filter_input( INPUT_POST, 'user_id', FILTER_SANITIZE_NUMBER_INT );
+		$first_name    = filter_input( INPUT_POST, 'first_name', FILTER_SANITIZE_STRING );
 
-		debug( $_FILES );
+		// Upload the profile picture.
+		$filename    = $_FILES['therapist-profile-picture']['name'];
+		$upload_file = wp_upload_bits( $filename, null, file_get_contents( $_FILES['therapist-profile-picture']['tmp_name'] ) );
+		if ( ! $upload_file['error'] ) {
+			$wp_filetype   = wp_check_filetype( $filename, null );
+			$attachment    = array(
+				'post_mime_type' => $wp_filetype['type'],
+				'post_parent'    => 0,
+				'post_title'     => preg_replace('/\.[^.]+$/', '', $filename),
+				'post_content'   => '',
+				'post_status'    => 'inherit'
+			);
+			$attachment_id = wp_insert_attachment( $attachment, $upload_file['file'] );
+			if ( ! is_wp_error( $attachment_id ) ) {
+				require_once( ABSPATH . 'wp-admin/includes/image.php' );
+				$attachment_data = wp_generate_attachment_metadata( $attachment_id, $upload_file['file'] );
+				wp_update_attachment_metadata( $attachment_id,  $attachment_data );
 
-		die;
+				update_field( 'cf_profile_picture', $attachment_id, "user_{$user_id}" );
+			}
+		}
+
+		// Email verification link.
+		$email_verification_link = home_url( "/email-verification/?atts={$random_number}" );
+		$login_link              = home_url( '/login/' );
+
+		// Send the registration email.
+		$email_body = get_field( 'therapist_registration_email_body', 'option' );
+		$email_body = str_replace( '{first_name}', $first_name, $email_body );
+		$email_body = str_replace( '{email_verification_link}', $email_verification_link, $email_body );
+		$email_body = str_replace( '{login_link}', $login_link, $email_body );
+		$email_body = str_replace( '{site_url}', home_url(), $email_body );
+		$email_body = str_replace( '{site_name}', get_bloginfo( 'name' ), $email_body );
+		wp_mail( $email, __( 'Prayatna - Registration Successful!!', 'core-functions' ), $email_body );
+
+		// Set the success message.
+		$registration_success = get_field( 'therapist_registration_success_message', 'option' );
+
+		$response = array(
+			'code'              => 'therapist-registration-complete',
+			'notification_text' => $registration_success,
+		);
+		wp_send_json_success( $response );
+		wp_die();
 	}
 }
