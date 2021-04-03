@@ -12,8 +12,8 @@ defined( 'ABSPATH' ) || exit; // Exit if accessed directly.
 ?>
 <div class="container bottom__margin__10">
 	<section class="content">
+		<h5><?php esc_html_e( 'Parent Basic Details', 'core-functions' ); ?></h5>
 		<div class="row">
-			<h3><?php esc_html_e( 'Parent Basic Details', 'core-functions' ); ?></h3>
 			<!-- FIRST NAME -->
 			<div class="col-md-6">
 				<span class="input input--hfd">
@@ -72,8 +72,8 @@ defined( 'ABSPATH' ) || exit; // Exit if accessed directly.
 				<textarea required name="client-permanent-address" placeholder="<?php esc_html_e( 'Permanent address', 'cognify-core' ); ?>" class="form-control therapist-permanent-address" rows="3"></textarea>
 			</div>
 		</div>
+		<h5><?php esc_html_e( 'Child/Children Basic Details', 'core-functions' ); ?></h5>
 		<div class="row child-details">
-			<h3><?php esc_html_e( 'Child/Children Basic Details', 'core-functions' ); ?></h3>
 			<?php echo cf_get_child_profile_registration_fields_html( 1 ); ?>
 			<input class="btn btn-secondary" type="button" name="add-child-profile-button" value="<?php esc_html_e( 'Add child', 'core-functions' ); ?>">
 		</div>
