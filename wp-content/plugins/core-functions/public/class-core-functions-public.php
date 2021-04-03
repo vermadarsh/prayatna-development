@@ -284,6 +284,8 @@ class Core_Functions_Public {
 			update_field( 'cf_contact_number', $phone, "user_{$user_id}" );
 			update_field( 'cf_date_of_birth', $dob, "user_{$user_id}" );
 			update_field( 'cf_gender', $gender, "user_{$user_id}" );
+			update_field( 'cf_temporary_address', $temporary_address, "user_{$user_id}" );
+			update_field( 'cf_permanent_address', $permanent_address, "user_{$user_id}" );
 			update_user_meta( $user_id, 'email_verification_random_number', $random_number );
 
 			// Set the user's role (and implicitly remove the previous role).
