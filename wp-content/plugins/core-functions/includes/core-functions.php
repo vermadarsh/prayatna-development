@@ -131,7 +131,7 @@ function cf_is_user_client( $user_id ) {
 function cf_get_child_profile_registration_fields_html( $index ) {
 	ob_start();
 	?>
-	<div class="child-<?php echo esc_attr( $index ); ?> child-profile-fields">
+	<div class="col-md-12 top__margin__10 child-<?php echo esc_attr( $index ); ?> child-profile-fields">
 		<!-- FIRST NAME -->
 		<div class="col-md-6">
 			<span class="input input--hfd">
