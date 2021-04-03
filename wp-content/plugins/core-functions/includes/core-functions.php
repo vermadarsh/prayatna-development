@@ -198,7 +198,7 @@ function cf_register_client_log_cpt() {
 	$args = array(
 		'labels'             => $labels,
 		'public'             => false,
-		'menu_icon'          => 'dashicons-screenoptions',
+		'menu_icon'          => 'dashicons-welcome-write-blog',
 		'publicly_queryable' => true,
 		'show_ui'            => true,
 		'show_in_menu'       => true,
