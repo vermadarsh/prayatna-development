@@ -72,7 +72,7 @@ defined( 'ABSPATH' ) || exit; // Exit if accessed directly.
 				<textarea required name="client-permanent-address" placeholder="<?php esc_html_e( 'Permanent address', 'cognify-core' ); ?>" class="form-control therapist-permanent-address" rows="3"></textarea>
 			</div>
 		</div>
-		<h4><?php esc_html_e( 'Child/Children Basic Details', 'core-functions' ); ?></h4>
+		<h4 class="top__margin__20"><?php esc_html_e( 'Child/Children Basic Details', 'core-functions' ); ?></h4>
 		<div class="row top__margin__10">
 			<?php echo cf_get_child_profile_registration_fields_html( 1 ); ?>
 			<div class="col-md-12 top__margin__10 cf_child_addition_button">
