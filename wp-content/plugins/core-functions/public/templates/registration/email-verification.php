@@ -51,22 +51,15 @@ $random_number = filter_input( INPUT_GET, 'atts', FILTER_SANITIZE_NUMBER_INT );
 							<?php
 						} elseif ( 'pending' === $current_status ) {
 							// update_user_meta( $user_id, 'cognify_user_email_verification', 'verified' );
-							$is_counselor = cognify_is_user_counselor( $user_id );
-							$is_client    = cognify_is_user_counselee( $user_id );
-
-							if ( $is_counselor ) {
-								?>
-								<div class="alert alert-success">
-									<?php esc_html_e( 'Thank you for verifying the account. We will get back to you with an email within 24 hours. Thank you.', 'cognify-core' ); ?>
-								</div>
-								<?php
-							} elseif ( $is_client ) {
-								?>
-								<div class="alert alert-success">
-									<?php echo sprintf( __( 'Thank you for verifying the account. Click %1$shere%2$s to login.', 'cognify-core' ), '<a href="' . home_url( '/login/' ) . '">', '</a>' ); ?>
-								</div>
-								<?php
+							$is_therapist = cf_is_user_therapist( $user_id );
+							$is_client    = cf_is_user_client( $user_id );
+							echo '<div class="alert alert-success">';
+							if ( $is_therapist ) {
+								echo get_field( 'therapist_email_verification_success_message', 'option' );
+							} else {
+								echo get_field( 'client_email_verification_success_message', 'option' );
 							}
+							echo '</div>';
 						}
 					}
 				} else {

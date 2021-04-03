@@ -81,3 +81,43 @@ function cf_get_image_url_by_attachment_id( $attachment_id ) {
 
 	return apply_filters( 'cf_prayatna_image_source', wp_get_attachment_url( $attachment_id ), $attachment_id );
 }
+
+/**
+ * Check to see if the asked user is a therapist.
+ *
+ * @param int $user_id Holds the user ID.
+ * @return boolean
+ */
+function cf_is_user_therapist( $user_id ) {
+	$user = get_userdata( $user_id );
+
+	if ( empty( $user->roles ) || ! is_array( $user->roles ) ) {
+		return false;
+	}
+
+	if ( ! in_array( 'therapist', $user->roles, true ) ) {
+		return false;
+	}
+
+	return true;
+}
+
+/**
+ * Check to see if the asked user is a client.
+ *
+ * @param int $user_id Holds the user ID.
+ * @return boolean
+ */
+function cf_is_user_client( $user_id ) {
+	$user = get_userdata( $user_id );
+
+	if ( empty( $user->roles ) || ! is_array( $user->roles ) ) {
+		return false;
+	}
+
+	if ( ! in_array( 'client', $user->roles, true ) ) {
+		return false;
+	}
+
+	return true;
+}
