@@ -41,9 +41,6 @@ jQuery(document).ready( function( $ ) {
 		var agree_tos         = ( $( '#therapist-registration-terms-n-conditions-acceptance' ).is( ':checked' ) ) ? true : false;
 		var error_message     = '';
 
-		console.log( 'profile_picture', profile_picture, is_valid_string( profile_picture ) );
-		return false;
-
 		// Hide the error notification.
 		cf_hide_notification();
 
@@ -79,6 +76,11 @@ jQuery(document).ready( function( $ ) {
 		// Validate permanent address.
 		if ( -1 === is_valid_string( permanent_address ) ) {
 			error_message += '<li>Permanent address is required.</li>';
+		}
+
+		// Validate profile picture.
+		if ( -1 === is_valid_string( profile_picture ) ) {
+			error_message += '<li>Profile picture is required.</li>';
 		}
 
 		// Validate the terms of service checkbox.
