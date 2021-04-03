@@ -207,6 +207,15 @@ function cf_register_client_log_cpt() {
 			'slug' => 'client-log'
 		),
 		'capability_type'    => 'post',
+		'capabilities'       => array(
+			'edit_post'          => 'edit_client-log',
+            'edit_posts'         => 'edit_client-logs',
+            'edit_others_posts'  => 'edit_other_client-logs',
+            'publish_posts'      => 'publish_client-logs',
+            'read_post'          => 'read_client-log',
+            'read_private_posts' => 'read_private_client-logs',
+            'delete_post'        => 'delete_client-log'
+		),
 		'has_archive'        => false,
 		'hierarchical'       => false,
 		'menu_position'      => null,
