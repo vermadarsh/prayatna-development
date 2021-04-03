@@ -17,7 +17,7 @@ $random_number = filter_input( INPUT_GET, 'atts', FILTER_SANITIZE_NUMBER_INT );
 	<div class="row">
 		<div class="col-md-12">
 			<?php 
-				if ( ! empty( $random_number ) && null !== $random_number ) {
+				if ( ! is_null( $random_number ) ) {
 					// Get the user based on random number.
 					$user_ids = get_users(
 						array(
