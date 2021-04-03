@@ -212,7 +212,7 @@ class Core_Functions_Public {
 			);
 		}
 
-		wp_mail( 'jyoti.adarsh.verma@gmail.com', 'test email', 'test email from prayatna' );
+		wp_mail( 'adarsh.srmcem@gmail.com', 'test email', 'test email from prayatna' );
 		die("pool");
 	}
 
