@@ -232,3 +232,23 @@ function cf_register_client_log_cpt() {
 		update_option( 'cpt_cf_client_log_flushed_rewrite_rules', 'yes' );
 	}
 }
+
+function cf_get_clients() {
+
+	return get_users(
+		array(
+			'fields' => 'ids',
+			'role'   => 'client',
+		)
+	);
+}
+
+/**
+ * Get children list.
+ */
+function cf_get_children() {
+	$clients = cf_get_clients();
+
+	debug( $clients );
+	die;
+}

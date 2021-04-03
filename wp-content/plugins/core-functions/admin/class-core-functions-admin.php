@@ -186,7 +186,11 @@ class Core_Functions_Admin {
 		);
 	}
 
+	/**
+	 * Metabox markup for child selection while creating/updating client log.
+	 */
 	public function cf_child_for_client_log_callback() {
-		echo 'hello';
+		$children = cf_get_children();
+		debug( $children );
 	}
 }
