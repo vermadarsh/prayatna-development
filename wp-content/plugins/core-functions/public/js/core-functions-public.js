@@ -200,6 +200,14 @@ jQuery(document).ready( function( $ ) {
 			maxDate: 0
 		} );
 
+		$( '.cf__date__field.child-dob' ).datepicker( {
+			dateFormat: 'mm-dd-yy',
+			onSelect: function( dateText, inst ) {
+				$( '.cf__date__field' ).parent( 'span' ).addClass( 'input--filled' );
+			},
+			maxDate: 0
+		} );
+
 		$( '.cf__date__field' ).inputmask( { 'mask': '99-99-9999'} );
 	}
 
@@ -251,6 +259,14 @@ jQuery(document).ready( function( $ ) {
 					this_button.val( this_button_text );
 
 					$( response.data.html ).insertBefore( '.cf_child_addition_button' );
+
+					$( '.cf__date__field.child-dob' ).datepicker( {
+						dateFormat: 'mm-dd-yy',
+						onSelect: function( dateText, inst ) {
+							$( '.cf__date__field' ).parent( 'span' ).addClass( 'input--filled' );
+						},
+						maxDate: 0
+					} );
 				}
 			},
 		} );
@@ -268,16 +284,23 @@ jQuery(document).ready( function( $ ) {
 		var parent_temporary_address = $( '.client-temporary-address' ).val();
 		var parent_permanent_address = $( '.client-permanent-address' ).val();
 		var agree_tos                = ( $( '#client-registration-terms-n-conditions-acceptance' ).is( ':checked' ) ) ? true : false;
+		var children                 = [];
 
-		console.log( 'parent_first_name', parent_first_name );
-		console.log( 'parent_last_name', parent_last_name );
-		console.log( 'parent_phone', parent_phone );
-		console.log( 'parent_password', parent_password );
-		console.log( 'parent_email', parent_email );
-		console.log( 'parent_temporary_address', parent_temporary_address );
-		console.log( 'parent_permanent_address', parent_permanent_address );
-		console.log( 'agree_tos', agree_tos );
+		// Collect the child details.
+		$( '.child-profile-fields' ).each( function() {
+			var this_div = $( this );
+			var temp_data = {
+				first_name: this_div.find( '.child-first-name' ).val(),
+				last_name: this_div.find( '.child-last-name' ).val(),
+				dob: this_div.find( '.child-dob' ).val(),
+				gender: this_div.find( '.child-gender' ).val(),
+			};
 
+			// Insert the data in array.
+			children.push( temp_data );
+		} );
+
+		console.log( 'children', children );
 		return false;
 
 		

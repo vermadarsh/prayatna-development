@@ -162,7 +162,7 @@ function cf_get_child_profile_registration_fields_html( $index ) {
 		</div>
 		<!-- GENDER -->
 		<div class="col-md-6 top__margin__10 child-gender-div">
-			<select name="child-gender" class="child-gender">
+			<select class="child-gender">
 				<option value=""><?php esc_html_e( 'Gender*', 'core-functions' ); ?></option>
 				<option value="male"><?php esc_html_e( 'Male', 'core-functions' ); ?></option>
 				<option value="female"><?php esc_html_e( 'Female', 'core-functions' ); ?></option>
