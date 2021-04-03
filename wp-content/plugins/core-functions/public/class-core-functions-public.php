@@ -393,4 +393,27 @@ class Core_Functions_Public {
 		require_once CF_PLUGIN_PATH . 'public/templates/registration/email-verification.php';
 		return ob_get_clean();
 	}
+
+	/**
+	 * AJAX to add child profile HTML.
+	 */
+	public function cf_add_child_profile_html_callback() {
+		$action = filter_input( INPUT_POST, 'action', FILTER_SANITIZE_STRING );
+
+		// Return, if the action doesn't match.
+		if ( 'add_child_profile_html' !== $action ) {
+			echo 0;
+			wp_die();
+		}
+
+		// Posted data.
+		$index = filter_input( INPUT_POST, 'index', FILTER_SANITIZE_NUMBER_INT );
+
+		$response = array(
+			'code' => 'child-profile-added',
+			'html' => cf_get_child_profile_registration_fields_html( $index ),
+		);
+		wp_send_json_success( $response );
+		wp_die();
+	}
 }

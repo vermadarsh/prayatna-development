@@ -214,7 +214,23 @@ jQuery(document).ready( function( $ ) {
 	// Add child html on client registration page.
 	$( document ).on( 'click', '.cf_child_addition_button input', function() {
 		var existing_profiles = $( '.child-profile-fields' ).length;
-		console.log( 'existing_profiles', existing_profiles );
+		var index             = existing_profiles + 1;
+
+		var data = {
+			action: 'add_child_profile_html',
+			index: index,
+		};
+		$.ajax( {
+			dataType: 'JSON',
+			url: ajaxurl,
+			type: 'POST',
+			data: data,
+			success: function ( response ) {
+				if ( 'child-profile-added' === response.data.code ) {
+					$( response.data.html ).insertBefore( '.cf_child_addition_button input' );
+				}
+			},
+		} );
 	} );
 
 	/**
