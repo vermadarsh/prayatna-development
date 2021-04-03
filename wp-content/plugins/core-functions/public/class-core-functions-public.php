@@ -211,6 +211,9 @@ class Core_Functions_Public {
 				)
 			);
 		}
+
+		echo get_option( 'testing_testing' );
+		die;
 	}
 
 	/**
@@ -366,8 +369,6 @@ class Core_Functions_Public {
 
 		// Set the success message.
 		$registration_success = get_field( 'therapist_registration_success_message', 'option' );
-
-		update_option( 'testing_testing', $email_verification_link );
 
 		$response = array(
 			'code'              => 'therapist-registration-complete',
