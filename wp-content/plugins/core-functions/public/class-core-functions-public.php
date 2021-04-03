@@ -338,11 +338,9 @@ class Core_Functions_Public {
 		$user_id       = filter_input( INPUT_POST, 'user_id', FILTER_SANITIZE_NUMBER_INT );
 		$first_name    = filter_input( INPUT_POST, 'first_name', FILTER_SANITIZE_STRING );
 
-		debug( $_FILES ); die;
-
 		// Upload the profile picture.
-		$filename    = $_FILES['therapist-profile-picture']['name'];
-		$upload_file = wp_upload_bits( $filename, null, file_get_contents( $_FILES['therapist-profile-picture']['tmp_name'] ) );
+		$filename    = $_FILES['profile_picture']['name'];
+		$upload_file = wp_upload_bits( $filename, null, file_get_contents( $_FILES['profile_picture']['tmp_name'] ) );
 		if ( ! $upload_file['error'] ) {
 			$wp_filetype   = wp_check_filetype( $filename, null );
 			$attachment    = array(
@@ -362,7 +360,7 @@ class Core_Functions_Public {
 			}
 		}
 
-		var_dump( $attachment_id ); die;
+		var_dump( $attachment_id );
 
 		// Email verification link.
 		$email_verification_link = home_url( "/email-verification/?atts={$random_number}" );
@@ -376,6 +374,8 @@ class Core_Functions_Public {
 		$email_body = str_replace( '{site_url}', home_url(), $email_body );
 		$email_body = str_replace( '{site_name}', get_bloginfo( 'name' ), $email_body );
 		wp_mail( $email, __( 'Prayatna - Registration Successful!!', 'core-functions' ), $email_body );
+
+		echo $email_body; die;
 
 		// Set the success message.
 		$registration_success = get_field( 'therapist_registration_success_message', 'option' );
