@@ -31,6 +31,7 @@ $random_number = filter_input( INPUT_GET, 'atts', FILTER_SANITIZE_NUMBER_INT );
 							),
 						)
 					);
+					debug( $user_ids );
 
 					// Check if the user exists for the requesting user ID.
 					if ( empty( $user_ids ) ) {
