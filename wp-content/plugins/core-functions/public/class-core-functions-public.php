@@ -360,8 +360,6 @@ class Core_Functions_Public {
 			}
 		}
 
-		var_dump( $attachment_id );
-
 		// Email verification link.
 		$email_verification_link = home_url( "/email-verification/?atts={$random_number}" );
 		$login_link              = home_url( '/login/' );
@@ -374,8 +372,6 @@ class Core_Functions_Public {
 		$email_body = str_replace( '{site_url}', home_url(), $email_body );
 		$email_body = str_replace( '{site_name}', get_bloginfo( 'name' ), $email_body );
 		wp_mail( $email, __( 'Prayatna - Registration Successful!!', 'core-functions' ), $email_body );
-
-		echo $email_body; die;
 
 		// Set the success message.
 		$registration_success = get_field( 'therapist_registration_success_message', 'option' );
