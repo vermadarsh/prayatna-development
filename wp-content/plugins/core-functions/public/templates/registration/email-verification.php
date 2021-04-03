@@ -31,7 +31,6 @@ $random_number = filter_input( INPUT_GET, 'atts', FILTER_SANITIZE_NUMBER_INT );
 							),
 						)
 					);
-					debug( $user_ids );
 
 					// Check if the user exists for the requesting user ID.
 					if ( empty( $user_ids ) ) {
@@ -42,26 +41,23 @@ $random_number = filter_input( INPUT_GET, 'atts', FILTER_SANITIZE_NUMBER_INT );
 						<?php
 					} else {
 						$user_id        = $user_ids[0];
-						$current_status = get_user_meta( $user_id, 'cognify_user_email_verification', true );
+						$current_status = get_user_meta( $user_id, 'cf_user_email_verification', true );
+						echo '<div class="alert alert-success">';
 
 						if ( 'verified' === $current_status ) {
-							?>
-							<div class="alert alert-success">
-								<?php echo sprintf( __( 'The user account is already active. Click %1$shere%2$s to login.', 'cognify-core' ), '<a href="' . home_url( '/login/' ) . '">', '</a>' ); ?>
-							</div>
-							<?php
+							echo sprintf( __( 'The user account is already active. Click %1$shere%2$s to login.', 'core-functions' ), '<a href="' . home_url( '/login/' ) . '">', '</a>' );
 						} elseif ( 'pending' === $current_status ) {
-							// update_user_meta( $user_id, 'cognify_user_email_verification', 'verified' );
+							// update_user_meta( $user_id, 'cf_user_email_verification', 'verified' );
 							$is_therapist = cf_is_user_therapist( $user_id );
 							$is_client    = cf_is_user_client( $user_id );
-							echo '<div class="alert alert-success">';
+							
 							if ( $is_therapist ) {
 								echo get_field( 'therapist_email_verification_success_message', 'option' );
 							} else {
 								echo get_field( 'client_email_verification_success_message', 'option' );
 							}
-							echo '</div>';
 						}
+						echo '</div>';
 					}
 				} else {
 					?>
