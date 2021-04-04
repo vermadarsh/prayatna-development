@@ -404,7 +404,37 @@ class Core_Functions_Admin {
 
 		// Proceed only when either the start date or the end date is requested.
 		if ( ! empty( $start_date ) || ! empty( $end_date ) ) {
-			
+			// If the start date is provided.
+			if ( ! empty( $start_date ) ) {
+				$query->set(
+					'date_query',
+					array(
+						'after' => array(
+							'year'  => gmdate( 'Y', strtotime( $start_date ) ),
+							'month' => gmdate( 'm', strtotime( $start_date ) ),
+							'day'   => gmdate( 'd', strtotime( $start_date ) ),
+						),
+					)
+				);
+			}
+
+			// If the end date is provided.
+			if ( ! empty( $end_date ) ) {
+				$query->set(
+					'date_query',
+					array(
+						'before' => array(
+							'year'  => gmdate( 'Y', strtotime( $end_date ) ),
+							'month' => gmdate( 'm', strtotime( $end_date ) ),
+							'day'   => gmdate( 'd', strtotime( $end_date ) ),
+						),
+					)
+				);
+			}
 		}
+
+		debug( $query );
+
+		return $query;
 	}
 }
