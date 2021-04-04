@@ -57,6 +57,15 @@ class Core_Functions_Admin {
 	 * @since    1.0.0
 	 */
 	public function cf_admin_enqueue_scripts_callback() {
+		// Modal custom style.
+		wp_enqueue_style(
+			$this->plugin_name . '-modal-style',
+			CF_PLUGIN_URL . 'admin/css/core-functions-modal.css',
+			array(),
+			filemtime( CF_PLUGIN_PATH . 'admin/css/core-functions-modal.css' ),
+			'all'
+		);
+
 		// Admin custom style.
 		wp_enqueue_style(
 			$this->plugin_name,
@@ -80,7 +89,9 @@ class Core_Functions_Admin {
 			$this->plugin_name,
 			'CF_Admin_JS_Script_Vars',
 			array(
-				'ajaxurl' => admin_url( 'admin-ajax.php' ),
+				'ajaxurl'                    => admin_url( 'admin-ajax.php' ),
+				'export_logs_button_text'    => __( 'Export Log', 'core-functions' ),
+				'exporting_logs_button_text' => __( 'Processing...', 'core-functions' ),
 			)
 		);
 	}
@@ -221,5 +232,130 @@ class Core_Functions_Admin {
 			$child = filter_input( INPUT_POST, 'cf-child', FILTER_SANITIZE_STRING );
 			update_post_meta( $post_id, 'child', $child );
 		}
+	}
+
+	/**
+	 * Add custom assets to admin footer.
+	 */
+	public function cf_admin_footer_callback() {
+		$post_type = filter_input( INPUT_GET, 'post_type', FILTER_SANITIZE_STRING );
+
+		// Enqueue the modal css on club page.
+		if ( ! is_null( $post_type ) && 'client-log' === $post_type ) {
+			ob_start();
+			?>
+			<div id="cf-export-client-log-modal" class="cf_modal">
+				<div class="cf_modal-content">
+					<span class="cf_close">&times;</span>
+					<h3><?php esc_html_e( 'Export Logs', 'core-functions' ); ?></h3>
+					<div class="cf-date-ranges">
+						<div class="from">
+							<label for="cf-date-from"><?php esc_html_e( 'From', 'core-functions' ); ?></label>
+							<input type="date" id="cf-date-from" />
+						</div>
+						<div class="to">
+							<label for="cf-date-to"><?php esc_html_e( 'To', 'core-functions' ); ?></label>
+							<input type="date" id="cf-date-to" />
+						</div>
+						<div class="submit">
+							<button class="button export-client-log" type="button"><?php esc_html_e( 'Submit', 'core-functions' ); ?></button>
+						</div>
+					</div>
+				</div>
+			</div>
+			<?php
+			echo ob_get_clean();
+		}
+	}
+
+	/**
+	 * AJAX to fetch the club analytics values.
+	 */
+	public function cf_export_client_log_callback() {
+		$action = filter_input( INPUT_POST, 'action', FILTER_SANITIZE_STRING );
+
+		// Return, if the action doesn't match.
+		if ( 'export_client_log' !== $action ) {
+			echo 0;
+			wp_die();
+		}
+
+		// Fetch the clubs.
+		$client_logs_query = cf_get_client_logs();
+		$client_logs       = $client_logs_query->posts;
+
+		// Exit the query if there are no clubs.
+		if ( empty( $client_logs ) || ! is_array( $client_logs ) ) {
+			exit();
+		}
+
+		// Iterate through the clubs array to fetch the data.
+		foreach ( $client_logs as $client_log_id ) {
+			$client_log_post    = get_post( $client_log_id );
+
+			// Gather the data now.
+			$logs_data[ $client_log_id ] = array(
+				'ID'        => $client_log_id,
+				'Log Title' => $client_log_post->post_title,
+				'Log URL'   => get_permalink( $client_log_id ),
+			);
+		}
+
+		// Send this array of clubs to be downloaded.
+		return $this->download_csv( $logs_data );
+	}
+
+	/**
+	 * Modify the club arguments to fetch the data.
+	 *
+	 * @param array $args Holds the client logs post arguments.
+	 * @return array
+	 */
+	public function cf_cf_client_logs_args_callback( $args ) {
+		// Posted data.
+		$start_date = filter_input( INPUT_POST, 'start_date', FILTER_SANITIZE_STRING );
+		$end_date   = filter_input( INPUT_POST, 'end_date', FILTER_SANITIZE_STRING );
+
+		// If start date is available.
+		if ( ! empty( $start_date ) ) {
+			$args['date_query']['after'] = array(
+				'year'  => gmdate( 'Y', strtotime( $start_date ) ),
+				'month' => gmdate( 'm', strtotime( $start_date ) ),
+				'day'   => gmdate( 'd', strtotime( $start_date ) ),
+			);
+		}
+
+		// If end date is available.
+		if ( ! empty( $end_date ) ) {
+			$args['date_query']['before'] = array(
+				'year'  => gmdate( 'Y', strtotime( $end_date ) ),
+				'month' => gmdate( 'm', strtotime( $end_date ) ),
+				'day'   => gmdate( 'd', strtotime( $end_date ) ),
+			);
+		}
+
+		return $args;
+	}
+
+	/**
+	 * Download the data in CSV format.
+	 */
+	public function download_csv( $data ) {
+		// Exit, if the data is empty.
+		if ( empty( $data ) || ! is_array( $data ) ) {
+			exit();
+		}
+
+		// Create the CSV now.
+		$fp = fopen( 'php://output', 'w' );
+		fputcsv( $fp, array_keys( reset( $data ) ) );
+
+		// Iterate through the clubs to download them.
+		foreach ( $data as $data_val ) {
+			fputcsv( $fp, $data_val );
+		}
+
+		fclose( $fp );
+		exit();
 	}
 }

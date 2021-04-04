@@ -282,3 +282,32 @@ function cf_get_children() {
 
 	return $children;
 }
+
+/**
+ * Get the client logs.
+ *
+ * @return object
+ */
+function cf_get_client_logs( $paged = 1, $posts_per_page = -1 ) {
+	$args = array(
+		'post_type'      => 'client-log',
+		'paged'          => $paged,
+		'posts_per_page' => $posts_per_page,
+		'post_status'    => 'publish',
+		'fields'         => 'ids',
+		'orderby'        => 'date',
+		'order'          => 'DESC',
+	);
+
+	/**
+	 * Client logs listing arguments filter.
+	 *
+	 * This filter helps to modify the arguments for retreiving client logs.
+	 *
+	 * @param array $args Holds the client log arguments.
+	 * @return array
+	 */
+	$args = apply_filters( 'cf_client_logs_args', $args );
+
+	return new WP_Query( $args );
+}
