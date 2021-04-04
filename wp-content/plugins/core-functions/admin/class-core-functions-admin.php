@@ -293,6 +293,8 @@ class Core_Functions_Admin {
 		foreach ( $client_logs as $client_log_id ) {
 			$client_log_post = get_post( $client_log_id );
 			$session_date    = gmdate( 'F j, Y', strtotime( get_field( 'session_date', $client_log_id ) ) );
+			$homework_done   = get_field( 'homework_done', $client_log_id );
+			$homework_done   = ( ! empty( $homework_done ) && '1' === $homework_done ) ? 'Yes' : 'No';
 
 			// Gather the data now.
 			$logs_data[ $client_log_id ] = array(
@@ -302,7 +304,7 @@ class Core_Functions_Admin {
 				'Session Date'    => $session_date,
 				'Time In'         => get_field( 'time_in', $client_log_id ),
 				'Time Out'        => get_field( 'time_out', $client_log_id ),
-				'Homework Done?'  => get_field( 'homework_done', $client_log_id ),
+				'Homework Done?'  => $homework_done,
 				'At Session'      => get_field( 'at_session', $client_log_id ),
 				'Kid\'s Feelings' => get_field( 'kids_feelings', $client_log_id ),
 				'Homework'        => get_field( 'homework', $client_log_id ),
