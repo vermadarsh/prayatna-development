@@ -428,8 +428,6 @@ class Core_Functions_Admin {
 			}
 		}
 
-		debug( $query ); die;
-
 		return $query;
 	}
 }
