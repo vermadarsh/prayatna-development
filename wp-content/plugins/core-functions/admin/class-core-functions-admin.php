@@ -369,4 +369,15 @@ class Core_Functions_Admin {
 		fclose( $fp );
 		exit();
 	}
+
+	/**
+	 * Add custom filters on the client logs listing page.
+	 */
+	public function cf_restrict_manage_posts_callback() {
+		ob_start();
+		?>
+		<input type="date" />
+		<?php
+		echo ob_get_clean();
+	}
 }
