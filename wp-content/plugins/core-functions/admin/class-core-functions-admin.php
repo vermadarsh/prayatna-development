@@ -379,8 +379,8 @@ class Core_Functions_Admin {
 		if ( 'client-log' === $post_type ) {
 			ob_start();
 			?>
-			<input type="text" name="client-log-start-date" placeholder="<?php esc_html_e( 'From', 'core-functions' ); ?>" onfocus="(this.type='date')" />
-			<input type="text" name="client-log-end-date" placeholder="<?php esc_html_e( 'To', 'core-functions' ); ?>" onfocus="(this.type='date')" />
+			<input type="text" name="client-log-start-date" placeholder="<?php esc_html_e( 'Logs From', 'core-functions' ); ?>" onfocus="(this.type='date')" onfocusout="(this.type='text')" />
+			<input type="text" name="client-log-end-date" placeholder="<?php esc_html_e( 'Logs To', 'core-functions' ); ?>" onfocus="(this.type='date')" onfocusout="(this.type='text')" />
 			<?php
 			echo ob_get_clean();
 		}
