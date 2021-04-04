@@ -191,7 +191,7 @@ class Core_Functions_Admin {
 	 */
 	public function cf_child_for_client_log_callback() {
 		$children       = cf_get_children();
-		$post_id        = filter_input( INPUT_GET, 'edit', FILTER_SANITIZE_NUMBER_INT );
+		$post_id        = filter_input( INPUT_GET, 'post', FILTER_SANITIZE_NUMBER_INT );
 		$selected_child = ( ! is_null( $post_id ) ) ? update_post_meta( $post_id, 'child', true ) : false;
 		var_dump( $selected_child );
 
