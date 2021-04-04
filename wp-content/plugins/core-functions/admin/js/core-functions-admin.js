@@ -8,16 +8,22 @@ jQuery( document ).ready( function( $ ) {
 
 	// Add the export button besides the new log button.
 	$( '<a href="javascript:void(0);" class="cf-export-client-log page-title-action">' + export_logs_button_text + '</a>' ).insertAfter( 'body.post-type-client-log .wrap a.page-title-action' );
+	$( '<a href="javascript:void(0);" class="cf-export-learning-lounge-log page-title-action">' + export_logs_button_text + '</a>' ).insertAfter( 'body.post-type-client-log .wrap a.page-title-action' );
 
 	// Open the modal to allow date range selection.
-	 $( document ).on( 'click', '.cf-export-client-log', function() {
+	$( document ).on( 'click', '.cf-export-client-log', function() {
 		$( '#cf-export-client-log-modal' ).show();
+	} );
+
+	// Open the modal to allow date range selection.
+	$( document ).on( 'click', '.cf-export-learning-lounge-log', function() {
+		$( '#cf-export-learning-lounge-log-modal' ).show();
 	} );
 
 	/**
 	 * Close the modal.
 	 */
-	 $( document ).on( 'click', '.cf_close', function() {
+	$( document ).on( 'click', '.cf_close', function() {
 		$( '.cf_modal' ).hide();
 	} );
 
