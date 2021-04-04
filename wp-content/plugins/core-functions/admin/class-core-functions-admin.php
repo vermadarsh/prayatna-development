@@ -402,7 +402,9 @@ class Core_Functions_Admin {
 		$end_date   = filter_input( INPUT_GET, 'client-log-end-date', FILTER_SANITIZE_STRING );
 		$post_type  = filter_input( INPUT_GET, 'post_type', FILTER_SANITIZE_STRING );
 
-		var_dump( $start_date, $end_date, $post_type );
-		die;
+		// Proceed only when either the start date or the end date is requested.
+		if ( ! empty( $start_date ) || ! empty( $end_date ) ) {
+			
+		}
 	}
 }
