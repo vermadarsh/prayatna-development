@@ -8,7 +8,7 @@ jQuery( document ).ready( function( $ ) {
 
 	// Add the export button besides the new log button.
 	$( '<a href="javascript:void(0);" class="cf-export-client-log page-title-action">' + export_logs_button_text + '</a>' ).insertAfter( 'body.post-type-client-log .wrap a.page-title-action' );
-	$( '<a href="javascript:void(0);" class="cf-export-learning-lounge-log page-title-action">' + export_logs_button_text + '</a>' ).insertAfter( 'body.post-type-client-log .wrap a.page-title-action' );
+	$( '<a href="javascript:void(0);" class="cf-export-learning-lounge-log page-title-action">' + export_logs_button_text + '</a>' ).insertAfter( 'body.post-type-learning-lounge-log .wrap a.page-title-action' );
 
 	// Open the modal to allow date range selection.
 	$( document ).on( 'click', '.cf-export-client-log', function() {
