@@ -68,6 +68,7 @@ jQuery( document ).ready( function( $ ) {
 				end_date: end_date,
 			},
 			success: function ( response ) {
+				return false;
 				// Check for invalid ajax request.
 				if ( 0 === response ) {
 					console.log( 'prayatna core: invalid ajax request' );
