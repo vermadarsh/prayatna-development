@@ -424,7 +424,7 @@ class Core_Functions_Admin {
 			}
 
 			if ( ! empty( $date_query_args ) ) {
-				$query->set( 'date_query', array( $date_query_args ) );
+				$query->set( 'date_query', $date_query_args );
 			}
 		}
 
