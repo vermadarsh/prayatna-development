@@ -105,6 +105,9 @@ jQuery( document ).ready( function( $ ) {
 				document.body.appendChild( download_link );
 				download_link.click();
 				document.body.removeChild( download_link );
+
+				// Hide the modal now.
+				$( '.cf_close' ).click();
 			},
 		} );
 	} );
@@ -176,6 +179,9 @@ jQuery( document ).ready( function( $ ) {
 				document.body.appendChild( download_link );
 				download_link.click();
 				document.body.removeChild( download_link );
+
+				// Hide the modal now.
+				$( '.cf_close' ).click();
 			},
 		} );
 	} );
