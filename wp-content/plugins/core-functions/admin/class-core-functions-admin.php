@@ -374,13 +374,15 @@ class Core_Functions_Admin {
 	 * Add custom filters on the client logs listing page.
 	 */
 	public function cf_restrict_manage_posts_callback() {
-		$post_type = filter_input( INPUT_GET, 'post_type', FILTER_SANITIZE_STRING );
+		$post_type  = filter_input( INPUT_GET, 'post_type', FILTER_SANITIZE_STRING );
+		$start_date = filter_input( INPUT_GET, 'client-log-start-date', FILTER_SANITIZE_STRING );
+		$end_date   = filter_input( INPUT_GET, 'client-log-end-date', FILTER_SANITIZE_STRING );
 
 		if ( 'client-log' === $post_type ) {
 			ob_start();
 			?>
-			<input type="text" name="client-log-start-date" placeholder="<?php esc_html_e( 'Logs From', 'core-functions' ); ?>" onfocus="(this.type='date')" onfocusout="(this.type='text')" />
-			<input type="text" name="client-log-end-date" placeholder="<?php esc_html_e( 'Logs To', 'core-functions' ); ?>" onfocus="(this.type='date')" onfocusout="(this.type='text')" />
+			<input type="text" name="client-log-start-date" value="<?php echo esc_html( $start_date ); ?>" placeholder="<?php esc_html_e( 'Logs From', 'core-functions' ); ?>" onfocus="(this.type='date')" onfocusout="(this.type='text')" />
+			<input type="text" name="client-log-end-date" value="<?php echo esc_html( $end_date ); ?>" placeholder="<?php esc_html_e( 'Logs To', 'core-functions' ); ?>" onfocus="(this.type='date')" onfocusout="(this.type='text')" />
 			<?php
 			echo ob_get_clean();
 		}
