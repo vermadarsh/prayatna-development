@@ -212,8 +212,9 @@ class Core_Functions_Public {
 			);
 		}
 
-		// Register client log CPT.
-		cf_register_client_log_cpt();
+		// Create custom post types.
+		cf_register_client_log_cpt(); // Register client log CPT.
+		cf_register_learning_lounge_log_cpt(); // Register learning lounge log CPT.
 	}
 
 	/**
