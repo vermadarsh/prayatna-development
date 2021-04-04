@@ -294,8 +294,7 @@ class Core_Functions_Admin {
 			$client_log_post = get_post( $client_log_id );
 			$session_date    = gmdate( 'F j, Y', strtotime( get_field( 'session_date', $client_log_id ) ) );
 			$homework_done   = get_field( 'homework_done', $client_log_id );
-			var_dump( $homework_done );
-			$homework_done   = ( ! empty( $homework_done ) && '1' === $homework_done ) ? 'Yes' : 'No';
+			$homework_done   = ( true === $homework_done ) ? 'Yes' : 'No';
 
 			// Gather the data now.
 			$logs_data[ $client_log_id ] = array(
