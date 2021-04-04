@@ -357,15 +357,28 @@ class Core_Functions_Admin {
 	 * Add custom filters on the client logs listing page.
 	 */
 	public function cf_restrict_manage_posts_callback() {
-		$post_type  = filter_input( INPUT_GET, 'post_type', FILTER_SANITIZE_STRING );
-		$start_date = filter_input( INPUT_GET, 'client-log-start-date', FILTER_SANITIZE_STRING );
-		$end_date   = filter_input( INPUT_GET, 'client-log-end-date', FILTER_SANITIZE_STRING );
+		$post_type                      = filter_input( INPUT_GET, 'post_type', FILTER_SANITIZE_STRING );
+		$client_log_start_date          = filter_input( INPUT_GET, 'client-log-start-date', FILTER_SANITIZE_STRING );
+		$client_log_end_date            = filter_input( INPUT_GET, 'client-log-end-date', FILTER_SANITIZE_STRING );
+		$learning_lounge_log_start_date = filter_input( INPUT_GET, 'learning-lounge-log-start-date', FILTER_SANITIZE_STRING );
+		$learning_lounge_log_end_date   = filter_input( INPUT_GET, 'learning-lounge-log-end-date', FILTER_SANITIZE_STRING );
 
+		// Check for client log post type.
 		if ( 'client-log' === $post_type ) {
 			ob_start();
 			?>
-			<input type="text" name="client-log-start-date" value="<?php echo esc_html( $start_date ); ?>" placeholder="<?php esc_html_e( 'Logs From', 'core-functions' ); ?>" onfocus="(this.type='date')" onfocusout="(this.type='text')" />
-			<input type="text" name="client-log-end-date" value="<?php echo esc_html( $end_date ); ?>" placeholder="<?php esc_html_e( 'Logs To', 'core-functions' ); ?>" onfocus="(this.type='date')" onfocusout="(this.type='text')" />
+			<input type="text" name="client-log-start-date" value="<?php echo esc_html( $client_log_start_date ); ?>" placeholder="<?php esc_html_e( 'Logs From', 'core-functions' ); ?>" onfocus="(this.type='date')" onfocusout="(this.type='text')" />
+			<input type="text" name="client-log-end-date" value="<?php echo esc_html( $client_log_end_date ); ?>" placeholder="<?php esc_html_e( 'Logs To', 'core-functions' ); ?>" onfocus="(this.type='date')" onfocusout="(this.type='text')" />
+			<?php
+			echo ob_get_clean();
+		}
+
+		// Check for client log post type.
+		if ( 'learning-lounge-log' === $post_type ) {
+			ob_start();
+			?>
+			<input type="text" name="learning-lounge-log-start-date" value="<?php echo esc_html( $learning_lounge_log_start_date ); ?>" placeholder="<?php esc_html_e( 'Logs From', 'core-functions' ); ?>" onfocus="(this.type='date')" onfocusout="(this.type='text')" />
+			<input type="text" name="learning-lounge-log-end-date" value="<?php echo esc_html( $learning_lounge_log_end_date ); ?>" placeholder="<?php esc_html_e( 'Logs To', 'core-functions' ); ?>" onfocus="(this.type='date')" onfocusout="(this.type='text')" />
 			<?php
 			echo ob_get_clean();
 		}
@@ -380,36 +393,76 @@ class Core_Functions_Admin {
 			return $query;
 		}
 
-		// Get the custom filters.
-		$start_date = filter_input( INPUT_GET, 'client-log-start-date', FILTER_SANITIZE_STRING );
-		$end_date   = filter_input( INPUT_GET, 'client-log-end-date', FILTER_SANITIZE_STRING );
+		// Get the post type.
 		$post_type  = filter_input( INPUT_GET, 'post_type', FILTER_SANITIZE_STRING );
 
-		// Proceed only when either the start date or the end date is requested.
-		if ( ! empty( $start_date ) || ! empty( $end_date ) ) {
-			$date_query_args = array();
-			// If the start date is provided.
-			if ( ! empty( $start_date ) ) {
-				$date_query_args['after']     = array(
-					'year'  => gmdate( 'Y', strtotime( $start_date ) ),
-					'month' => gmdate( 'm', strtotime( $start_date ) ),
-					'day'   => gmdate( 'd', strtotime( $start_date ) ),
-				);
-				$date_query_args['inclusive'] = true;
-			}
+		// Post type - client log.
+		if ( 'client-log' === $post_type ) {
+			// Get the custom filters.
+			$start_date = filter_input( INPUT_GET, 'client-log-start-date', FILTER_SANITIZE_STRING );
+			$end_date   = filter_input( INPUT_GET, 'client-log-end-date', FILTER_SANITIZE_STRING );
+	
+			// Proceed only when either the start date or the end date is requested.
+			if ( ! empty( $start_date ) || ! empty( $end_date ) ) {
+				$date_query_args = array();
+				// If the start date is provided.
+				if ( ! empty( $start_date ) ) {
+					$date_query_args['after']     = array(
+						'year'  => gmdate( 'Y', strtotime( $start_date ) ),
+						'month' => gmdate( 'm', strtotime( $start_date ) ),
+						'day'   => gmdate( 'd', strtotime( $start_date ) ),
+					);
+					$date_query_args['inclusive'] = true;
+				}
 
-			// If the end date is provided.
-			if ( ! empty( $end_date ) ) {
-				$date_query_args['before']    = array(
-					'year'  => gmdate( 'Y', strtotime( $end_date ) ),
-					'month' => gmdate( 'm', strtotime( $end_date ) ),
-					'day'   => gmdate( 'd', strtotime( $end_date ) ),
-				);
-				$date_query_args['inclusive'] = true;
-			}
+				// If the end date is provided.
+				if ( ! empty( $end_date ) ) {
+					$date_query_args['before']    = array(
+						'year'  => gmdate( 'Y', strtotime( $end_date ) ),
+						'month' => gmdate( 'm', strtotime( $end_date ) ),
+						'day'   => gmdate( 'd', strtotime( $end_date ) ),
+					);
+					$date_query_args['inclusive'] = true;
+				}
 
-			if ( ! empty( $date_query_args ) ) {
-				$query->set( 'date_query', $date_query_args );
+				if ( ! empty( $date_query_args ) ) {
+					$query->set( 'date_query', $date_query_args );
+				}
+			}
+		}
+
+		// Post type - learning lounge log.
+		if ( 'learning-lounge-log' === $post_type ) {
+			// Get the custom filters.
+			$start_date = filter_input( INPUT_GET, 'learning-lounge-log-start-date', FILTER_SANITIZE_STRING );
+			$end_date   = filter_input( INPUT_GET, 'learning-lounge-log-end-date', FILTER_SANITIZE_STRING );
+	
+			// Proceed only when either the start date or the end date is requested.
+			if ( ! empty( $start_date ) || ! empty( $end_date ) ) {
+				$date_query_args = array();
+				// If the start date is provided.
+				if ( ! empty( $start_date ) ) {
+					$date_query_args['after']     = array(
+						'year'  => gmdate( 'Y', strtotime( $start_date ) ),
+						'month' => gmdate( 'm', strtotime( $start_date ) ),
+						'day'   => gmdate( 'd', strtotime( $start_date ) ),
+					);
+					$date_query_args['inclusive'] = true;
+				}
+
+				// If the end date is provided.
+				if ( ! empty( $end_date ) ) {
+					$date_query_args['before']    = array(
+						'year'  => gmdate( 'Y', strtotime( $end_date ) ),
+						'month' => gmdate( 'm', strtotime( $end_date ) ),
+						'day'   => gmdate( 'd', strtotime( $end_date ) ),
+					);
+					$date_query_args['inclusive'] = true;
+				}
+
+				if ( ! empty( $date_query_args ) ) {
+					$query->set( 'date_query', $date_query_args );
+				}
 			}
 		}
 
