@@ -262,8 +262,6 @@ function cf_get_children() {
 		return $children;
 	}
 
-	debug( $clients ); die("pool");
-
 	// Iterate through the client to get their children details.
 	foreach ( $clients as $client_id ) {
 		if ( ! have_rows( 'children_details', "user_{$client_id}" ) ) {
@@ -272,6 +270,7 @@ function cf_get_children() {
 
 		// Iterate through the children details to prepare array.
 		while( have_rows( 'children_details', "user_{$client_id}" ) ) {
+			the_row();
 			$children[] = array(
 				'first_name' => get_sub_field( 'child_first_name' ),
 				'last_name'  => get_sub_field( 'child_last_name' ),
