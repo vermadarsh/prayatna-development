@@ -13,7 +13,8 @@
 	display: none;
 }
 
-#cf-export-client-log-modal h3 {
+#cf-export-client-log-modal h3,
+#cf-export-learning-lounge-log-modal h3 {
 	font-size: 22px;
 	color: #000;
 	margin-bottom: 40px !important;
@@ -21,38 +22,47 @@
 }
 
 #cf-export-client-log-modal .cf-date-ranges .from,
-#cf-export-client-log-modal .cf-date-ranges .to {
+#cf-export-client-log-modal .cf-date-ranges .to,
+#cf-export-learning-lounge-log-modal .cf-date-ranges .from,
+#cf-export-learning-lounge-log-modal .cf-date-ranges .to {
 	float: left;
 	display: flex;
 	align-items: center;
 }
 
-#cf-export-client-log-modal .cf-date-ranges .from {
+#cf-export-client-log-modal .cf-date-ranges .from,
+#cf-export-learning-lounge-log-modal .cf-date-ranges .from {
   width:48%;
   margin-right:2%
 }
 
-#cf-export-client-log-modal .cf-date-ranges .to {
+#cf-export-client-log-modal .cf-date-ranges .to,
+#cf-export-learning-lounge-log-modal .cf-date-ranges .to {
   width:48%;
   margin-left:2%
 }
 
-#cf-export-client-log-modal .cf-date-ranges {
+#cf-export-client-log-modal .cf-date-ranges,
+#cf-export-learning-lounge-log-modal .cf-date-ranges {
 	overflow: hidden;
 }
 
 #cf-export-client-log-modal .cf-date-ranges .from label,
-#cf-export-client-log-modal .cf-date-ranges .to label {
+#cf-export-client-log-modal .cf-date-ranges .to label,
+#cf-export-learning-lounge-log-modal .cf-date-ranges .from label,
+#cf-export-learning-lounge-log-modal .cf-date-ranges .to label {
 	font-size: 14px;
 	font-weight: 600;
 	margin-right: 8px;
 }
 
-#cf-export-client-log-modal .cf-date-ranges input {
+#cf-export-client-log-modal .cf-date-ranges input,
+#cf-export-learning-lounge-log-modal .cf-date-ranges input {
 	width: 100%;
 }
 
-#cf-export-client-log-modal .submit {
+#cf-export-client-log-modal .submit,
+#cf-export-learning-lounge-log-modal .submit {
 	overflow: hidden;
 	width: 100%;
 	text-align: center;
@@ -60,14 +70,16 @@
 }
 
 
-#cf-export-client-log-modal .submit button {
+#cf-export-client-log-modal .submit button,
+#cf-export-learning-lounge-log-modal .submit button {
 	width: 120px;
 	height: 40px;
 	font-size: 16px !important;
 	margin-top: 15px !important;
 }
 
-#cf-export-client-log-modal .submit button:hover {
+#cf-export-client-log-modal .submit button:hover,
+#cf-export-learning-lounge-log-modal .submit button:hover {
 	color: #fff;
 	background: #0071a1;
 }
