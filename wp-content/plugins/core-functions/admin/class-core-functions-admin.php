@@ -295,11 +295,21 @@ class Core_Functions_Admin {
 
 			// Gather the data now.
 			$logs_data[ $client_log_id ] = array(
-				'ID'        => $client_log_id,
-				'Log Title' => $client_log_post->post_title,
-				'Log URL'   => get_permalink( $client_log_id ),
+				'ID'              => $client_log_id,
+				'Log Title'       => $client_log_post->post_title,
+				'Log URL'         => get_permalink( $client_log_id ),
+				'Session Date'    => get_field( 'session_date', $client_log_id ),
+				'Time In'         => get_field( 'time_in', $client_log_id ),
+				'Time Out'        => get_field( 'time_out', $client_log_id ),
+				'Homework Done?'  => get_field( 'homework_done', $client_log_id ),
+				'At Session'      => get_field( 'at_session', $client_log_id ),
+				'Kid\'s Feelings' => get_field( 'kids_feelings', $client_log_id ),
+				'Homework'        => get_field( 'homework', $client_log_id ),
+				'Payment Due'     => get_field( 'payment_due', $client_log_id ),
 			);
 		}
+
+		debug( $logs_data ); die;
 
 		// Send this array of clubs to be downloaded.
 		return $this->download_csv( $logs_data );
