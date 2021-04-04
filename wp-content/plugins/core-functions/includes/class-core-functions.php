@@ -150,6 +150,8 @@ class Core_Functions {
 		$this->loader->add_filter( 'parse_query', $plugin_admin, 'cf_parse_query_callback' );
 		$this->loader->add_action( 'wp_ajax_export_learning_lounge_log', $plugin_admin, 'cf_export_learning_lounge_log_callback' );
 		$this->loader->add_filter( 'cf_learning_lounge_logs_args', $plugin_admin, 'cf_cf_learning_lounge_logs_args_callback' );
+		$this->loader->add_filter( 'manage_edit-learning-lounge-log_columns', $plugin_admin, 'cf_manage_learning_lounge_log_posts_columns_callback', 20 );
+		$this->loader->add_action( 'manage_learning-lounge-log_posts_custom_column', $plugin_admin, 'cf_manage_learning_lounge_log_posts_custom_column_callback', 20, 2 );
 	}
 
 	/**

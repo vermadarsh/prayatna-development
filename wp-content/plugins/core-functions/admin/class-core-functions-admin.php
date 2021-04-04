@@ -487,4 +487,41 @@ class Core_Functions_Admin {
 
 		return $args;
 	}
+
+	/**
+	 * Function to add custom columns to the learning lounge logs.
+	 *
+	 * @param $columns array Holds the default columns array.
+	 * @return array
+	 */
+	public function cf_manage_learning_lounge_log_posts_columns_callback( $columns = array() ) {
+		$columns['student_name']        = __( 'Student Name', 'core-functions' );
+		$columns['internship_duration'] = __( 'Internship Duration', 'core-functions' );
+		$columns['amount_paid']         = __( 'Amount Paid', 'core-functions' );
+
+		return $columns;
+	}
+
+	/**
+	 * Function to add custom columns content on the learning lounge logs.
+	 *
+	 * @param $column_name array Holds the column name.
+	 * @post_id $meeting_id int Holds the post ID.
+	 */
+	public function cf_manage_learning_lounge_log_posts_custom_column_callback( $column_name, $post_id ) {
+		// Check for student name column.
+		if ( 'student_name' === $column_name ) {
+			echo get_field( 'student_name', $post_id );
+		}
+
+		// Check for internship duration column.
+		if ( 'internship_duration' === $column_name ) {
+			echo get_field( 'internship_duration', $post_id );
+		}
+
+		// Check for amount paid column.
+		if ( 'amount_paid' === $column_name ) {
+			echo get_field( 'amount_paid', $post_id );
+		}
+	}
 }
