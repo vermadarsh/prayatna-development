@@ -344,7 +344,7 @@ class Core_Functions_Admin {
 		$fp = fopen( 'php://output', 'w' );
 		fputcsv( $fp, array_keys( reset( $data ) ) );
 
-		// Iterate through the clubs to download them.
+		// Iterate through the data to download.
 		foreach ( $data as $data_val ) {
 			fputcsv( $fp, $data_val );
 		}
@@ -451,6 +451,8 @@ class Core_Functions_Admin {
 				'Amount Paid'         => get_field( 'amount_paid', $log_id ),
 			);
 		}
+
+		debug( $logs_data ); die;
 
 		// Send this array of clubs to be downloaded.
 		return $this->download_csv( $logs_data );
