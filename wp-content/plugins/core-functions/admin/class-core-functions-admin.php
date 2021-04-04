@@ -208,4 +208,15 @@ class Core_Functions_Admin {
 		}
 		echo '</select>';
 	}
+
+	/**
+	 * Save the child details for client log.
+	 */
+	public function cf_save_post_callback( $post_id ) {
+		// Check for client log post type.
+		if ( 'client-log' === get_post_type( $post_id ) ) {
+			$child = filter_input( INPUT_POST, 'cf-child', FILTER_SANITIZE_STRING );
+			var_dump( $child ); die;
+		}
+	}
 }
