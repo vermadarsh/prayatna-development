@@ -370,3 +370,32 @@ function cf_get_client_logs( $paged = 1, $posts_per_page = -1 ) {
 
 	return new WP_Query( $args );
 }
+
+/**
+ * Get the learning lounge logs.
+ *
+ * @return object
+ */
+function cf_get_learning_lounge_logs( $paged = 1, $posts_per_page = -1 ) {
+	$args = array(
+		'post_type'      => 'learning-lounge-log',
+		'paged'          => $paged,
+		'posts_per_page' => $posts_per_page,
+		'post_status'    => 'publish',
+		'fields'         => 'ids',
+		'orderby'        => 'date',
+		'order'          => 'DESC',
+	);
+
+	/**
+	 * Learning lounge logs listing arguments filter.
+	 *
+	 * This filter helps to modify the arguments for retreiving learning lounge logs.
+	 *
+	 * @param array $args Holds the learning lounge log arguments.
+	 * @return array
+	 */
+	$args = apply_filters( 'cf_learning_lounge_logs_args', $args );
+
+	return new WP_Query( $args );
+}

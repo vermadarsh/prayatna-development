@@ -148,6 +148,8 @@ class Core_Functions {
 		$this->loader->add_filter( 'cf_client_logs_args', $plugin_admin, 'cf_cf_client_logs_args_callback' );
 		$this->loader->add_action( 'restrict_manage_posts', $plugin_admin, 'cf_restrict_manage_posts_callback' );
 		$this->loader->add_filter( 'parse_query', $plugin_admin, 'cf_parse_query_callback' );
+		$this->loader->add_action( 'wp_ajax_export_learning_lounge_log', $plugin_admin, 'cf_export_learning_lounge_log_callback' );
+		$this->loader->add_filter( 'cf_learning_lounge_logs_args', $plugin_admin, 'cf_cf_learning_lounge_logs_args_callback' );
 	}
 
 	/**

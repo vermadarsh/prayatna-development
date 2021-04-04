@@ -240,36 +240,19 @@ class Core_Functions_Admin {
 	public function cf_admin_footer_callback() {
 		$post_type = filter_input( INPUT_GET, 'post_type', FILTER_SANITIZE_STRING );
 
-		// Enqueue the modal css on club page.
+		// Require the modal markup for client log post type.
 		if ( ! is_null( $post_type ) && 'client-log' === $post_type ) {
-			ob_start();
-			?>
-			<div id="cf-export-client-log-modal" class="cf_modal">
-				<div class="cf_modal-content">
-					<span class="cf_close">&times;</span>
-					<h3><?php esc_html_e( 'Export Logs', 'core-functions' ); ?></h3>
-					<div class="cf-date-ranges">
-						<div class="from">
-							<label for="cf-date-from"><?php esc_html_e( 'From', 'core-functions' ); ?></label>
-							<input type="date" id="cf-date-from" />
-						</div>
-						<div class="to">
-							<label for="cf-date-to"><?php esc_html_e( 'To', 'core-functions' ); ?></label>
-							<input type="date" id="cf-date-to" />
-						</div>
-						<div class="submit">
-							<button class="button export-client-log" type="button"><?php esc_html_e( 'Submit', 'core-functions' ); ?></button>
-						</div>
-					</div>
-				</div>
-			</div>
-			<?php
-			echo ob_get_clean();
+			require_once CF_PLUGIN_PATH . 'admin/templates/modals/export-client-log.php';
+		}
+
+		// Require the modal markup for learning lounge log post type.
+		if ( ! is_null( $post_type ) && 'learning-lounge-log' === $post_type ) {
+			require_once CF_PLUGIN_PATH . 'admin/templates/modals/export-learning-lounge-log.php';
 		}
 	}
 
 	/**
-	 * AJAX to fetch the club analytics values.
+	 * AJAX to collect the client logs.
 	 */
 	public function cf_export_client_log_callback() {
 		$action = filter_input( INPUT_POST, 'action', FILTER_SANITIZE_STRING );
@@ -281,34 +264,34 @@ class Core_Functions_Admin {
 		}
 
 		// Fetch the clubs.
-		$client_logs_query = cf_get_client_logs();
-		$client_logs       = $client_logs_query->posts;
+		$logs_query = cf_get_client_logs();
+		$logs       = $logs_query->posts;
 
 		// Exit the query if there are no clubs.
-		if ( empty( $client_logs ) || ! is_array( $client_logs ) ) {
+		if ( empty( $logs ) || ! is_array( $logs ) ) {
 			exit();
 		}
 
 		// Iterate through the clubs array to fetch the data.
-		foreach ( $client_logs as $client_log_id ) {
-			$client_log_post = get_post( $client_log_id );
-			$session_date    = gmdate( 'F j, Y', strtotime( get_field( 'session_date', $client_log_id ) ) );
-			$homework_done   = get_field( 'homework_done', $client_log_id );
+		foreach ( $logs as $log_id ) {
+			$log_post = get_post( $log_id );
+			$session_date    = gmdate( 'F j, Y', strtotime( get_field( 'session_date', $log_id ) ) );
+			$homework_done   = get_field( 'homework_done', $log_id );
 			$homework_done   = ( true === $homework_done ) ? 'Yes' : 'No';
 
 			// Gather the data now.
-			$logs_data[ $client_log_id ] = array(
-				'ID'              => $client_log_id,
-				'Log Title'       => $client_log_post->post_title,
-				'Log URL'         => get_permalink( $client_log_id ),
+			$logs_data[ $log_id ] = array(
+				'ID'              => $log_id,
+				'Log Title'       => $log_post->post_title,
+				'Log URL'         => get_permalink( $log_id ),
 				'Session Date'    => $session_date,
-				'Time In'         => get_field( 'time_in', $client_log_id ),
-				'Time Out'        => get_field( 'time_out', $client_log_id ),
+				'Time In'         => get_field( 'time_in', $log_id ),
+				'Time Out'        => get_field( 'time_out', $log_id ),
 				'Homework Done?'  => $homework_done,
-				'At Session'      => get_field( 'at_session', $client_log_id ),
-				'Kid\'s Feelings' => get_field( 'kids_feelings', $client_log_id ),
-				'Homework'        => get_field( 'homework', $client_log_id ),
-				'Payment Due'     => get_field( 'payment_due', $client_log_id ),
+				'At Session'      => get_field( 'at_session', $log_id ),
+				'Kid\'s Feelings' => get_field( 'kids_feelings', $log_id ),
+				'Homework'        => get_field( 'homework', $log_id ),
+				'Payment Due'     => get_field( 'payment_due', $log_id ),
 			);
 		}
 
@@ -317,7 +300,7 @@ class Core_Functions_Admin {
 	}
 
 	/**
-	 * Modify the club arguments to fetch the data.
+	 * Modify the client log arguments to fetch the data.
 	 *
 	 * @param array $args Holds the client logs post arguments.
 	 * @return array
@@ -431,5 +414,77 @@ class Core_Functions_Admin {
 		}
 
 		return $query;
+	}
+
+	/**
+	 * AJAX to collect the learning lounge logs.
+	 */
+	public function cf_export_learning_lounge_log_callback() {
+		$action = filter_input( INPUT_POST, 'action', FILTER_SANITIZE_STRING );
+
+		// Return, if the action doesn't match.
+		if ( 'export_learning_lounge_log' !== $action ) {
+			echo 0;
+			wp_die();
+		}
+
+		// Fetch the clubs.
+		$logs_query = cf_get_learning_lounge_logs();
+		$logs       = $logs_query->posts;
+
+		// Exit the query if there are no clubs.
+		if ( empty( $logs ) || ! is_array( $logs ) ) {
+			exit();
+		}
+
+		// Iterate through the clubs array to fetch the data.
+		foreach ( $log as $log_id ) {
+			$log_post = get_post( $log_id );
+
+			// Gather the data now.
+			$logs_data[ $log_id ] = array(
+				'ID'                  => $log_id,
+				'Log Title'           => $log_post->post_title,
+				'Log URL'             => get_permalink( $log_id ),
+				'Student Name'        => get_field( 'student_name', $log_id ),
+				'Internship Duration' => get_field( 'internship_duration', $log_id ),
+				'Amount Paid'         => get_field( 'amount_paid', $log_id ),
+			);
+		}
+
+		// Send this array of clubs to be downloaded.
+		return $this->download_csv( $logs_data );
+	}
+
+	/**
+	 * Modify the learning lounge log arguments to fetch the data.
+	 *
+	 * @param array $args Holds the learning lounge logs post arguments.
+	 * @return array
+	 */
+	public function cf_cf_learning_lounge_logs_args_callback( $args ) {
+		// Posted data.
+		$start_date = filter_input( INPUT_POST, 'start_date', FILTER_SANITIZE_STRING );
+		$end_date   = filter_input( INPUT_POST, 'end_date', FILTER_SANITIZE_STRING );
+
+		// If start date is available.
+		if ( ! empty( $start_date ) ) {
+			$args['date_query']['after'] = array(
+				'year'  => gmdate( 'Y', strtotime( $start_date ) ),
+				'month' => gmdate( 'm', strtotime( $start_date ) ),
+				'day'   => gmdate( 'd', strtotime( $start_date ) ),
+			);
+		}
+
+		// If end date is available.
+		if ( ! empty( $end_date ) ) {
+			$args['date_query']['before'] = array(
+				'year'  => gmdate( 'Y', strtotime( $end_date ) ),
+				'month' => gmdate( 'm', strtotime( $end_date ) ),
+				'day'   => gmdate( 'd', strtotime( $end_date ) ),
+			);
+		}
+
+		return $args;
 	}
 }

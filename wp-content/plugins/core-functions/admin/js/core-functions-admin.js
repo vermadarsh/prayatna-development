@@ -39,9 +39,9 @@ jQuery( document ).ready( function( $ ) {
 	} );
 
 	/**
-	 * Generate the club report.
+	 * Generate the client logs csv file.
 	 */
-	 $( document ).on( 'click', '#cf-export-client-log-modal .export-client-log', function() {
+	$( document ).on( 'click', '#cf-export-client-log-modal .export-client-log', function() {
 		var this_button      = $( this );
 		var this_button_text = this_button.text();
 		var start_date       = $( '#cf-date-from' ).val();
@@ -53,7 +53,7 @@ jQuery( document ).ready( function( $ ) {
 
 			// Verify if end date falls after the start date.
 			if ( start_date_full > end_date_full ) {
-				alert( 'Invalid dare range.' );
+				alert( 'Invalid date range.' );
 				return false;
 			}
 		}
@@ -100,6 +100,77 @@ jQuery( document ).ready( function( $ ) {
 				var today = new Date( $.now() );
 				var export_time = today.getDate() + '-' + ( today.getMonth() + 1 ) + '-' + today.getFullYear() + '-' + today.getHours() + '-' + today.getMinutes() + '-' + today.getSeconds();
 				download_link.download = 'client-logs-' + export_time + '.csv';
+
+				// Force the system to download the CSV now.
+				document.body.appendChild( download_link );
+				download_link.click();
+				document.body.removeChild( download_link );
+			},
+		} );
+	} );
+
+	/**
+	 * Generate the learning lounge logs csv file.
+	 */
+	 $( document ).on( 'click', '#cf-export-learning-lounge-log-modal .export-learning-lounge-log', function() {
+		var this_button      = $( this );
+		var this_button_text = this_button.text();
+		var start_date       = $( '#cf-date-from' ).val();
+		var end_date         = $( '#cf-date-to' ).val();
+
+		if ( '' !== start_date && '' !== end_date ) {
+			var start_date_full = new Date( start_date );
+			var end_date_full   = new Date( end_date );
+
+			// Verify if end date falls after the start date.
+			if ( start_date_full > end_date_full ) {
+				alert( 'Invalid date range.' );
+				return false;
+			}
+		}
+
+		// Change the button text.
+		this_button.text( exporting_logs_button_text );
+
+		// Block the submit button.
+		block_element( this_button );
+
+		// Fire the AJAX.
+		$.ajax( {
+			url: ajaxurl,
+			type: 'POST',
+			data: {
+				action: 'export_learning_lounge_log',
+				start_date: start_date,
+				end_date: end_date,
+			},
+			success: function ( response ) {
+				// Check for invalid ajax request.
+				if ( 0 === response ) {
+					console.log( 'prayatna core: invalid ajax request' );
+					return false;
+				}
+
+				// Unblock the element.
+				unblock_element( this_button );
+
+				// Make the button text the previous one.
+				this_button.text( this_button_text );
+
+				// Make the CSV downloadable.
+				var download_link = document.createElement( 'a' );
+				var csv_data      = [ '\ufeff' + response ];
+				var blob_object   = new Blob( csv_data, {
+					type: 'text/csv;charset=utf-8;'
+				} );
+
+				var url            = URL.createObjectURL( blob_object );
+				download_link.href = url;
+
+				// Get the datetime now to set the csv file name.
+				var today = new Date( $.now() );
+				var export_time = today.getDate() + '-' + ( today.getMonth() + 1 ) + '-' + today.getFullYear() + '-' + today.getHours() + '-' + today.getMinutes() + '-' + today.getSeconds();
+				download_link.download = 'learning-lounge-logs-' + export_time + '.csv';
 
 				// Force the system to download the CSV now.
 				document.body.appendChild( download_link );
