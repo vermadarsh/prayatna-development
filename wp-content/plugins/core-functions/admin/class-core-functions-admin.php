@@ -385,4 +385,22 @@ class Core_Functions_Admin {
 			echo ob_get_clean();
 		}
 	}
+
+	/**
+	 * Parse the client log listing query to filter by start date and end date.
+	 */
+	public function cf_parse_query_callback( $query ) {
+		// Modify the query only if it admin and main query.
+		if ( ! ( is_admin() && $query->is_main_query() ) ) {
+			return $query;
+		}
+
+		// Get the custom filters.
+		$start_date = filter_input( INPUT_GET, 'client-log-start-date', FILTER_SANITIZE_STRING );
+		$end_date   = filter_input( INPUT_GET, 'client-log-end-date', FILTER_SANITIZE_STRING );
+		$post_type  = filter_input( INPUT_GET, 'post_type', FILTER_SANITIZE_STRING );
+
+		var_dump( $start_date, $end_date, $post_type );
+		die;
+	}
 }
