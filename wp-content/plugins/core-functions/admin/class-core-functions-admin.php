@@ -191,13 +191,13 @@ class Core_Functions_Admin {
 	 */
 	public function cf_child_for_client_log_callback() {
 		$children = cf_get_children();
-		debug( $children ); die;
 
 		// Prepare the select html markup.
 		echo '<select name="cf-child" required>';
 		echo '<option value="">' . __( 'Select child', 'core-functions' ) . '</option>';
 		if ( ! empty( $children ) && is_array( $children ) ) {
 			foreach ( $children as $child_data ) {
+				$client_id     = $child_data['client_id'];
 				$first_name    = $child_data['first_name'];
 				$last_name     = $child_data['last_name'];
 				$dob           = $child_data['dob'];

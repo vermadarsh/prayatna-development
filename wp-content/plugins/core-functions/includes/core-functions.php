@@ -272,6 +272,7 @@ function cf_get_children() {
 		while( have_rows( 'children_details', "user_{$client_id}" ) ) {
 			the_row();
 			$children[] = array(
+				'client_id'  => $client_id,
 				'first_name' => get_sub_field( 'child_first_name' ),
 				'last_name'  => get_sub_field( 'child_last_name' ),
 				'dob'        => get_sub_field( 'child_dob' ),
