@@ -432,16 +432,13 @@ class Core_Functions_Admin {
 		$logs_query = cf_get_learning_lounge_logs();
 		$logs       = $logs_query->posts;
 
-		debug( $logs );
-		var_dump( $logs );
-
 		// Exit the query if there are no clubs.
 		if ( empty( $logs ) || ! is_array( $logs ) ) {
 			exit();
 		}
 
 		// Iterate through the clubs array to fetch the data.
-		foreach ( $log as $log_id ) {
+		foreach ( $logs as $log_id ) {
 			$log_post = get_post( $log_id );
 
 			// Gather the data now.
@@ -454,8 +451,6 @@ class Core_Functions_Admin {
 				'Amount Paid'         => get_field( 'amount_paid', $log_id ),
 			);
 		}
-
-		debug( $logs_data ); die;
 
 		// Send this array of clubs to be downloaded.
 		return $this->download_csv( $logs_data );
