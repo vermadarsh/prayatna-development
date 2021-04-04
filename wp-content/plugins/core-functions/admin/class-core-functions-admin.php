@@ -216,7 +216,7 @@ class Core_Functions_Admin {
 		// Check for client log post type.
 		if ( 'client-log' === get_post_type( $post_id ) ) {
 			$child = filter_input( INPUT_POST, 'cf-child', FILTER_SANITIZE_STRING );
-			var_dump( $child ); die;
+			update_post_meta( $post_id, 'child', $child );
 		}
 	}
 }
