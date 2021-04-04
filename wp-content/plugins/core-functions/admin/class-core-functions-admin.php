@@ -291,14 +291,15 @@ class Core_Functions_Admin {
 
 		// Iterate through the clubs array to fetch the data.
 		foreach ( $client_logs as $client_log_id ) {
-			$client_log_post    = get_post( $client_log_id );
+			$client_log_post = get_post( $client_log_id );
+			$session_date    = gmdate( 'F j, Y', strtotime( get_field( 'session_date', $client_log_id ) ) );
 
 			// Gather the data now.
 			$logs_data[ $client_log_id ] = array(
 				'ID'              => $client_log_id,
 				'Log Title'       => $client_log_post->post_title,
 				'Log URL'         => get_permalink( $client_log_id ),
-				'Session Date'    => get_field( 'session_date', $client_log_id ),
+				'Session Date'    => $session_date,
 				'Time In'         => get_field( 'time_in', $client_log_id ),
 				'Time Out'        => get_field( 'time_out', $client_log_id ),
 				'Homework Done?'  => get_field( 'homework_done', $client_log_id ),
