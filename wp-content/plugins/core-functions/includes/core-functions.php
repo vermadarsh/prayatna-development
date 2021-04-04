@@ -237,6 +237,7 @@ function cf_register_client_log_cpt() {
  * Register Learning Lounge CPT.
  */
 function cf_register_learning_lounge_log_cpt() {
+	die("pool");
 	$labels = array(
 		'name'               => __( 'Learning Lounge Logs', 'core-functions' ),
 		'singular_name'      => __( 'Learning Lounge Log', 'core-functions' ),
