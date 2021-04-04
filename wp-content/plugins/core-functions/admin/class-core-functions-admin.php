@@ -374,10 +374,15 @@ class Core_Functions_Admin {
 	 * Add custom filters on the client logs listing page.
 	 */
 	public function cf_restrict_manage_posts_callback() {
-		ob_start();
-		?>
-		<input type="date" />
-		<?php
-		echo ob_get_clean();
+		$post_type = filter_input( INPUT_GET, 'post_type', FILTER_SANITIZE_STRING );
+
+		if ( 'client-log' === $post_type ) {
+			ob_start();
+			?>
+			<input type="date" name="client-log-start-date" placeholder="<?php esc_html_e( 'From', 'core-functions' ); ?>" />
+			<input type="date" name="client-log-end-date" placeholder="<?php esc_html_e( 'To', 'core-functions' ); ?>" />
+			<?php
+			echo ob_get_clean();
+		}
 	}
 }
