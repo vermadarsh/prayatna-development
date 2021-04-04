@@ -193,7 +193,6 @@ class Core_Functions_Admin {
 		$children       = cf_get_children();
 		$post_id        = filter_input( INPUT_GET, 'post', FILTER_SANITIZE_NUMBER_INT );
 		$selected_child = ( ! is_null( $post_id ) ) ? get_post_meta( $post_id, 'child', true ) : false;
-		var_dump( $selected_child );
 
 		// Prepare the select html markup.
 		echo '<select name="cf-child" required>';
@@ -206,7 +205,8 @@ class Core_Functions_Admin {
 				$dob           = $child_data['dob'];
 				$option_string = sprintf( __( 'Parent-#%1$s - %2$s %3$s - %4$s', 'core-functions' ), $client_id, $first_name, $last_name, $dob );
 				$option_val    = sanitize_title( $option_string );
-				echo '<option value="' . $option_val . '">' . $option_string . '</option>';
+				$selected      = ( false !== $selected_child && $selected_child === $option_val ) ? 'selected' : '';
+				echo '<option ' . $selected . ' value="' . $option_val . '">' . $option_string . '</option>';
 			}
 		}
 		echo '</select>';
