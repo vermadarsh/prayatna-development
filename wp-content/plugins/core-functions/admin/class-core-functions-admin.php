@@ -432,6 +432,9 @@ class Core_Functions_Admin {
 		$logs_query = cf_get_learning_lounge_logs();
 		$logs       = $logs_query->posts;
 
+		debug( $logs );
+		var_dump( $logs );
+
 		// Exit the query if there are no clubs.
 		if ( empty( $logs ) || ! is_array( $logs ) ) {
 			exit();
