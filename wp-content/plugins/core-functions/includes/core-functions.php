@@ -262,6 +262,8 @@ function cf_get_children() {
 		return $children;
 	}
 
+	debug( $clients ); die("pool");
+
 	// Iterate through the client to get their children details.
 	foreach ( $clients as $client_id ) {
 		if ( ! have_rows( 'children_details', "user_{$client_id}" ) ) {
