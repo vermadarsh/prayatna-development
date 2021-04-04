@@ -433,7 +433,7 @@ class Core_Functions_Admin {
 			}
 		}
 
-		debug( $query );
+		debug( $query ); die;
 
 		return $query;
 	}
