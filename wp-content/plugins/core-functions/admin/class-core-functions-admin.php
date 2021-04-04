@@ -379,7 +379,9 @@ class Core_Functions_Admin {
 		if ( 'client-log' === $post_type ) {
 			ob_start();
 			?>
+			<label>From</label>
 			<input type="date" name="client-log-start-date" placeholder="<?php esc_html_e( 'From', 'core-functions' ); ?>" />
+			<label>To</label>
 			<input type="date" name="client-log-end-date" placeholder="<?php esc_html_e( 'To', 'core-functions' ); ?>" />
 			<?php
 			echo ob_get_clean();
