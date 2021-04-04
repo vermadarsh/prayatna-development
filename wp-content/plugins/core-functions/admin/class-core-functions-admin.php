@@ -407,20 +407,22 @@ class Core_Functions_Admin {
 			$date_query_args = array();
 			// If the start date is provided.
 			if ( ! empty( $start_date ) ) {
-				$date_query_args['after'] = array(
+				$date_query_args['after']     = array(
 					'year'  => gmdate( 'Y', strtotime( $start_date ) ),
 					'month' => gmdate( 'm', strtotime( $start_date ) ),
 					'day'   => gmdate( 'd', strtotime( $start_date ) ),
 				);
+				$date_query_args['inclusive'] = true;
 			}
 
 			// If the end date is provided.
 			if ( ! empty( $end_date ) ) {
-				$date_query_args['before'] = array(
+				$date_query_args['before']    = array(
 					'year'  => gmdate( 'Y', strtotime( $end_date ) ),
 					'month' => gmdate( 'm', strtotime( $end_date ) ),
 					'day'   => gmdate( 'd', strtotime( $end_date ) ),
 				);
+				$date_query_args['inclusive'] = true;
 			}
 
 			if ( ! empty( $date_query_args ) ) {
