@@ -312,8 +312,6 @@ class Core_Functions_Admin {
 			);
 		}
 
-		debug( $logs_data ); die;
-
 		// Send this array of clubs to be downloaded.
 		return $this->download_csv( $logs_data );
 	}
