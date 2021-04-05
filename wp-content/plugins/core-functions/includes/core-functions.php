@@ -301,6 +301,7 @@ function cf_register_learning_lounge_log_cpt() {
 			'read'                   => 'read_learning-lounge-log',
 			'read_post'              => 'read_learning-lounge-log-post',
 			'read_private_posts'     => 'read_private_learning-lounge-logs',
+			'create_posts'           => 'create_learning-lounge-logs',
 		),
 		'has_archive'        => false,
 		'hierarchical'       => false,
