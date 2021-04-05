@@ -66,7 +66,7 @@ class Core_Functions_Public {
 		);
 
 		// Enqueue the custom input styles.
-		if ( is_page( 'register-as-therapist' ) || is_page( 'register-as-client' ) ) {
+		if ( is_page( 'register-as-therapist' ) || is_page( 'register-as-client' ) || is_page( 'register-as-student' ) ) {
 			// Custom input box styles.
 			wp_enqueue_style(
 				$this->plugin_name . '-input-styles',
@@ -108,7 +108,7 @@ class Core_Functions_Public {
 		);
 
 		// Enqueue the custom input script.
-		if ( is_page( 'register-as-therapist' ) || is_page( 'register-as-client' ) ) {
+		if ( is_page( 'register-as-therapist' ) || is_page( 'register-as-client' ) || is_page( 'register-as-student' ) ) {
 			// Custom input box script.
 			wp_enqueue_script(
 				$this->plugin_name . '-input-script',
