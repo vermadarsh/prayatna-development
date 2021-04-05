@@ -116,7 +116,7 @@ defined( 'ABSPATH' ) || exit; // Exit if accessed directly.
 			</div>
 			<!-- SUBMIT -->
 			<div class="col-md-6 top__margin__10 cf_user_registration_button">
-				<input class="btn btn-secondary" type="button" name="register-therapist-button" value="<?php esc_html_e( 'Register as therapist', 'core-functions' ); ?>">
+				<input class="btn btn-secondary" type="button" name="register-student-button" value="<?php esc_html_e( 'Register as student', 'core-functions' ); ?>">
 			</div>
 		</div>
 	</section>
