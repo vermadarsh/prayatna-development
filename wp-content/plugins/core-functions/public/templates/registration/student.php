@@ -62,6 +62,10 @@ defined( 'ABSPATH' ) || exit; // Exit if accessed directly.
 					</label>
 				</span>
 			</div>
+			<!-- ADDRESS -->
+			<div class="col-md-12 top__margin__10">
+				<textarea placeholder="<?php esc_html_e( 'Address', 'cognify-core' ); ?>" class="form-control student-address" rows="3"></textarea>
+			</div>
 			<!-- DOB -->
 			<div class="col-md-6 top__margin__10">
 				<span class="input input--hfd">
@@ -71,10 +75,6 @@ defined( 'ABSPATH' ) || exit; // Exit if accessed directly.
 					</label>
 				</span>
 			</div>
-			<!-- ADDRESS -->
-			<div class="col-md-6 top__margin__10">
-				<textarea placeholder="<?php esc_html_e( 'Address', 'cognify-core' ); ?>" class="form-control student-address" rows="3"></textarea>
-			</div>
 			<!-- MODE OF LEARNING -->
 			<div class="col-md-6 top__margin__10">
 				<select name="student-mode-of-learning" id="student-mode-of-learning">
@@ -82,6 +82,28 @@ defined( 'ABSPATH' ) || exit; // Exit if accessed directly.
 					<option value="online"><?php esc_html_e( 'Online', 'core-functions' ); ?></option>
 					<option value="offline"><?php esc_html_e( 'Offline', 'core-functions' ); ?></option>
 				</select>
+			</div>
+			<!-- EDUCATION QUALIFICATION -->
+			<div class="col-md-6 top__margin__10">
+				<span class="input input--hfd">
+					<input class="input__field input__field--hfd" type="text" name="student-education-qualification" id="student-education-qualification" />
+					<label class="input__label input__label--hfd" for="student-education-qualification">
+						<span class="input__label-content input__label-content--hfd "><?php esc_html_e( 'Education Qualification*', 'core-functions' ); ?></span>
+					</label>
+				</span>
+			</div>
+			<!-- INSTITUTE -->
+			<div class="col-md-6 top__margin__10">
+				<span class="input input--hfd">
+					<input class="input__field input__field--hfd" type="text" name="student-institute-name" id="student-institute-name" />
+					<label class="input__label input__label--hfd" for="student-institute-name">
+						<span class="input__label-content input__label-content--hfd "><?php esc_html_e( 'Name of the Institute*', 'core-functions' ); ?></span>
+					</label>
+				</span>
+			</div>
+			<!-- WHAT DO YOU EXPECT FROM US? -->
+			<div class="col-md-12 top__margin__10">
+				<textarea placeholder="<?php esc_html_e( 'What do you expect from us?', 'cognify-core' ); ?>" class="form-control student-expectation" rows="4"></textarea>
 			</div>
 			<!-- TERMS & CONDITIONS ACCEPTANCE -->
 			<div class="col-md-12 top__margin__10">
