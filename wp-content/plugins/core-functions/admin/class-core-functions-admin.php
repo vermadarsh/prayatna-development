@@ -574,6 +574,8 @@ class Core_Functions_Admin {
 		// Check for internship duration column.
 		if ( 'internship_duration' === $column_name ) {
 			echo get_field( 'internship_duration', $post_id );
+			echo '<br />';
+			echo sprintf( __( 'Course Opted: ', 'core-functions' ), get_field( 'course_opted', $post_id ) );
 		}
 
 		// Check for amount paid column.
