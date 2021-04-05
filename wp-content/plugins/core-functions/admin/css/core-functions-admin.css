@@ -83,3 +83,9 @@
 	color: #fff;
 	background: #0071a1;
 }
+
+.cf-form-description-text {
+	font-style: italic;
+	font-size: 12px !important;
+	color: #b2b2b2;
+}
