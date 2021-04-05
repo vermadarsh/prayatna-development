@@ -587,7 +587,8 @@ class Core_Functions_Admin {
 			__( 'Register for Learning Lounge', 'core-functions' ),
 			'can_create_learning_lounge_log',
 			'register-for-learning-lounge',
-			array( $this, 'cf_register_for_learning_lounge_callback' )
+			array( $this, 'cf_register_for_learning_lounge_callback' ),
+			'dashicons-edit-large'
 		);
 	}
 
