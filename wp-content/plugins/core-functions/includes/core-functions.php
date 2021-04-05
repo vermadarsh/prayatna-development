@@ -286,15 +286,15 @@ function cf_register_learning_lounge_log_cpt() {
 			'slug' => 'learning-lounge-log'
 		),
 		'capability_type'    => 'post',
-		// 'capabilities'       => array(
-		// 	'edit_post'          => 'edit_learning-lounge-log',
-        //     'edit_posts'         => 'edit_learning-lounge-logs',
-        //     'edit_others_posts'  => 'edit_other_learning-lounge-logs',
-        //     'publish_posts'      => 'publish_learning-lounge-logs',
-        //     'read_post'          => 'read_learning-lounge-log',
-        //     'read_private_posts' => 'read_private_learning-lounge-logs',
-        //     'delete_post'        => 'delete_learning-lounge-log'
-		// ),
+		'capabilities'       => array(
+			'edit_post'          => 'edit_learning-lounge-log',
+			'edit_posts'         => 'edit_learning-lounge-logs',
+			'edit_others_posts'  => 'edit_other_learning-lounge-logs',
+			'publish_posts'      => 'publish_learning-lounge-logs',
+			'read_post'          => 'read_learning-lounge-log',
+			'read_private_posts' => 'read_private_learning-lounge-logs',
+			'delete_post'        => 'delete_learning-lounge-log'
+		),
 		'has_archive'        => false,
 		'hierarchical'       => false,
 		'menu_position'      => null,
