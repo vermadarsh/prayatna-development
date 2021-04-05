@@ -422,7 +422,7 @@ class Core_Functions_Public {
 	}
 
 	/**
-	 * AJAX for registering the therapist.
+	 * AJAX for registering the client.
 	 */
 	public function cf_register_client_callback() {
 		$action = filter_input( INPUT_POST, 'action', FILTER_SANITIZE_STRING );
@@ -455,7 +455,7 @@ class Core_Functions_Public {
 			wp_die();
 		}
 
-		/* Register the therapist now. */
+		/* Register the client now. */
 
 		// Extract the username from the email.
 		$username = explode( '@', $email );
@@ -551,5 +551,102 @@ class Core_Functions_Public {
 			require_once CF_PLUGIN_PATH . 'public/templates/registration/student.php';
 		}
 		return ob_get_clean();
+	}
+
+	/**
+	 * AJAX for registering the student.
+	 */
+	public function cf_register_student_callback() {
+		$action = filter_input( INPUT_POST, 'action', FILTER_SANITIZE_STRING );
+
+		// Return, if the action doesn't match.
+		if ( 'register_student' !== $action ) {
+			echo 0;
+			wp_die();
+		}
+
+		// Posted data.
+		$first_name              = filter_input( INPUT_POST, 'first_name', FILTER_SANITIZE_STRING );
+		$last_name               = filter_input( INPUT_POST, 'last_name', FILTER_SANITIZE_STRING );
+		$phone                   = filter_input( INPUT_POST, 'phone', FILTER_SANITIZE_STRING );
+		$password                = filter_input( INPUT_POST, 'password', FILTER_SANITIZE_STRING );
+		$email                   = filter_input( INPUT_POST, 'email', FILTER_SANITIZE_STRING );
+		$address                 = filter_input( INPUT_POST, 'temporary_address', FILTER_SANITIZE_STRING );
+		$dob                     = filter_input( INPUT_POST, 'dob', FILTER_SANITIZE_STRING );
+		$mode_of_learning        = filter_input( INPUT_POST, 'mode_of_learning', FILTER_SANITIZE_STRING );
+		$education_qualification = filter_input( INPUT_POST, 'education_qualification', FILTER_SANITIZE_STRING );
+		$institute_name          = filter_input( INPUT_POST, 'institute_name', FILTER_SANITIZE_STRING );
+		$expectation             = filter_input( INPUT_POST, 'expectation', FILTER_SANITIZE_STRING );
+
+		// Check if a user already exists with the email.
+		if ( email_exists( $email ) ) {
+			// Send the ajax response.
+			$response = array(
+				'code'              => 'student-exists',
+				'notification_text' => sprintf( __( 'Email: %1$s is already registered. Please check %2$shere%3$s to login.', 'core-functions' ), $email, '<a href="' . home_url( '/login/' ) . '">', '</a>' ),
+			);
+			wp_send_json_success( $response );
+			wp_die();
+		}
+
+		/* Register the student now. */
+
+		// Extract the username from the email.
+		$username = explode( '@', $email );
+		$username = $username[0];
+
+		// Create the user.
+		$user_id = wp_create_user( $username, $password, $email );
+
+		if ( $user_id ) {
+			$random_number = time();
+			update_user_meta( $user_id, 'cf_user_status', 'pending' );
+			update_user_meta( $user_id, 'cf_user_email_verification', 'pending' );
+			update_user_meta( $user_id, 'first_name', $first_name );
+			update_user_meta( $user_id, 'last_name', $last_name );
+			update_field( 'cf_contact_number', $phone, "user_{$user_id}" );
+			update_field( 'cf_address', $address, "user_{$user_id}" );
+			update_field( 'cf_date_of_birth', $dob, "user_{$user_id}" );
+			update_field( 'cf_mode_of_learning', $mode_of_learning, "user_{$user_id}" );
+			update_field( 'cf_education_qualification', $education_qualification, "user_{$user_id}" );
+			update_field( 'cf_institute_name', $institute_name, "user_{$user_id}" );
+			update_field( 'cf_expectation', $expectation, "user_{$user_id}" );
+			update_user_meta( $user_id, 'email_verification_random_number', $random_number );
+
+			// Set the user's role (and implicitly remove the previous role).
+			$user = new \WP_User( $user_id );
+			$user->set_role( 'student' );
+
+			// Email verification link.
+			$email_verification_link = home_url( "/email-verification/?atts={$random_number}" );
+			$login_link              = home_url( '/login/' );
+
+			// Send the registration email.
+			$email_body = get_field( 'student_registration_email_body', 'option' );
+			$email_body = str_replace( '{first_name}', $first_name, $email_body );
+			$email_body = str_replace( '{email_verification_link}', $email_verification_link, $email_body );
+			$email_body = str_replace( '{login_link}', $login_link, $email_body );
+			$email_body = str_replace( '{site_url}', home_url(), $email_body );
+			$email_body = str_replace( '{site_name}', get_bloginfo( 'name' ), $email_body );
+			wp_mail( $email, __( 'Prayatna - Registration Successful!!', 'core-functions' ), $email_body );
+
+			// Set the success message.
+			$registration_success = get_field( ' student_registration_success_message', 'option' );
+
+			// Send back the response.
+			$response = array(
+				'code'              => 'student-registration-complete',
+				'notification_text' => $registration_success,
+			);
+			wp_send_json_success( $response );
+			wp_die();
+		} else {
+			$response = array(
+				'code'              => 'student-not-created',
+				'notification_text' => __( 'There is some problem creating the user. Please try again later.', 'core-functions' ),
+			);
+			wp_send_json_success( $response );
+			wp_die();
+		}
 	}
 }

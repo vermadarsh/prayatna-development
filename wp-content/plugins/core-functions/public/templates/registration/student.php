@@ -107,9 +107,9 @@ defined( 'ABSPATH' ) || exit; // Exit if accessed directly.
 			</div>
 			<!-- TERMS & CONDITIONS ACCEPTANCE -->
 			<div class="col-md-12 top__margin__10">
-				<div class="custom-control custom-checkbox therapist-registration-acceptance">
-					<input type="checkbox" class="custom-control-input" id="therapist-registration-terms-n-conditions-acceptance" />
-					<label class="custom-control-label" for="therapist-registration-terms-n-conditions-acceptance">
+				<div class="custom-control custom-checkbox student-registration-acceptance">
+					<input type="checkbox" class="custom-control-input" id="student-registration-terms-n-conditions-acceptance" />
+					<label class="custom-control-label" for="student-registration-terms-n-conditions-acceptance">
 						<?php echo sprintf( __( 'By clicking Sign Up, you agree to our %3$sTerms of Services%2$s and %1$sPrivacy Policy%2$s. You may receive SMS/Email notifications from us and can opt out at any time.', 'core-functions' ), '<a class="" href="/privacy-policy/">', '</a>', '<a class="" href="/terms-of-services-therapist/">' ); ?>
 					</label>
 				</div>

@@ -11,10 +11,10 @@ jQuery(document).ready( function( $ ) {
 	$( document ).on( 'click', '#toggle-password', function() {
 		var this_checkbox = $( this );
 		if ( ( this_checkbox ).is( ':checked' ) ) {
-			$( '#therapist-password, #client-password' ).attr( 'type', 'text' );
+			$( '#therapist-password, #client-password, #student-password' ).attr( 'type', 'text' );
 			this_checkbox.next( 'label' ).text( hide_password_text );
 		} else {
-			$( '#therapist-password, #client-password' ).attr( 'type', 'password' );
+			$( '#therapist-password, #client-password, #student-password' ).attr( 'type', 'password' );
 			this_checkbox.next( 'label' ).text( show_password_text );
 		}
 	} );
@@ -274,8 +274,8 @@ jQuery(document).ready( function( $ ) {
 
 	// Submit the data for client registration.
 	$( document ).on( 'click', 'input[name="register-client-button"]', function() {
-		var this_button       = $( this );
-		var this_button_text  = this_button.val();
+		var this_button              = $( this );
+		var this_button_text         = this_button.val();
 		var parent_first_name        = $( '#client-first-name' ).val();
 		var parent_last_name         = $( '#client-last-name' ).val();
 		var parent_phone             = $( '#client-phone' ).val();
@@ -427,6 +427,155 @@ jQuery(document).ready( function( $ ) {
 
 				// If client is registered.
 				if ( 'client-registration-complete' === response.data.code ) {
+					// Unblock the element.
+					unblock_element( this_button );
+
+					// Change button text.
+					this_button.val( this_button_text );
+
+					// Show the notification now.
+					cf_show_notification( 'fa fa-check', 'Success', response.data.notification_text, 'success' );
+					setTimeout( function () {
+						location.reload();
+					}, 6000 );
+				}
+			},
+		} );
+	} );
+
+	// Submit the data for student registration.
+	$( document ).on( 'click', 'input[name="register-student-button"]', function() {
+		var this_button             = $( this );
+		var this_button_text        = this_button.val();
+		var first_name              = $( '#student-first-name' ).val();
+		var last_name               = $( '#student-last-name' ).val();
+		var phone                   = $( '#student-phone' ).val();
+		var password                = $( '#student-password' ).val();
+		var email                   = $( '#student-email' ).val();
+		var address                 = $( '.student-address' ).val();
+		var dob                     = $( '#student-dob' ).val();
+		var mode_of_learning        = $( '#student-mode-of-learning' ).val();
+		var education_qualification = $( '#student-education-qualification' ).val();
+		var institute_name          = $( '#student-institute-name' ).val();
+		var expectation             = $( '.student-expectation' ).val();
+		var agree_tos               = ( $( '#student-registration-terms-n-conditions-acceptance' ).is( ':checked' ) ) ? true : false;
+		var error_message           = '';
+
+		// Hide the error notification.
+		cf_hide_notification();
+
+		// Validate first name.
+		if ( -1 === is_valid_string( first_name ) ) {
+			error_message += '<li>First name is required.</li>';
+		}
+
+		// Validate last name.
+		if ( -1 === is_valid_string( last_name ) ) {
+			error_message += '<li>Last name is required.</li>';
+		}
+
+		// Validate phone.
+		if ( '' === phone ) {
+			error_message += '<li>Phone number is required.</li>';
+		}
+
+		// Validate password.
+		if ( -1 === is_valid_string( password ) ) {
+			error_message += '<li>Password is required.</li>';
+		} else if ( 8 > password.length ) {
+			error_message += '<li>Password should be min. 8 characters length.</li>';
+		}
+
+		// Validate email.
+		if ( -1 === is_valid_string( email ) ) {
+			error_message += '<li>Email is required.</li>';
+		} else if ( -1 === is_valid_email( email ) ) {
+			error_message += '<li>Email is of invalid format.</li>';
+		}
+
+		// Validate address.
+		if ( -1 === is_valid_string( address ) ) {
+			error_message += '<li>Address is required.</li>';
+		}
+
+		// Validate dob.
+		if ( -1 === is_valid_string( dob ) ) {
+			error_message += '<li>Date of Birth is required.</li>';
+		}
+
+		// Validate mode of learning.
+		if ( -1 === is_valid_string( mode_of_learning ) ) {
+			error_message += '<li>Mode of Learning is required.</li>';
+		}
+
+		// Validate education qualification.
+		if ( -1 === is_valid_string( education_qualification ) ) {
+			error_message += '<li>Education Qualification is required.</li>';
+		}
+
+		// Validate institute name.
+		if ( -1 === is_valid_string( institute_name ) ) {
+			error_message += '<li>Institute Name is required.</li>';
+		}
+
+		// Validate the terms of service checkbox.
+		if ( false === agree_tos ) {
+			error_message += '<li>You must agree to the terms of service before proceeding for registration.</li>';
+		}
+
+		// Display the error message if there are.
+		if ( 0 < error_message.length ) {
+			error_message = '<ol>' + error_message + '</ol>';
+			cf_show_notification( 'fa fa-warning', 'Error', error_message, 'error' );
+			setTimeout( function () {
+				cf_hide_notification();
+			}, 8000 );
+
+			return false;
+		}
+
+		// If you're here, means everything is OK, proceed for registering the user.
+		// Block the element now.
+		block_element( this_button );
+
+		// Change button text.
+		this_button.val( registering_user_text );
+
+		// Send the AJAX now.
+		var data = {
+			action: 'register_student',
+			first_name: first_name,
+			last_name: last_name,
+			phone: phone,
+			password: password,
+			email: email,
+			address: address,
+			dob: dob,
+			mode_of_learning: mode_of_learning,
+			education_qualification: education_qualification,
+			institute_name: institute_name,
+			expectation: expectation,
+		};
+		$.ajax( {
+			dataType: 'JSON',
+			url: ajaxurl,
+			type: 'POST',
+			data: data,
+			success: function ( response ) {
+				// If user already exists.
+				if ( 'student-exists' === response.data.code || 'student-not-created' === response.data.code ) {
+					// Unblock the element.
+					unblock_element( this_button );
+
+					// Change button text.
+					this_button.val( this_button_text );
+
+					// Show the notification now.
+					cf_show_notification( 'fa fa-warning', 'Error', response.data.notification_text, 'error' );
+				}
+
+				// If student is registered.
+				if ( 'student-registration-complete' === response.data.code ) {
 					// Unblock the element.
 					unblock_element( this_button );
 

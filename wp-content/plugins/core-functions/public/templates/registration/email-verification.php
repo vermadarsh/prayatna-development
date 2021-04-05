@@ -51,11 +51,14 @@ $random_number = filter_input( INPUT_GET, 'atts', FILTER_SANITIZE_NUMBER_INT );
 							update_user_meta( $user_id, 'cf_user_status', 'active' );
 							$is_therapist = cf_is_user_therapist( $user_id );
 							$is_client    = cf_is_user_client( $user_id );
+							$is_student   = cf_is_user_student( $user_id );
 							
 							if ( $is_therapist ) {
 								echo get_field( 'therapist_email_verification_success_message', 'option' );
-							} else {
+							} elseif ( $is_client ) {
 								echo get_field( 'client_email_verification_success_message', 'option' );
+							} elseif ( $is_student ) {
+								echo get_field( 'student_email_verification_success_message', 'option' );
 							}
 						}
 						echo '</div>';

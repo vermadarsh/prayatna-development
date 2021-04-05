@@ -175,6 +175,7 @@ class Core_Functions {
 		$this->loader->add_action( 'wp_ajax_nopriv_add_child_profile_html', $plugin_public, 'cf_add_child_profile_html_callback' );
 		$this->loader->add_action( 'wp_ajax_nopriv_register_client', $plugin_public, 'cf_register_client_callback' );
 		$this->loader->add_shortcode( 'register_as_student', $plugin_public, 'cf_register_as_student_callback' );
+		$this->loader->add_action( 'wp_ajax_nopriv_register_student', $plugin_public, 'cf_register_student_callback' );
 	}
 
 	/**

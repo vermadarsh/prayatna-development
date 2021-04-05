@@ -123,6 +123,26 @@ function cf_is_user_client( $user_id ) {
 }
 
 /**
+ * Check to see if the asked user is a student.
+ *
+ * @param int $user_id Holds the user ID.
+ * @return boolean
+ */
+function cf_is_user_student( $user_id ) {
+	$user = get_userdata( $user_id );
+
+	if ( empty( $user->roles ) || ! is_array( $user->roles ) ) {
+		return false;
+	}
+
+	if ( ! in_array( 'student', $user->roles, true ) ) {
+		return false;
+	}
+
+	return true;
+}
+
+/**
  * Return child's profile registration fields.
  *
  * @param int $index Holds the html index.
