@@ -612,14 +612,19 @@ class Core_Functions_Admin {
 	 * Add custom menu page.
 	 */
 	public function cf_admin_menu_callback() {
-		add_menu_page(
-			__( 'Register for Learning Lounge', 'core-functions' ),
-			__( 'Register for Learning Lounge', 'core-functions' ),
-			'can_create_learning_lounge_log',
-			'register-for-learning-lounge',
-			array( $this, 'cf_register_for_learning_lounge_callback' ),
-			'dashicons-edit-large'
-		);
+		// Restrict this menu for student role only. Admin users should also not be able to see it.
+		$is_student = cf_is_user_student( get_current_user_id() );
+
+		if ( $is_student ) {
+			add_menu_page(
+				__( 'Register for Learning Lounge', 'core-functions' ),
+				__( 'Register for Learning Lounge', 'core-functions' ),
+				'can_create_learning_lounge_log',
+				'register-for-learning-lounge',
+				array( $this, 'cf_register_for_learning_lounge_callback' ),
+				'dashicons-edit-large'
+			);
+		}
 	}
 
 	/**
