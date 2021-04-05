@@ -529,4 +529,27 @@ class Core_Functions_Public {
 			wp_die();
 		}
 	}
+
+	/**
+	 * Return the template for student registration form.
+	 *
+	 * @since 1.0.0
+	 * @param array $args Holds the arguments array.
+	 * @return string
+	 */
+	public function cf_register_as_student_callback( $args = array() ) {
+		// Return, if it's the admin panel.
+		if ( is_admin() ) {
+			return;
+		}
+
+		// Render the filter HTML now.
+		ob_start();
+		if ( is_user_logged_in() ) {
+			require_once CF_PLUGIN_PATH . 'public/templates/registration/already-logged-in.php';
+		} else {
+			require_once CF_PLUGIN_PATH . 'public/templates/registration/student.php';
+		}
+		return ob_get_clean();
+	}
 }
