@@ -577,4 +577,24 @@ class Core_Functions_Admin {
 			echo get_field( 'amount_paid', $post_id );
 		}
 	}
+
+	/**
+	 * Add custom menu page.
+	 */
+	public function cf_admin_menu_callback() {
+		add_menu_page(
+			__( 'Register for Learning Lounge', 'core-functions' ),
+			__( 'Register for Learning Lounge', 'core-functions' ),
+			'can_create_learning_lounge_log',
+			'register-for-learning-lounge',
+			array( $this, 'cf_register_for_learning_lounge_callback' )
+		);
+	}
+
+	/**
+	 * Template for adding learning lounge log.
+	 */
+	public function cf_register_for_learning_lounge_callback() {
+		require_once CF_PLUGIN_PATH . 'admin/templates/cpt-learning-lounge-log/new-student-log.php';
+	}
 }
