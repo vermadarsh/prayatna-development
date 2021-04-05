@@ -20,6 +20,7 @@ label[for="toggle-password"] {
 }
 
 #therapist-email,
+#student-email,
 #client-email {
 	width: 100%;
 }
