@@ -586,9 +586,24 @@ class Core_Functions_Admin {
 		if ( 'amount_paid' === $column_name ) {
 			echo get_field( 'amount_paid', $post_id );
 			$mode_of_payment = get_field( 'mode_of_payment', $post_id );
+			$bank_name       = get_field( 'name_of_the_bank', $post_id );
+			$payment_date    = get_field( 'payment_date', $post_id );
 
+			// Display the mode of payment.
 			if ( ! empty( $mode_of_payment ) ) {
 				echo " ({$mode_of_payment})";
+			}
+
+			// Display the payment date.
+			if ( ! empty( $payment_date ) ) {
+				echo '<br />';
+				echo sprintf( __( 'on: %1$s', 'core-functions' ), $payment_date );
+			}
+
+			// Display the bank name.
+			if ( ! empty( $bank_name ) ) {
+				echo '<br />';
+				echo sprintf( __( 'via: %1$s', 'core-functions' ), $bank_name );
 			}
 		}
 	}
