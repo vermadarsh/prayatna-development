@@ -193,7 +193,7 @@ jQuery(document).ready( function( $ ) {
 	// Datepicker for date of birth fields.
 	if ( $( '.cf__date__field' ).length ) {
 		$( '.cf__date__field#therapist-dob' ).datepicker( {
-			dateFormat: 'mm-dd-yy',
+			dateFormat: 'dd-mm-yy',
 			onSelect: function( dateText, inst ) {
 				$( '.cf__date__field' ).parent( 'span' ).addClass( 'input--filled' );
 			},
@@ -201,7 +201,15 @@ jQuery(document).ready( function( $ ) {
 		} );
 
 		$( '.cf__date__field.child-dob' ).datepicker( {
-			dateFormat: 'mm-dd-yy',
+			dateFormat: 'dd-mm-yy',
+			onSelect: function( dateText, inst ) {
+				$( '.cf__date__field' ).parent( 'span' ).addClass( 'input--filled' );
+			},
+			maxDate: 0
+		} );
+
+		$( '.cf__date__field#student-dob' ).datepicker( {
+			dateFormat: 'dd-mm-yy',
 			onSelect: function( dateText, inst ) {
 				$( '.cf__date__field' ).parent( 'span' ).addClass( 'input--filled' );
 			},
