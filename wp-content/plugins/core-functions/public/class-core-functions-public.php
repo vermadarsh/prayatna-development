@@ -571,7 +571,7 @@ class Core_Functions_Public {
 		$phone                   = filter_input( INPUT_POST, 'phone', FILTER_SANITIZE_STRING );
 		$password                = filter_input( INPUT_POST, 'password', FILTER_SANITIZE_STRING );
 		$email                   = filter_input( INPUT_POST, 'email', FILTER_SANITIZE_STRING );
-		$address                 = filter_input( INPUT_POST, 'temporary_address', FILTER_SANITIZE_STRING );
+		$address                 = filter_input( INPUT_POST, 'address', FILTER_SANITIZE_STRING );
 		$dob                     = filter_input( INPUT_POST, 'dob', FILTER_SANITIZE_STRING );
 		$mode_of_learning        = filter_input( INPUT_POST, 'mode_of_learning', FILTER_SANITIZE_STRING );
 		$education_qualification = filter_input( INPUT_POST, 'education_qualification', FILTER_SANITIZE_STRING );
@@ -631,7 +631,7 @@ class Core_Functions_Public {
 			wp_mail( $email, __( 'Prayatna - Registration Successful!!', 'core-functions' ), $email_body );
 
 			// Set the success message.
-			$registration_success = get_field( ' student_registration_success_message', 'option' );
+			$registration_success = get_field( 'student_registration_success_message', 'option' );
 
 			// Send back the response.
 			$response = array(
