@@ -574,13 +574,22 @@ class Core_Functions_Admin {
 		// Check for internship duration column.
 		if ( 'internship_duration' === $column_name ) {
 			echo get_field( 'internship_duration', $post_id );
-			echo '<br />';
-			echo sprintf( __( 'Course Opted: ', 'core-functions' ), get_field( 'course_opted', $post_id ) );
+			$course_opted = get_field( 'course_opted', $post_id );
+
+			if ( ! empty( $course_opted ) ) {
+				echo '<br />';
+				echo sprintf( __( 'Course Opted: %1$s', 'core-functions' ), $course_opted );
+			}
 		}
 
 		// Check for amount paid column.
 		if ( 'amount_paid' === $column_name ) {
 			echo get_field( 'amount_paid', $post_id );
+			$mode_of_payment = get_field( 'mode_of_payment', $post_id );
+
+			if ( ! empty( $mode_of_payment ) ) {
+				echo " ({$mode_of_payment})";
+			}
 		}
 	}
 
