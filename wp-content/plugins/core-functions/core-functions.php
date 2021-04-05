@@ -108,7 +108,3 @@ if ( ! function_exists( 'debug' ) ) {
 		echo '</pre>';
 	}
 }
-
-add_action( 'wp', function() {
-	wp_mail( 'adarshvermaofficial3@gmail.com', 'tets', '<p>Hello Duniya!</p>' );
-} );
