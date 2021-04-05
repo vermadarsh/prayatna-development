@@ -502,6 +502,10 @@ class Core_Functions_Admin {
 				'Student Name'        => get_field( 'student_name', $log_id ),
 				'Internship Duration' => get_field( 'internship_duration', $log_id ),
 				'Amount Paid'         => get_field( 'amount_paid', $log_id ),
+				'Course Opted'        => get_field( 'course_opted', $log_id ),
+				'Mode of Payment'     => get_field( 'mode_of_payment', $log_id ),
+				'Payment Date'        => get_field( 'payment_date', $log_id ),
+				'Bank Name'           => get_field( 'name_of_the_bank', $log_id ),
 			);
 		}
 
