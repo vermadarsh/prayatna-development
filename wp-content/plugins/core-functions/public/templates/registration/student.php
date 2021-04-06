@@ -19,7 +19,7 @@ $heading = ( ! empty( $args['heading'] ) ) ? $args['heading'] : '';
 			<!-- FIRST NAME -->
 			<div class="col-md-6">
 				<span class="input input--hfd">
-					<input class="input__field input__field--hfd" type="text" name="student-first-name" id="student-first-name" onkeypress="return /[a-z]/i.test(event.key)" />
+					<input class="width__100_percent input__field input__field--hfd" type="text" name="student-first-name" id="student-first-name" onkeypress="return /[a-z]/i.test(event.key)" />
 					<label class="input__label input__label--hfd" for="student-first-name">
 						<span class="input__label-content input__label-content--hfd "><?php esc_html_e( 'First Name*', 'core-functions' ); ?></span>
 					</label>
@@ -28,7 +28,7 @@ $heading = ( ! empty( $args['heading'] ) ) ? $args['heading'] : '';
 			<!-- LAST NAME -->
 			<div class="col-md-6">
 				<span class="input input--hfd">
-					<input class="input__field input__field--hfd" type="text" name="student-last-name" id="student-last-name" onkeypress="return /[a-z]/i.test(event.key)" />
+					<input class="width__100_percent input__field input__field--hfd" type="text" name="student-last-name" id="student-last-name" onkeypress="return /[a-z]/i.test(event.key)" />
 					<label class="input__label input__label--hfd" for="student-last-name">
 						<span class="input__label-content input__label-content--hfd "><?php esc_html_e( 'Last Name*', 'core-functions' ); ?></span>
 					</label>
@@ -37,7 +37,7 @@ $heading = ( ! empty( $args['heading'] ) ) ? $args['heading'] : '';
 			<!-- PHONE NUMBER -->
 			<div class="col-md-6 top__margin__10 cf_user_registration_phone_field">
 				<span class="input input--hfd">
-					<input class="input__field input__field--hfd" type="text" maxlength="10" name="student-phone" id="student-phone" onkeypress="return /[0-9]/i.test(event.key)" />
+					<input class="width__100_percent input__field input__field--hfd" type="text" maxlength="10" name="student-phone" id="student-phone" onkeypress="return /[0-9]/i.test(event.key)" />
 					<label class="input__label input__label--hfd" for="student-phone">
 						<span class="input__label-content input__label-content--hfd "><?php esc_html_e( 'Phone*', 'core-functions' ); ?></span>
 					</label>
@@ -46,7 +46,7 @@ $heading = ( ! empty( $args['heading'] ) ) ? $args['heading'] : '';
 			<!-- PASSWORD -->
 			<div class="col-md-6 top__margin__10">
 				<span class="input input--hfd">
-					<input class="input__field input__field--hfd" type="password" name="student-password" id="student-password" />
+					<input class="width__100_percent input__field input__field--hfd" type="password" name="student-password" id="student-password" />
 					<label class="input__label input__label--hfd" for="student-password">
 						<span class="input__label-content input__label-content--hfd "><?php esc_html_e( 'Password*', 'core-functions' ); ?></span>
 					</label>
@@ -72,7 +72,7 @@ $heading = ( ! empty( $args['heading'] ) ) ? $args['heading'] : '';
 			<!-- DOB -->
 			<div class="col-md-6 top__margin__10">
 				<span class="input input--hfd">
-					<input class="input__field input__field--hfd cf__date__field" type="text" name="student-dob" id="student-dob" />
+					<input class="width__100_percent input__field input__field--hfd cf__date__field" type="text" name="student-dob" id="student-dob" />
 					<label class="input__label input__label--hfd" for="student-dob">
 						<span class="input__label-content input__label-content--hfd "><?php esc_html_e( 'DOB* (DD-MM-YYYY)', 'core-functions' ); ?></span>
 					</label>
@@ -80,7 +80,7 @@ $heading = ( ! empty( $args['heading'] ) ) ? $args['heading'] : '';
 			</div>
 			<!-- MODE OF LEARNING -->
 			<div class="col-md-6 top__margin__10">
-				<select name="student-mode-of-learning" id="student-mode-of-learning">
+				<select class="width__100_percent" name="student-mode-of-learning" id="student-mode-of-learning">
 					<option value=""><?php esc_html_e( 'Mode of Learning*', 'core-functions' ); ?></option>
 					<option value="online"><?php esc_html_e( 'Online', 'core-functions' ); ?></option>
 					<option value="offline"><?php esc_html_e( 'Offline', 'core-functions' ); ?></option>
@@ -89,7 +89,7 @@ $heading = ( ! empty( $args['heading'] ) ) ? $args['heading'] : '';
 			<!-- EDUCATION QUALIFICATION -->
 			<div class="col-md-6 top__margin__10">
 				<span class="input input--hfd">
-					<input class="input__field input__field--hfd" type="text" name="student-education-qualification" id="student-education-qualification" />
+					<input class="width__100_percent input__field input__field--hfd" type="text" name="student-education-qualification" id="student-education-qualification" />
 					<label class="input__label input__label--hfd" for="student-education-qualification">
 						<span class="input__label-content input__label-content--hfd "><?php esc_html_e( 'Education Qualification*', 'core-functions' ); ?></span>
 					</label>
@@ -98,7 +98,7 @@ $heading = ( ! empty( $args['heading'] ) ) ? $args['heading'] : '';
 			<!-- INSTITUTE -->
 			<div class="col-md-6 top__margin__10">
 				<span class="input input--hfd">
-					<input class="input__field input__field--hfd" type="text" name="student-institute-name" id="student-institute-name" />
+					<input class="width__100_percent input__field input__field--hfd" type="text" name="student-institute-name" id="student-institute-name" />
 					<label class="input__label input__label--hfd" for="student-institute-name">
 						<span class="input__label-content input__label-content--hfd "><?php esc_html_e( 'Name of the Institute*', 'core-functions' ); ?></span>
 					</label>
