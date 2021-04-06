@@ -197,6 +197,8 @@ jQuery(document).ready( function( $ ) {
 	if ( $( '.cf__date__field' ).length ) {
 		$( '.cf__date__field#therapist-dob' ).datepicker( {
 			dateFormat: 'dd-mm-yy',
+			changeMonth: true,
+			changeYear: true,
 			onSelect: function( dateText, inst ) {
 				$( '.cf__date__field' ).parent( 'span' ).addClass( 'input--filled' );
 			},
@@ -205,6 +207,8 @@ jQuery(document).ready( function( $ ) {
 
 		$( '.cf__date__field.child-dob' ).datepicker( {
 			dateFormat: 'dd-mm-yy',
+			changeMonth: true,
+			changeYear: true,
 			onSelect: function( dateText, inst ) {
 				$( '.cf__date__field' ).parent( 'span' ).addClass( 'input--filled' );
 			},
@@ -213,12 +217,15 @@ jQuery(document).ready( function( $ ) {
 
 		$( '.cf__date__field#student-dob' ).datepicker( {
 			dateFormat: 'dd-mm-yy',
+			changeMonth: true,
+			changeYear: true,
 			onSelect: function( dateText, inst ) {
 				$( '.cf__date__field' ).parent( 'span' ).addClass( 'input--filled' );
 			},
 			maxDate: 0
 		} );
 
+		// Mask the date field.
 		$( '.cf__date__field' ).inputmask( { 'mask': '99-99-9999'} );
 	}
 
