@@ -24,6 +24,11 @@
 	text-align: center;
 }
 
+.cf-registration-subheading {
+	margin-bottom: 20px;
+	text-align: center;
+}
+
 label[for="toggle-password"] {
 	display: contents;
 }

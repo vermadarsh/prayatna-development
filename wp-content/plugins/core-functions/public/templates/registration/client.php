@@ -15,7 +15,7 @@ $heading = ( ! empty( $args['heading'] ) ) ? $args['heading'] : '';
 <div class="container bottom__margin__10">
 	<h3 class="cf-registration-heading"><?php echo esc_html( $heading ); ?></h3>
 	<section class="content">
-		<h4><?php esc_html_e( 'Parent Basic Details', 'core-functions' ); ?></h4>
+		<h3 class="cf-registration-subheading"><?php esc_html_e( 'Parent Basic Details', 'core-functions' ); ?></h3>
 		<div class="row">
 			<!-- FIRST NAME -->
 			<div class="col-md-6">
@@ -75,7 +75,7 @@ $heading = ( ! empty( $args['heading'] ) ) ? $args['heading'] : '';
 				<textarea placeholder="<?php esc_html_e( 'Permanent address', 'cognify-core' ); ?>" class="form-control client-permanent-address" rows="3"></textarea>
 			</div>
 		</div>
-		<h4 class="top__margin__20"><?php esc_html_e( 'Child/Children Basic Details', 'core-functions' ); ?></h4>
+		<h3 class="cf-registration-subheading"><?php esc_html_e( 'Child/Children Basic Details', 'core-functions' ); ?></h3>
 		<div class="row top__margin__10">
 			<?php echo cf_get_child_profile_registration_fields_html( 1 ); ?>
 			<div class="col-md-12 top__margin__10 cf_child_addition_button">
