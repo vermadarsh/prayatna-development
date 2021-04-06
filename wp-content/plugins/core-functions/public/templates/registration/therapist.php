@@ -37,7 +37,7 @@ $heading = ( ! empty( $args['heading'] ) ) ? $args['heading'] : '';
 			<!-- PHONE NUMBER -->
 			<div class="col-md-6 top__margin__10 cf_user_registration_phone_field">
 				<span class="input input--hfd">
-					<input class="width__100_percent input__field input__field--hfd" type="text" maxlength="10" name="therapist-phone" id="therapist-phone" onkeypress="return /[0-9]/i.test(event.key)" />
+					<input class="width__100_percent input__field input__field--hfd" type="text" maxlength="10" minlength="10" name="therapist-phone" id="therapist-phone" onkeypress="return /[0-9]/i.test(event.key)" />
 					<label class="input__label input__label--hfd" for="therapist-phone">
 						<span class="input__label-content input__label-content--hfd "><?php esc_html_e( 'Phone*', 'core-functions' ); ?></span>
 					</label>
