@@ -10,10 +10,10 @@
  */
 defined( 'ABSPATH' ) || exit; // Exit if accessed directly.
 
-debug( $args );
-var_dump( $args );
+$heading = ( ! empty( $args['heading'] ) ) ? $args['heading'] : '';
 ?>
 <div class="container bottom__margin__10">
+	<h3 class="cf-registration-heading"><?php echo esc_html( $heading ); ?></h3>
 	<section class="content">
 		<div class="row">
 			<!-- FIRST NAME -->
