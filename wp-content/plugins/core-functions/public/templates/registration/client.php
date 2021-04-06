@@ -20,7 +20,7 @@ $heading = ( ! empty( $args['heading'] ) ) ? $args['heading'] : '';
 			<!-- FIRST NAME -->
 			<div class="col-md-6">
 				<span class="input input--hfd">
-					<input class="input__field input__field--hfd" type="text" name="client-first-name" id="client-first-name" onkeypress="return /[a-z]/i.test(event.key)" />
+					<input class="width__100_percent input__field input__field--hfd" type="text" name="client-first-name" id="client-first-name" onkeypress="return /[a-z]/i.test(event.key)" />
 					<label class="input__label input__label--hfd" for="client-first-name">
 						<span class="input__label-content input__label-content--hfd "><?php esc_html_e( 'First Name*', 'core-functions' ); ?></span>
 					</label>
@@ -29,7 +29,7 @@ $heading = ( ! empty( $args['heading'] ) ) ? $args['heading'] : '';
 			<!-- LAST NAME -->
 			<div class="col-md-6">
 				<span class="input input--hfd">
-					<input class="input__field input__field--hfd" type="text" name="client-last-name" id="client-last-name" onkeypress="return /[a-z]/i.test(event.key)" />
+					<input class="width__100_percent input__field input__field--hfd" type="text" name="client-last-name" id="client-last-name" onkeypress="return /[a-z]/i.test(event.key)" />
 					<label class="input__label input__label--hfd" for="client-last-name">
 						<span class="input__label-content input__label-content--hfd "><?php esc_html_e( 'Last Name*', 'core-functions' ); ?></span>
 					</label>
@@ -38,7 +38,7 @@ $heading = ( ! empty( $args['heading'] ) ) ? $args['heading'] : '';
 			<!-- PHONE NUMBER -->
 			<div class="col-md-6 top__margin__10 cf_user_registration_phone_field">
 				<span class="input input--hfd">
-					<input class="input__field input__field--hfd" type="text" maxlength="10" name="client-phone" id="client-phone" onkeypress="return /[0-9]/i.test(event.key)" />
+					<input class="width__100_percent input__field input__field--hfd" type="text" maxlength="10" name="client-phone" id="client-phone" onkeypress="return /[0-9]/i.test(event.key)" />
 					<label class="input__label input__label--hfd" for="client-phone">
 						<span class="input__label-content input__label-content--hfd "><?php esc_html_e( 'Phone*', 'core-functions' ); ?></span>
 					</label>
@@ -47,7 +47,7 @@ $heading = ( ! empty( $args['heading'] ) ) ? $args['heading'] : '';
 			<!-- PASSWORD -->
 			<div class="col-md-6 top__margin__10">
 				<span class="input input--hfd">
-					<input class="input__field input__field--hfd" type="password" name="client-password" id="client-password" />
+					<input class="width__100_percent input__field input__field--hfd" type="password" name="client-password" id="client-password" />
 					<label class="input__label input__label--hfd" for="client-password">
 						<span class="input__label-content input__label-content--hfd "><?php esc_html_e( 'Password*', 'core-functions' ); ?></span>
 					</label>
