@@ -40,7 +40,7 @@ $heading = ( ! empty( $args['heading'] ) ) ? $args['heading'] : '';
 				<span class="input input--hfd">
 					<input class="width__100_percent input__field input__field--hfd" type="text" maxlength="10" name="client-phone" id="client-phone" onkeypress="return /[0-9]/i.test(event.key)" />
 					<label class="input__label input__label--hfd" for="client-phone">
-						<span class="input__label-content input__label-content--hfd "><?php esc_html_e( 'Phone*', 'core-functions' ); ?></span>
+						<span class="input__label-content input__label-content--hfd "><?php esc_html_e( 'Phone* (+91)', 'core-functions' ); ?></span>
 					</label>
 				</span>
 			</div>
