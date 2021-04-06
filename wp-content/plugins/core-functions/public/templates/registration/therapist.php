@@ -65,7 +65,7 @@ defined( 'ABSPATH' ) || exit; // Exit if accessed directly.
 			<!-- DOB -->
 			<div class="col-md-6 top__margin__10">
 				<span class="input input--hfd">
-					<input class="input__field input__field--hfd cf__date__field" type="text" name="therapist-dob" id="therapist-dob" />
+					<input class="width__100_percent input__field input__field--hfd cf__date__field" type="text" name="therapist-dob" id="therapist-dob" />
 					<label class="input__label input__label--hfd" for="therapist-dob">
 						<span class="input__label-content input__label-content--hfd "><?php esc_html_e( 'DOB* (DD-MM-YYYY)', 'core-functions' ); ?></span>
 					</label>
@@ -73,7 +73,7 @@ defined( 'ABSPATH' ) || exit; // Exit if accessed directly.
 			</div>
 			<!-- GENDER -->
 			<div class="col-md-6 top__margin__10 therapist-gender-div">
-				<select name="therapist-gender" id="therapist-gender">
+				<select name="therapist-gender" id="therapist-gender" class="width__100_percent">
 					<option value=""><?php esc_html_e( 'Gender*', 'core-functions' ); ?></option>
 					<option value="male"><?php esc_html_e( 'Male', 'core-functions' ); ?></option>
 					<option value="female"><?php esc_html_e( 'Female', 'core-functions' ); ?></option>
