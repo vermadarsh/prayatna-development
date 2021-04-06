@@ -158,6 +158,7 @@ jQuery(document).ready( function( $ ) {
 						fd.append( 'random_number', response.data.random_number );
 						fd.append( 'user_id', response.data.user_id );
 						fd.append( 'first_name', response.data.first_name );
+						fd.append( 'email', response.data.email );
 
 						$.ajax( {
 							dataType: 'JSON',

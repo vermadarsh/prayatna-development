@@ -303,6 +303,7 @@ class Core_Functions_Public {
 				'random_number'     => $random_number,
 				'user_id'           => $user_id,
 				'first_name'        => $first_name,
+				'email'             => $email,
 			);
 			wp_send_json_success( $response );
 			wp_die();
@@ -332,6 +333,7 @@ class Core_Functions_Public {
 		$random_number = filter_input( INPUT_POST, 'random_number', FILTER_SANITIZE_STRING );
 		$user_id       = filter_input( INPUT_POST, 'user_id', FILTER_SANITIZE_NUMBER_INT );
 		$first_name    = filter_input( INPUT_POST, 'first_name', FILTER_SANITIZE_STRING );
+		$email         = filter_input( INPUT_POST, 'email', FILTER_SANITIZE_STRING );
 
 		// Upload the profile picture.
 		$filename    = $_FILES['profile_picture']['name'];
