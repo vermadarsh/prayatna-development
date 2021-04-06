@@ -9,6 +9,9 @@
  * @subpackage Core_Functions/public/templates/registration
  */
 defined( 'ABSPATH' ) || exit; // Exit if accessed directly.
+
+debug( $args );
+var_dump( $args );
 ?>
 <div class="container bottom__margin__10">
 	<section class="content">
