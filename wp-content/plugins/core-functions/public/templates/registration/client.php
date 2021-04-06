@@ -75,7 +75,7 @@ $heading = ( ! empty( $args['heading'] ) ) ? $args['heading'] : '';
 				<textarea placeholder="<?php esc_html_e( 'Permanent address', 'cognify-core' ); ?>" class="form-control client-permanent-address" rows="3"></textarea>
 			</div>
 		</div>
-		<h3 class="cf-registration-subheading"><?php esc_html_e( 'Child/Children Basic Details', 'core-functions' ); ?></h3>
+		<h3 class="cf-registration-subheading top__margin__20"><?php esc_html_e( 'Child/Children Basic Details', 'core-functions' ); ?></h3>
 		<div class="row top__margin__10">
 			<?php echo cf_get_child_profile_registration_fields_html( 1 ); ?>
 			<div class="col-md-12 top__margin__10 cf_child_addition_button">
