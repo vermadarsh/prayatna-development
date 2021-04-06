@@ -57,6 +57,8 @@ jQuery(document).ready( function( $ ) {
 		// Validate phone.
 		if ( '' === phone ) {
 			error_message += '<li>Phone number is required.</li>';
+		} else if ( 10 !== phone.length ) {
+			error_message += '<li>Phone number is invalid.</li>';
 		}
 
 		// Validate password.
@@ -355,6 +357,8 @@ jQuery(document).ready( function( $ ) {
 		// Validate phone.
 		if ( '' === parent_phone ) {
 			error_message += '<li>Phone number is required.</li>';
+		} else if ( 10 !== parent_phone.length ) {
+			error_message += '<li>Phone number is invalid.</li>';
 		}
 
 		// Validate password.
@@ -486,6 +490,8 @@ jQuery(document).ready( function( $ ) {
 		// Validate phone.
 		if ( '' === phone ) {
 			error_message += '<li>Phone number is required.</li>';
+		} else if ( 10 !== phone.length ) {
+			error_message += '<li>Phone number is invalid.</li>';
 		}
 
 		// Validate password.
