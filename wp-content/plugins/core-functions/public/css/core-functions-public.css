@@ -16,7 +16,7 @@
 }
 
 .width__100_percent {
-	width: 100% im !important;
+	width: 100% !important;
 }
 
 label[for="toggle-password"] {
