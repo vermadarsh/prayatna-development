@@ -16,7 +16,7 @@ defined( 'ABSPATH' ) || exit; // Exit if accessed directly.
 			<!-- FIRST NAME -->
 			<div class="col-md-6">
 				<span class="input input--hfd">
-					<input class="input__field input__field--hfd" type="text" name="therapist-first-name" id="therapist-first-name" onkeypress="return /[a-z]/i.test(event.key)" />
+					<input class="width__100_percent input__field input__field--hfd" type="text" name="therapist-first-name" id="therapist-first-name" onkeypress="return /[a-z]/i.test(event.key)" />
 					<label class="input__label input__label--hfd" for="therapist-first-name">
 						<span class="input__label-content input__label-content--hfd "><?php esc_html_e( 'First Name*', 'core-functions' ); ?></span>
 					</label>
@@ -25,7 +25,7 @@ defined( 'ABSPATH' ) || exit; // Exit if accessed directly.
 			<!-- LAST NAME -->
 			<div class="col-md-6">
 				<span class="input input--hfd">
-					<input class="input__field input__field--hfd" type="text" name="therapist-last-name" id="therapist-last-name" onkeypress="return /[a-z]/i.test(event.key)" />
+					<input class="width__100_percent input__field input__field--hfd" type="text" name="therapist-last-name" id="therapist-last-name" onkeypress="return /[a-z]/i.test(event.key)" />
 					<label class="input__label input__label--hfd" for="therapist-last-name">
 						<span class="input__label-content input__label-content--hfd "><?php esc_html_e( 'Last Name*', 'core-functions' ); ?></span>
 					</label>
@@ -34,7 +34,7 @@ defined( 'ABSPATH' ) || exit; // Exit if accessed directly.
 			<!-- PHONE NUMBER -->
 			<div class="col-md-6 top__margin__10 cf_user_registration_phone_field">
 				<span class="input input--hfd">
-					<input class="input__field input__field--hfd" type="text" maxlength="10" name="therapist-phone" id="therapist-phone" onkeypress="return /[0-9]/i.test(event.key)" />
+					<input class="width__100_percent input__field input__field--hfd" type="text" maxlength="10" name="therapist-phone" id="therapist-phone" onkeypress="return /[0-9]/i.test(event.key)" />
 					<label class="input__label input__label--hfd" for="therapist-phone">
 						<span class="input__label-content input__label-content--hfd "><?php esc_html_e( 'Phone*', 'core-functions' ); ?></span>
 					</label>
@@ -43,7 +43,7 @@ defined( 'ABSPATH' ) || exit; // Exit if accessed directly.
 			<!-- PASSWORD -->
 			<div class="col-md-6 top__margin__10">
 				<span class="input input--hfd">
-					<input class="input__field input__field--hfd" type="password" name="therapist-password" id="therapist-password" />
+					<input class="width__100_percent input__field input__field--hfd" type="password" name="therapist-password" id="therapist-password" />
 					<label class="input__label input__label--hfd" for="therapist-password">
 						<span class="input__label-content input__label-content--hfd "><?php esc_html_e( 'Password*', 'core-functions' ); ?></span>
 					</label>

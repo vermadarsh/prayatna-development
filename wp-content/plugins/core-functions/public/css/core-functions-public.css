@@ -15,6 +15,10 @@
 	margin-bottom: 10px !important;
 }
 
+.width__100_percent {
+	width: 100%;
+}
+
 label[for="toggle-password"] {
 	display: contents;
 }
