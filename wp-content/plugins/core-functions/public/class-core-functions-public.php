@@ -651,4 +651,14 @@ class Core_Functions_Public {
 			wp_die();
 		}
 	}
+
+	/**
+	 * Set the email content type.
+	 *
+	 * @return string
+	 */
+	public function cf_wp_mail_content_type_callback() {
+
+		return 'text/html';
+	}
 }
