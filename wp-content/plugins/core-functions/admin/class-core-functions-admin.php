@@ -568,8 +568,8 @@ class Core_Functions_Admin {
 	/**
 	 * Function to add custom columns content on the learning lounge logs.
 	 *
-	 * @param $column_name array Holds the column name.
-	 * @post_id $meeting_id int Holds the post ID.
+	 * @param string $column_name Holds the column name.
+	 * @param int $post_id Holds the post ID.
 	 */
 	public function cf_manage_learning_lounge_log_posts_custom_column_callback( $column_name, $post_id ) {
 		// Check for student name column.
@@ -638,5 +638,51 @@ class Core_Functions_Admin {
 	 */
 	public function cf_register_for_learning_lounge_callback() {
 		require_once CF_PLUGIN_PATH . 'admin/templates/cpt-learning-lounge-log/new-student-log.php';
+	}
+
+	/**
+	 * Function to add custom columns to the client logs.
+	 *
+	 * @param array $columns Holds the default columns array.
+	 * @return array
+	 */
+	public function cf_manage_client_log_posts_columns_callback( $columns = array() ) {
+		$columns['session_date']  = __( 'Session Date', 'core-functions' );
+		$columns['time_in_out']   = __( 'Time In & Out', 'core-functions' );
+		$columns['homework_done'] = __( 'Homework Done?', 'core-functions' );
+		$columns['payment_due']   = __( 'Payment Due', 'core-functions' );
+
+		return $columns;
+	}
+
+	/**
+	 * Function to add custom columns content on the client logs.
+	 *
+	 * @param string $column_name Holds the column name.
+	 * @param int $post_id Holds the post ID.
+	 */
+	public function cf_manage_client_log_posts_custom_column_callback( $column_name, $post_id ) {
+		// Check for session date column.
+		if ( 'session_date' === $column_name ) {
+			echo get_field( 'session_date', $post_id );
+		}
+
+		// Check for time in and out column.
+		if ( 'time_in_out' === $column_name ) {
+			$time_in  = get_field( 'time_in', $post_id );
+			$time_out = get_field( 'time_out', $post_id );
+			echo sprintf( __( 'Time In: %1$s%2$sTime Out: %3$s', 'core-functions' ), $time_in, '<br />', $time_out );
+		}
+
+		// Check for homework done column.
+		if ( 'homework_done' === $column_name ) {
+			$homework_done = get_field( 'homework_done', $post_id );
+			echo ( true === $homework_done ) ? __( 'Yes', 'core-functions' ) : __( 'No', 'core-functions' );
+		}
+
+		// Check for payment due status column.
+		if ( 'payment_due' === $column_name ) {
+			echo get_field( 'payment_due', $post_id );
+		}
 	}
 }

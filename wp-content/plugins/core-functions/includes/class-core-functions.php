@@ -153,6 +153,8 @@ class Core_Functions {
 		$this->loader->add_filter( 'manage_edit-learning-lounge-log_columns', $plugin_admin, 'cf_manage_learning_lounge_log_posts_columns_callback', 20 );
 		$this->loader->add_action( 'manage_learning-lounge-log_posts_custom_column', $plugin_admin, 'cf_manage_learning_lounge_log_posts_custom_column_callback', 20, 2 );
 		$this->loader->add_action( 'admin_menu', $plugin_admin, 'cf_admin_menu_callback' );
+		$this->loader->add_filter( 'manage_edit-client-log_columns', $plugin_admin, 'cf_manage_client_log_posts_columns_callback', 20 );
+		$this->loader->add_action( 'manage_client-log_posts_custom_column', $plugin_admin, 'cf_manage_client_log_posts_custom_column_callback', 20, 2 );
 	}
 
 	/**
