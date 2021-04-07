@@ -100,15 +100,27 @@ class Cf_Payment_History_Table extends WP_List_Table {
 		$current_page = $this->get_pagenum();
 		$payments_obj = cf_get_learning_lounge_logs( get_current_user_id() );
 		$payments     = $payments_obj->posts;
-		debug( $payments ); die;
 		$total_items  = count( $payments );
 
 		foreach ( $payments as $log_id ) {
-			$payment_history_table_data[]['author']              = 'author';
-			$payment_history_table_data[]['published_date']      = 'pub date';
-			$payment_history_table_data[]['student_name']        = 'student name';
-			$payment_history_table_data[]['internship_duration'] = 'internship duration';
-			$payment_history_table_data[]['amount_paid']         = 'amt. paid';
+			$log_post            = get_post( $log_id );
+			$internship_duration = get_field( 'internship_duration', $log_id );
+			$course_opted        = get_field( 'course_opted', $log_id );
+			$internship_data     = sprintf( __( '%1$s%2$sCourse Opted: %3$s', 'core-functions' ), $internship_duration, '<br />', $course_opted );
+			$amount_paid         = '₹' . get_field( 'amount_paid', $log_id );
+			$mode_of_payment     = get_field( 'mode_of_payment', $log_id );
+			$bank_name           = get_field( 'name_of_the_bank', $log_id );
+			$payment_date        = get_field( 'payment_date', $log_id );
+			$transaction_id      = get_field( 'transaction_id', $log_id );
+			$amount_paid_data    = sprintf( __( '%1$s (%3$s)%2$s', 'core-functions' ), $amount_paid, '<br />', $mode_of_payment, $bank_name, $payment_date, $transaction_id );
+
+			$payment_history_table_data[] = array(
+				'author'              => $log_post->post_author,
+				'published_date'      => $log_post->post_date,
+				'student_name'        => get_field( 'student_name', $log_id ),
+				'internship_duration' => $internship_data,
+				'amount_paid'         => $amount_paid_data,
+			);
 		}
 
 		usort( $payment_history_table_data, array( $this, 'payment_history_usort_reorder' ) );
