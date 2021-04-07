@@ -657,7 +657,10 @@ class Core_Functions_Admin {
 	public function cf_payment_history_callback() {
 		?>
 		<div class="wrap">
-			<h1><?php esc_html_e( 'Your Payment History', 'core-functions' ); ?></h1>
+			<div>
+				<h1><?php esc_html_e( 'Your Payment History', 'core-functions' ); ?></h1>
+				<a href="" class="page-title-action">Add</a>
+			</div>
 			<p><?php esc_html_e( 'Following is the list of all the payment records added by you.', 'core-functions' ); ?></p>
 			<?php
 			require_once CF_PLUGIN_PATH . 'admin/templates/cpt-learning-lounge-log/payment-history.php';
