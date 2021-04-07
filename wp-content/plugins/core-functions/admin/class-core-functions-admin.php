@@ -655,10 +655,18 @@ class Core_Functions_Admin {
 	 * Template for showing payment history.
 	 */
 	public function cf_payment_history_callback() {
-		require_once CF_PLUGIN_PATH . 'admin/templates/cpt-learning-lounge-log/payment-history.php';
-		$payment_history_obj = new Cf_Payment_History_Table();
-		$payment_history_obj->prepare_items();
-		$payment_history_obj->display();
+		?>
+		<div class="wrap">
+			<h1><?php esc_html_e( 'Your Payment History', 'core-functions' ); ?></h1>
+			<p><?php esc_html_e( 'Following is the list of all the payment records added by you.', 'core-functions' ); ?></p>
+			<?php
+			require_once CF_PLUGIN_PATH . 'admin/templates/cpt-learning-lounge-log/payment-history.php';
+			$payment_history_obj = new Cf_Payment_History_Table();
+			$payment_history_obj->prepare_items();
+			$payment_history_obj->display();
+			?>
+		</div>
+		<?php
 	}
 
 	/**
