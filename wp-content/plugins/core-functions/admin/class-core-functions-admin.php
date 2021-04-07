@@ -664,13 +664,13 @@ class Core_Functions_Admin {
 	public function cf_manage_client_log_posts_custom_column_callback( $column_name, $post_id ) {
 		// Check for session date column.
 		if ( 'session_date' === $column_name ) {
-			echo gmdate( 'F j,Y', strtotime( get_field( 'session_date', $post_id ) ) );
+			echo gmdate( 'F j, Y', strtotime( get_field( 'session_date', $post_id ) ) );
 		}
 
 		// Check for time in and out column.
 		if ( 'time_in_out' === $column_name ) {
-			$time_in  = get_field( 'time_in', $post_id );
-			$time_out = get_field( 'time_out', $post_id );
+			$time_in  = gmdate( 'H:i A', strtotime( get_field( 'time_in', $post_id ) ) );
+			$time_out = gmdate( 'H:i A', strtotime( get_field( 'time_out', $post_id ) ) );
 			echo sprintf( __( 'Time In: %1$s%2$sTime Out: %3$s', 'core-functions' ), $time_in, '<br />', $time_out );
 		}
 
