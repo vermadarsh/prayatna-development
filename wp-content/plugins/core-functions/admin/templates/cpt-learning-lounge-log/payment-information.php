@@ -119,6 +119,15 @@ if ( isset( $submit_log ) && wp_verify_nonce( $new_log_nonce, 'new-learning-loun
 						<p class="cf-form-description-text"><?php esc_html_e( 'From which bank was the payment initiated?', 'core-functions' ); ?></p>
 					</td>
 				</tr>
+
+				<!-- FIELD: TRANSACTION ID -->
+				<tr>
+					<th scope="row"><label for="transaction-id"><?php esc_html_e( 'Transaction ID', 'core-functions' ); ?></label></th>
+					<td>
+						<input type="text" name="transaction-id" id="transaction-id" class="regular-text" />
+						<p class="cf-form-description-text"><?php esc_html_e( 'Put in the transaction ID for verification purposes.', 'core-functions' ); ?></p>
+					</td>
+				</tr>
 			</tbody>
 		</table>
 		<?php wp_nonce_field( 'new-learning-lounge-log', 'new-learning-lounge-log-nonce' );

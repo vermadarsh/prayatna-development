@@ -623,11 +623,11 @@ class Core_Functions_Admin {
 
 		if ( $is_student ) {
 			add_menu_page(
-				__( 'Register for Learning Lounge', 'core-functions' ),
-				__( 'Register for Learning Lounge', 'core-functions' ),
+				__( 'Payment Information', 'core-functions' ),
+				__( 'Payment Information', 'core-functions' ),
 				'can_create_learning_lounge_log',
-				'register-for-learning-lounge',
-				array( $this, 'cf_register_for_learning_lounge_callback' ),
+				'payment-information',
+				array( $this, 'cf_payment_information_callback' ),
 				'dashicons-edit-large'
 			);
 		}
@@ -636,8 +636,8 @@ class Core_Functions_Admin {
 	/**
 	 * Template for adding learning lounge log.
 	 */
-	public function cf_register_for_learning_lounge_callback() {
-		require_once CF_PLUGIN_PATH . 'admin/templates/cpt-learning-lounge-log/new-student-log.php';
+	public function cf_payment_information_callback() {
+		require_once CF_PLUGIN_PATH . 'admin/templates/cpt-learning-lounge-log/payment-information.php';
 	}
 
 	/**
