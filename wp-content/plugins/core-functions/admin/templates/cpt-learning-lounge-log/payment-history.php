@@ -110,7 +110,7 @@ class Cf_Payment_History_Table extends WP_List_Table {
 			$amount_paid         = '₹' . get_field( 'amount_paid', $log_id );
 			$mode_of_payment     = get_field( 'mode_of_payment', $log_id );
 			$bank_name           = get_field( 'name_of_the_bank', $log_id );
-			$payment_date        = get_field( 'payment_date', $log_id );
+			$payment_date        = gmdate( 'F j, Y', strtotime( get_field( 'payment_date', $log_id ) ) );
 			$transaction_id      = get_field( 'transaction_id', $log_id );
 			$amount_paid_data    = sprintf( __( '%1$s (%3$s)%2$son: %5$s%2$svia: %4$s%2$sTxn. ID: %6$s', 'core-functions' ), $amount_paid, '<br />', $mode_of_payment, $bank_name, $payment_date, $transaction_id );
 			$record_added_date   = sprintf( __( '%1$s at %2$s', 'core-functions' ), gmdate( 'F j, Y', strtotime( $log_post->post_date ) ), gmdate( 'H:i A', strtotime( $log_post->post_date ) ) );
