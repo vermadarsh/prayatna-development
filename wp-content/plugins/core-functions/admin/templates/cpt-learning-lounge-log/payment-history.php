@@ -98,6 +98,7 @@ class Cf_Payment_History_Table extends WP_List_Table {
 
 		$per_page     = $this->get_items_per_page( 'payment_history_data_per_page', 20 );
 		$current_page = $this->get_pagenum();
+		var_dump( get_current_user_id() ); die;
 		$payments_obj = cf_get_learning_lounge_logs( get_current_user_id() );
 		$payments     = $payments_obj->posts;
 		$total_items  = count( $payments );

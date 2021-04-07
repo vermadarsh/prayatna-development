@@ -417,7 +417,7 @@ function cf_get_learning_lounge_logs( $author = '', $paged = 1, $posts_per_page 
 
 	// If author is provided.
 	if ( ! empty( $author ) ) {
-		$args['post_author'] = $author;
+		$args['author'] = $author;
 	}
 
 	/**
