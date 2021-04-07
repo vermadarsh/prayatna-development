@@ -108,7 +108,7 @@ if ( isset( $submit_log ) && wp_verify_nonce( $new_log_nonce, 'new-learning-loun
 				<tr>
 					<th scope="row"><label for="payment-date"><?php esc_html_e( 'Date of Payment', 'core-functions' ); ?><span class="required">*</span></label></th>
 					<td>
-						<input type="text" name="payment-date" id="payment-date" class="regular-text" required />
+						<input type="date" name="payment-date" id="payment-date" class="regular-text" required />
 						<p class="cf-form-description-text"><?php esc_html_e( 'When was the payment done?', 'core-functions' ); ?></p>
 					</td>
 				</tr>
