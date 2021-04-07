@@ -12,7 +12,6 @@ if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly.
 $submit_payment = filter_input( INPUT_POST, 'add-client-payment', FILTER_SANITIZE_STRING );
 $payment_nonce  = filter_input( INPUT_POST, 'add-client-payment-nonce', FILTER_SANITIZE_STRING );
 $clients        = cf_get_clients();
-debug( $clients ); die;
 
 // If the submit button it pressed, add the new payment to the client's database.
 if ( isset( $submit_payment ) && wp_verify_nonce( $payment_nonce, 'add-client-payment' ) ) {
@@ -34,19 +33,31 @@ if ( isset( $submit_payment ) && wp_verify_nonce( $payment_nonce, 'add-client-pa
 			<tbody>
 				<!-- FIELD: CLIENT ID -->
 				<tr>
-					<th scope="row"><label for="student-name"><?php esc_html_e( 'Student Name', 'core-functions' ); ?><span class="required">*</span></label></th>
+					<th scope="row"><label for="client-id"><?php esc_html_e( 'Client', 'core-functions' ); ?><span class="required">*</span></label></th>
 					<td>
-						<input type="text" name="student-name" id="student-name" class="regular-text" value="<?php echo esc_html( $current_user_name ); ?>" required />
-						<p class="cf-form-description-text"><?php esc_html_e( 'Provide the student name here.', 'core-functions' ); ?></p>
+						<select>
+							<option value=""><?php esc_html_e( 'Select client', 'core-functions' ); ?></option>
+							<?php
+							if ( ! empty( $clients ) && is_array( $clients ) ) {
+								foreach ( $clients as $client_id ) {
+									$client      = get_userdata( $client_id );
+									$client_name = cf_get_user_full_name( $client_id );
+									$client_str  = "#{$client_id} - {$client->data->user_email} - {$client_name}";
+									echo '<option value="' . $client_id . '">' . $client_str . '</option>';
+								}
+							}
+							?>
+						</select>
+						<p class="cf-form-description-text"><?php esc_html_e( 'Select the client who submitted the payment.', 'core-functions' ); ?></p>
 					</td>
 				</tr>
 
-				<!-- FIELD: INTERNSHIP DURATION -->
+				<!-- FIELD: AMOUNT -->
 				<tr>
-					<th scope="row"><label for="internship-duration"><?php esc_html_e( 'Internship Duration', 'core-functions' ); ?><span class="required">*</span></label></th>
+					<th scope="row"><label for="amount"><?php esc_html_e( 'Amount', 'core-functions' ); ?><span class="required">*</span></label></th>
 					<td>
-						<input type="text" name="internship-duration" id="internship-duration" class="regular-text" required />
-						<p class="cf-form-description-text"><?php esc_html_e( 'How long would the internship go?', 'core-functions' ); ?></p>
+						<input type="text" name="amount" id="amount" class="regular-text" onkeypress="return /[0-9]/i.test(event.key)" required />
+						<p class="cf-form-description-text"><?php esc_html_e( 'how much did the client pay?', 'core-functions' ); ?></p>
 					</td>
 				</tr>
 			</tbody>
