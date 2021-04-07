@@ -28,6 +28,14 @@
 	background-color: #409740;
 }
 
+.notification_popup.is-notice {
+	background: #5BB7FF;
+}
+
+.notification_popup.is-notice:hover {
+	background-color: #0077bd;
+}
+
 .notification_popup.is-error {
 	background: rgba(185, 88, 79, 0.7019607843137254);
 }

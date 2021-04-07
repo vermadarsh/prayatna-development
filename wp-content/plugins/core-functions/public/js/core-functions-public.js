@@ -7,6 +7,8 @@ jQuery(document).ready( function( $ ) {
 	var hide_password_text    = CF_Public_JS_Script_Vars.hide_password_text;
 	var registering_user_text = CF_Public_JS_Script_Vars.registering_user_text;
 
+	cf_show_notification( 'fa fa-bell', 'Notice', 'Hello, you are most welcome.', 'notice' );
+
 	// Show hide password.
 	$( document ).on( 'click', '#toggle-password', function() {
 		var this_checkbox = $( this );
@@ -691,13 +693,15 @@ jQuery(document).ready( function( $ ) {
 		$( '.notification_popup .notification_icon i' ).removeClass().addClass( icon_class );
 		$( '.notification_popup .notification_message h3' ).html( header_text );
 		$( '.notification_popup .notification_message p' ).html( message );
-		$( '.notification_popup').removeClass( 'is-success is-error' );
+		$( '.notification_popup').removeClass( 'is-success is-error is-notice' );
 		
 		// Add classes based on success|error.
 		if ( 'error' === success_or_error ) {
 			$( '.notification_popup' ).addClass( 'active is-error' );
 		} else if ( 'success' === success_or_error ) {
 			$( '.notification_popup' ).addClass( 'active is-success' );
+		} else if ( 'notice' === success_or_error ) {
+			$( '.notification_popup' ).addClass( 'active is-notice' );
 		}
     }
 } );
