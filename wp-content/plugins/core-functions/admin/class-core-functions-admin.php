@@ -430,6 +430,11 @@ class Core_Functions_Admin {
 					$query->set( 'date_query', $date_query_args );
 				}
 			}
+
+			// If not admin, show the client logs created by self.
+			if ( ! current_user_can( 'manage_options' ) ) {
+				$query->set( 'author', get_current_user_id() );
+			}
 		}
 
 		// Post type - learning lounge log.
