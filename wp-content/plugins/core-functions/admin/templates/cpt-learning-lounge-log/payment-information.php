@@ -112,7 +112,7 @@ if ( isset( $submit_log ) && wp_verify_nonce( $new_log_nonce, 'new-learning-loun
 				</tr>
 
 				<!-- FIELD: BANK NAME -->
-				<tr>
+				<tr class="cf-bank-name-field">
 					<th scope="row"><label for="bank-name"><?php esc_html_e( 'Name of the Bank', 'core-functions' ); ?><span class="required">*</span></label></th>
 					<td>
 						<input type="text" name="bank-name" id="bank-name" class="regular-text" required />
@@ -121,7 +121,7 @@ if ( isset( $submit_log ) && wp_verify_nonce( $new_log_nonce, 'new-learning-loun
 				</tr>
 
 				<!-- FIELD: TRANSACTION ID -->
-				<tr>
+				<tr class="cf-transaction-id-field">
 					<th scope="row"><label for="transaction-id"><?php esc_html_e( 'Transaction ID', 'core-functions' ); ?><span class="required">*</span></label></th>
 					<td>
 						<input type="text" name="transaction-id" id="transaction-id" class="regular-text" required />

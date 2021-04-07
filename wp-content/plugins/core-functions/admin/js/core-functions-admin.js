@@ -191,6 +191,26 @@ jQuery( document ).ready( function( $ ) {
 	} );
 
 	/**
+	 * For the payment information new log added by student, manage the fields.
+	 */
+	$( document ).on( 'change', '#mode-of-payment', function() {
+		var mode_of_payment = $( this ).val();
+
+		// Hide the bank name and transaction ID in case of cash mode.
+		if ( 'cash' === mode_of_payment ) {
+			$( '.cf-bank-name-field' ).hide();
+			$( '.cf-transaction-id-field' ).hide();
+			$( '#bank-name' ).attr( 'required', false );
+			$( '#transaction-id' ).attr( 'required', false );
+		} else {
+			$( '.cf-bank-name-field' ).show();
+			$( '.cf-transaction-id-field' ).show();
+			$( '#bank-name' ).attr( 'required', true );
+			$( '#transaction-id' ).attr( 'required', true );
+		}
+	} );
+
+	/**
 	 * Block element.
 	 *
 	 * @param {string} $element
