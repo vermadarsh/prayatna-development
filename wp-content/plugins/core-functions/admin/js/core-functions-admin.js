@@ -5,6 +5,9 @@ jQuery( document ).ready( function( $ ) {
 	var ajaxurl                    = CF_Admin_JS_Script_Vars.ajaxurl;
 	var export_logs_button_text    = CF_Admin_JS_Script_Vars.export_logs_button_text;
 	var exporting_logs_button_text = CF_Admin_JS_Script_Vars.exporting_logs_button_text;
+	var is_administrator           = CF_Admin_JS_Script_Vars.is_administrator;
+
+	console.log( 'is_administrator', is_administrator );
 
 	// Add the export button besides the new log button.
 	$( '<a href="javascript:void(0);" class="cf-export-client-log page-title-action">' + export_logs_button_text + '</a>' ).insertAfter( 'body.post-type-client-log .wrap a.page-title-action' );

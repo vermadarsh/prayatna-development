@@ -92,6 +92,7 @@ class Core_Functions_Admin {
 				'ajaxurl'                    => admin_url( 'admin-ajax.php' ),
 				'export_logs_button_text'    => __( 'Export Log', 'core-functions' ),
 				'exporting_logs_button_text' => __( 'Processing...', 'core-functions' ),
+				'is_administrator'           => ( current_user_can( 'manage_options' ) ) ? 'yes' : 'no',
 			)
 		);
 	}
