@@ -117,7 +117,7 @@ class Cf_Payment_History_Table extends WP_List_Table {
 
 			$payment_history_table_data[] = array(
 				'author'              => $log_post->post_author,
-				'published_date'      => $log_post->post_date,
+				'published_date'      => $record_added_date,
 				'student_name'        => get_field( 'student_name', $log_id ),
 				'internship_duration' => $internship_data,
 				'amount_paid'         => $amount_paid_data,
