@@ -54,7 +54,7 @@ if ( isset( $submit_log ) && wp_verify_nonce( $new_log_nonce, 'new-learning-loun
 			<tbody>
 				<!-- FIELD: STUDENT NAME -->
 				<tr>
-					<th scope="row"><label for="student-name"><?php esc_html_e( 'Student Name', 'core-functions' ); ?> <span class="required">*</span></label></th>
+					<th scope="row"><label for="student-name"><?php esc_html_e( 'Student Name', 'core-functions' ); ?><span class="required">*</span></label></th>
 					<td>
 						<input type="text" name="student-name" id="student-name" class="regular-text" required />
 						<p class="cf-form-description-text"><?php esc_html_e( 'Provide the student name here.', 'core-functions' ); ?></p>
@@ -63,7 +63,7 @@ if ( isset( $submit_log ) && wp_verify_nonce( $new_log_nonce, 'new-learning-loun
 
 				<!-- FIELD: INTERNSHIP DURATION -->
 				<tr>
-					<th scope="row"><label for="internship-duration"><?php esc_html_e( 'Internship Duration', 'core-functions' ); ?></label></th>
+					<th scope="row"><label for="internship-duration"><?php esc_html_e( 'Internship Duration', 'core-functions' ); ?><span class="required">*</span></label></th>
 					<td>
 						<input type="text" name="internship-duration" id="internship-duration" class="regular-text" required />
 						<p class="cf-form-description-text"><?php esc_html_e( 'How long would the internship go?', 'core-functions' ); ?></p>
@@ -72,7 +72,7 @@ if ( isset( $submit_log ) && wp_verify_nonce( $new_log_nonce, 'new-learning-loun
 
 				<!-- FIELD: COURSE OPTED -->
 				<tr>
-					<th scope="row"><label for="course-opted"><?php esc_html_e( 'Course Opted', 'core-functions' ); ?></label></th>
+					<th scope="row"><label for="course-opted"><?php esc_html_e( 'Course Opted', 'core-functions' ); ?><span class="required">*</span></label></th>
 					<td>
 						<input type="text" name="course-opted" id="course-opted" class="regular-text" required />
 						<p class="cf-form-description-text"><?php esc_html_e( 'Which course did you opt?', 'core-functions' ); ?></p>
@@ -81,7 +81,7 @@ if ( isset( $submit_log ) && wp_verify_nonce( $new_log_nonce, 'new-learning-loun
 
 				<!-- FIELD: AMOUNT PAID -->
 				<tr>
-					<th scope="row"><label for="amount-paid"><?php esc_html_e( 'Amount Paid', 'core-functions' ); ?></label></th>
+					<th scope="row"><label for="amount-paid"><?php esc_html_e( 'Amount Paid', 'core-functions' ); ?><span class="required">*</span></label></th>
 					<td>
 						<input type="text" name="amount-paid" id="amount-paid" class="regular-text" required />
 						<p class="cf-form-description-text"><?php esc_html_e( 'How much did the student pay?', 'core-functions' ); ?></p>
@@ -90,7 +90,7 @@ if ( isset( $submit_log ) && wp_verify_nonce( $new_log_nonce, 'new-learning-loun
 
 				<!-- FIELD: MODE OF PAYMENT -->
 				<tr>
-					<th scope="row"><label for="mode-of-payment"><?php esc_html_e( 'Mode of Payment', 'core-functions' ); ?></label></th>
+					<th scope="row"><label for="mode-of-payment"><?php esc_html_e( 'Mode of Payment', 'core-functions' ); ?><span class="required">*</span></label></th>
 					<td>
 						<select name="mode-of-payment" id="mode-of-payment" required>
 							<option value=""><?php esc_html_e( '--Select--', 'core-functions' ); ?></option>
@@ -104,7 +104,7 @@ if ( isset( $submit_log ) && wp_verify_nonce( $new_log_nonce, 'new-learning-loun
 
 				<!-- FIELD: PAYMENT DATE -->
 				<tr>
-					<th scope="row"><label for="payment-date"><?php esc_html_e( 'Date of Payment', 'core-functions' ); ?></label></th>
+					<th scope="row"><label for="payment-date"><?php esc_html_e( 'Date of Payment', 'core-functions' ); ?><span class="required">*</span></label></th>
 					<td>
 						<input type="text" name="payment-date" id="payment-date" class="regular-text" required />
 						<p class="cf-form-description-text"><?php esc_html_e( 'When was the payment done?', 'core-functions' ); ?></p>
@@ -113,18 +113,18 @@ if ( isset( $submit_log ) && wp_verify_nonce( $new_log_nonce, 'new-learning-loun
 
 				<!-- FIELD: BANK NAME -->
 				<tr>
-					<th scope="row"><label for="bank-name"><?php esc_html_e( 'Name of the Bank', 'core-functions' ); ?></label></th>
+					<th scope="row"><label for="bank-name"><?php esc_html_e( 'Name of the Bank', 'core-functions' ); ?><span class="required">*</span></label></th>
 					<td>
-						<input type="text" name="bank-name" id="bank-name" class="regular-text" />
+						<input type="text" name="bank-name" id="bank-name" class="regular-text" required />
 						<p class="cf-form-description-text"><?php esc_html_e( 'From which bank was the payment initiated?', 'core-functions' ); ?></p>
 					</td>
 				</tr>
 
 				<!-- FIELD: TRANSACTION ID -->
 				<tr>
-					<th scope="row"><label for="transaction-id"><?php esc_html_e( 'Transaction ID', 'core-functions' ); ?></label></th>
+					<th scope="row"><label for="transaction-id"><?php esc_html_e( 'Transaction ID', 'core-functions' ); ?><span class="required">*</span></label></th>
 					<td>
-						<input type="text" name="transaction-id" id="transaction-id" class="regular-text" />
+						<input type="text" name="transaction-id" id="transaction-id" class="regular-text" required />
 						<p class="cf-form-description-text"><?php esc_html_e( 'Put in the transaction ID for verification purposes.', 'core-functions' ); ?></p>
 					</td>
 				</tr>
