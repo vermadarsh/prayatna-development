@@ -590,10 +590,11 @@ class Core_Functions_Admin {
 
 		// Check for amount paid column.
 		if ( 'amount_paid' === $column_name ) {
-			echo '₹ ' . get_field( 'amount_paid', $post_id );
+			echo '₹' . get_field( 'amount_paid', $post_id );
 			$mode_of_payment = get_field( 'mode_of_payment', $post_id );
 			$bank_name       = get_field( 'name_of_the_bank', $post_id );
 			$payment_date    = get_field( 'payment_date', $post_id );
+			$transaction_id  = get_field( 'transaction_id', $post_id );
 
 			// Display the mode of payment.
 			if ( ! empty( $mode_of_payment ) ) {
@@ -610,6 +611,12 @@ class Core_Functions_Admin {
 			if ( ! empty( $bank_name ) ) {
 				echo '<br />';
 				echo sprintf( __( 'via: %1$s', 'core-functions' ), $bank_name );
+			}
+
+			// Display the transaction ID.
+			if ( ! empty( $transaction_id ) ) {
+				echo '<br />';
+				echo sprintf( __( 'Txn. ID: %1$s', 'core-functions' ), $transaction_id );
 			}
 		}
 	}

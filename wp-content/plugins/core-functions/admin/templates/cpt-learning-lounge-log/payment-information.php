@@ -24,6 +24,7 @@ if ( isset( $submit_log ) && wp_verify_nonce( $new_log_nonce, 'new-learning-loun
 	$payment_date        = filter_input( INPUT_POST, 'payment-date', FILTER_SANITIZE_STRING );
 	$payment_date        = gmdate( 'Y-m-d', strtotime( $payment_date ) );
 	$bank_name           = filter_input( INPUT_POST, 'bank-name', FILTER_SANITIZE_STRING );
+	$transaction_id      = filter_input( INPUT_POST, 'transaction-id', FILTER_SANITIZE_STRING );
 
 	// Create the log post now.
 	$log_id = wp_insert_post(
@@ -44,6 +45,7 @@ if ( isset( $submit_log ) && wp_verify_nonce( $new_log_nonce, 'new-learning-loun
 	update_field( 'mode_of_payment', $mode_of_payment, $log_id );
 	update_field( 'payment_date', $payment_date, $log_id );
 	update_field( 'name_of_the_bank', $bank_name, $log_id );
+	update_field( 'transaction_id', $transaction_id, $log_id );
 
 	// Create the site is it does not already exist.
 	echo '<div class="notice updated" id="message"><p>' . __( 'New log added successfully.', 'core-functions' ) . '</p></div>';
