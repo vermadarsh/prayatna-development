@@ -629,19 +629,40 @@ class Core_Functions_Admin {
 		$is_student = cf_is_user_student( get_current_user_id() );
 
 		if ( $is_student ) {
+			// Payment history page.
 			add_menu_page(
+				__( 'Payment History', 'core-functions' ),
+				__( 'Payment History', 'core-functions' ),
+				'can_create_learning_lounge_log',
+				'payment-history',
+				array( $this, 'cf_payment_history_callback' ),
+				'dashicons-backup'
+			);
+
+			// Add payment information page.
+			add_submenu_page(
+				'payment-history',
 				__( 'Payment Information', 'core-functions' ),
 				__( 'Payment Information', 'core-functions' ),
 				'can_create_learning_lounge_log',
 				'payment-information',
 				array( $this, 'cf_payment_information_callback' ),
-				'dashicons-edit-large'
 			);
 		}
 	}
 
 	/**
-	 * Template for adding learning lounge log.
+	 * Template for showing payment history.
+	 */
+	public function cf_payment_history_callback() {
+		require_once CF_PLUGIN_PATH . 'admin/templates/cpt-learning-lounge-log/payment-history.php';
+		$payment_history_obj = new Cf_Payment_History_Table();
+		$payment_history_obj->prepare_items();
+		$payment_history_obj->display();
+	}
+
+	/**
+	 * Template for adding payment information.
 	 */
 	public function cf_payment_information_callback() {
 		require_once CF_PLUGIN_PATH . 'admin/templates/cpt-learning-lounge-log/payment-information.php';
