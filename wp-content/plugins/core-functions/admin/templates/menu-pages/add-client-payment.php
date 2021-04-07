@@ -57,7 +57,16 @@ if ( isset( $submit_payment ) && wp_verify_nonce( $payment_nonce, 'add-client-pa
 					<th scope="row"><label for="amount"><?php esc_html_e( 'Amount', 'core-functions' ); ?><span class="required">*</span></label></th>
 					<td>
 						<input type="text" name="amount" id="amount" class="regular-text" onkeypress="return /[0-9]/i.test(event.key)" required />
-						<p class="cf-form-description-text"><?php esc_html_e( 'how much did the client pay?', 'core-functions' ); ?></p>
+						<p class="cf-form-description-text"><?php esc_html_e( 'How much did the client pay?', 'core-functions' ); ?></p>
+					</td>
+				</tr>
+
+				<!-- FIELD: NUMBER OF SESSIONS -->
+				<tr>
+					<th scope="row"><label for="no-of-sessions"><?php esc_html_e( 'No. of Sessions', 'core-functions' ); ?><span class="required">*</span></label></th>
+					<td>
+						<input type="text" name="no-of-sessions" id="no-of-sessions" class="regular-text" onkeypress="return /[0-9]/i.test(event.key)" required />
+						<p class="cf-form-description-text"><?php esc_html_e( 'The number of sessions that the client can undertake from the amount paid.', 'core-functions' ); ?></p>
 					</td>
 				</tr>
 			</tbody>
