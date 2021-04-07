@@ -47,7 +47,7 @@ if ( isset( $submit_log ) && wp_verify_nonce( $new_log_nonce, 'new-learning-loun
 }
 ?>
 <div class="wrap">
-	<h1><?php esc_html_e( 'Register for Learning Lounge', 'core-functions' ); ?></h1>
+	<h1><?php esc_html_e( 'Payment Information', 'core-functions' ); ?></h1>
 	<form class="cf-new-learning-lounge-log-form" action="" method="POST">
 		<h4><?php esc_html_e( 'Fill in the details below to add a new log.', 'core-functions' ); ?></h4>
 		<table class="form-table">
