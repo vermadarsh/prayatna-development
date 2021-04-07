@@ -3,6 +3,10 @@
 	opacity: 0.5;
 }
 
+span.required {
+	color: red;
+}
+
 #application-passwords-section {
 	display: none;
 }

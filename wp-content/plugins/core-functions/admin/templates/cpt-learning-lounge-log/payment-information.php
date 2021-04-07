@@ -54,7 +54,7 @@ if ( isset( $submit_log ) && wp_verify_nonce( $new_log_nonce, 'new-learning-loun
 			<tbody>
 				<!-- FIELD: STUDENT NAME -->
 				<tr>
-					<th scope="row"><label for="student-name"><?php esc_html_e( 'Student Name', 'core-functions' ); ?><span>*</span></label></th>
+					<th scope="row"><label for="student-name"><?php esc_html_e( 'Student Name', 'core-functions' ); ?> <span class="required">*</span></label></th>
 					<td>
 						<input type="text" name="student-name" id="student-name" class="regular-text" required />
 						<p class="cf-form-description-text"><?php esc_html_e( 'Provide the student name here.', 'core-functions' ); ?></p>
