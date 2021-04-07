@@ -658,8 +658,8 @@ class Core_Functions_Admin {
 		?>
 		<div class="wrap">
 			<div>
-				<h1><?php esc_html_e( 'Your Payment History', 'core-functions' ); ?></h1>
-				<a href="" class="page-title-action">Add</a>
+				<h1 class="wp-heading-inline"><?php esc_html_e( 'Your Payment History', 'core-functions' ); ?></h1>
+				<a href="<?php echo esc_url( admin_url( 'admin.php?page=payment-information' ) ); ?>" class="page-title-action"><?php esc_html_e( 'Add Payment Information', 'core-functions' ); ?></a>
 			</div>
 			<p><?php esc_html_e( 'Following is the list of all the payment records added by you.', 'core-functions' ); ?></p>
 			<?php
