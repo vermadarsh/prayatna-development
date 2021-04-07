@@ -83,7 +83,7 @@ if ( isset( $submit_log ) && wp_verify_nonce( $new_log_nonce, 'new-learning-loun
 
 				<!-- FIELD: AMOUNT PAID -->
 				<tr>
-					<th scope="row"><label for="amount-paid"><?php esc_html_e( 'Amount Paid', 'core-functions' ); ?><span class="required">*</span></label></th>
+					<th scope="row"><label for="amount-paid"><?php esc_html_e( 'Amount Paid (₹)', 'core-functions' ); ?><span class="required">*</span></label></th>
 					<td>
 						<input type="text" name="amount-paid" id="amount-paid" class="regular-text" onkeypress="return /[0-9]/i.test(event.key)" required />
 						<p class="cf-form-description-text"><?php esc_html_e( 'How much did the student pay?', 'core-functions' ); ?></p>
