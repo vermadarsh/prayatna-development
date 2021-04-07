@@ -7,8 +7,6 @@ jQuery(document).ready( function( $ ) {
 	var hide_password_text    = CF_Public_JS_Script_Vars.hide_password_text;
 	var registering_user_text = CF_Public_JS_Script_Vars.registering_user_text;
 
-	cf_show_notification( 'fa fa-bell', 'Notice', 'Hello, you are most welcome.', 'notice' );
-
 	// Show hide password.
 	$( document ).on( 'click', '#toggle-password', function() {
 		var this_checkbox = $( this );
@@ -148,10 +146,8 @@ jQuery(document).ready( function( $ ) {
 
 				// User is created.
 				if ( 'therapist-created-upload-profile-photo' === response.data.code ) {
-					cf_show_notification( 'fa fa-check', 'Success', response.data.notification_text, 'success' );
+					cf_show_notification( 'fa fa-bell', 'Notice', response.data.notification_text, 'notice' );
 					setTimeout( function () {
-						cf_hide_notification();
-
 						// Send the AJAX now for uploading the profile picture.
 						var fd              = new FormData();
 						var profile_picture = $( '#therapist-profile-picture' ).prop( 'files' )[0];
