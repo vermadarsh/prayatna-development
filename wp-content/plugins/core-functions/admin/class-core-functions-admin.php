@@ -664,7 +664,7 @@ class Core_Functions_Admin {
 	public function cf_manage_client_log_posts_custom_column_callback( $column_name, $post_id ) {
 		// Check for session date column.
 		if ( 'session_date' === $column_name ) {
-			echo get_field( 'session_date', $post_id );
+			echo gmdate( 'F j,Y', strtotime( get_field( 'session_date', $post_id ) ) );
 		}
 
 		// Check for time in and out column.
