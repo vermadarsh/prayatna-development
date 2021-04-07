@@ -404,7 +404,7 @@ function cf_get_client_logs( $paged = 1, $posts_per_page = -1 ) {
  *
  * @return object
  */
-function cf_get_learning_lounge_logs( $paged = 1, $posts_per_page = -1 ) {
+function cf_get_learning_lounge_logs( $author = '', $paged = 1, $posts_per_page = -1 ) {
 	$args = array(
 		'post_type'      => 'learning-lounge-log',
 		'paged'          => $paged,
@@ -414,6 +414,11 @@ function cf_get_learning_lounge_logs( $paged = 1, $posts_per_page = -1 ) {
 		'orderby'        => 'date',
 		'order'          => 'DESC',
 	);
+
+	// If author is provided.
+	if ( ! empty( $author ) ) {
+		$args['post_author'] = $author;
+	}
 
 	/**
 	 * Learning lounge logs listing arguments filter.
