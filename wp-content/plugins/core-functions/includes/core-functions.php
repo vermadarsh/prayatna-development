@@ -143,6 +143,26 @@ function cf_is_user_student( $user_id ) {
 }
 
 /**
+ * Check to see if the asked user is a receptionist.
+ *
+ * @param int $user_id Holds the user ID.
+ * @return boolean
+ */
+function cf_is_user_receptionist( $user_id ) {
+	$user = get_userdata( $user_id );
+
+	if ( empty( $user->roles ) || ! is_array( $user->roles ) ) {
+		return false;
+	}
+
+	if ( ! in_array( 'receptionist', $user->roles, true ) ) {
+		return false;
+	}
+
+	return true;
+}
+
+/**
  * Return child's profile registration fields.
  *
  * @param int $index Holds the html index.
@@ -286,23 +306,6 @@ function cf_register_learning_lounge_log_cpt() {
 			'slug' => 'learning-lounge-log'
 		),
 		'capability_type'    => 'post',
-		// 'capabilities'       => array(
-		// 	'delete_post'            => 'delete_learning-lounge-log',
-		// 	'delete_posts'           => 'delete_learning-lounge-logs',
-		// 	'delete_others_posts'    => 'delete_others_learning-lounge-logs',
-		// 	'delete_private_posts'   => 'delete_private_learning-lounge-logs',
-		// 	'delete_published_posts' => 'delete_published_learning-lounge-logs',
-		// 	'edit_post'              => 'edit_learning-lounge-log',
-		// 	'edit_posts'             => 'edit_learning-lounge-logs',
-		// 	'edit_others_posts'      => 'edit_others_learning-lounge-logs',
-		// 	'edit_private_posts'     => 'edit_private_learning-lounge-logs',
-		// 	'edit_published_posts'   => 'edit_published_learning-lounge-logs',
-		// 	'publish_posts'          => 'publish_learning-lounge-logs',
-		// 	'read'                   => 'read_learning-lounge-log',
-		// 	'read_post'              => 'read_learning-lounge-log-post',
-		// 	'read_private_posts'     => 'read_private_learning-lounge-logs',
-		// 	'create_posts'           => 'create_learning-lounge-logs',
-		// ),
 		'has_archive'        => false,
 		'hierarchical'       => false,
 		'menu_position'      => null,

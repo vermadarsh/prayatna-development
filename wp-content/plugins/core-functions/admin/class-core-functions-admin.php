@@ -625,30 +625,35 @@ class Core_Functions_Admin {
 	 * Add custom menu page.
 	 */
 	public function cf_admin_menu_callback() {
-		// Restrict this menu for student role only. Admin users should also not be able to see it.
-		$is_student = cf_is_user_student( get_current_user_id() );
+		// Payment history page.
+		add_menu_page(
+			__( 'Payment History', 'core-functions' ),
+			__( 'Payment History', 'core-functions' ),
+			'can_create_learning_lounge_log',
+			'payment-history',
+			array( $this, 'cf_payment_history_callback' ),
+			'dashicons-backup'
+		);
 
-		if ( $is_student ) {
-			// Payment history page.
-			add_menu_page(
-				__( 'Payment History', 'core-functions' ),
-				__( 'Payment History', 'core-functions' ),
-				'can_create_learning_lounge_log',
-				'payment-history',
-				array( $this, 'cf_payment_history_callback' ),
-				'dashicons-backup'
-			);
+		// Add payment information page.
+		add_submenu_page(
+			'payment-history',
+			__( 'Payment Information', 'core-functions' ),
+			__( 'Payment Information', 'core-functions' ),
+			'can_create_learning_lounge_log',
+			'payment-information',
+			array( $this, 'cf_payment_information_callback' ),
+		);
 
-			// Add payment information page.
-			add_submenu_page(
-				'payment-history',
-				__( 'Payment Information', 'core-functions' ),
-				__( 'Payment Information', 'core-functions' ),
-				'can_create_learning_lounge_log',
-				'payment-information',
-				array( $this, 'cf_payment_information_callback' ),
-			);
-		}
+		// Update client's payment balance.
+		add_menu_page(
+			__( 'Add Client Payment', 'core-functions' ),
+			__( 'Add Client Payment', 'core-functions' ),
+			'cf_update_client_payment_balance',
+			'add-client-payment',
+			array( $this, 'cf_add_client_payment_callback' ),
+			'dashicons-money-alt'
+		);
 	}
 
 	/**
@@ -663,7 +668,7 @@ class Core_Functions_Admin {
 			</div>
 			<p><?php esc_html_e( 'Following is the list of all the payment records added by you.', 'core-functions' ); ?></p>
 			<?php
-			require_once CF_PLUGIN_PATH . 'admin/templates/cpt-learning-lounge-log/payment-history.php';
+			require_once CF_PLUGIN_PATH . 'admin/templates/menu-pages/payment-history.php';
 			$payment_history_obj = new Cf_Payment_History_Table();
 			$payment_history_obj->prepare_items();
 			$payment_history_obj->display();
@@ -676,7 +681,7 @@ class Core_Functions_Admin {
 	 * Template for adding payment information.
 	 */
 	public function cf_payment_information_callback() {
-		require_once CF_PLUGIN_PATH . 'admin/templates/cpt-learning-lounge-log/payment-information.php';
+		require_once CF_PLUGIN_PATH . 'admin/templates/menu-pages/payment-information.php';
 	}
 
 	/**
@@ -723,5 +728,12 @@ class Core_Functions_Admin {
 		if ( 'payment_due' === $column_name ) {
 			echo get_field( 'payment_due', $post_id );
 		}
+	}
+
+	/**
+	 * Template for adding payment information.
+	 */
+	public function cf_add_client_payment_callback() {
+		require_once CF_PLUGIN_PATH . 'admin/templates/menu-pages/add-client-payment.php';
 	}
 }

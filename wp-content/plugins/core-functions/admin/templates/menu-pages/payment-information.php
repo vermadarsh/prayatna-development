@@ -4,7 +4,7 @@
  *
  * @since   1.0.0
  * @package Core_Functions
- * @subpackage Core_Functions/admin/templates/cpt-learning-lounge-log
+ * @subpackage Core_Functions/admin/templates/menu-pages
  */
 
 if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly.
@@ -47,7 +47,7 @@ if ( isset( $submit_log ) && wp_verify_nonce( $new_log_nonce, 'new-learning-loun
 	update_field( 'name_of_the_bank', $bank_name, $log_id );
 	update_field( 'transaction_id', $transaction_id, $log_id );
 
-	// Create the site is it does not already exist.
+	// Show the success message now.
 	echo '<div class="notice updated" id="message"><p>' . __( 'New log added successfully.', 'core-functions' ) . '</p></div>';
 }
 ?>
