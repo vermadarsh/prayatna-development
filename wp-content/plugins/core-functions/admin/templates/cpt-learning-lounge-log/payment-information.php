@@ -9,8 +9,10 @@
 
 if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly.
 
-$submit_log    = filter_input( INPUT_POST, 'add-new-learning-lounge-log', FILTER_SANITIZE_STRING );
-$new_log_nonce = filter_input( INPUT_POST, 'new-learning-lounge-log-nonce', FILTER_SANITIZE_STRING );
+$current_user_id   = get_current_user_id();
+$current_user_name = cf_get_user_full_name( $current_user_id );
+$submit_log        = filter_input( INPUT_POST, 'add-new-learning-lounge-log', FILTER_SANITIZE_STRING );
+$new_log_nonce     = filter_input( INPUT_POST, 'new-learning-lounge-log-nonce', FILTER_SANITIZE_STRING );
 
 // If the submit button it pressed, add the new log to the database.
 if ( isset( $submit_log ) && wp_verify_nonce( $new_log_nonce, 'new-learning-lounge-log' ) ) {
@@ -56,7 +58,7 @@ if ( isset( $submit_log ) && wp_verify_nonce( $new_log_nonce, 'new-learning-loun
 				<tr>
 					<th scope="row"><label for="student-name"><?php esc_html_e( 'Student Name', 'core-functions' ); ?><span class="required">*</span></label></th>
 					<td>
-						<input type="text" name="student-name" id="student-name" class="regular-text" required />
+						<input type="text" name="student-name" id="student-name" class="regular-text" value="<?php echo esc_html( $current_user_name ); ?>" required />
 						<p class="cf-form-description-text"><?php esc_html_e( 'Provide the student name here.', 'core-functions' ); ?></p>
 					</td>
 				</tr>
