@@ -113,10 +113,13 @@ class Cf_Payment_History_Table extends WP_List_Table {
 			$payment_date        = get_field( 'payment_date', $log_id );
 			$transaction_id      = get_field( 'transaction_id', $log_id );
 			$amount_paid_data    = sprintf( __( '%1$s (%3$s)%2$s', 'core-functions' ), $amount_paid, '<br />', $mode_of_payment, $bank_name, $payment_date, $transaction_id );
-			$record_added_date   = sprintf( __( 'Record added on %1$s at %2$s', 'core-functions' ), gmdate( 'F j, Y', strtotime( $log_post->post_date ) ), gmdate( 'H:i A', strtotime( $log_post->post_date ) ) );
+			$record_added_date   = sprintf( __( '%1$s at %2$s', 'core-functions' ), gmdate( 'F j, Y', strtotime( $log_post->post_date ) ), gmdate( 'H:i A', strtotime( $log_post->post_date ) ) );
+			$post_author         = $log_post->post_author;
+			$post_author_data    = get_userdata( $post_author );
+			$post_author_name    = $post_author_data->data->display_name;
 
 			$payment_history_table_data[] = array(
-				'author'              => $log_post->post_author,
+				'author'              => $post_author_name,
 				'published_date'      => $record_added_date,
 				'student_name'        => get_field( 'student_name', $log_id ),
 				'internship_duration' => $internship_data,
