@@ -22,6 +22,7 @@ if ( isset( $submit_log ) && wp_verify_nonce( $new_log_nonce, 'new-learning-loun
 	$amount_paid         = filter_input( INPUT_POST, 'amount-paid', FILTER_SANITIZE_STRING );
 	$mode_of_payment     = filter_input( INPUT_POST, 'mode-of-payment', FILTER_SANITIZE_STRING );
 	$payment_date        = filter_input( INPUT_POST, 'payment-date', FILTER_SANITIZE_STRING );
+	$payment_date        = gmdate( 'Y-m-d', strtotime( $payment_date ) );
 	$bank_name           = filter_input( INPUT_POST, 'bank-name', FILTER_SANITIZE_STRING );
 
 	// Create the log post now.
@@ -108,7 +109,7 @@ if ( isset( $submit_log ) && wp_verify_nonce( $new_log_nonce, 'new-learning-loun
 				<tr>
 					<th scope="row"><label for="payment-date"><?php esc_html_e( 'Date of Payment', 'core-functions' ); ?><span class="required">*</span></label></th>
 					<td>
-						<input type="date" name="payment-date" id="payment-date" class="date regular-text" required />
+						<input type="date" name="payment-date" id="payment-date" class="regular-text" required />
 						<p class="cf-form-description-text"><?php esc_html_e( 'When was the payment done?', 'core-functions' ); ?></p>
 					</td>
 				</tr>
