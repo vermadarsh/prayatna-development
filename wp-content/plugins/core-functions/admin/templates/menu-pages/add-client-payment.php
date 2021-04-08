@@ -15,8 +15,9 @@ $clients        = cf_get_clients();
 
 // If the submit button it pressed, add the new payment to the client's database.
 if ( isset( $submit_payment ) && wp_verify_nonce( $payment_nonce, 'add-client-payment' ) ) {
-	$client_id = filter_input( INPUT_POST, 'client-id', FILTER_SANITIZE_STRING );
-	$amount    = filter_input( INPUT_POST, 'amount', FILTER_SANITIZE_STRING );
+	$client_id      = filter_input( INPUT_POST, 'client-id', FILTER_SANITIZE_STRING );
+	$amount         = filter_input( INPUT_POST, 'amount', FILTER_SANITIZE_STRING );
+	$no_of_sessions = filter_input( INPUT_POST, 'no-of-sessions', FILTER_SANITIZE_STRING );
 
 	// Update the ACF fields.
 	// update_field( 'student_name', $student_name, $log_id );
@@ -35,7 +36,7 @@ if ( isset( $submit_payment ) && wp_verify_nonce( $payment_nonce, 'add-client-pa
 				<tr>
 					<th scope="row"><label for="client-id"><?php esc_html_e( 'Client', 'core-functions' ); ?><span class="required">*</span></label></th>
 					<td>
-						<select>
+						<select id="client-id">
 							<option value=""><?php esc_html_e( 'Select client', 'core-functions' ); ?></option>
 							<?php
 							if ( ! empty( $clients ) && is_array( $clients ) ) {
