@@ -328,26 +328,26 @@ function cf_register_learning_lounge_log_cpt() {
  */
 function cf_register_leave_application_cpt() {
 	$labels = array(
-		'name'               => __( 'Leave Application', 'core-functions' ),
+		'name'               => __( 'Leave Applications', 'core-functions' ),
 		'singular_name'      => __( 'Leave Application', 'core-functions' ),
-		'menu_name'          => __( 'Leave Application', 'core-functions' ),
+		'menu_name'          => __( 'Leave Applications', 'core-functions' ),
 		'name_admin_bar'     => __( 'Leave Application', 'core-functions' ),
 		'add_new'            => __( 'New Leave Application', 'core-functions' ),
 		'add_new_item'       => __( 'New Leave Application', 'core-functions' ),
 		'new_item'           => __( 'New Leave Application', 'core-functions' ),
 		'edit_item'          => __( 'Edit Leave Application', 'core-functions' ),
 		'view_item'          => __( 'View Leave Application', 'core-functions' ),
-		'all_items'          => __( 'Leave Application', 'core-functions' ),
-		'search_items'       => __( 'Search Leave Application', 'core-functions' ),
-		'parent_item_colon'  => __( 'Parent Leave Application:', 'core-functions' ),
-		'not_found'          => __( 'No Leave Application Found.', 'core-functions' ),
-		'not_found_in_trash' => __( 'No Leave Application Found In Trash.', 'core-functions' )
+		'all_items'          => __( 'Leave Applications', 'core-functions' ),
+		'search_items'       => __( 'Search Leave Applications', 'core-functions' ),
+		'parent_item_colon'  => __( 'Parent Leave Applications:', 'core-functions' ),
+		'not_found'          => __( 'No Leave Applications Found.', 'core-functions' ),
+		'not_found_in_trash' => __( 'No Leave Applications Found In Trash.', 'core-functions' )
 	);
 
 	$args = array(
 		'labels'             => $labels,
 		'public'             => false,
-		'menu_icon'          => 'dashicons-welcome-write-blog',
+		'menu_icon'          => 'dashicons-welcome-write-bapplication',
 		'publicly_queryable' => true,
 		'show_ui'            => true,
 		'show_in_menu'       => true,
@@ -358,11 +358,11 @@ function cf_register_leave_application_cpt() {
 		'capability_type'    => 'post',
 		'capabilities'       => array(
 			'edit_post'          => 'edit_leave-application',
-            'edit_posts'         => 'edit_leave-application',
-            'edit_others_posts'  => 'edit_other_leave-application',
-            'publish_posts'      => 'publish_leave-application',
+            'edit_posts'         => 'edit_leave-applications',
+            'edit_others_posts'  => 'edit_other_leave-applications',
+            'publish_posts'      => 'publish_leave-applications',
             'read_post'          => 'read_leave-application',
-            'read_private_posts' => 'read_private_leave-application',
+            'read_private_posts' => 'read_private_leave-applications',
             'delete_post'        => 'delete_leave-application'
 		),
 		'has_archive'        => false,
