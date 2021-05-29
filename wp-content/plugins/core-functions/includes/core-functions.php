@@ -266,7 +266,7 @@ function cf_register_client_log_cpt() {
 	register_post_type( 'client-log', $args );
 
 	$set = get_option( 'cpt_cf_client_log_flushed_rewrite_rules' );
-	
+
 	if ( 'yes' !== $set ) {
 		flush_rewrite_rules( false );
 		update_option( 'cpt_cf_client_log_flushed_rewrite_rules', 'yes' );
@@ -316,10 +316,60 @@ function cf_register_learning_lounge_log_cpt() {
 	register_post_type( 'learning-lounge-log', $args );
 
 	$set = get_option( 'cpt_cf_learning_lounge_log_flushed_rewrite_rules' );
-	
+
 	if ( 'yes' !== $set ) {
 		flush_rewrite_rules( false );
 		update_option( 'cpt_cf_learning_lounge_log_flushed_rewrite_rules', 'yes' );
+	}
+}
+
+/**
+ * Register Leave Application CPT.
+ */
+function cf_register_leave_application_cpt() {
+	$labels = array(
+		'name'               => __( 'Leave Application', 'core-functions' ),
+		'singular_name'      => __( 'Leave Application', 'core-functions' ),
+		'menu_name'          => __( 'Leave Application', 'core-functions' ),
+		'name_admin_bar'     => __( 'Leave Application', 'core-functions' ),
+		'add_new'            => __( 'New Leave Application', 'core-functions' ),
+		'add_new_item'       => __( 'New Leave Application', 'core-functions' ),
+		'new_item'           => __( 'New Leave Application', 'core-functions' ),
+		'edit_item'          => __( 'Edit Leave Application', 'core-functions' ),
+		'view_item'          => __( 'View Leave Application', 'core-functions' ),
+		'all_items'          => __( 'Leave Application', 'core-functions' ),
+		'search_items'       => __( 'Search Leave Application', 'core-functions' ),
+		'parent_item_colon'  => __( 'Parent Leave Application:', 'core-functions' ),
+		'not_found'          => __( 'No Leave Application Found.', 'core-functions' ),
+		'not_found_in_trash' => __( 'No Leave Application Found In Trash.', 'core-functions' )
+	);
+
+	$args = array(
+		'labels'             => $labels,
+		'public'             => false,
+		'menu_icon'          => 'dashicons-welcome-write-blog',
+		'publicly_queryable' => true,
+		'show_ui'            => true,
+		'show_in_menu'       => true,
+		'query_var'          => true,
+		'rewrite'            => array(
+			'slug' => 'leave-application'
+		),
+		'capability_type'    => 'post',
+		'has_archive'        => false,
+		'hierarchical'       => false,
+		'menu_position'      => null,
+		'supports'           => array(
+			'title', 'content', 'author'
+		)
+	);
+	register_post_type( 'leave-application', $args );
+
+	$set = get_option( 'cpt_cf_leave_application_flushed_rewrite_rules' );
+
+	if ( 'yes' !== $set ) {
+		flush_rewrite_rules( false );
+		update_option( 'cpt_cf_leave_application_flushed_rewrite_rules', 'yes' );
 	}
 }
 
