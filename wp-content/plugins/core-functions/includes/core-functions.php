@@ -374,12 +374,7 @@ function cf_register_leave_cpt() {
 	);
 	register_post_type( 'leave', $args );
 
-	$set = get_option( 'cpt_cf_leave_flushed_rewrite_rules' );
-
-	if ( 'yes' !== $set ) {
-		flush_rewrite_rules( false );
-		update_option( 'cpt_cf_leave_flushed_rewrite_rules', 'yes' );
-	}
+	
 }
 
 /**
