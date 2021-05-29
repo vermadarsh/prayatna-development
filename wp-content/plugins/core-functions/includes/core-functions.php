@@ -324,45 +324,47 @@ function cf_register_learning_lounge_log_cpt() {
 }
 
 /**
- * Register Leave Application CPT.
+ * Register Leave CPT.
  */
-function cf_register_leave_application_cpt() {
+function cf_register_leave_cpt() {
 	$labels = array(
-		'name'               => __( 'Leave Applications', 'core-functions' ),
-		'singular_name'      => __( 'Leave Application', 'core-functions' ),
-		'menu_name'          => __( 'Leave Applications', 'core-functions' ),
-		'name_admin_bar'     => __( 'Leave Application', 'core-functions' ),
-		'add_new'            => __( 'New Leave Application', 'core-functions' ),
-		'add_new_item'       => __( 'New Leave Application', 'core-functions' ),
-		'new_item'           => __( 'New Leave Application', 'core-functions' ),
-		'edit_item'          => __( 'Edit Leave Application', 'core-functions' ),
-		'view_item'          => __( 'View Leave Application', 'core-functions' ),
-		'all_items'          => __( 'Leave Applications', 'core-functions' ),
-		'search_items'       => __( 'Search Leave Applications', 'core-functions' ),
-		'parent_item_colon'  => __( 'Parent Leave Applications:', 'core-functions' ),
-		'not_found'          => __( 'No Leave Applications Found.', 'core-functions' ),
-		'not_found_in_trash' => __( 'No Leave Applications Found In Trash.', 'core-functions' )
+		'name'               => __( 'Leaves', 'core-functions' ),
+		'singular_name'      => __( 'Leave', 'core-functions' ),
+		'menu_name'          => __( 'Leaves', 'core-functions' ),
+		'name_admin_bar'     => __( 'Leave', 'core-functions' ),
+		'add_new'            => __( 'New Leave', 'core-functions' ),
+		'add_new_item'       => __( 'New Leave', 'core-functions' ),
+		'new_item'           => __( 'New Leave', 'core-functions' ),
+		'edit_item'          => __( 'Edit Leave', 'core-functions' ),
+		'view_item'          => __( 'View Leave', 'core-functions' ),
+		'all_items'          => __( 'Leaves', 'core-functions' ),
+		'search_items'       => __( 'Search Leaves', 'core-functions' ),
+		'parent_item_colon'  => __( 'Parent Leaves:', 'core-functions' ),
+		'not_found'          => __( 'No Leaves Found.', 'core-functions' ),
+		'not_found_in_trash' => __( 'No Leaves Found In Trash.', 'core-functions' )
 	);
 
 	$args = array(
 		'labels'             => $labels,
 		'public'             => false,
-		'menu_icon'          => 'dashicons-welcome-write-bapplication',
+		'menu_icon'          => 'dashicons-welcome-write-blog',
 		'publicly_queryable' => true,
 		'show_ui'            => true,
 		'show_in_menu'       => true,
 		'query_var'          => true,
 		'rewrite'            => array(
-			'slug' => 'leave-application'
+			'slug' => 'leave'
 		),
 		'capability_type'    => 'post',
 		'capabilities'       => array(
-			'edit_post'          => 'edit_leave-application',
-            'edit_posts'         => 'edit_leave-applications',
-            'publish_posts'      => 'publish_leave-applications',
-            'read_post'          => 'read_leave-application',
-            'read_private_posts' => 'read_private_leave-applications',
-    ),
+			'edit_post'          => 'edit_leave',
+            'edit_posts'         => 'edit_leaves',
+            'edit_others_posts'  => 'edit_other_leaves',
+            'publish_posts'      => 'publish_leaves',
+            'read_post'          => 'read_leave',
+            'read_private_posts' => 'read_private_leaves',
+            'delete_post'        => 'delete_leave'
+		),
 		'has_archive'        => false,
 		'hierarchical'       => false,
 		'menu_position'      => null,
@@ -370,13 +372,13 @@ function cf_register_leave_application_cpt() {
 			'title', 'content', 'author'
 		)
 	);
-	register_post_type( 'leave-application', $args );
+	register_post_type( 'leave', $args );
 
-	$set = get_option( 'cpt_cf_leave_application_flushed_rewrite_rules' );
+	$set = get_option( 'cpt_cf_leave_flushed_rewrite_rules' );
 
 	if ( 'yes' !== $set ) {
 		flush_rewrite_rules( false );
-		update_option( 'cpt_cf_leave_application_flushed_rewrite_rules', 'yes' );
+		update_option( 'cpt_cf_leave_flushed_rewrite_rules', 'yes' );
 	}
 }
 
