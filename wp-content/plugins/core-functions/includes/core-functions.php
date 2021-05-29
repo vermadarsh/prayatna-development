@@ -359,12 +359,10 @@ function cf_register_leave_application_cpt() {
 		'capabilities'       => array(
 			'edit_post'          => 'edit_leave-application',
             'edit_posts'         => 'edit_leave-applications',
-            'edit_others_posts'  => 'edit_other_leave-applications',
             'publish_posts'      => 'publish_leave-applications',
             'read_post'          => 'read_leave-application',
             'read_private_posts' => 'read_private_leave-applications',
-            'delete_post'        => 'delete_leave-application'
-		),
+    ),
 		'has_archive'        => false,
 		'hierarchical'       => false,
 		'menu_position'      => null,
