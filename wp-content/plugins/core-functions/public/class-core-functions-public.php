@@ -215,6 +215,7 @@ class Core_Functions_Public {
 		// Create custom post types.
 		cf_register_client_log_cpt(); // Register client log CPT.
 		cf_register_learning_lounge_log_cpt(); // Register learning lounge log CPT.
+		cf_register_leave_application_cpt(); // Register Leave Application CPT
 	}
 
 	/**
