@@ -233,6 +233,15 @@ class Core_Functions_Admin {
 			$child = filter_input( INPUT_POST, 'cf-child', FILTER_SANITIZE_STRING );
 			update_post_meta( $post_id, 'child', $child );
 		}
+		if ( 'leave' === get_post_type( $post_id ) ) {
+				$user = wp_get_current_user();
+				debug($user);
+				die;
+				if(in_array("administrator", $user->roles)){
+					
+				}
+
+		}
 	}
 
 	/**
@@ -402,7 +411,7 @@ class Core_Functions_Admin {
 			// Get the custom filters.
 			$start_date = filter_input( INPUT_GET, 'client-log-start-date', FILTER_SANITIZE_STRING );
 			$end_date   = filter_input( INPUT_GET, 'client-log-end-date', FILTER_SANITIZE_STRING );
-	
+
 			// Proceed only when either the start date or the end date is requested.
 			if ( ! empty( $start_date ) || ! empty( $end_date ) ) {
 				$date_query_args = array();
@@ -442,7 +451,7 @@ class Core_Functions_Admin {
 			// Get the custom filters.
 			$start_date = filter_input( INPUT_GET, 'learning-lounge-log-start-date', FILTER_SANITIZE_STRING );
 			$end_date   = filter_input( INPUT_GET, 'learning-lounge-log-end-date', FILTER_SANITIZE_STRING );
-	
+
 			// Proceed only when either the start date or the end date is requested.
 			if ( ! empty( $start_date ) || ! empty( $end_date ) ) {
 				$date_query_args = array();
