@@ -243,21 +243,21 @@ class Core_Functions_Admin {
 						if(! in_array("administrator", $user->roles)){
 							$leaveStartDate = get_field('leave_from',$post_id);
 							$leaveEndDate   = get_field('to',$post_id);
-							$date = DateTime::createFromFormat("Y-m-d",$leaveStartDate);
+							$date           = DateTime::createFromFormat("Y-m-d",$leaveStartDate);
 							$leaveYear = $date->format("Y");
 							debug($leaveYear);
 							die;
-								$leaves = array(
-										'2021' => array(
-											'06' => array(
-												'29' => '1',
-											),
-											'07' => array(
-												'15' => '0.5'get_field('leave_from');
-											),
-										)
-								);
-								$leaves[$year][$month][$date] = 1;
+								// $leaves = array(
+								// 		'2021' => array(
+								// 			'06' => array(
+								// 				'29' => '1',
+								// 			),
+								// 			'07' => array(
+								// 				'15' => '0.5'get_field('leave_from');
+								// 			),
+								// 		)
+								// );
+								// $leaves[$year][$month][$date] = 1;
 					}
 			 }
 	   }
