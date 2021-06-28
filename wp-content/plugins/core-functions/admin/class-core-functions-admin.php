@@ -243,9 +243,9 @@ class Core_Functions_Admin {
 							$time           = strtotime($leaveStartDate);
 							$month          = date("m",$time);
 							$year           = date("Y",$time);
-							debug($year);
-							debug($month);
-							die;
+							// debug($year);
+							// debug($month);
+							// die;
 								// $leaves = array(
 								// 		'2021' => array(
 								// 			'06' => array(
