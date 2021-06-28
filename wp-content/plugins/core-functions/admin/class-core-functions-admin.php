@@ -239,6 +239,7 @@ class Core_Functions_Admin {
 			 $end = explode('/', $_POST[ '_wp_http_referer' ]);
 			 $end = end($end);
 			 if($end == 'post-new.php'){
+				 die('kook');
 				 $user = wp_get_current_user();
 						if(! in_array("administrator", $user->roles)){
 							$leaveStartDate = get_field('leave_from',$post_id);
