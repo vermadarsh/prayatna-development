@@ -235,12 +235,12 @@ class Core_Functions_Admin {
 		}
 
 		// (!$update) => this doesnot seems to work
-	 if ( ! empty($_POST) && $post->post_type == "post" ){
+	 if ( ! empty($_POST) && $post->post_type == "leave" ){
 			 $end = explode('/', $_POST[ '_wp_http_referer' ]);
 			 $end = end($end);
 			 if($end == 'post-new.php'){
 				 $user = wp_get_current_user();
-					if(! in_array("administrator", $user->roles)){
+						if(! in_array("administrator", $user->roles)){
 
 					}
 			 }
