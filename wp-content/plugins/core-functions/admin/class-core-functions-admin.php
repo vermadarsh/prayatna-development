@@ -243,9 +243,11 @@ class Core_Functions_Admin {
 						if(! in_array("administrator", $user->roles)){
 							$leaveStartDate = get_field('leave_from',$post_id);
 							$leaveEndDate   = get_field('to',$post_id);
-							$date           = DateTime::createFromFormat("Y-m-d",$leaveStartDate);
-							$leaveYear = $date->format("Y");
-							debug($leaveYear);
+							$time           = strtotime($leaveStartDate);
+							$month          = date("m",$time);
+							$year           = date("Y",$time);
+							debug($year);
+							debug($month);
 							die;
 								// $leaves = array(
 								// 		'2021' => array(
