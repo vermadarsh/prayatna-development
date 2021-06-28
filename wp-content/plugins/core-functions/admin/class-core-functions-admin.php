@@ -233,13 +233,19 @@ class Core_Functions_Admin {
 			$child = filter_input( INPUT_POST, 'cf-child', FILTER_SANITIZE_STRING );
 			update_post_meta( $post_id, 'child', $child );
 		}
-		if ( 'leave' === get_post_type( $post_id ) ) {
-				$user = wp_get_current_user();
-				if(! in_array("administrator", $user->roles)){
-						
-				}
 
-		}
+		// (!$update) => this doesnot seems to work
+	 if ( ! empty($_POST) && $post->post_type == "post" ){
+			 $end = explode('/', $_POST[ '_wp_http_referer' ]);
+			 $end = end($end);
+			 if($end == 'post-new.php'){
+				 $user = wp_get_current_user();
+					if(! in_array("administrator", $user->roles)){
+
+					}
+			 }
+	   }
+
 	}
 
 	/**
