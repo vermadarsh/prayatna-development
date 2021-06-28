@@ -235,10 +235,8 @@ class Core_Functions_Admin {
 		}
 		if ( 'leave' === get_post_type( $post_id ) ) {
 				$user = wp_get_current_user();
-				debug($user);
-				die;
-				if(in_array("administrator", $user->roles)){
-					
+				if(! in_array("administrator", $user->roles)){
+						
 				}
 
 		}
