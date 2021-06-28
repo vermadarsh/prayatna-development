@@ -235,12 +235,8 @@ class Core_Functions_Admin {
 		}
 
 		// (!$update) => this doesnot seems to work
-	 if ( ! empty($_POST) && $post->post_type == "leave" ){
-			 $end = explode('/', $_POST[ '_wp_http_referer' ]);
-			 $end = end($end);
-			 if($end == 'post-new.php'){
-				 die('kook');
-				 $user = wp_get_current_user();
+	 	if ( 'leave' === get_post_type( $post_id ) ) {
+			 			$user = wp_get_current_user();
 						if(! in_array("administrator", $user->roles)){
 							$leaveStartDate = get_field('leave_from',$post_id);
 							$leaveEndDate   = get_field('to',$post_id);
@@ -262,7 +258,7 @@ class Core_Functions_Admin {
 								// );
 								// $leaves[$year][$month][$date] = 1;
 					}
-			 }
+
 	   }
 
 	}
