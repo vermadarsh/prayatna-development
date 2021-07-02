@@ -257,14 +257,10 @@ class Core_Functions_Admin {
 							$unix2 = strtotime( $date2->format( 'Y-m-d' ) );
 
 							if( 0 === ( $unix1 - $unix2 ) ) {
-    						$numberOfDayLeave = '1';
+    						$numberOfDayLeave = '1 Day';
 							} else {
 								$numberOfDayLeave = human_time_diff( $unix1, $unix2 );
 							}
-
-
-							debug($numberOfDayLeave);
-							die;
 							$emailTemplateBody = get_field('leave_apply_email','option');
 							$emailTemplateBody = str_replace('{first_name}',$userFname.' '.$userLname,$emailTemplateBody);
 							$emailTemplateBody = str_replace('{number_of_days}',$numberOfDayLeave,$emailTemplateBody);
