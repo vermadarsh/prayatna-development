@@ -251,8 +251,10 @@ class Core_Functions_Admin {
 
 							$emailTemplateBody = get_field('leave_apply_email','option');
 							$emailTemplateBody = str_replace('{first_name}',$userFname.' '.$userLname,$emailTemplateBody);
-							debug($numberOfDayLeave);
+							// $emailTemplateBody = str_replace('{first_name}',$userFname.' '.$userLname,$emailTemplateBody);
+							debug($emailTemplateBody);
 							die;
+
 								// $leaves = array(
 								// 		'2021' => array(
 								// 			'06' => array(
