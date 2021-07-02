@@ -248,7 +248,7 @@ class Core_Functions_Admin {
 							// $getTherapistName =
 
 							$emailTemplateBody = get_field('leave_apply_email','option');
-							$emailTemplateBody = str_replace('{first_name}','',$emailTemplateBody)
+							// $emailTemplateBody = str_replace('{first_name}','',$emailTemplateBody)
 							// debug($year);
 							// debug($month);
 							// die;
