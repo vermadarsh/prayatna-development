@@ -247,9 +247,8 @@ class Core_Functions_Admin {
 							$userLname       = $user->user_lastname;
 
 							$emailTemplateBody = get_field('leave_apply_email','option');
-							$emailTemplateBody = str_replace('{first_name}',$userFname.' '.$userLname,$emailTemplateBody)
-							debug($year);
-							debug($month);
+							$emailTemplateBody = str_replace('{first_name}',$userFname.' '.$userLname,$emailTemplateBody);
+							debug($emailTemplateBody);
 							die;
 								// $leaves = array(
 								// 		'2021' => array(
