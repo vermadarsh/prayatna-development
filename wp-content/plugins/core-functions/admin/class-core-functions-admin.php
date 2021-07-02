@@ -237,21 +237,20 @@ class Core_Functions_Admin {
 		// (!$update) => this doesnot seems to work
 	 	if ( 'leave' === get_post_type( $post_id ) ) {
 			 			$user = wp_get_current_user();
-						debug($user);
-						die;
 						if(! in_array("administrator", $user->roles)){
 							$leaveStartDate = get_field('leave_from',$post_id);
 							$leaveEndDate   = get_field('to',$post_id);
 							$time           = strtotime($leaveStartDate);
 							$month          = date("m",$time);
 							$year           = date("Y",$time);
-							// $getTherapistName =
+							$userFname       = $user->user_firstname;
+							$userLname       = $user->user_lastname;
 
 							$emailTemplateBody = get_field('leave_apply_email','option');
-							// $emailTemplateBody = str_replace('{first_name}','',$emailTemplateBody)
-							// debug($year);
-							// debug($month);
-							// die;
+							$emailTemplateBody = str_replace('{first_name}',$userFname.' '.$userLname,$emailTemplateBody)
+							debug($year);
+							debug($month);
+							die;
 								// $leaves = array(
 								// 		'2021' => array(
 								// 			'06' => array(
