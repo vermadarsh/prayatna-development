@@ -235,7 +235,10 @@ class Core_Functions_Admin {
 		}
 
 		// (!$update) => this doesnot seems to work
-	 	if ( 'leave' === get_post_type( $post_id ) ) {
+	 	if ( 'leave' === get_post_type( $post_id,$post ) ) {
+			if (isset($post->post_status) && 'auto-draft' == $post->post_status) {
+    			return;
+  		}
 			 			$user = wp_get_current_user();
 						if(! in_array("administrator", $user->roles)){
 							$leaveStartDate   = get_field('leave_from',$post_id);
@@ -246,12 +249,16 @@ class Core_Functions_Admin {
 							$userFname        = $user->user_firstname;
 							$userLname        = $user->user_lastname;
 							$numberOfDayLeave = (strtotime($leaveEndDate) - strtotime($leaveStartDate)) / (60 * 60 * 24);
+							$leaveReason      = get_field('reason_for_leave',$post_id);
 
 
 
 							$emailTemplateBody = get_field('leave_apply_email','option');
 							$emailTemplateBody = str_replace('{first_name}',$userFname.' '.$userLname,$emailTemplateBody);
-							// $emailTemplateBody = str_replace('{first_name}',$userFname.' '.$userLname,$emailTemplateBody);
+							$emailTemplateBody = str_replace('{number_of_days}',$numberOfDayLeave,$emailTemplateBody);
+							$emailTemplateBody = str_replace('{from_date}',$leaveStartDate,$emailTemplateBody);
+							$emailTemplateBody = str_replace('{to_date}',$leaveEndDate,$emailTemplateBody);
+							$emailTemplateBody = str_replace('{reason}.',$leaveReason,$emailTemplateBody);
 							debug($emailTemplateBody);
 							die;
 
