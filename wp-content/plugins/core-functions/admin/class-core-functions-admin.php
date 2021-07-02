@@ -249,6 +249,7 @@ class Core_Functions_Admin {
 							$userFname        = $user->user_firstname;
 							$userLname        = $user->user_lastname;
 							$numberOfDayLeave = (strtotime($leaveEndDate) - strtotime($leaveStartDate)) / (60 * 60 * 24);
+							$numberOfDayLeave = (0 == $numberOfDayLeave) ? 1 : $numberOfDayLeave;
 							$leaveReason      = get_field('reason_for_leave',$post_id);
 
 
