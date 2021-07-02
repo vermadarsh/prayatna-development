@@ -248,9 +248,16 @@ class Core_Functions_Admin {
 							$year             = date("Y",$time);
 							$userFname        = $user->user_firstname;
 							$userLname        = $user->user_lastname;
-							$numberOfDayLeave = (strtotime($leaveEndDate) - strtotime($leaveStartDate)) / (60 * 60 * 24);
-							$numberOfDayLeave = (0 == $numberOfDayLeave) ? 1 : $numberOfDayLeave;
+							$date1 = new DateTime( $leaveStartDate );
+							$unix1 = strtotime( $date1->format( 'Y-m-d' ) );
+							$date2 = new DateTime( $leaveEndDate )
+							$unix2 = strtotime( $date2->format( 'Y-m-d' ) );
 							$leaveReason      = get_field('reason_for_leave',$post_id);
+							if( 0 === ( $unix1 - $unix2 ) ) {
+    						$numberOfDayLeave = '1 Day';
+							} else {
+								$numberOfDayLeave = human_time_diff( $unix1, $unix2 ).' Day';
+							}
 
 
 
