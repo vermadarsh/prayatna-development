@@ -245,7 +245,7 @@ class Core_Functions_Admin {
 							$time           = strtotime($leaveStartDate);
 							$month          = date("m",$time);
 							$year           = date("Y",$time);
-							$getTherapistName =
+							// $getTherapistName =
 
 							$emailTemplateBody = get_field('leave_apply_email','option');
 							$emailTemplateBody = str_replace('{first_name}','',$emailTemplateBody)
