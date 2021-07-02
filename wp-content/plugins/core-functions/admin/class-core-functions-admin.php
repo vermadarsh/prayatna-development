@@ -249,22 +249,22 @@ class Core_Functions_Admin {
 							$userFname        = $user->user_firstname;
 							$userLname        = $user->user_lastname;
 							$leaveReason      = get_field('reason_for_leave',$post_id);
-							$numberOfDayLeave = dateDiffInDays($leaveStartDate, $leaveEndDate);
-							// $date1            = new DateTime( $leaveStartDate );
-							// $unix1            = strtotime( $date1->format( 'Y-m-d' ) );
-							// // debug($unix1);
-							// // die;
-							// $date2 = new DateTime( $leaveEndDate );
-							// $unix2 = strtotime( $date2->format( 'Y-m-d' ) );
-							//
-							// if( 0 === ( $unix1 - $unix2 ) ) {
-    					// 	$numberOfDayLeave = '1';
-							// } else {
-							// 	$numberOfDayLeave = human_time_diff( $unix1, $unix2 );
-							// }
+							$date1            = new DateTime( $leaveStartDate );
+							$unix1            = strtotime( $date1->format( 'Y-m-d' ) );
+							// debug($unix1);
+							// die;
+							$date2 = new DateTime( $leaveEndDate );
+							$unix2 = strtotime( $date2->format( 'Y-m-d' ) );
+
+							if( 0 === ( $unix1 - $unix2 ) ) {
+    						$numberOfDayLeave = '1';
+							} else {
+								$numberOfDayLeave = human_time_diff( $unix1, $unix2 );
+							}
 
 
-
+							debug($numberOfDayLeave);
+							die;
 							$emailTemplateBody = get_field('leave_apply_email','option');
 							$emailTemplateBody = str_replace('{first_name}',$userFname.' '.$userLname,$emailTemplateBody);
 							$emailTemplateBody = str_replace('{number_of_days}',$numberOfDayLeave,$emailTemplateBody);
