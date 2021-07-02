@@ -501,3 +501,22 @@ function cf_get_learning_lounge_logs( $author = '', $paged = 1, $posts_per_page 
 
 	return new WP_Query( $args );
 }
+
+
+
+<?php
+
+// PHP code to find the number of days
+// between two given dates
+
+// Function to find the difference
+// between two dates.
+function dateDiffInDays($date1, $date2)
+{
+    // Calculating the difference in timestamps
+    $diff = strtotime($date2) - strtotime($date1);
+
+    // 1 day = 24 hours
+    // 24 * 60 * 60 = 86400 seconds
+    return abs(round($diff / 86400));
+}
