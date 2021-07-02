@@ -227,7 +227,7 @@ class Core_Functions_Admin {
 	/**
 	 * Save the child details for client log.
 	 */
-	public function cf_save_post_callback( $post_id ) {
+	public function cf_save_post_callback( $post_id,$post ) {
 		// Check for client log post type.
 		if ( 'client-log' === get_post_type( $post_id ) ) {
 			$child = filter_input( INPUT_POST, 'cf-child', FILTER_SANITIZE_STRING );
@@ -235,7 +235,7 @@ class Core_Functions_Admin {
 		}
 
 		// (!$update) => this doesnot seems to work
-	 	if ( 'leave' === get_post_type( $post_id,$post ) ) {
+	 	if ( 'leave' === get_post_type( $post_id ) ) {
 			if (isset($post->post_status) && 'auto-draft' == $post->post_status) {
     			return;
   		}
