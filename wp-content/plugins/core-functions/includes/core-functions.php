@@ -501,11 +501,6 @@ function cf_get_learning_lounge_logs( $author = '', $paged = 1, $posts_per_page 
 
 	return new WP_Query( $args );
 }
-
-
-
-<?php
-
 // PHP code to find the number of days
 // between two given dates
 
