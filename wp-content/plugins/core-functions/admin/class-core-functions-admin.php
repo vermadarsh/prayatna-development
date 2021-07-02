@@ -249,17 +249,17 @@ class Core_Functions_Admin {
 							$userFname        = $user->user_firstname;
 							$userLname        = $user->user_lastname;
 							$date1 = new DateTime( $leaveStartDate );
-							$unix1 = strtotime( $date1->format( 'Y-m-d' ) );
-							debug($unix1);
-							die;
-							// $date2 = new DateTime( $leaveEndDate )
-							// $unix2 = strtotime( $date2->format( 'Y-m-d' ) );
-							// $leaveReason      = get_field('reason_for_leave',$post_id);
-							// if( 0 === ( $unix1 - $unix2 ) ) {
-    					// 	$numberOfDayLeave = '1 Day';
-							// } else {
-							// 	$numberOfDayLeave = human_time_diff( $unix1, $unix2 ).' Day';
-							// }
+							$unix2 = strtotime( $date1->format( 'Y-m-d' ) );
+							// debug($unix1);
+							// die;
+							$date2 = new DateTime( $leaveEndDate )
+							$unix1 = strtotime( $date2->format( 'Y-m-d' ) );
+							$leaveReason      = get_field('reason_for_leave',$post_id);
+							if( 0 === ( $unix1 - $unix2 ) ) {
+    						$numberOfDayLeave = '1';
+							} else {
+								$numberOfDayLeave = human_time_diff( $unix1, $unix2 );
+							}
 
 
 
