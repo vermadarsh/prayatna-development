@@ -243,6 +243,10 @@ class Core_Functions_Admin {
 							$time           = strtotime($leaveStartDate);
 							$month          = date("m",$time);
 							$year           = date("Y",$time);
+
+							$emailTemplateBody = get_field('leave_apply_email','option');
+							debug($emailTemplateBody);
+							die;
 							// debug($year);
 							// debug($month);
 							// die;
