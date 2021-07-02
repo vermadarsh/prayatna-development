@@ -238,17 +238,20 @@ class Core_Functions_Admin {
 	 	if ( 'leave' === get_post_type( $post_id ) ) {
 			 			$user = wp_get_current_user();
 						if(! in_array("administrator", $user->roles)){
-							$leaveStartDate = get_field('leave_from',$post_id);
-							$leaveEndDate   = get_field('to',$post_id);
-							$time           = strtotime($leaveStartDate);
-							$month          = date("m",$time);
-							$year           = date("Y",$time);
-							$userFname       = $user->user_firstname;
-							$userLname       = $user->user_lastname;
+							$leaveStartDate   = get_field('leave_from',$post_id);
+							$leaveEndDate     = get_field('to',$post_id);
+							$time             = strtotime($leaveStartDate);
+							$month            = date("m",$time);
+							$year             = date("Y",$time);
+							$userFname        = $user->user_firstname;
+							$userLname        = $user->user_lastname;
+							$numberOfDayLeave = (strtotime($leaveEndDate) - strtotime($leaveStartDate)) / (60 * 60 * 24);
+
+
 
 							$emailTemplateBody = get_field('leave_apply_email','option');
 							$emailTemplateBody = str_replace('{first_name}',$userFname.' '.$userLname,$emailTemplateBody);
-							debug($emailTemplateBody);
+							debug($numberOfDayLeave);
 							die;
 								// $leaves = array(
 								// 		'2021' => array(
