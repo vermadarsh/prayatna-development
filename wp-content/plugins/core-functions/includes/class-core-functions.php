@@ -142,7 +142,7 @@ class Core_Functions {
 		$this->loader->add_filter( 'wp_authenticate_user', $plugin_admin, 'cf_wp_authenticate_user_callback', 10 );
 		$this->loader->add_filter( 'login_redirect', $plugin_admin, 'cf_login_redirect_callback', 10, 3 );
 		$this->loader->add_action( 'add_meta_boxes', $plugin_admin, 'cf_add_meta_boxes_callback' );
-		$this->loader->add_action( 'save_post', $plugin_admin, 'cf_save_post_callback' );
+		$this->loader->add_action( 'save_post', $plugin_admin, 'cf_save_post_callback'10,2 );
 		$this->loader->add_action( 'admin_footer', $plugin_admin, 'cf_admin_footer_callback' );
 		$this->loader->add_action( 'wp_ajax_export_client_log', $plugin_admin, 'cf_export_client_log_callback' );
 		$this->loader->add_filter( 'cf_client_logs_args', $plugin_admin, 'cf_cf_client_logs_args_callback' );
