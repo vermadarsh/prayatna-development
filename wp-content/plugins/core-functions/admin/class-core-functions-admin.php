@@ -267,8 +267,8 @@ class Core_Functions_Admin {
 							$emailTemplateBody = str_replace('{from_date}',$leaveStartDate,$emailTemplateBody);
 							$emailTemplateBody = str_replace('{to_date}',$leaveEndDate,$emailTemplateBody);
 							$emailTemplateBody = str_replace('{reason}.',$leaveReason,$emailTemplateBody);
-							debug($emailTemplateBody);
-							die;
+							// debug($emailTemplateBody);
+							// die;
 
 								// $leaves = array(
 								// 		'2021' => array(
