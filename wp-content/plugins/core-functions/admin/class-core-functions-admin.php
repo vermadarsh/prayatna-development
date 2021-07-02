@@ -252,7 +252,7 @@ class Core_Functions_Admin {
 							$unix2 = strtotime( $date1->format( 'Y-m-d' ) );
 							// debug($unix1);
 							// die;
-							$date2 = new DateTime( $leaveEndDate )
+							$date2 = new DateTime( $leaveEndDate );
 							$unix1 = strtotime( $date2->format( 'Y-m-d' ) );
 							$leaveReason      = get_field('reason_for_leave',$post_id);
 							if( 0 === ( $unix1 - $unix2 ) ) {
