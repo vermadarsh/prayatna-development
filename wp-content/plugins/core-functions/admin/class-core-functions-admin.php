@@ -816,6 +816,22 @@ class Core_Functions_Admin {
 				<?php } ?>
 	    </tr>
 	  </table>
-<?php
+		<?php
+	}
+	/*
+	Function to save usermeta
+	*/
+	public function cf_save_extra_user_profile_fields( $user_id ) {
+    if ( empty( $_POST['_wpnonce'] ) || ! wp_verify_nonce( $_POST['_wpnonce'], 'update-user_' . $user_id ) ) {
+        return;
+    }
+
+    if ( !current_user_can( 'edit_user', $user_id ) ) {
+        return false;
+    }
+		$current_user = wp_get_current_user();
+		if (user_can( $current_user, 'administrator' )) {
+    		update_user_meta( $user_id, 'monthly_salary', $_POST['monthly_salary'] );
+    }
 	}
 }
