@@ -667,6 +667,8 @@ class Core_Functions_Public {
 	*/
 	public function cf_extra_user_profile_fields( $user ) {
 		$current_user = wp_get_current_user();
+		debug($current_user);
+		die;
 			if (user_can( $current_user, 'administrator' )) { ?>
     <h3><?php _e("Salary information", "blank"); ?></h3>
 		<table class="form-table">
