@@ -801,7 +801,6 @@ class Core_Functions_Admin {
 	* Function to return add custom field for user profile
 	*/
 	public function cf_extra_user_profile_fields( $user ) {
-		die("kook");
 		$current_user = wp_get_current_user();
 		debug($current_user);
 		die;
