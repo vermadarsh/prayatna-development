@@ -796,4 +796,25 @@ class Core_Functions_Admin {
 	public function cf_add_client_payment_callback() {
 		require_once CF_PLUGIN_PATH . 'admin/templates/menu-pages/add-client-payment.php';
 	}
+
+	/*
+	* Function to return add custom field for user profile
+	*/
+	public function cf_extra_user_profile_fields( $user ) {
+		$current_user = wp_get_current_user();
+		debug($current_user);
+		die;
+			if (user_can( $current_user, 'administrator' )) { ?>
+    <h3><?php _e("Salary information", "blank"); ?></h3>
+		<table class="form-table">
+	    <tr>
+	        <th><label for="monthly_salary"><?php _e("Monthly Net Salary"); ?></label></th>
+	        <td>
+	            <input type="number" name="monthly_salary" id="monthly_salary" value="<?php echo esc_attr( get_the_author_meta( 'monthly_salary', $user->ID ) ); ?>" class="regular-text" /><br />
+	        </td>
+	    </tr>
+	  </table>
+<?php
+		}
+	}
 }
