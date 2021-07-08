@@ -813,7 +813,7 @@ class Core_Functions_Admin {
 	        </td>
 				<?php } elseif(user_can( $current_user, 'therapist' )) { ?>
 					<td>
-	            <label for="monthly_salary"><?php echo esc_attr( get_the_author_meta( 'monthly_salary', $user->ID ) ); ?></label>
+	            <strong><label for="monthly_salary"><?php echo esc_attr( get_the_author_meta( 'monthly_salary', $user->ID ) ); ?></label></strong>
 	        </td>
 
 				<?php } ?>
