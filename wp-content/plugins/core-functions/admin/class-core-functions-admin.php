@@ -812,7 +812,10 @@ class Core_Functions_Admin {
 	            <input type="number" name="monthly_salary" id="monthly_salary" value="<?php echo esc_attr( get_the_author_meta( 'monthly_salary', $user->ID ) ); ?>" class="regular-text" /><br />
 	        </td>
 				<?php } elseif(user_can( $current_user, 'therapist' )) { ?>
-					<h4><?php echo esc_attr( get_the_author_meta( 'monthly_salary', $user->ID ) );  ?></h4>
+					<td>
+	            <label for="monthly_salary"><?php echo esc_attr( get_the_author_meta( 'monthly_salary', $user->ID ) ); ?></label>
+	        </td>
+
 				<?php } ?>
 	    </tr>
 	  </table>
