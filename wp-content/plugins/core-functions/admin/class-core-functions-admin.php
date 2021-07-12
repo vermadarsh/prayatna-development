@@ -250,8 +250,8 @@ class Core_Functions_Admin {
 			}
 
 
-			$leaveStartDate   = get_field('leave_from',$post_id);
-			$leaveEndDate     = get_field('to',$post_id);
+			$leaveStartDate   = get_field( 'leave_from',$post_id );
+			$leaveEndDate     = get_field( 'to',$post_id );
 			$time             = strtotime($leaveStartDate);
 			$month            = date("m",$time);
 			$year             = date("Y",$time);
@@ -260,17 +260,23 @@ class Core_Functions_Admin {
 			$leave_type       = ('full' === $leave_type) ? 1 : 0.5;
 			$userFname        = $user->user_firstname;
 			$userLname        = $user->user_lastname;
-			$leaveReason      = get_field('reason_for_leave',$post_id);
 			$date1            = new DateTime( $leaveStartDate );
 			$unix1            = strtotime( $date1->format( 'Y-m-d' ) );
 			$date2            = new DateTime( $leaveEndDate );
 			$unix2            = strtotime( $date2->format( 'Y-m-d' ) );
 			$numberOfDayLeave = ( 0 === ( $unix1 - $unix2 ) ) ? '1 Day' : human_time_diff( $unix1, $unix2 );
+			$leaves_days      = cf_get_dates_within_2_dates( $leaveStartDate, $leaveEndDate );
+
+			debug( $leaves_days );
+			die;
 
 			// Prepare the leaves array.
 			$leaves                                   = get_post_meta( $user->ID, 'prayatna_leaves', true );
 			$leaves                                   = ( ! empty( $leaves ) ) ? $leaves : array();
-			$leaves[ $year ][ $month ][ $leave_date ] = $leave_type;
+			$leaves[ $year ][ $month ][ $leave_date ] = array(
+				'type'   => $leave_type,
+				'reason' => get_field( 'reason_for_leave', $post_id ),
+			);
 
 			debug( $leaves );
 			die;

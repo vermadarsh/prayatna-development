@@ -501,3 +501,31 @@ function cf_get_learning_lounge_logs( $author = '', $paged = 1, $posts_per_page 
 
 	return new WP_Query( $args );
 }
+
+/**
+ * Check if the function exists.
+ */
+if ( ! function_exists( 'cf_get_dates_within_2_dates' ) ) {
+	/**
+	 * Get dates that fall between 2 dates.
+	 *
+	 * @param string $from Start date.
+	 * @param string $to End date.
+	 * @return boolean|DatePeriod
+	 * @since 1.0.0
+	 */
+	function cf_get_dates_within_2_dates( $from, $to ) {
+		// Return if either of the date is not provided.
+		if ( empty( $from ) || empty( $to ) ) {
+			return false;
+		}
+
+		// Get the dates array.
+		$from     = new DateTime( $from );
+		$to       = new DateTime( $to );
+		$to       = $to->modify( '+1 day' );
+		$interval = new DateInterval( 'P1D' );
+
+		return new DatePeriod( $from, $interval, $to );
+	}
+}
