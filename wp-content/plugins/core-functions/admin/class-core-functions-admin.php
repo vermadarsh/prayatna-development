@@ -234,12 +234,24 @@ class Core_Functions_Admin {
 			update_post_meta( $post_id, 'child', $child );
 		}
 
-		// (!$update) => this doesnot seems to work
+		// Update the leaves meta data.
 	 	if ( 'leave' === get_post_type( $post_id ) ) {
-			if ( isset($post->post_status) && ( 'auto-draft' === $post->post_status || 'trash' === $post->post_status ) ) {
-    			return;
-  		}
-			 			$user = wp_get_current_user();
+	 		// Return, if the post status is not published.
+			if ( isset( $post->post_status ) && ( 'auto-draft' === $post->post_status || 'trash' === $post->post_status ) ) {
+				return;
+			}
+
+			// Get the current user.
+			$user = wp_get_current_user();
+
+			debug( $user );
+			die;
+
+			// Return, if the current user is not therapist.
+			if ( ! cf_is_user_therapist( $user->ID ) ) {
+
+			}
+			 			
 						if(! in_array("administrator", $user->roles)){
 							$leaveStartDate   = get_field('leave_from',$post_id);
 							$leaveEndDate     = get_field('to',$post_id);
