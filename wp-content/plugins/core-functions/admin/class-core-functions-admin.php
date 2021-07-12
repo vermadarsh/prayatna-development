@@ -257,7 +257,7 @@ class Core_Functions_Admin {
 			$year             = date("Y",$time);
 			$leave_date       = date("d",$time);
 			$leave_type       = get_field('leave_duration',$post_id);
-			$leave_type       = ('full' === $leave_type) ? 1 : 0.5;
+			$leave_type       = ( 'full' === $leave_type ) ? 1 : 0.5;
 			$userFname        = $user->user_firstname;
 			$userLname        = $user->user_lastname;
 			$date1            = new DateTime( $leaveStartDate );
