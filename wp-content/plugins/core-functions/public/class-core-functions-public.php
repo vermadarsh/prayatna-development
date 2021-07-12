@@ -662,5 +662,11 @@ class Core_Functions_Public {
 
 		return 'text/html';
 	}
+
+	public function test_check(){
+		$leaves  = get_user_meta(20,'prayatna_leaves', true);
+		debug($leaves);
+		die;
+	}
 	
 }
