@@ -667,7 +667,7 @@ class Core_Functions_Public {
 		if( current_user_can('administrator') ){
 			$leaves  = get_user_meta(20,'prayatna_leaves', false);
 			$leaves2 = get_post_meta( 20, 'prayatna_leaves', true );
-			debug($leaves);
+			// debug($leaves);
 			debug($leaves2);
 			die;
 		}
