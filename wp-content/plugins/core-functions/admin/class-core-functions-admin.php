@@ -849,4 +849,11 @@ class Core_Functions_Admin {
     		update_user_meta( $user_id, 'monthly_salary', $_POST['monthly_salary'] );
     }
 	}
+	public function cf_acf_read_only( $field ) {
+		$field['readonly'] = 1;
+		$field['disabled'] = true;
+		return $field;
+	}
+	
+	add_filter('acf/load_field/key=group_60ec9e417d9df', 'acf_read_only');
 }
