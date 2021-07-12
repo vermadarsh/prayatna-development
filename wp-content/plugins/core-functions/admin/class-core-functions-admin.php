@@ -850,9 +850,12 @@ class Core_Functions_Admin {
     }
 	}
 	public function cf_acf_read_only( $field ) {
-		$field['readonly'] = 1;
-		$field['disabled'] = true;
-		return $field;
+		
+       // Disabled
+       $field['disabled'] = true;
+       // Readonly
+       $field['readonly'] = true;
+       return $field;
 	}
 	
 	
