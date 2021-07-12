@@ -268,8 +268,8 @@ class Core_Functions_Admin {
 			$leaves_days      = cf_get_dates_within_2_dates( $leaveStartDate, $leaveEndDate );
 
 			// Prepare the leaves array.
-			$leaves                                   = get_post_meta( $user->ID, 'prayatna_leaves', true );
-			$leaves                                   = ( ! empty( $leaves ) ) ? $leaves : array();
+			$leaves            = get_post_meta( $user->ID, 'prayatna_leaves', true );
+			$leaves            = ( ! empty( $leaves ) ) ? $leaves : array();
 			if ( ! empty( $leaves_days ) && is_array( $leaves_days ) ) {
 				foreach( $leaves_days as $leave_full_date ) {
 					$leave_year  = gmdate( 'Y', strtotime( $leave_full_date ) );
@@ -292,6 +292,9 @@ class Core_Functions_Admin {
 			$emailTemplateBody = str_replace('{from_date}',$leaveStartDate,$emailTemplateBody);
 			$emailTemplateBody = str_replace('{to_date}',$leaveEndDate,$emailTemplateBody);
 			$emailTemplateBody = str_replace('{reason}.',$leaveReason,$emailTemplateBody);
+			$adminEmail        = 'nirmehta4491@gmail.com';
+			$AdminEmailSubject = $userFname.' is apply for leave application';
+			wp_mail($adminEmail, $AdminEmailSubject, $AdminEmailBody, array('Content-Type: text/html; charset=UTF-8'));
 	   }
 
 	}
