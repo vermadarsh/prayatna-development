@@ -267,16 +267,20 @@ class Core_Functions_Admin {
 			$numberOfDayLeave = ( 0 === ( $unix1 - $unix2 ) ) ? '1 Day' : human_time_diff( $unix1, $unix2 );
 			$leaves_days      = cf_get_dates_within_2_dates( $leaveStartDate, $leaveEndDate );
 
-			debug( $leaves_days );
-			die;
-
 			// Prepare the leaves array.
 			$leaves                                   = get_post_meta( $user->ID, 'prayatna_leaves', true );
 			$leaves                                   = ( ! empty( $leaves ) ) ? $leaves : array();
-			$leaves[ $year ][ $month ][ $leave_date ] = array(
-				'type'   => $leave_type,
-				'reason' => get_field( 'reason_for_leave', $post_id ),
-			);
+			if ( ! empty( $leaves_days ) && is_array( $leaves_days ) ) {
+				foreach( $leaves_days as $leave_full_date ) {
+					$leave_year  = gmdate( 'Y', strtotime( $leave_full_date ) );
+					$leave_month = gmdate( 'm', strtotime( $leave_full_date ) );
+					$leave_date  = gmdate( 'd', strtotime( $leave_full_date ) );
+					$leaves[ $leave_year ][ $leave_month ][ $leave_date ] = array(
+						'type'   => $leave_type,
+						'reason' => get_field( 'reason_for_leave', $post_id ),
+					);
+				}
+			}
 
 			debug( $leaves );
 			die;
