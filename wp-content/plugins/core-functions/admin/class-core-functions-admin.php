@@ -244,72 +244,44 @@ class Core_Functions_Admin {
 			// Get the current user.
 			$user = wp_get_current_user();
 
-			debug( $user );
-			die;
-
 			// Return, if the current user is not therapist.
 			if ( ! cf_is_user_therapist( $user->ID ) ) {
-
+				return;
 			}
-			 			
-						if(! in_array("administrator", $user->roles)){
-							$leaveStartDate   = get_field('leave_from',$post_id);
-							$leaveEndDate     = get_field('to',$post_id);
-							$time             = strtotime($leaveStartDate);
-							$month            = date("m",$time);
-							$year             = date("Y",$time);
-							$leave_date       = date("d",$time);
-							$leave_type       = get_field('leave_duration',$post_id);
-							$leave_type       = ('full' === $leave_type) ? 1 : 0.5;
-							$userFname        = $user->user_firstname;
-							$userLname        = $user->user_lastname;
-							$leaveReason      = get_field('reason_for_leave',$post_id);
-							$date1            = new DateTime( $leaveStartDate );
-							$unix1            = strtotime( $date1->format( 'Y-m-d' ) );
-							// debug($unix1);
-							// die;
-							$date2 = new DateTime( $leaveEndDate );
-							$unix2 = strtotime( $date2->format( 'Y-m-d' ) );
 
-							if( 0 === ( $unix1 - $unix2 ) ) {
-    						$numberOfDayLeave = '1 Day';
-							} else {
-								$numberOfDayLeave = human_time_diff( $unix1, $unix2 );
-							}
-							$emailTemplateBody = get_field('leave_apply_email','option');
-							$emailTemplateBody = str_replace('{first_name}',$userFname.' '.$userLname,$emailTemplateBody);
-							$emailTemplateBody = str_replace('{number_of_days}',$numberOfDayLeave,$emailTemplateBody);
-							$emailTemplateBody = str_replace('{from_date}',$leaveStartDate,$emailTemplateBody);
-							$emailTemplateBody = str_replace('{to_date}',$leaveEndDate,$emailTemplateBody);
-							$emailTemplateBody = str_replace('{reason}.',$leaveReason,$emailTemplateBody);
-							// debug($emailTemplateBody);
-							// die;
 
-							// $leaves = array(
-							// 		'2021' => array(
-							// 			'06' => array(
-							// 				'29' => '1',
-							// 			),
-							// 			'07' => array(
-							// 				'15' => '0.5'get_field('leave_from');
-							// 			),
-							// 		)
-							// );
-							// $leaves[$year][$month][$date] = 1;
+			$leaveStartDate   = get_field('leave_from',$post_id);
+			$leaveEndDate     = get_field('to',$post_id);
+			$time             = strtotime($leaveStartDate);
+			$month            = date("m",$time);
+			$year             = date("Y",$time);
+			$leave_date       = date("d",$time);
+			$leave_type       = get_field('leave_duration',$post_id);
+			$leave_type       = ('full' === $leave_type) ? 1 : 0.5;
+			$userFname        = $user->user_firstname;
+			$userLname        = $user->user_lastname;
+			$leaveReason      = get_field('reason_for_leave',$post_id);
+			$date1            = new DateTime( $leaveStartDate );
+			$unix1            = strtotime( $date1->format( 'Y-m-d' ) );
+			$date2            = new DateTime( $leaveEndDate );
+			$unix2            = strtotime( $date2->format( 'Y-m-d' ) );
+			$numberOfDayLeave = ( 0 === ( $unix1 - $unix2 ) ) ? '1 Day' : human_time_diff( $unix1, $unix2 );
 
-								// $leaves = array(
-								// 			$year       => array(
-								// 			$month      => array(
-								// 			$leave_date => $leave_type,
-								// 			),
-								// 			$leave_date => array(
-								// 				'15' => '0.5'.get_field('leave_from');
-								// 			),
-								// 		)
-								// );
-								// $leaves[$year][$month][$date] = 1;
-					}
+			// Prepare the leaves array.
+			$leaves                                   = get_post_meta( $user->ID, 'prayatna_leaves', true );
+			$leaves                                   = ( ! empty( $leaves ) ) ? $leaves : array();
+			$leaves[ $year ][ $month ][ $leave_date ] = $leave_type;
 
+			debug( $leaves );
+			die;
+
+			// Prepare the email template.
+			$emailTemplateBody = get_field('leave_apply_email','option');
+			$emailTemplateBody = str_replace('{first_name}',$userFname.' '.$userLname,$emailTemplateBody);
+			$emailTemplateBody = str_replace('{number_of_days}',$numberOfDayLeave,$emailTemplateBody);
+			$emailTemplateBody = str_replace('{from_date}',$leaveStartDate,$emailTemplateBody);
+			$emailTemplateBody = str_replace('{to_date}',$leaveEndDate,$emailTemplateBody);
+			$emailTemplateBody = str_replace('{reason}.',$leaveReason,$emailTemplateBody);
 	   }
 
 	}
