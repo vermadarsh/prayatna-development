@@ -664,7 +664,7 @@ class Core_Functions_Public {
 	}
 
 	public function test_check(){
-		$leaves  = get_user_meta(20,'prayatna_leaves', true);
+		$leaves  = get_user_meta(20,'prayatna_leaves', false);
 		debug($leaves);
 		die;
 	}
