@@ -855,9 +855,9 @@ class Core_Functions_Admin {
 			$field['disabled'] = true;
 			// Readonly
 			$field['readonly'] = true;
-			return $field;
+			
 		}
-       
+		return $field;
 	}
 	
 	
