@@ -850,12 +850,14 @@ class Core_Functions_Admin {
     }
 	}
 	public function cf_acf_read_only( $field ) {
-		
-       // Disabled
-       $field['disabled'] = true;
-       // Readonly
-       $field['readonly'] = true;
-       return $field;
+		if( current_user_can('therapist') ){
+			// Disabled
+			$field['disabled'] = true;
+			// Readonly
+			$field['readonly'] = true;
+			return $field;
+		}
+       
 	}
 	
 	
