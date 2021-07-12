@@ -520,12 +520,27 @@ if ( ! function_exists( 'cf_get_dates_within_2_dates' ) ) {
 			return false;
 		}
 
+		// If end date falls before the $from date, let's swap.
+		if ( ( strtotime( $to ) < strtotime( $from ) ) ) {
+			$temp = $to;
+			$to   = $from;
+			$from = $temp;
+		}
+
 		// Get the dates array.
 		$from     = new DateTime( $from );
 		$to       = new DateTime( $to );
 		$to       = $to->modify( '+1 day' );
 		$interval = new DateInterval( 'P1D' );
+		$period   = new DatePeriod( $from, $interval, $to );
+		$dates    = array();
 
-		return new DatePeriod( $from, $interval, $to );
+		if ( ! empty( $period ) ) {
+			foreach ( $period as $date ) {
+				$dates[] = $date->format( 'Y-m-d' );
+			}
+		}
+
+		return $dates;
 	}
 }
