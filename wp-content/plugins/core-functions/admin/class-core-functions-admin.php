@@ -285,17 +285,17 @@ class Core_Functions_Admin {
 							// );
 							// $leaves[$year][$month][$date] = 1;
 
-								$leaves = array(
-											$year       => array(
-											$month      => array(
-											$leave_date => $leave_type,
-											),
-											$leave_date => array(
-												'15' => '0.5'.get_field('leave_from');
-											),
-										)
-								);
-								$leaves[$year][$month][$date] = 1;
+								// $leaves = array(
+								// 			$year       => array(
+								// 			$month      => array(
+								// 			$leave_date => $leave_type,
+								// 			),
+								// 			$leave_date => array(
+								// 				'15' => '0.5'.get_field('leave_from');
+								// 			),
+								// 		)
+								// );
+								// $leaves[$year][$month][$date] = 1;
 					}
 
 	   }
