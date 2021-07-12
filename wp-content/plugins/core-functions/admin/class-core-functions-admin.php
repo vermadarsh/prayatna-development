@@ -236,7 +236,7 @@ class Core_Functions_Admin {
 
 		// (!$update) => this doesnot seems to work
 	 	if ( 'leave' === get_post_type( $post_id ) ) {
-			if (isset($post->post_status) && 'auto-draft' == $post->post_status) {
+			if ( isset($post->post_status) && ( 'auto-draft' === $post->post_status || 'trash' === $post->post_status ) ) {
     			return;
   		}
 			 			$user = wp_get_current_user();
@@ -246,6 +246,9 @@ class Core_Functions_Admin {
 							$time             = strtotime($leaveStartDate);
 							$month            = date("m",$time);
 							$year             = date("Y",$time);
+							$leave_date       = date("d",$time);
+							$leave_type       = get_field('leave_duration',$post_id);
+							$leave_type       = ('full' === $leave_type) ? 1 : 0.5;
 							$userFname        = $user->user_firstname;
 							$userLname        = $user->user_lastname;
 							$leaveReason      = get_field('reason_for_leave',$post_id);
@@ -270,17 +273,29 @@ class Core_Functions_Admin {
 							// debug($emailTemplateBody);
 							// die;
 
-								// $leaves = array(
-								// 		'2021' => array(
-								// 			'06' => array(
-								// 				'29' => '1',
-								// 			),
-								// 			'07' => array(
-								// 				'15' => '0.5'get_field('leave_from');
-								// 			),
-								// 		)
-								// );
-								// $leaves[$year][$month][$date] = 1;
+							// $leaves = array(
+							// 		'2021' => array(
+							// 			'06' => array(
+							// 				'29' => '1',
+							// 			),
+							// 			'07' => array(
+							// 				'15' => '0.5'get_field('leave_from');
+							// 			),
+							// 		)
+							// );
+							// $leaves[$year][$month][$date] = 1;
+
+								$leaves = array(
+											$year       => array(
+											$month      => array(
+											$leave_date => $leave_type,
+											),
+											$leave_date => array(
+												'15' => '0.5'get_field('leave_from');
+											),
+										)
+								);
+								$leaves[$year][$month][$date] = 1;
 					}
 
 	   }
