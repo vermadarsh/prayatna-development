@@ -291,7 +291,7 @@ class Core_Functions_Admin {
 											$leave_date => $leave_type,
 											),
 											$leave_date => array(
-												'15' => '0.5'get_field('leave_from');
+												'15' => '0.5'.get_field('leave_from');
 											),
 										)
 								);
