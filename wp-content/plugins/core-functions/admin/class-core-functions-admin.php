@@ -855,5 +855,5 @@ class Core_Functions_Admin {
 		return $field;
 	}
 	
-	add_filter('acf/load_field/key=group_60ec9e417d9df', 'acf_read_only');
+	
 }
