@@ -282,8 +282,6 @@ class Core_Functions_Admin {
 				}
 			}
 
-			debug( $leaves );
-
 			// Update the leaves in the database.
 			update_user_meta( $user->ID, 'prayatna_leaves', $leaves );
 
