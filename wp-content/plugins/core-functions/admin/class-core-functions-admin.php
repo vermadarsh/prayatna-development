@@ -283,11 +283,11 @@ class Core_Functions_Admin {
 				}
 			}
 
-			debug( $leaves );
-			die("hello");
-
 			// Update the leaves in the database.
 			update_user_meta( $user->ID, 'prayatna_leaves', $leaves );
+
+			debug( get_user_meta( $user->ID, 'prayatna_leaves', true ) );
+			die("pool");
 
 			// Prepare the email template.
 			$emailTemplateBody = get_field('leave_apply_email','option');
