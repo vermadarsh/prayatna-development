@@ -269,7 +269,6 @@ class Core_Functions_Admin {
 
 			// Prepare the leaves array.
 			$leaves            = get_user_meta( $user->ID, 'prayatna_leaves', true );
-			debug( $leaves_days );
 			$leaves            = ( ! empty( $leaves ) ) ? $leaves : array();
 			if ( ! empty( $leaves_days ) && is_array( $leaves_days ) ) {
 				foreach( $leaves_days as $leave_full_date ) {
@@ -285,9 +284,6 @@ class Core_Functions_Admin {
 
 			// Update the leaves in the database.
 			update_user_meta( $user->ID, 'prayatna_leaves', $leaves );
-
-			debug( get_user_meta( $user->ID, 'prayatna_leaves', true ) );
-			die("pool");
 
 			// Prepare the email template.
 			$emailTemplateBody = get_field('leave_apply_email','option');

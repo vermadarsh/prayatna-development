@@ -185,7 +185,7 @@ class Core_Functions {
 		$this->loader->add_shortcode( 'register_as_student', $plugin_public, 'cf_register_as_student_callback' );
 		$this->loader->add_action( 'wp_ajax_nopriv_register_student', $plugin_public, 'cf_register_student_callback' );
 		$this->loader->add_filter( 'wp_mail_content_type', $plugin_public, 'cf_wp_mail_content_type_callback' );
-		$this->loader->add_filter( 'init', $plugin_public, 'test_check' );
+		$this->loader->add_filter( 'wp', $plugin_public, 'cf_wp_callback' );
 		
 	}
 
