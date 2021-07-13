@@ -296,8 +296,7 @@ class Core_Functions_Admin {
 			$adminEmail        = 'nirmehta4491@gmail.com';
 			$AdminEmailSubject = $userFname.' is apply for leave application';
 			wp_mail($adminEmail, $AdminEmailSubject, $AdminEmailBody, array('Content-Type: text/html; charset=UTF-8'));
-	   }
-
+		}
 	}
 
 	/**
