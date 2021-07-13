@@ -664,13 +664,13 @@ class Core_Functions_Public {
 	}
 
 	public function test_check(){
-		if( current_user_can('administrator') ){
+		/*if( current_user_can('administrator') ){
 			$leaves  = get_user_meta(20,'prayatna_leaves', true);
 			$leaves2 = get_post_meta( 20, 'prayatna_leaves', true );
-			// debug($leaves);
-			// debug($leaves2);
-			// die;
-		}
+			debug($leaves);
+			debug($leaves2);
+			die;
+		}*/
 		
 	}
 	
