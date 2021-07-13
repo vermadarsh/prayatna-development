@@ -249,7 +249,6 @@ class Core_Functions_Admin {
 				return;
 			}
 
-
 			$leaveStartDate   = get_field( 'leave_from',$post_id );
 			$leaveEndDate     = get_field( 'to',$post_id );
 			$time             = strtotime($leaveStartDate);
@@ -276,8 +275,10 @@ class Core_Functions_Admin {
 					$leave_month = gmdate( 'm', strtotime( $leave_full_date ) );
 					$leave_date  = gmdate( 'd', strtotime( $leave_full_date ) );
 					$leaves[ $leave_year ][ $leave_month ][ $leave_date ] = array(
-						'type'   => $leave_type,
-						'reason' => get_field( 'reason_for_leave', $post_id ),
+						'type'          => $leave_type,
+						'reason'        => get_field( 'reason_for_leave', $post_id ),
+						'status'        => 'pending',
+						'reject_reason' => '',
 					);
 				}
 			}
