@@ -111,6 +111,6 @@ if ( ! function_exists( 'debug' ) ) {
 
 add_action( 'admin_init', function() {
     $user_id = get_current_user_id();
-    $leaves  = get_post_meta( $user_id, 'prayatna_leaves', true );
-    debug( $leaves ); die;
+    $leaves  = get_user_meta( $user_id, 'prayatna_leaves', true );
+    debug( $leaves );
 } );
