@@ -269,6 +269,8 @@ class Core_Functions_Admin {
 
 			// Prepare the leaves array.
 			$leaves            = get_user_meta( $user->ID, 'prayatna_leaves', true );
+			debug( $leaves );
+			die("hello");
 			$leaves            = ( ! empty( $leaves ) ) ? $leaves : array();
 			if ( ! empty( $leaves_days ) && is_array( $leaves_days ) ) {
 				foreach( $leaves_days as $leave_full_date ) {
