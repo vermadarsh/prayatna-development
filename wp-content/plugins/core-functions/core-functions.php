@@ -108,9 +108,3 @@ if ( ! function_exists( 'debug' ) ) {
 		echo '</pre>';
 	}
 }
-
-add_action( 'admin_init', function() {
-    $user_id = get_current_user_id();
-    $leaves  = get_user_meta( $user_id, 'prayatna_leaves', true );
-    debug( $leaves );
-} );
