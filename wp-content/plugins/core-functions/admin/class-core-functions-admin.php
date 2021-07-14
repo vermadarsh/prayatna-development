@@ -291,6 +291,8 @@ class Core_Functions_Admin {
 				$emailTemplateBody                 = str_replace('{from_date}',$leaveStartDate,$emailTemplateBody);
 				$emailTemplateBody                 = str_replace('{to_date}',$leaveEndDate,$emailTemplateBody);
 				$emailTemplateBody                 = str_replace('{reason}.',$leaveReason,$emailTemplateBody);
+				$emailTemplateBody                 = str_replace('{Therapist_name}.',$userFname.' '.$userLname);
+				
 				$adminEmail                        = 'nirmehta4491@gmail.com';
 				$AdminEmailSubject                 = $userFname.' is apply for leave application';
 				$leave_apply_email_subject         = str_replace('{first_name}',$userFname,$leave_apply_email_subject);
