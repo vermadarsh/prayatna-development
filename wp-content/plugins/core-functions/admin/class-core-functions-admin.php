@@ -322,16 +322,16 @@ class Core_Functions_Admin {
 				$leave_day           = gmdate( 'D', strtotime( $leave_full_date ) );
 				$email_template_body_approved = get_field('leave_approved_email','option');
 				if( 'approved' === $leaves[ $leave_year ][ $leave_month ][ $leave_date ]['status'] ) {
-					$emailTemplateBody         = str_replace('{first_name}',$userFname.' '.$userLname,$emailTemplateBody);
-					$emailTemplateBody         = str_replace('{day}',$leave_day,$emailTemplateBody);
-					$emailTemplateBody         = str_replace('{from_date}',$leaveStartDate,$emailTemplateBody);
+					$email_template_body_approved         = str_replace('{first_name}',$userFname.' '.$userLname,$email_template_body_approved);
+					$email_template_body_approved         = str_replace('{day}',$leave_day,$email_template_body_approved);
+					$email_template_body_approved         = str_replace('{from_date}',$leaveStartDate,$email_template_body_approved);
 				} else {
-					$emailTemplateBody         = str_replace('{first_name}',$userFname.' '.$userLname,$emailTemplateBody);
-					$emailTemplateBody         = str_replace('{day}',$leave_day,$emailTemplateBody);
-					$emailTemplateBody         = str_replace('{from_date}',$leaveStartDate,$emailTemplateBody);
-					$emailTemplateBody         = str_replace('{leave_reason}',$rejected_message,$emailTemplateBody);
+					$email_template_body_approved         = str_replace('{first_name}',$userFname.' '.$userLname,$email_template_body_approved);
+					$email_template_body_approved         = str_replace('{day}',$leave_day,$email_template_body_approved);
+					$email_template_body_approved         = str_replace('{from_date}',$leaveStartDate,$email_template_body_approved);
+					$email_template_body_approved         = str_replace('{leave_reason}',$rejected_message,$email_template_body_approved);
 				}
-				debug($emailTemplateBody);
+				debug($email_template_body_approved);
 				die;
 				wp_mail($adminEmail, $AdminEmailSubject, $AdminEmailBody, array('Content-Type: text/html; charset=UTF-8'));
 			}
