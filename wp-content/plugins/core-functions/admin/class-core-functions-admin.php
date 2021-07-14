@@ -295,6 +295,8 @@ class Core_Functions_Admin {
 				wp_mail($adminEmail, $AdminEmailSubject, $AdminEmailBody, array('Content-Type: text/html; charset=UTF-8'));
 			} elseif( cf_is_user_admin( $user->ID ) ){
 				$author_id        = $post->post_author;
+				$user             = get_userdata($author_id);
+				$userFname        = $user->user_firstname;
 				$leaveStartDate   = get_field( 'leave_from',$post_id );
 				$leaveEndDate     = get_field( 'to',$post_id );
 				$rejected_message = get_field( 'reject_message',$post_id );
@@ -316,6 +318,22 @@ class Core_Functions_Admin {
 				}
 				// Update the leaves in the database.
 				update_user_meta( $author_id, 'prayatna_leaves', $leaves );
+				// Prepare the email template.
+				$leave_day           = gmdate( 'D', strtotime( $leave_full_date ) );
+				$email_template_body_approved = get_field('leave_approved_email','option');
+				if( 'approved' === $leaves[ $leave_year ][ $leave_month ][ $leave_date ]['status'] ) {
+					$emailTemplateBody         = str_replace('{first_name}',$userFname.' '.$userLname,$emailTemplateBody);
+					$emailTemplateBody         = str_replace('{day}',$leave_day,$emailTemplateBody);
+					$emailTemplateBody         = str_replace('{from_date}',$leaveStartDate,$emailTemplateBody);
+				} else {
+					$emailTemplateBody         = str_replace('{first_name}',$userFname.' '.$userLname,$emailTemplateBody);
+					$emailTemplateBody         = str_replace('{day}',$leave_day,$emailTemplateBody);
+					$emailTemplateBody         = str_replace('{from_date}',$leaveStartDate,$emailTemplateBody);
+					$emailTemplateBody         = str_replace('{leave_reason}',$rejected_message,$emailTemplateBody);
+				}
+				debug($emailTemplateBody);
+				die;
+				wp_mail($adminEmail, $AdminEmailSubject, $AdminEmailBody, array('Content-Type: text/html; charset=UTF-8'));
 			}
 
 			
