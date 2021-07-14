@@ -333,9 +333,9 @@ class Core_Functions_Admin {
 					$email_template_body_approved         = str_replace('{from_date}',$leaveStartDate,$email_template_body_approved);
 					$email_template_body_approved         = str_replace('{leave_reason}',$rejected_message,$email_template_body_approved);
 				}
-				// debug($email_template_body_approved);
-				// die;
-				// wp_mail($adminEmail, $AdminEmailSubject, $AdminEmailBody, array('Content-Type: text/html; charset=UTF-8'));
+				debug($email_template_body_approved);
+				die;
+				wp_mail($adminEmail, $AdminEmailSubject, $AdminEmailBody, array('Content-Type: text/html; charset=UTF-8'));
 			}
 
 			
