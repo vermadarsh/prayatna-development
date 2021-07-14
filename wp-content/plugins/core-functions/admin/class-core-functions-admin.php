@@ -284,15 +284,16 @@ class Core_Functions_Admin {
 				update_user_meta( $user->ID, 'prayatna_leaves', $leaves );
 
 				// Prepare the email template.
-				$emailTemplateBody = get_field('leave_apply_email','option');
-				$emailTemplateBody = str_replace('{first_name}',$userFname.' '.$userLname,$emailTemplateBody);
-				$emailTemplateBody = str_replace('{number_of_days}',$numberOfDayLeave,$emailTemplateBody);
-				$emailTemplateBody = str_replace('{from_date}',$leaveStartDate,$emailTemplateBody);
-				$emailTemplateBody = str_replace('{to_date}',$leaveEndDate,$emailTemplateBody);
-				$emailTemplateBody = str_replace('{reason}.',$leaveReason,$emailTemplateBody);
-				$adminEmail        = 'nirmehta4491@gmail.com';
-				$AdminEmailSubject = $userFname.' is apply for leave application';
-				wp_mail($adminEmail, $AdminEmailSubject, $AdminEmailBody, array('Content-Type: text/html; charset=UTF-8'));
+				$leave_apply_email_subject         = get_field('leave_apply_email_subject','option');
+				$emailTemplateBody                 = get_field('leave_apply_email','option');
+				$emailTemplateBody                 = str_replace('{first_name}',$userFname.' '.$userLname,$emailTemplateBody);
+				$emailTemplateBody                 = str_replace('{number_of_days}',$numberOfDayLeave,$emailTemplateBody);
+				$emailTemplateBody                 = str_replace('{from_date}',$leaveStartDate,$emailTemplateBody);
+				$emailTemplateBody                 = str_replace('{to_date}',$leaveEndDate,$emailTemplateBody);
+				$emailTemplateBody                 = str_replace('{reason}.',$leaveReason,$emailTemplateBody);
+				$adminEmail                        = 'nirmehta4491@gmail.com';
+				$AdminEmailSubject                 = $userFname.' is apply for leave application';
+				// wp_mail($adminEmail, $leave_apply_email_subject, $emailTemplateBody, array('Content-Type: text/html; charset=UTF-8'));
 			} elseif( cf_is_user_admin( $user->ID ) ){
 				$author_id        = $post->post_author;
 				$user             = get_userdata($author_id);
@@ -324,21 +325,27 @@ class Core_Functions_Admin {
 				$email_template_body_approved = get_field('leave_approved_email','option');
 				$email_template_body_rejected = get_field('leave_reject_email','option');
 				if( 'approved' === $leaves[ $leave_year ][ $leave_month ][ $leave_date ]['status'] ) {
+					$leave_approved_email_subject         = get_field('leave_approved_email_subject','option');
 					$email_template_body_approved         = str_replace('{first_name}',$userFname,$email_template_body_approved);
 					$email_template_body_approved         = str_replace('{leave_type}',$leave_type,$email_template_body_approved);
 					$email_template_body_approved         = str_replace('{day}',$leave_day,$email_template_body_approved);
 					$email_template_body_approved         = str_replace('{from_date}',$leaveStartDate,$email_template_body_approved);
+					// wp_mail($adminEmail, $leave_approved_email_subject, $email_template_body_approved, array('Content-Type: text/html; charset=UTF-8'));
+					debug($leave_approved_email_subject);
 					debug($email_template_body_approved);
 				} else {
+					$leave_reject_email_subject            = get_field('leave_reject_email_subject','option');
 					$email_template_body_rejected         = str_replace('{first_name}',$userFname,$email_template_body_rejected);
 					$email_template_body_rejected         = str_replace('{leave_type}',$leave_type,$email_template_body_rejected);
 					$email_template_body_rejected         = str_replace('{day}',$leave_day,$email_template_body_rejected);
 					$email_template_body_rejected         = str_replace('{from_date}',$leaveStartDate,$email_template_body_rejected);
 					$email_template_body_rejected         = str_replace('{leave_reason}',$rejected_message,$email_template_body_rejected);
+					// wp_mail($adminEmail, $leave_reject_email_subject, $email_template_body_rejected, array('Content-Type: text/html; charset=UTF-8'));
+					debug($leave_reject_email_subject);
 					debug($email_template_body_rejected);
 				}
 				die;
-				wp_mail($adminEmail, $AdminEmailSubject, $AdminEmailBody, array('Content-Type: text/html; charset=UTF-8'));
+				
 			}
 
 			
