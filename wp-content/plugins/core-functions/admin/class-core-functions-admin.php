@@ -245,57 +245,66 @@ class Core_Functions_Admin {
 			$user = wp_get_current_user();
 
 			// Return, if the current user is not therapist.
-			if ( ! cf_is_user_therapist( $user->ID ) ) {
-				return;
-			}
+			if (  cf_is_user_therapist( $user->ID ) ) {
+				$leaveStartDate   = get_field( 'leave_from',$post_id );
+				$leaveEndDate     = get_field( 'to',$post_id );
+				$time             = strtotime($leaveStartDate);
+				$month            = date("m",$time);
+				$year             = date("Y",$time);
+				$leave_date       = date("d",$time);
+				$leave_type       = get_field('leave_duration',$post_id);
+				$leave_type       = ( 'full' === $leave_type ) ? 1 : 0.5;
+				$userFname        = $user->user_firstname;
+				$userLname        = $user->user_lastname;
+				$date1            = new DateTime( $leaveStartDate );
+				$unix1            = strtotime( $date1->format( 'Y-m-d' ) );
+				$date2            = new DateTime( $leaveEndDate );
+				$unix2            = strtotime( $date2->format( 'Y-m-d' ) );
+				$numberOfDayLeave = ( 0 === ( $unix1 - $unix2 ) ) ? '1 Day' : human_time_diff( $unix1, $unix2 );
+				$leaves_days      = cf_get_dates_within_2_dates( $leaveStartDate, $leaveEndDate );
 
-			$leaveStartDate   = get_field( 'leave_from',$post_id );
-			$leaveEndDate     = get_field( 'to',$post_id );
-			$time             = strtotime($leaveStartDate);
-			$month            = date("m",$time);
-			$year             = date("Y",$time);
-			$leave_date       = date("d",$time);
-			$leave_type       = get_field('leave_duration',$post_id);
-			$leave_type       = ( 'full' === $leave_type ) ? 1 : 0.5;
-			$userFname        = $user->user_firstname;
-			$userLname        = $user->user_lastname;
-			$date1            = new DateTime( $leaveStartDate );
-			$unix1            = strtotime( $date1->format( 'Y-m-d' ) );
-			$date2            = new DateTime( $leaveEndDate );
-			$unix2            = strtotime( $date2->format( 'Y-m-d' ) );
-			$numberOfDayLeave = ( 0 === ( $unix1 - $unix2 ) ) ? '1 Day' : human_time_diff( $unix1, $unix2 );
-			$leaves_days      = cf_get_dates_within_2_dates( $leaveStartDate, $leaveEndDate );
-
-			// Prepare the leaves array.
-			$leaves            = get_user_meta( $user->ID, 'prayatna_leaves', true );
-			$leaves            = ( ! empty( $leaves ) ) ? $leaves : array();
-			if ( ! empty( $leaves_days ) && is_array( $leaves_days ) ) {
-				foreach( $leaves_days as $leave_full_date ) {
-					$leave_year  = gmdate( 'Y', strtotime( $leave_full_date ) );
-					$leave_month = gmdate( 'm', strtotime( $leave_full_date ) );
-					$leave_date  = gmdate( 'd', strtotime( $leave_full_date ) );
-					$leaves[ $leave_year ][ $leave_month ][ $leave_date ] = array(
-						'type'          => $leave_type,
-						'reason'        => get_field( 'reason_for_leave', $post_id ),
-						'status'        => 'pending',
-						'reject_reason' => '',
-					);
+				// Prepare the leaves array.
+				$leaves            = get_user_meta( $user->ID, 'prayatna_leaves', true );
+				$leaves            = ( ! empty( $leaves ) ) ? $leaves : array();
+				if ( ! empty( $leaves_days ) && is_array( $leaves_days ) ) {
+					foreach( $leaves_days as $leave_full_date ) {
+						$leave_year  = gmdate( 'Y', strtotime( $leave_full_date ) );
+						$leave_month = gmdate( 'm', strtotime( $leave_full_date ) );
+						$leave_date  = gmdate( 'd', strtotime( $leave_full_date ) );
+						$leaves[ $leave_year ][ $leave_month ][ $leave_date ] = array(
+							'type'          => $leave_type,
+							'reason'        => get_field( 'reason_for_leave', $post_id ),
+							'status'        => 'pending',
+							'reject_reason' => '',
+						);
+					}
 				}
+
+				// Update the leaves in the database.
+				update_user_meta( $user->ID, 'prayatna_leaves', $leaves );
+
+				// Prepare the email template.
+				$emailTemplateBody = get_field('leave_apply_email','option');
+				$emailTemplateBody = str_replace('{first_name}',$userFname.' '.$userLname,$emailTemplateBody);
+				$emailTemplateBody = str_replace('{number_of_days}',$numberOfDayLeave,$emailTemplateBody);
+				$emailTemplateBody = str_replace('{from_date}',$leaveStartDate,$emailTemplateBody);
+				$emailTemplateBody = str_replace('{to_date}',$leaveEndDate,$emailTemplateBody);
+				$emailTemplateBody = str_replace('{reason}.',$leaveReason,$emailTemplateBody);
+				$adminEmail        = 'nirmehta4491@gmail.com';
+				$AdminEmailSubject = $userFname.' is apply for leave application';
+				wp_mail($adminEmail, $AdminEmailSubject, $AdminEmailBody, array('Content-Type: text/html; charset=UTF-8'));
+			} elseif( cf_is_user_admin( $user->ID ) ){
+				$author_id        = $post->post_author;
+				
+				$leaves           = get_user_meta( $author_id, 'prayatna_leaves', true );
+				debug($leaves);
+				die;
+				// Update the leaves in the database.
+				update_user_meta( $author_id, 'prayatna_leaves', $leaves );
+
 			}
 
-			// Update the leaves in the database.
-			update_user_meta( $user->ID, 'prayatna_leaves', $leaves );
-
-			// Prepare the email template.
-			$emailTemplateBody = get_field('leave_apply_email','option');
-			$emailTemplateBody = str_replace('{first_name}',$userFname.' '.$userLname,$emailTemplateBody);
-			$emailTemplateBody = str_replace('{number_of_days}',$numberOfDayLeave,$emailTemplateBody);
-			$emailTemplateBody = str_replace('{from_date}',$leaveStartDate,$emailTemplateBody);
-			$emailTemplateBody = str_replace('{to_date}',$leaveEndDate,$emailTemplateBody);
-			$emailTemplateBody = str_replace('{reason}.',$leaveReason,$emailTemplateBody);
-			$adminEmail        = 'nirmehta4491@gmail.com';
-			$AdminEmailSubject = $userFname.' is apply for leave application';
-			wp_mail($adminEmail, $AdminEmailSubject, $AdminEmailBody, array('Content-Type: text/html; charset=UTF-8'));
+			
 		}
 	}
 

@@ -103,6 +103,26 @@ function cf_is_user_therapist( $user_id ) {
 }
 
 /**
+ * Check to see if the asked user is a admin.
+ *
+ * @param int $user_id Holds the user ID.
+ * @return boolean
+ */
+function cf_is_user_admin( $user_id ) {
+	$user = get_userdata( $user_id );
+
+	if ( empty( $user->roles ) || ! is_array( $user->roles ) ) {
+		return false;
+	}
+
+	if ( ! in_array( 'administrator', $user->roles, true ) ) {
+		return false;
+	}
+
+	return true;
+}
+
+/**
  * Check to see if the asked user is a client.
  *
  * @param int $user_id Holds the user ID.
