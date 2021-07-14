@@ -295,12 +295,29 @@ class Core_Functions_Admin {
 				wp_mail($adminEmail, $AdminEmailSubject, $AdminEmailBody, array('Content-Type: text/html; charset=UTF-8'));
 			} elseif( cf_is_user_admin( $user->ID ) ){
 				$author_id        = $post->post_author;
-				
+				$leaveStartDate   = get_field( 'leave_from',$post_id );
+				$leaveEndDate     = get_field( 'to',$post_id );
+				$rejected_message = get_field( 'reject_message',$post_id );
+				$leaves_days      = cf_get_dates_within_2_dates( $leaveStartDate, $leaveEndDate );
 				$leaves           = get_user_meta( $author_id, 'prayatna_leaves', true );
-				debug($leaves);
-				die;
+				$leaves           = ( ! empty( $leaves ) ) ? $leaves : array();
+				if ( ! empty( $leaves_days ) && is_array( $leaves_days ) ) {
+					foreach( $leaves_days as $leave_full_date ) {
+						$leave_year  = gmdate( 'Y', strtotime( $leave_full_date ) );
+						$leave_month = gmdate( 'm', strtotime( $leave_full_date ) );
+						$leave_date  = gmdate( 'd', strtotime( $leave_full_date ) );
+						$leaves[ $leave_year ][ $leave_month ][ $leave_date ] = array(
+							'type'          => $leave_type,
+							'reason'        => get_field( 'reason_for_leave', $post_id ),
+							'status'        => get_field('leave_approval',$post_id),
+							'reject_reason' => $rejected_message,
+						);
+					}
+				}
 				// Update the leaves in the database.
 				update_user_meta( $author_id, 'prayatna_leaves', $leaves );
+				debug($leaves);
+				die;
 
 			}
 
