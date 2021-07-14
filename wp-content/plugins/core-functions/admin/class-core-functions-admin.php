@@ -283,7 +283,7 @@ class Core_Functions_Admin {
 				// Update the leaves in the database.
 				update_user_meta( $user->ID, 'prayatna_leaves', $leaves );
 
-				// Prepare the email template.
+				// Prepare the email template for apply leave.
 				$leave_apply_email_subject         = get_field('leave_apply_email_subject','option');
 				$emailTemplateBody                 = get_field('leave_apply_email','option');
 				$emailTemplateBody                 = str_replace('{first_name}',$userFname.' '.$userLname,$emailTemplateBody);
@@ -324,12 +324,12 @@ class Core_Functions_Admin {
 				}
 				// Update the leaves in the database.
 				update_user_meta( $author_id, 'prayatna_leaves', $leaves );
-				// Prepare the email template.
 				$leave_day                    = gmdate( 'D', strtotime( $leave_full_date ) );
 				$leave_type                   = get_field('leave_duration',$post_id);
 				$email_template_body_approved = get_field('leave_approved_email','option');
 				$email_template_body_rejected = get_field('leave_reject_email','option');
 				if( 'approved' === $leaves[ $leave_year ][ $leave_month ][ $leave_date ]['status'] ) {
+					// Prepare the email template for approved leave.
 					$leave_approved_email_subject         = get_field('leave_approved_email_subject','option');
 					$leave_approved_email_subject         = str_replace('{first_name}',$userFname,$leave_approved_email_subject);
 					$email_template_body_approved         = str_replace('{first_name}',$userFname,$email_template_body_approved);
@@ -340,6 +340,7 @@ class Core_Functions_Admin {
 					debug($leave_approved_email_subject);
 					debug($email_template_body_approved);
 				} else {
+					// Prepare the email template for rejected leave.
 					$leave_reject_email_subject            = get_field('leave_reject_email_subject','option');
 					$leave_reject_email_subject            = str_replace('{first_name}',$userFname,$leave_reject_email_subject);
 					$email_template_body_rejected          = str_replace('{first_name}',$userFname,$email_template_body_rejected);
