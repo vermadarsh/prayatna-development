@@ -319,18 +319,18 @@ class Core_Functions_Admin {
 				// Update the leaves in the database.
 				update_user_meta( $author_id, 'prayatna_leaves', $leaves );
 				// Prepare the email template.
-				$leave_day           = gmdate( 'D', strtotime( $leave_full_date ) );
-				$leave_type          = get_field('leave_duration',$post_id);
+				$leave_day                    = gmdate( 'D', strtotime( $leave_full_date ) );
+				$leave_type                   = get_field('leave_duration',$post_id);
 				$email_template_body_approved = get_field('leave_approved_email','option');
 				$email_template_body_rejected = get_field('leave_reject_email','option');
 				if( 'approved' === $leaves[ $leave_year ][ $leave_month ][ $leave_date ]['status'] ) {
-					$email_template_body_approved         = str_replace('{first_name}',$userFname.' '.$userLname,$email_template_body_approved);
+					$email_template_body_approved         = str_replace('{first_name}',$userFname,$email_template_body_approved);
 					$email_template_body_approved         = str_replace('{leave_type}',$leave_type,$email_template_body_approved);
 					$email_template_body_approved         = str_replace('{day}',$leave_day,$email_template_body_approved);
 					$email_template_body_approved         = str_replace('{from_date}',$leaveStartDate,$email_template_body_approved);
 					debug($email_template_body_approved);
 				} else {
-					$$email_template_body_rejected         = str_replace('{first_name}',$userFname.' '.$userLname,$$email_template_body_rejected);
+					$$email_template_body_rejected         = str_replace('{first_name}',$userFname,$$email_template_body_rejected);
 					$$email_template_body_rejected         = str_replace('{day}',$leave_day,$email_template_body_rejected);
 					$$email_template_body_rejected         = str_replace('{from_date}',$leaveStartDate,$$email_template_body_rejected);
 					$$email_template_body_rejected         = str_replace('{leave_reason}',$rejected_message,$$email_template_body_rejected);
