@@ -1447,7 +1447,7 @@ class Core_Functions_Admin {
 
 				// Update the leaves count now.
 				$fullday_leaves += $convertible_fullday_leaves;
-				$halfday_leaves += $remaining_halfday_leaves;
+				$halfday_leaves  = $remaining_halfday_leaves;
 			}
 
 			var_dump( $fullday_leaves, $halfday_leaves );
