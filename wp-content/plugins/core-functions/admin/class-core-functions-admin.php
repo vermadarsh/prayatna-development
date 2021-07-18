@@ -1297,8 +1297,8 @@ class Core_Functions_Admin {
 		$user    = get_userdata( $user_id );
 
 		// Update the user status and decline reason.
-		// update_user_meta( $user_id, 'cf_user_status', 'registration-declined' );
-		// update_user_meta( $user_id, 'cf_user_registration_decline_reason', $reason );
+		update_user_meta( $user_id, 'cf_user_status', 'registration-declined' );
+		update_user_meta( $user_id, 'cf_user_registration_decline_reason', $reason );
 
 		// Send the registration denial email.
 		$email_body = get_field( 'therapist_registration_denial_email_body', 'option' );
@@ -1307,9 +1307,6 @@ class Core_Functions_Admin {
 		$email_body = str_replace( '{site_name}', get_bloginfo( 'name' ), $email_body );
 		$email_body = str_replace( '{denial_reason}', $reason, $email_body );
 		$email_body = str_replace( '{admin_email}', get_option( 'admin_email' ), $email_body );
-
-		echo $email_body;
-		die;
 
 		// Send the email now.
 		wp_mail(
