@@ -1177,4 +1177,40 @@ class Core_Functions_Admin {
 		wp_send_json_success( $response );
 		wp_die();
 	}
+
+	/**
+	 * Add custom user row actions.
+	 *
+	 * @param array  $actions Holds the user row actions.
+	 * @param object $user Holds the user data object.
+	 * @return array
+	 */
+	public function cf_user_row_actions_callback( $actions = array(), $user ) {
+		// Remove the not-required row actions.
+		if ( array_key_exists( 'view', $actions ) ) {
+			unset( $actions['view'] );
+		}
+
+		$user_status  = get_user_meta( $user->ID, 'cf_user_status', true );
+		$is_therapist = cf_is_user_therapist( $user->ID );
+
+		// If the user status is pending.
+		if ( true === $is_therapist && 'pending' === $user_status ) {
+			// Add the action to approve the request.
+			$actions['approve_request'] = '<a href="javascript:void(0);" class="cf-approve-request">' . __( 'Approve', 'core-functions' ) . '</a>';
+
+			// Add the action to decline the request.
+			$actions['decline_request'] = '<a href="javascript:void(0);" class="cf-decline-request">' . __( 'Decline', 'core-functions' ) . '</a>';
+		}
+
+		// If the user status .
+		if ( true === $is_counselor && 'registration-declined' === $user_status ) {
+			// Add the action to re-approve the request.
+			$actions['reapprove_request'] = '<a href="javascript:void(0);" class="cf-reapprove-request">' . __( 'Reactivate', 'core-functions' ) . '</a>';
+		}
+
+		// Download salary slip.
+
+		return $actions;
+	}
 }

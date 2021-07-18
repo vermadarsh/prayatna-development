@@ -109,7 +109,7 @@ if ( ! function_exists( 'debug' ) ) {
 	}
 }
 
-add_action( 'init', function() {
-	debug( get_user_meta( 20 ) );
-	die("pool");
-} );
+// add_action( 'init', function() {
+// 	debug( get_user_meta( 20 ) );
+// 	die("pool");
+// } );
