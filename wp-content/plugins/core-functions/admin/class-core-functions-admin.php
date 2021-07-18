@@ -1447,16 +1447,13 @@ class Core_Functions_Admin {
 				$halfday_leaves  = $remaining_halfday_leaves;
 			}
 
-			// Get the monthly salary.
-			$salary = (float) get_user_meta( $user_id, 'monthly_salary', true );
-
-			// Days in last month.
-			$num_of_days = gmdate( 't', mktime( 0, 0, 0, $last_month, 1, $last_year ) );
-			var_dump( $num_of_days );
+			// Calculate the salary now.
+			$salary        = (float) get_user_meta( $user_id, 'monthly_salary', true ); // Get the monthly salary.
+			$num_of_days   = (int) gmdate( 't', mktime( 0, 0, 0, $last_month, 1, $last_year ) ); // Days in last month.
+			$perday_salary = ( $salary / $num_of_days ); // Perday salary.
+			$perday_salary = number_format( (float) $perday_salary, 2, '.', '' );
+			var_dump( $perday_salary );
 			die;
-
-			// Perday salary.
-
 		}
 		die;
 
