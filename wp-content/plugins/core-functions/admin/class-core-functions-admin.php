@@ -1100,6 +1100,10 @@ class Core_Functions_Admin {
 		$leave_to    = gmdate( 'Y-m-d', strtotime( get_post_meta( $leave_id, 'to', true ) ) );
 		$leave_dates = cf_get_dates_within_2_dates( $leave_from, $leave_to );
 
+		// Get the leave author.
+		$therapist_id = get_post_field( 'post_author', $leave_id );
+		var_dump( $therapist_id );
+
 		debug( $leave_dates );
 		die;
 
