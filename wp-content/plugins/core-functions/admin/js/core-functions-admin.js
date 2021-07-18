@@ -211,6 +211,46 @@ jQuery( document ).ready( function( $ ) {
 	} );
 
 	/**
+	 * Approve leave.
+	 */
+	$( document ).on( 'click', '.cf-approve-leave', function() {
+		var this_link = $( this );
+		var leave_id  = this_link.data( 'leaveid' );
+
+		// Change the link text.
+		this_link.text( 'Please wait...' );
+
+		// Block element.
+		block_element( this_link );
+
+		// Send the AJAX to approve the request.
+		var data = {
+			action: 'approve_leave',
+			leave_id: leave_id
+		};
+		$.ajax( {
+			dataType: 'JSON',
+			url: ajaxurl,
+			type: 'POST',
+			data: data,
+			success: function ( response ) {
+				if ( 'request-approved' !== response.data.code ) {
+					return false;
+				}
+
+				// Unblock the row.
+				unblock_element( this_link.parents( 'tr' ) );
+
+				// Show the success message.
+				cognify_show_notification( 'fa fa-check', notification_success_header, response.data.message, 'success' );
+
+				// Reload.
+				window.location.href = window.location.href;
+			},
+		} );
+	} );
+
+	/**
 	 * Block element.
 	 *
 	 * @param {string} $element

@@ -996,7 +996,16 @@ class Core_Functions_Admin {
 		// Add row actions to leaves.
 		if ( 'leave' === $post->post_type ) {
 			unset( $actions['inline hide-if-no-js'] );
+			unset( $actions['view'] );
+			unset( $actions['trash'] );
+
 			$actions['post_id'] = sprintf( __( 'ID: %1$d', 'core-functions' ), $post->ID );
+
+			// Add actions to approve and reject leaves for admin.
+			if ( current_user_can( 'manage_options' ) ) {
+				$actions['approve_leave'] = '<a href="javascript:void(0);" data-leaveid="' . $post->ID . '" class="cf-approve-leave">' . __( 'Approve', 'core-functions' ) . '</a>';
+				$actions['reject_leave']  = '<a href="javascript:void(0);" data-leaveid="' . $post->ID . '" class="cf-reject-leave">' . __( 'Reject', 'core-functions' ) . '</a>';
+			}
 
 			// If the status is pending, add a link to update the status.
 			$status = get_post_meta( $post->ID, 'status', true );
@@ -1008,5 +1017,24 @@ class Core_Functions_Admin {
 		}
 
 		return $actions;
+	}
+
+	/**
+	 * AJAX to approve leave.
+	 */
+	public function cf_approve_leave_callback() {
+		$action = filter_input( INPUT_POST, 'approve_leave', FILTER_SANITIZE_STRING );
+
+		// Exit, if action mismatches.
+		if ( empty( $action ) || 'approve_leave' !== $action ) {
+			echo 0;
+			wp_die();
+		}
+
+		// Leave ID.
+		$leave_id = filter_input( INPUT_POST, 'leave_id', FILTER_SANITIZE_NUMBER_INT );
+
+		var_dump( $leave_id );
+		die;
 	}
 }
