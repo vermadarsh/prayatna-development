@@ -1348,7 +1348,7 @@ class Core_Functions_Admin {
 		$first_name = get_user_meta( $user_id, 'first_name', true );
 
 		// Update the user status.
-		// update_user_meta( $user_id, 'cf_user_status', 'active' );
+		update_user_meta( $user_id, 'cf_user_status', 'active' );
 
 		// Send the suspension email.
 		$email_body = get_field( 'therapist_registration_reapproval_email_body', 'option' );
