@@ -1430,7 +1430,7 @@ class Core_Functions_Admin {
 
 			// Iterate through the leaves.
 			foreach ( $leaves_data as $leave_data ) {
-				debug( $leave_data );
+				var_dump( $leave_data );
 				die;
 				if ( '1' === $leave_data['type'] ) {
 					$fullday_leaves++;
