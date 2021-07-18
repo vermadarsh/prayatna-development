@@ -283,6 +283,9 @@ class Core_Functions_Admin {
 				// Update the leaves in the database.
 				update_user_meta( $user->ID, 'prayatna_leaves', $leaves );
 
+				// Update the leave status.
+				update_field( 'leave_approval', 'pending', $post_id );
+
 				// Prepare the email template for apply leave.
 				$leave_apply_email_subject         = get_field('leave_apply_email_subject','option');
 				$emailTemplateBody                 = get_field('leave_apply_email','option');
