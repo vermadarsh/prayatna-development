@@ -29,8 +29,8 @@ if ( ! defined( 'WPINC' ) ) {
 	die;
 }
 
-// error_reporting( E_ALL );
-// ini_set( 'display_errors', '1' );
+error_reporting( E_ALL );
+ini_set( 'display_errors', '1' );
 
 /**
  * Currently plugin version.
@@ -108,8 +108,3 @@ if ( ! function_exists( 'debug' ) ) {
 		echo '</pre>';
 	}
 }
-
-// add_action( 'init', function() {
-// 	debug( get_user_meta( 20 ) );
-// 	die("pool");
-// } );
