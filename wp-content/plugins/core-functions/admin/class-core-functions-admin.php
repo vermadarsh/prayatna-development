@@ -1253,7 +1253,7 @@ class Core_Functions_Admin {
 		$current_date = 5; // for testing
 
 		if ( 1 <= $current_date && 7 >= $current_date ) {
-			if ( current_user_can( 'manage_options' ) && $is_therapist ) {
+			if ( current_user_can( 'manage_options' ) && true === $is_therapist ) {
 				// Mail the salary slip.
 				$last_month                  = gmdate( 'M Y', strtotime( 'last month' ) );
 				$email_salary_slip_link_text = sprintf( __( 'Email Salary Slip for %1$s', 'core-functions' ), $last_month );
@@ -1416,8 +1416,9 @@ class Core_Functions_Admin {
 		$first_name = get_user_meta( $user_id, 'first_name', true );
 
 		// Calculate the salary.
-		$current_month = cf_get_current_date( 'm' );
-		var_dump( $current_month );
+		$last_year  = gmdate( 'Y', strtotime( 'last month' ) );
+		$last_month = gmdate( 'Y', strtotime( 'last month' ) );
+		var_dump( $last_year, $last_month );
 		die;
 
 		// Send the suspension email.
