@@ -2,10 +2,11 @@ jQuery( document ).ready( function( $ ) {
 	'use strict';
 
 	// Localized variables.
-	var ajaxurl                    = CF_Admin_JS_Script_Vars.ajaxurl;
-	var export_logs_button_text    = CF_Admin_JS_Script_Vars.export_logs_button_text;
-	var exporting_logs_button_text = CF_Admin_JS_Script_Vars.exporting_logs_button_text;
-	var is_administrator           = CF_Admin_JS_Script_Vars.is_administrator;
+	var ajaxurl                     = CF_Admin_JS_Script_Vars.ajaxurl;
+	var export_logs_button_text     = CF_Admin_JS_Script_Vars.export_logs_button_text;
+	var exporting_logs_button_text  = CF_Admin_JS_Script_Vars.exporting_logs_button_text;
+	var is_administrator            = CF_Admin_JS_Script_Vars.is_administrator;
+	var therapist_decline_alert_msg = CF_Admin_JS_Script_Vars.therapist_decline_alert_msg;
 
 	// Add the export button besides the new log button.
 	// Enable the exporting feature only for admin users.
@@ -438,7 +439,7 @@ jQuery( document ).ready( function( $ ) {
 		var this_link      = $( this );
 		var parent_tr_id   = this_link.parents( 'tr' ).attr( 'id' );
 		var user_id        = parent_tr_id.replace( 'user-', '' );
-		var decline_reason = prompt( counselor_decline_alert_msg );
+		var decline_reason = prompt( therapist_decline_alert_msg );
 
 		// Skip if the valid reason is not provided.
 		if ( -1 === is_valid_string( decline_reason ) ) {

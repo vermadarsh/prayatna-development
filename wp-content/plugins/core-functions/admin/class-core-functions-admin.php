@@ -89,10 +89,11 @@ class Core_Functions_Admin {
 			$this->plugin_name,
 			'CF_Admin_JS_Script_Vars',
 			array(
-				'ajaxurl'                    => admin_url( 'admin-ajax.php' ),
-				'export_logs_button_text'    => __( 'Export Log', 'core-functions' ),
-				'exporting_logs_button_text' => __( 'Processing...', 'core-functions' ),
-				'is_administrator'           => ( current_user_can( 'manage_options' ) ) ? 'yes' : 'no',
+				'ajaxurl'                     => admin_url( 'admin-ajax.php' ),
+				'export_logs_button_text'     => __( 'Export Log', 'core-functions' ),
+				'exporting_logs_button_text'  => __( 'Processing...', 'core-functions' ),
+				'is_administrator'            => ( current_user_can( 'manage_options' ) ) ? 'yes' : 'no',
+				'therapist_decline_alert_msg' => __( 'Reason for declining this therapist?', 'core-functions' ),
 			)
 		);
 	}
@@ -1281,11 +1282,11 @@ class Core_Functions_Admin {
 	/**
 	 * AJAX served to decline the registration request.
 	 */
-	public function cf_decline_registration_request_callback() {
+	public function cf_decline_therapist_registration_callback() {
 		$action = filter_input( INPUT_POST, 'action', FILTER_SANITIZE_STRING );
 
 		// Return, if the action doesn't match.
-		if ( 'decline_registration_request' !== $action ) {
+		if ( 'decline_therapist_registration' !== $action ) {
 			echo 0;
 			wp_die();
 		}
@@ -1331,11 +1332,11 @@ class Core_Functions_Admin {
 	/**
 	 * AJAX served to reapprove user.
 	 */
-	public function cf_reapprove_registration_request_callback() {
+	public function cf_reapprove_therapist_registration_callback() {
 		$action = filter_input( INPUT_POST, 'action', FILTER_SANITIZE_STRING );
 
 		// Return, if the action doesn't match.
-		if ( 'reapprove_registration_request' !== $action ) {
+		if ( 'reapprove_therapist_registration' !== $action ) {
 			echo 0;
 			wp_die();
 		}
