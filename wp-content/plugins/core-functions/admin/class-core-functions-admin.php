@@ -120,11 +120,8 @@ class Core_Functions_Admin {
 
 		// Return, if the attachment is not saved as ACF field value.
 		if ( is_null( $profile_picture_id ) ) {
-			die("pool");
 			return $avatar_url;
 		}
-
-		die("pool then");
 
 		// Get the custom picture ID.
 		$profile_picture_url = cf_get_image_url_by_attachment_id( $profile_picture_id );
