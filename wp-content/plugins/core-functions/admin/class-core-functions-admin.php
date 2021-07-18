@@ -1449,8 +1449,14 @@ class Core_Functions_Admin {
 
 			// Get the monthly salary.
 			$salary = (float) get_user_meta( $user_id, 'monthly_salary', true );
-			var_dump( $salary );
+
+			// Days in last month.
+			$num_of_days = gmdate( 't', mktime( 0, 0, 0, $last_month, 1, $last_year ) );
+			var_dump( $num_of_days );
 			die;
+
+			// Perday salary.
+
 		}
 		die;
 
