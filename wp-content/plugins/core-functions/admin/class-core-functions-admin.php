@@ -296,9 +296,7 @@ class Core_Functions_Admin {
 				$adminEmail                        = 'nirmehta4491@gmail.com';
 				$AdminEmailSubject                 = $userFname.' is apply for leave application';
 				$leave_apply_email_subject         = str_replace('{first_name}',$userFname,$leave_apply_email_subject);
-				debug($leave_apply_email_subject);
-				debug($emailTemplateBody);
-				// wp_mail($adminEmail, $leave_apply_email_subject, $emailTemplateBody, array('Content-Type: text/html; charset=UTF-8'));
+				wp_mail( $adminEmail, $leave_apply_email_subject, $emailTemplateBody, array('Content-Type: text/html; charset=UTF-8'));
 			} elseif( cf_is_user_admin( $user->ID ) ){
 				$author_id        = $post->post_author;
 				$user             = get_userdata($author_id);
