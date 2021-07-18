@@ -1057,11 +1057,9 @@ class Core_Functions_Admin {
 	 */
 	public function cf_reject_leave_callback() {
 		$action = filter_input( INPUT_POST, 'action', FILTER_SANITIZE_STRING );
-		var_dump( $action );
 
 		// Exit, if action mismatches.
 		if ( empty( $action ) || 'reject_leave' !== $action ) {
-			die("lkoo");
 			echo 0;
 			wp_die();
 		}
