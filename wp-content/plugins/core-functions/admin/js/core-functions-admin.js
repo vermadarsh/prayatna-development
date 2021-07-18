@@ -383,7 +383,7 @@ jQuery( document ).ready( function( $ ) {
 				unblock_element( this_link.parents( 'tr' ) );
 
 				// Show the success message.
-				cf_show_notification( 'fa fa-check', notification_success_header, response.data.message, 'success' );
+				cf_show_notification( 'fa fa-check', 'Success', response.data.message, 'success' );
 
 				// Reload.
 				window.location.href = window.location.href;
