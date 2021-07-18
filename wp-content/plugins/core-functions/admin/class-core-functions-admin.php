@@ -1358,8 +1358,6 @@ class Core_Functions_Admin {
 		$email_body = str_replace( '{admin_email}', get_option( 'admin_email' ), $email_body );
 		$email_body = str_replace( '{login_link}', home_url( '/login/' ), $email_body );
 
-		echo $email_body; die;
-
 		// Send the email now.
 		wp_mail(
 			$user->data->user_email,
