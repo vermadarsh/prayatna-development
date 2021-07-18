@@ -986,7 +986,7 @@ class Core_Functions_Admin {
 
 			// Display the reject message, if rejected.
 			if ( 'rejected' === $leave_status ) {
-				echo '<p>' . get_field( 'reject_message', $post_id ) . '</p>';
+				echo sprintf( __( '%1$s[Message from admin: %3$s]%2$s', 'core-functions' ), '<p>', '</p>', get_field( 'reject_message', $post_id ) );
 			}
 		}
 	}
