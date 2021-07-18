@@ -1452,7 +1452,11 @@ class Core_Functions_Admin {
 			$num_of_days   = (int) gmdate( 't', mktime( 0, 0, 0, $last_month, 1, $last_year ) ); // Days in last month.
 			$perday_salary = ( $salary / $num_of_days ); // Perday salary.
 			$perday_salary = number_format( (float) $perday_salary, 2, '.', '' );
-			var_dump( $perday_salary );
+
+			// Amount to be deducted.
+			$fullday_leaves_deduction = $perday_salary * $fullday_leaves;
+			$halfday_leaves_deduction = $perday_salary * 0.5;
+			var_dump( $perday_salary, $fullday_leaves_deduction, $halfday_leaves_deduction );
 			die;
 		}
 		die;
