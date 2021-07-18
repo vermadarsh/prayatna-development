@@ -378,6 +378,21 @@ class Core_Functions_Admin {
 		if ( ! is_null( $post_type ) && 'learning-lounge-log' === $post_type ) {
 			require_once CF_PLUGIN_PATH . 'admin/templates/modals/export-learning-lounge-log.php';
 		}
+
+		// Include the notification popup.
+		ob_start();
+		?>
+		<div class="cf_notification_popup">
+			<span class="cf_notification_close"></span>
+			<div class="cf_notification_icon"><i class="fa" aria-hidden="true"></i></div>
+			<div class="cf_notification_message">
+				<h3 class="title"></h3>
+				<p class="message"></p>
+			</div>
+		</div>
+		<?php
+
+		echo wp_kses_post( ob_get_clean() );
 	}
 
 	/**
@@ -1234,7 +1249,6 @@ class Core_Functions_Admin {
 
 		// Posted data.
 		$user_id    = (int) filter_input( INPUT_POST, 'user_id', FILTER_SANITIZE_NUMBER_INT );
-		var_dump( $user_id );
 		$user       = get_userdata( $user_id );
 		$first_name = get_user_meta( $user_id, 'first_name', true );
 
@@ -1248,21 +1262,17 @@ class Core_Functions_Admin {
 		$email_body = str_replace( '{site_name}', get_bloginfo( 'name' ), $email_body );
 		$email_body = str_replace( '{login_link}', home_url( '/login/' ), $email_body );
 
-		echo $email_body;
-		die;
-
 		// Send the email now.
 		wp_mail(
 			$user->data->user_email,
-			__( 'Cognify - You\'re Most Welcome!!', 'cognify-core' ),
+			__( 'Prayatna Counselling - You\'re Most Welcome!!', 'core-functions' ),
 			$email_body
 		);
 
 		// Send the ajax response.
 		$response = array(
 			'code'     => 'request-approved',
-			'message'  => __( 'Request Approved !! Reloading..', 'cognify-core' ),
-			'staff_id' => $staff_id,
+			'message'  => __( 'Request Approved !! Reloading..', 'core-functions' ),
 		);
 		wp_send_json_success( $response );
 		wp_die();
@@ -1286,12 +1296,12 @@ class Core_Functions_Admin {
 		$user    = get_userdata( $user_id );
 
 		// Update the user status and decline reason.
-		update_user_meta( $user_id, 'cognify_user_status', 'registration-declined' );
-		update_user_meta( $user_id, 'cognify_user_registration_decline_reason', $reason );
+		update_user_meta( $user_id, 'cf_user_status', 'registration-declined' );
+		update_user_meta( $user_id, 'cf_user_registration_decline_reason', $reason );
 
 		// Send the registration denial email.
 		$email_body = get_field( 'counselor_registration_denial_email_body', 'option' );
-		$email_body = str_replace( '{first_name}', cognify_get_user_full_name( $user_id ), $email_body );
+		$email_body = str_replace( '{first_name}', cf_get_user_full_name( $user_id ), $email_body );
 		$email_body = str_replace( '{site_url}', home_url(), $email_body );
 		$email_body = str_replace( '{site_name}', get_bloginfo( 'name' ), $email_body );
 		$email_body = str_replace( '{denial_reason}', $reason, $email_body );
@@ -1300,14 +1310,14 @@ class Core_Functions_Admin {
 		// Send the email now.
 		wp_mail(
 			$user->data->user_email,
-			__( 'Cognify Registration Request Declined', 'cognify-core' ),
+			__( 'cf Registration Request Declined', 'cf-core' ),
 			$email_body
 		);
 
 		// Send the ajax response.
 		$response = array(
 			'code'    => 'request-declined',
-			'message' => __( 'Request Declined !! Reloading..', 'cognify-core' ),
+			'message' => __( 'Request Declined !! Reloading..', 'cf-core' ),
 		);
 		wp_send_json_success( $response );
 		wp_die();
@@ -1328,11 +1338,11 @@ class Core_Functions_Admin {
 		// Posted data.
 		$user_id    = (int) filter_input( INPUT_POST, 'user_id', FILTER_SANITIZE_NUMBER_INT );
 		$user       = get_userdata( $user_id );
-		$fullname   = cognify_get_user_full_name( $user_id );
+		$fullname   = cf_get_user_full_name( $user_id );
 		$first_name = get_user_meta( $user_id, 'first_name', true );
 
 		// Update the user status.
-		update_user_meta( $user_id, 'cognify_user_status', 'active' );
+		update_user_meta( $user_id, 'cf_user_status', 'active' );
 
 		// Create the corresponding staff item.
 		$staff_id = wp_insert_post(
@@ -1360,14 +1370,14 @@ class Core_Functions_Admin {
 		// Send the email now.
 		wp_mail(
 			$user->data->user_email,
-			__( 'Cognify - You\'re Most Welcome!!', 'cognify-core' ),
+			__( 'cf - You\'re Most Welcome!!', 'cf-core' ),
 			$email_body
 		);
 
 		// Send the ajax response.
 		$response = array(
 			'code'    => 'user-reapproved',
-			'message' => __( 'User account reactivated !! Reloading..', 'cognify-core' ),
+			'message' => __( 'User account reactivated !! Reloading..', 'cf-core' ),
 		);
 		wp_send_json_success( $response );
 		wp_die();

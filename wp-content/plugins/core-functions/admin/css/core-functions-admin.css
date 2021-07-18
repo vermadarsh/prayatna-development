@@ -93,3 +93,94 @@ span.required {
 	font-size: 12px !important;
 	color: #b2b2b2;
 }
+
+.cf_notification_popup {
+	display: inline-block;
+	-webkit-transition: .5s all;
+	-o-transition: .5s all;
+	transition: .5s all;
+	position: fixed;
+	right: -100%;
+	top: 10%;
+	background-color: #FFF;
+	padding: 10px;
+	box-shadow: 0 0 0 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+	background-color: #B9584F;
+	color: #FFF;
+	z-index: 99999;
+	min-width: 320px;
+}
+
+.cf_notification_popup:hover {
+	background-color: #B0483E;
+}
+
+.cf_notification_popup.is-success {
+	background: rgba( 64, 151, 64, 0.6313725490196078 );
+}
+
+.cf_notification_popup.is-success:hover {
+	background-color: #409740;
+}
+
+.cf_notification_popup.is-error {
+	background: rgba( 185, 88, 79, 0.7019607843137254 );
+}
+
+.cf_notification_popup.is-error:hover {
+	background-color: #B9584F;
+}
+
+.cf_notification_popup.active {
+	right: 10px;
+}
+
+.cf_notification_popup .cf_notification_icon {
+	display: inline-block;
+	width: 35px;
+	vertical-align: top;
+	font-size: 26px;
+	padding: 5px 5px 0 0;
+	box-sizing: border-box;
+}
+
+.cf_notification_popup .cf_notification_message {
+	width: calc( 100% - 40px );
+	display: inline-block;
+	vertical-align: top;
+	line-height: normal;
+}
+
+.cf_notification_popup .cf_notification_message .title {
+	font-size: 21px;
+	margin: 0 0 5px;
+	color: #FFF;
+}
+
+.cf_notification_popup .cf_notification_message p {
+	font-size: 14px;
+	margin: 0 0 6px;
+	line-height: normal;
+}
+
+.cf_notification_popup .cf_notification_message ul {
+	margin: 0;
+}
+
+.cf_notification_popup .cf_notification_message ul li {
+	margin-bottom: 3px;
+}
+
+.cf_notification_popup .cf_notification_close {
+	position: absolute;
+	right: 15px;
+	top: 5px;
+	cursor: pointer;
+	font-weight: 600;
+}
+
+.cf_notification_popup .cf_notification_close:before {
+	content: 'x';
+	display: inline-block;
+	font-size: 18px;
+}

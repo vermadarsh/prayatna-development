@@ -383,7 +383,7 @@ jQuery( document ).ready( function( $ ) {
 				unblock_element( this_link.parents( 'tr' ) );
 
 				// Show the success message.
-				cognify_show_notification( 'fa fa-check', notification_success_header, response.data.message, 'success' );
+				cf_show_notification( 'fa fa-check', notification_success_header, response.data.message, 'success' );
 
 				// Reload.
 				window.location.href = window.location.href;
@@ -394,7 +394,7 @@ jQuery( document ).ready( function( $ ) {
 	/**
 	 * Reapprove the counselor.
 	 */
-	$( document ).on( 'click', '.cognify-reapprove-request', function() {
+	$( document ).on( 'click', '.cf-reapprove-request', function() {
 		var this_link    = $( this );
 		var parent_tr_id = this_link.parents( 'tr' ).attr( 'id' );
 		var user_id      = parent_tr_id.replace( 'user-', '' );
@@ -421,7 +421,7 @@ jQuery( document ).ready( function( $ ) {
 				unblock_element( this_link.parents( 'tr' ) );
 
 				// Show the success message.
-				cognify_show_notification( 'fa fa-check', notification_success_header, response.data.message, 'success' );
+				cf_show_notification( 'fa fa-check', notification_success_header, response.data.message, 'success' );
 
 				// Reload.
 				window.location.href = window.location.href;
@@ -432,7 +432,7 @@ jQuery( document ).ready( function( $ ) {
 	/**
 	 * Decline the counselor.
 	 */
-	$( document ).on( 'click', '.cognify-decline-request', function() {
+	$( document ).on( 'click', '.cf-decline-request', function() {
 		var this_link      = $( this );
 		var parent_tr_id   = this_link.parents( 'tr' ).attr( 'id' );
 		var user_id        = parent_tr_id.replace( 'user-', '' );
@@ -466,7 +466,7 @@ jQuery( document ).ready( function( $ ) {
 				unblock_element( this_link.parents( 'tr' ) );
 
 				// Show the success message.
-				cognify_show_notification( 'fa fa-check', notification_success_header, response.data.message, 'success' );
+				cf_show_notification( 'fa fa-check', notification_success_header, response.data.message, 'success' );
 
 				// Reload.
 				window.location.href = window.location.href;
@@ -516,5 +516,38 @@ jQuery( document ).ready( function( $ ) {
 		} else {
 			return 1;
 		}
+	}
+
+	/**
+	 * Function defined to show the notification.
+	 *
+	 * @param {string} icon_class
+	 * @param {string} header_text
+	 * @param {string} message
+	 * @param {string} success_or_error
+	 */
+	 function cf_show_notification( icon_class, header_text, message, success_or_error ) {
+		$('.cf_notification_popup .cf_notification_icon i').removeClass().addClass( icon_class );
+		$('.cf_notification_popup .cf_notification_message h3').html( header_text );
+		$('.cf_notification_popup .cf_notification_message p').html( message );
+		$('.cf_notification_popup').removeClass('is-success is-error');
+
+		if ( 'error' === success_or_error ) {
+			$( '.cf_notification_popup' ).addClass( 'active is-error' );
+		} else if ( 'success' === success_or_error ) {
+			$( '.cf_notification_popup' ).addClass( 'active is-success' );
+		}
+
+		// Dismiss the notification after 3 secs.
+		setTimeout( function () {
+			cf_hide_notification();
+		}, 3000 );
+	}
+
+	/**
+	 * Function to hide notification
+	 */
+	function cf_hide_notification() {
+		$( '.cf_notification_popup' ).removeClass( 'active' );
 	}
 } );
