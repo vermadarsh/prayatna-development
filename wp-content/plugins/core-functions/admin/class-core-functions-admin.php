@@ -1102,8 +1102,10 @@ class Core_Functions_Admin {
 
 		// Get the leave author.
 		$therapist_id = get_post_field( 'post_author', $leave_id );
-		var_dump( $therapist_id );
 
+		// Get the leave meta from user meta.
+		$user_leaves = get_user_meta( $therapist_id, 'prayatna_leaves', true );
+		debug( $user_leaves );
 		debug( $leave_dates );
 		die;
 
