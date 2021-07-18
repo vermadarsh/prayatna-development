@@ -1415,10 +1415,18 @@ class Core_Functions_Admin {
 		$fullname   = cf_get_user_full_name( $user_id );
 		$first_name = get_user_meta( $user_id, 'first_name', true );
 
-		// Calculate the salary.
+		// Get the last month.
 		$last_year  = gmdate( 'Y', strtotime( 'last month' ) );
 		$last_month = gmdate( 'm', strtotime( 'last month' ) );
-		var_dump( $last_year, $last_month );
+
+		// Therapist leaves.
+		$user_leaves = get_user_meta( $user_id, 'prayatna_leaves', true );
+
+		// Check if the user has leaves in last month.
+		if ( ! empty( $user_leaves[ $last_year ][ $last_month ] ) ) {
+			debug( $user_leaves[ $last_year ][ $last_month ] );
+			die;
+		}
 		die;
 
 		// Send the suspension email.
