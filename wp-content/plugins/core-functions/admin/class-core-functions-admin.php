@@ -957,6 +957,7 @@ class Core_Functions_Admin {
 			$leave_to   = gmdate( 'Y-m-d', strtotime( get_post_meta( $post_id, 'to', true ) ) );
 			debug( $leave_from );
 			debug( $leave_to );
+			echo 'hello';
 		}
 	}
 }
