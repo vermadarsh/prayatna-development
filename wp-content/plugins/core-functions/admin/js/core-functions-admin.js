@@ -271,19 +271,17 @@ jQuery( document ).ready( function( $ ) {
 			return false;
 		}
 
-		console.log( 'message', message );
-		return false;
-
 		// Change the link text.
 		this_link.text( 'Please wait...' );
 
 		// Block element.
 		block_element( this_link.parents( 'tr' ) );
 
-		// Send the AJAX to approve the request.
+		// Send the AJAX to reject the request.
 		var data = {
-			action: 'approve_leave',
-			leave_id: leave_id
+			action: 'reject_leave',
+			leave_id: leave_id,
+			message: message,
 		};
 		$.ajax( {
 			dataType: 'JSON',
@@ -297,7 +295,7 @@ jQuery( document ).ready( function( $ ) {
 					return false;
 				}
 
-				if ( 'leave-approved' === response.data.code ) {
+				if ( 'leave-rejected' === response.data.code ) {
 					// Unblock the row.
 					unblock_element( this_link.parents( 'tr' ) );
 

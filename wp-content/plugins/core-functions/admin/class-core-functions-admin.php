@@ -1051,4 +1051,31 @@ class Core_Functions_Admin {
 		wp_send_json_success( $response );
 		wp_die();
 	}
+
+	/**
+	 * AJAX to reject leave.
+	 */
+	public function cf_reject_leave_callback() {
+		$action = filter_input( INPUT_POST, 'action', FILTER_SANITIZE_STRING );
+
+		// Exit, if action mismatches.
+		if ( empty( $action ) || 'reject_leave' !== $action ) {
+			echo 0;
+			wp_die();
+		}
+
+		// Posted data.
+		$leave_id = filter_input( INPUT_POST, 'leave_id', FILTER_SANITIZE_NUMBER_INT );
+		$message  = filter_input( INPUT_POST, 'message', FILTER_SANITIZE_STRING );
+
+		// Update the leave status.
+		update_field( 'leave_approval', 'rejected', $leave_id );
+		update_field( 'leave_approval', 'reject_message', $leave_id );
+
+		$response = array(
+			'code' => 'leave-rejected'
+		);
+		wp_send_json_success( $response );
+		wp_die();
+	}
 }
