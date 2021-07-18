@@ -108,8 +108,3 @@ if ( ! function_exists( 'debug' ) ) {
 		echo '</pre>';
 	}
 }
-
-add_action( 'init', function() {
-	echo gmdate( 'M Y', strtotime( 'last month' ) );
-	die;
-} );

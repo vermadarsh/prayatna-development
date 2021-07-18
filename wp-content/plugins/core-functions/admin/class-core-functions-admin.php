@@ -1255,7 +1255,9 @@ class Core_Functions_Admin {
 		if ( 1 <= $current_date && 7 >= $current_date ) {
 			if ( current_user_can( 'manage_options' ) && $is_therapist ) {
 				// Mail the salary slip.
-				$actions['mail_salary_slip'] = '<a href="javascript:void(0);" class="cf-email-salary-slip">' . __( 'Email Salary Slip', 'core-functions' ) . '</a>';
+				$last_month                  = gmdate( 'M Y', strtotime( 'last month' ) );
+				$email_salary_slip_link_text = sprintf( __( 'Email Salary Slip for %1$s', 'core-functions' ), $last_month );
+				$actions['mail_salary_slip'] = '<a href="javascript:void(0);" class="cf-email-salary-slip">' . $email_salary_slip_link_text . '</a>';
 			}
 		}
 
