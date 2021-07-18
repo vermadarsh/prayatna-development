@@ -1027,6 +1027,7 @@ class Core_Functions_Admin {
 
 		// Exit, if action mismatches.
 		if ( empty( $action ) || 'approve_leave' !== $action ) {
+			die("pool");
 			echo 0;
 			wp_die();
 		}
