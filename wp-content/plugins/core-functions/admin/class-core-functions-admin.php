@@ -1455,7 +1455,9 @@ class Core_Functions_Admin {
 
 			// Amount to be deducted.
 			$fullday_leaves_deduction = $perday_salary * $fullday_leaves;
+			$fullday_leaves_deduction = number_format( (float) $fullday_leaves_deduction, 2, '.', '' );
 			$halfday_leaves_deduction = $perday_salary * 0.5;
+			$halfday_leaves_deduction = number_format( (float) $halfday_leaves_deduction, 2, '.', '' );
 			var_dump( $perday_salary, $fullday_leaves_deduction, $halfday_leaves_deduction );
 			die;
 		}
