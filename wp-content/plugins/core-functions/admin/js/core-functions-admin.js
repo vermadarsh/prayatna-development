@@ -307,6 +307,63 @@ jQuery( document ).ready( function( $ ) {
 	} );
 
 	/**
+	 * Cancel leave.
+	 */
+	 $( document ).on( 'click', '.cf-cancel-leave', function() {
+		var this_link = $( this );
+		var leave_id  = this_link.data( 'leaveid' );
+		var confirm   = confirm( 'Do you really want to cancel this leave? This action won\'t be undone.' );
+
+		console.log( 'confirm', confirm );
+		return false;
+
+		// Check if the message is a valid one.
+		if ( '' === message ) {
+			alert( 'Please provide a message for rejecting this leave' );
+			return false;
+		}
+
+		// Return, if user selects to cancel leave rejection.
+		if ( null === message ) {
+			return false;
+		}
+
+		// Change the link text.
+		this_link.text( 'Please wait...' );
+
+		// Block element.
+		block_element( this_link.parents( 'tr' ) );
+
+		// Send the AJAX to reject the request.
+		var data = {
+			action: 'reject_leave',
+			leave_id: leave_id,
+			message: message,
+		};
+		$.ajax( {
+			dataType: 'JSON',
+			url: ajaxurl,
+			type: 'POST',
+			data: data,
+			success: function ( response ) {
+				// If AJAX is invalid.
+				if ( 0 === response ) {
+					console.log( 'prayatna: invalid AJAX' );
+					return false;
+				}
+
+				if ( 'leave-rejected' === response.data.code ) {
+					// Unblock the row.
+					unblock_element( this_link.parents( 'tr' ) );
+
+					// Reload.
+					window.location.href = window.location.href;
+				}
+			},
+		} );
+	} );
+
+	/**
 	 * Block element.
 	 *
 	 * @param {string} $element

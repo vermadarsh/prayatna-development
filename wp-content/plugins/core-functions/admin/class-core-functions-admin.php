@@ -999,6 +999,7 @@ class Core_Functions_Admin {
 	 * @return array
 	 */
 	public function cf_post_row_actions_callback( $actions = array(), $post ) {
+		$current_user_id = get_current_user_id();
 		// Add row actions to leaves.
 		if ( 'leave' === $post->post_type ) {
 			unset( $actions['inline hide-if-no-js'] );
@@ -1019,6 +1020,8 @@ class Core_Functions_Admin {
 					$actions['reject_leave']  = '<a href="javascript:void(0);" data-leaveid="' . $post->ID . '" class="cf-reject-leave">' . __( 'Reject', 'core-functions' ) . '</a>';
 					$actions['approve_leave'] = '<a href="javascript:void(0);" data-leaveid="' . $post->ID . '" class="cf-approve-leave">' . __( 'Approve', 'core-functions' ) . '</a>';
 				}
+			} else if ( true === cf_is_user_therapist( $current_user_id ) ) {
+				$actions['cancel_leave']  = '<a href="javascript:void(0);" data-leaveid="' . $post->ID . '" class="cf-cancel-leave">' . __( 'Cancel', 'core-functions' ) . '</a>';
 			}
 		}
 
