@@ -1426,9 +1426,12 @@ class Core_Functions_Admin {
 		if ( ! empty( $user_leaves[ $last_year ][ $last_month ] ) && is_array( $user_leaves[ $last_year ][ $last_month ] ) ) {
 			$fullday_leaves = 0;
 			$halfday_leaves = 0;
+			$leaves_data    = $user_leaves[ $last_year ][ $last_month ];
 
 			// Iterate through the leaves.
-			foreach ( $user_leaves[ $last_year ][ $last_month ] as $leave_data ) {
+			foreach ( $leaves_data as $leave_data ) {
+				debug( $leave_data );
+				die;
 				if ( '1' === $leave_data['type'] ) {
 					$fullday_leaves++;
 				} elseif ( '0.5' === $leave_data['type'] ) {
