@@ -142,6 +142,9 @@ class Core_Functions_Admin {
 		$status                    = get_user_meta( $user->ID, 'cf_user_status', true );
 		$email_verification_status = get_user_meta( $user->ID, 'cf_user_email_verification', true );
 
+		var_dump( $status );
+		die;
+
 		// Registration status pending.
 		if ( ! empty( $email_verification_status ) && 'pending' === $email_verification_status ) {
 			return new WP_Error( 'user-email-verification-pending', __( 'Sorry, but your email verification is pending. Please verify your email and try again.', 'core-functions' ) );
