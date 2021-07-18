@@ -1244,7 +1244,7 @@ class Core_Functions_Admin {
 		}
 
 		// Download salary slip.
-		if ( current_user_can( 'manage_options' ) ) {
+		if ( current_user_can( 'manage_options' ) && $is_therapist ) {
 			// Mail the salary slip.
 			$actions['mail_salary_slip'] = '<a href="javascript:void(0);" class="cf-mail-salary-slip">' . __( 'Mail Salary Slip', 'core-functions' ) . '</a>';
 		}
