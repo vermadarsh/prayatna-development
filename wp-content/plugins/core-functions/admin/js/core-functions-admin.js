@@ -481,7 +481,7 @@ jQuery( document ).ready( function( $ ) {
 	/**
 	 * Mail the salary slip to the therapist.
 	 */
-	 $( document ).on( 'click', '.cf-mail-salary-slip', function() {
+	 $( document ).on( 'click', '.cf-email-salary-slip', function() {
 		var this_link      = $( this );
 		var parent_tr_id   = this_link.parents( 'tr' ).attr( 'id' );
 		var user_id        = parent_tr_id.replace( 'user-', '' );
@@ -491,7 +491,7 @@ jQuery( document ).ready( function( $ ) {
 
 		// Send the AJAX to approve the request.
 		var data = {
-			action: 'mail_salary_slip_to_therapist',
+			action: 'email_salary_slip_to_therapist',
 			user_id: user_id,
 		};
 		$.ajax( {

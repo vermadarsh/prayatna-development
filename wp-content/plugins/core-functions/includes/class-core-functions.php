@@ -171,7 +171,7 @@ class Core_Functions {
 		$this->loader->add_action( 'wp_ajax_approve_therapist_registration', $plugin_admin, 'cf_approve_therapist_registration_callback' );
 		$this->loader->add_action( 'wp_ajax_decline_therapist_registration', $plugin_admin, 'cf_decline_therapist_registration_callback' );
 		$this->loader->add_action( 'wp_ajax_reapprove_therapist_registration', $plugin_admin, 'cf_reapprove_therapist_registration_callback' );
-		$this->loader->add_action( 'wp_ajax_mail_salary_slip_to_therapist', $plugin_admin, 'cf_mail_salary_slip_to_therapist_callback' );
+		$this->loader->add_action( 'wp_ajax_email_salary_slip_to_therapist', $plugin_admin, 'cf_email_salary_slip_to_therapist_callback' );
 	}
 
 	/**
