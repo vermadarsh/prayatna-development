@@ -1250,6 +1250,7 @@ class Core_Functions_Admin {
 		 * Check the current date.
 		 */
 		$current_date = (int) cf_get_current_date( 'd' );
+		$current_date = 5; // for testing
 
 		if ( 1 <= $current_date && 7 >= $current_date ) {
 			if ( current_user_can( 'manage_options' ) && $is_therapist ) {
