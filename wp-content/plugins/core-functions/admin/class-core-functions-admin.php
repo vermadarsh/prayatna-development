@@ -968,7 +968,7 @@ class Core_Functions_Admin {
 
 		// Check for the leave remarks column.
 		if ( 'leave_remarks' === $column_name ) {
-			debug( get_poost_meta( $post_id ) );
+			debug( get_post_meta( $post_id ) );
 		}
 
 		// Check for the leave status column.
