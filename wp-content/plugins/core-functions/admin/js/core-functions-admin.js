@@ -310,11 +310,11 @@ jQuery( document ).ready( function( $ ) {
 	 * Cancel leave.
 	 */
 	 $( document ).on( 'click', '.cf-cancel-leave', function() {
-		var this_link = $( this );
-		var leave_id  = this_link.data( 'leaveid' );
-		var confirm   = confirm( 'Do you really want to cancel this leave? This action won\'t be undone.' );
+		var this_link            = $( this );
+		var leave_id             = this_link.data( 'leaveid' );
+		var confirm_cancellation = confirm( 'Do you really want to cancel this leave? This action won\'t be undone.' );
 
-		console.log( 'confirm', confirm );
+		console.log( 'confirm_cancellation', confirm_cancellation );
 		return false;
 
 		// Check if the message is a valid one.
