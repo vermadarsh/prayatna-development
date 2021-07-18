@@ -138,11 +138,17 @@ class Core_Functions_Admin {
 			return $user;
 		}
 
-		$status = get_user_meta( $user->ID, 'cf_user_status', true );
+		$status                    = get_user_meta( $user->ID, 'cf_user_status', true );
+		$email_verification_status = get_user_meta( $user->ID, 'cf_user_email_verification', true );
+
+		// Registration status pending.
+		if ( ! empty( $email_verification_status ) && 'pending' === $email_verification_status ) {
+			return new WP_Error( 'user-email-verification-pending', __( 'Sorry, but your email verification is pending. Please verify your email and try again.', 'core-functions' ) );
+		}
 
 		// Registration status pending.
 		if ( ! empty( $status ) && 'pending' === $status ) {
-			return new WP_Error( 'user-status-pending', sprintf( __( 'Sorry, but your email verification is pending. Please verify your email and try again.', 'core-functions' ), get_option( 'admin_email' ) ) );
+			return new WP_Error( 'user-status-pending', sprintf( __( 'Sorry, but your registration request is pending. Please contact %1$ssite administrator%2$s for further details.', 'core-functions' ), '<a href="mailto:' . get_option( 'admin_email' ) . '">', '</a>' ) );
 		}
 
 		// Account suspended.
