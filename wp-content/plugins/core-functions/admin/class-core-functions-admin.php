@@ -964,7 +964,7 @@ class Core_Functions_Admin {
 				echo "<p>{$leave_from}</p>";
 			} else {
 				echo "<p>{$leave_from}</p>";
-				echo '-';
+				echo '<p>to</p>';
 				echo "<p>{$leave_to}</p>";
 			}
 		}
