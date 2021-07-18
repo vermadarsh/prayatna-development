@@ -1437,9 +1437,6 @@ class Core_Functions_Admin {
 				}
 			}
 
-			var_dump( $fullday_leaves, $halfday_leaves );
-			debug( '-----' );
-
 			// Convert the halfday leaves into fullday, if they are more than 1.
 			if ( 1 < $halfday_leaves ) {
 				$convertible_fullday_leaves = (int) ( $halfday_leaves / 2 );
@@ -1450,7 +1447,9 @@ class Core_Functions_Admin {
 				$halfday_leaves  = $remaining_halfday_leaves;
 			}
 
-			var_dump( $fullday_leaves, $halfday_leaves );
+			// Get the monthly salary.
+			$salary = get_field( 'monthly_salary', "user_{$user_id}" );
+			var_dump( $salary );
 			die;
 		}
 		die;
