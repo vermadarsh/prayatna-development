@@ -109,7 +109,7 @@ if ( ! function_exists( 'debug' ) ) {
 	}
 }
 
-add_action( 'init', function() {
-	delete_user_meta( 20, 'prayatna_leaves' );
-	die("pool");
-} );
+// add_action( 'init', function() {
+// 	delete_user_meta( 20, 'prayatna_leaves' );
+// 	die("pool");
+// } );
