@@ -939,9 +939,10 @@ class Core_Functions_Admin {
 	 * @return array
 	 */
 	public function cf_manage_leave_posts_columns_callback( $columns = array() ) {
-		$columns['leave_dates']  = __( 'Date(s)', 'core-functions' );
+		$columns['leave_dates']   = __( 'Date(s)', 'core-functions' );
+		$columns['leave_type']    = __( 'Type', 'core-functions' );
 		$columns['leave_remarks'] = __( 'Remarks', 'core-functions' );
-		$columns['leave_status'] = __( 'Status', 'core-functions' );
+		$columns['leave_status']  = __( 'Status', 'core-functions' );
 
 		return $columns;
 	}
@@ -966,14 +967,19 @@ class Core_Functions_Admin {
 			}
 		}
 
+		// Check for the leave type column.
+		if ( 'leave_type' === $column_name ) {
+			echo get_post_meta( $post_id, 'leave_duration', true );
+		}
+
 		// Check for the leave remarks column.
 		if ( 'leave_remarks' === $column_name ) {
-			debug( get_post_meta( $post_id ) );
+			echo get_post_meta( $post_id, 'reason_for_leave', true );
 		}
 
 		// Check for the leave status column.
 		if ( 'leave_status' === $column_name ) {
-
+			echo get_post_meta( $post_id, 'leave_approval', true );
 		}
 	}
 }
