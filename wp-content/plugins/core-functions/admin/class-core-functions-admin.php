@@ -1214,16 +1214,9 @@ class Core_Functions_Admin {
 	 */
 	public function cf_user_row_actions_callback( $actions = array(), $user ) {
 		// Remove the not-required row actions.
-		if ( array_key_exists( 'view', $actions ) ) {
-			unset( $actions['view'] );
-		}
-
-		if ( array_key_exists( 'resetpassword', $actions ) ) {
-			unset( $actions['resetpassword'] );
-		}
-
-		debug( $actions );
-		die;
+		if ( array_key_exists( 'view', $actions ) ) unset( $actions['view'] );
+		if ( array_key_exists( 'resetpassword', $actions ) ) unset( $actions['resetpassword'] );
+		if ( array_key_exists( 'capabilities', $actions ) ) unset( $actions['capabilities'] );
 
 		$user_status  = get_user_meta( $user->ID, 'cf_user_status', true );
 		$is_therapist = cf_is_user_therapist( $user->ID );
@@ -1238,7 +1231,7 @@ class Core_Functions_Admin {
 		}
 
 		// If the user status .
-		if ( true === $is_counselor && 'registration-declined' === $user_status ) {
+		if ( true === $is_therapist && 'registration-declined' === $user_status ) {
 			// Add the action to re-approve the request.
 			$actions['reapprove_request'] = '<a href="javascript:void(0);" class="cf-reapprove-request">' . __( 'Reactivate', 'core-functions' ) . '</a>';
 		}
@@ -1355,22 +1348,7 @@ class Core_Functions_Admin {
 		$first_name = get_user_meta( $user_id, 'first_name', true );
 
 		// Update the user status.
-		update_user_meta( $user_id, 'cf_user_status', 'active' );
-
-		// Create the corresponding staff item.
-		$staff_id = wp_insert_post(
-			array(
-				'post_type'   => 'staff-items',
-				'post_title'  => "{$first_name} - {$user->data->user_email}",
-				'post_status' => 'publish',
-				'meta_input'  => array(
-					'linked_user' => $user_id,
-				),
-			)
-		);
-
-		// Update the user meta for the staff ID.
-		update_user_meta( $user_id, 'linked_staff_id', $staff_id );
+		// update_user_meta( $user_id, 'cf_user_status', 'active' );
 
 		// Send the suspension email.
 		$email_body = get_field( 'therapist_registration_reapproval_email_body', 'option' );
@@ -1380,17 +1358,19 @@ class Core_Functions_Admin {
 		$email_body = str_replace( '{admin_email}', get_option( 'admin_email' ), $email_body );
 		$email_body = str_replace( '{login_link}', home_url( '/login/' ), $email_body );
 
+		echo $email_body; die;
+
 		// Send the email now.
 		wp_mail(
 			$user->data->user_email,
-			__( 'cf - You\'re Most Welcome!!', 'cf-core' ),
+			__( 'Prayatna Counselling - You\'re Most Welcome!!', 'core-functions' ),
 			$email_body
 		);
 
 		// Send the ajax response.
 		$response = array(
 			'code'    => 'user-reapproved',
-			'message' => __( 'User account reactivated !! Reloading..', 'cf-core' ),
+			'message' => __( 'User account reactivated !! Reloading..', 'core-functions' ),
 		);
 		wp_send_json_success( $response );
 		wp_die();
