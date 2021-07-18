@@ -1423,8 +1423,21 @@ class Core_Functions_Admin {
 		$user_leaves = get_user_meta( $user_id, 'prayatna_leaves', true );
 
 		// Check if the user has leaves in last month.
-		if ( ! empty( $user_leaves[ $last_year ][ $last_month ] ) ) {
-			debug( $user_leaves[ $last_year ][ $last_month ] );
+		if ( ! empty( $user_leaves[ $last_year ][ $last_month ] ) && is_array( $user_leaves[ $last_year ][ $last_month ] ) ) {
+			$fullday_leaves = 0;
+			$halfday_leaves = 0;
+
+			// Iterate through the leaves.
+			foreach ( $user_leaves[ $last_year ][ $last_month ] as $leave_data ) {
+				if ( '1' === $leave_data['type'] ) {
+					$fullday_leaves++;
+				} elseif ( '0.5' === $leave_data['type'] ) {
+					$halfday_leaves++;
+				}
+			}
+
+			var_dump( 'fullday', $fullday_leaves );
+			var_dump( 'halfday', $halfday_leaves );
 			die;
 		}
 		die;
