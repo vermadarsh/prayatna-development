@@ -1218,6 +1218,9 @@ class Core_Functions_Admin {
 			unset( $actions['view'] );
 		}
 
+		debug( $actions );
+		die;
+
 		$user_status  = get_user_meta( $user->ID, 'cf_user_status', true );
 		$is_therapist = cf_is_user_therapist( $user->ID );
 
