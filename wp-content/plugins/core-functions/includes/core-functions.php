@@ -564,3 +564,14 @@ if ( ! function_exists( 'cf_get_dates_within_2_dates' ) ) {
 		return $dates;
 	}
 }
+
+/**
+ * Return the current date according to local date.
+ *
+ * @return string
+ */
+function cf_get_current_date( $format = 'Y-m-d' ) {
+	$timezone_format = _x( $format, 'timezone date format' );
+
+	return date_i18n( $timezone_format );
+}

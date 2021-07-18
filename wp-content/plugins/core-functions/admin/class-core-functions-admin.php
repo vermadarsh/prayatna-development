@@ -1243,7 +1243,15 @@ class Core_Functions_Admin {
 			$actions['reapprove_request'] = '<a href="javascript:void(0);" class="cf-reapprove-request">' . __( 'Reactivate', 'core-functions' ) . '</a>';
 		}
 
-		// Download salary slip.
+		/**
+		 * Email the salary slip.
+		 * This action should only be displayed between 1st to 7th of every month.
+		 *
+		 * Check the current date.
+		 */
+		$current_date = cf_get_current_date( 'd' );
+		var_dump( $current_date );
+		die;
 		if ( current_user_can( 'manage_options' ) && $is_therapist ) {
 			// Mail the salary slip.
 			$actions['mail_salary_slip'] = '<a href="javascript:void(0);" class="cf-mail-salary-slip">' . __( 'Mail Salary Slip', 'core-functions' ) . '</a>';
