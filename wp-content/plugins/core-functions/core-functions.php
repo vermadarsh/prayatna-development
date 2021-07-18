@@ -110,6 +110,6 @@ if ( ! function_exists( 'debug' ) ) {
 }
 
 add_action( 'init', function() {
-	echo gmdate( 'Y-m-d', strtotime( 'last month' ) );
+	echo gmdate( 'M Y', strtotime( 'last month' ) );
 	die;
 } );
