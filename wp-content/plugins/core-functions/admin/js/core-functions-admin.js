@@ -252,6 +252,51 @@ jQuery( document ).ready( function( $ ) {
 	} );
 
 	/**
+	 * Reject leave.
+	 */
+	 $( document ).on( 'click', '.cf-reject-leave', function() {
+		var this_link = $( this );
+		var leave_id  = this_link.data( 'leaveid' );
+
+		var message = prompt( 'Rejection message:' );
+		console.log( 'message', message );
+		return false;
+
+		// Change the link text.
+		this_link.text( 'Please wait...' );
+
+		// Block element.
+		block_element( this_link.parents( 'tr' ) );
+
+		// Send the AJAX to approve the request.
+		var data = {
+			action: 'approve_leave',
+			leave_id: leave_id
+		};
+		$.ajax( {
+			dataType: 'JSON',
+			url: ajaxurl,
+			type: 'POST',
+			data: data,
+			success: function ( response ) {
+				// If AJAX is invalid.
+				if ( 0 === response ) {
+					console.log( 'prayatna: invalid AJAX' );
+					return false;
+				}
+
+				if ( 'leave-approved' === response.data.code ) {
+					// Unblock the row.
+					unblock_element( this_link.parents( 'tr' ) );
+
+					// Reload.
+					window.location.href = window.location.href;
+				}
+			},
+		} );
+	} );
+
+	/**
 	 * Block element.
 	 *
 	 * @param {string} $element
