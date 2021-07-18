@@ -1403,9 +1403,6 @@ class Core_Functions_Admin {
 		$fullname   = cf_get_user_full_name( $user_id );
 		$first_name = get_user_meta( $user_id, 'first_name', true );
 
-		// Update the user status.
-		update_user_meta( $user_id, 'cf_user_status', 'active' );
-
 		// Send the suspension email.
 		$email_body = get_field( 'therapist_registration_reapproval_email_body', 'option' );
 		$email_body = str_replace( '{first_name}', $fullname, $email_body );
@@ -1413,6 +1410,9 @@ class Core_Functions_Admin {
 		$email_body = str_replace( '{site_name}', get_bloginfo( 'name' ), $email_body );
 		$email_body = str_replace( '{admin_email}', get_option( 'admin_email' ), $email_body );
 		$email_body = str_replace( '{login_link}', home_url( '/login/' ), $email_body );
+
+		echo $email_body;
+		die;
 
 		// Send the email now.
 		wp_mail(
