@@ -335,8 +335,8 @@ class Core_Functions_Admin {
 					$email_template_body_approved         = str_replace('{day}',$leave_day,$email_template_body_approved);
 					$email_template_body_approved         = str_replace('{from_date}',$leaveStartDate,$email_template_body_approved);
 					// wp_mail($adminEmail, $leave_approved_email_subject, $email_template_body_approved, array('Content-Type: text/html; charset=UTF-8'));
-					debug($leave_approved_email_subject);
-					debug($email_template_body_approved);
+					// debug($leave_approved_email_subject);
+					// debug($email_template_body_approved);
 				} else {
 					// Prepare the email template for rejected leave.
 					$leave_reject_email_subject            = get_field('leave_reject_email_subject','option');
@@ -347,15 +347,10 @@ class Core_Functions_Admin {
 					$email_template_body_rejected          = str_replace('{from_date}',$leaveStartDate,$email_template_body_rejected);
 					$email_template_body_rejected          = str_replace('{leave_reason}',$rejected_message,$email_template_body_rejected);
 					// wp_mail($adminEmail, $leave_reject_email_subject, $email_template_body_rejected, array('Content-Type: text/html; charset=UTF-8'));
-					debug($leave_reject_email_subject);
-					debug($email_template_body_rejected);
+					// debug($leave_reject_email_subject);
+					// debug($email_template_body_rejected);
 				}
-				
-				
 			}
-			die;
-
-			
 		}
 	}
 
