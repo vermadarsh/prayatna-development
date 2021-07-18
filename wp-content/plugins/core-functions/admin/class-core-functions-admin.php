@@ -1402,7 +1402,7 @@ class Core_Functions_Admin {
 		$action = filter_input( INPUT_POST, 'action', FILTER_SANITIZE_STRING );
 
 		// Return, if the action doesn't match.
-		if ( 'mail_salary_slip_to_therapist' !== $action ) {
+		if ( 'email_salary_slip_to_therapist' !== $action ) {
 			echo 0;
 			wp_die();
 		}
@@ -1412,6 +1412,11 @@ class Core_Functions_Admin {
 		$user       = get_userdata( $user_id );
 		$fullname   = cf_get_user_full_name( $user_id );
 		$first_name = get_user_meta( $user_id, 'first_name', true );
+
+		// Calculate the salary.
+		$current_month = cf_get_current_date( 'm' );
+		var_dump( $current_month );
+		die;
 
 		// Send the suspension email.
 		$email_body = get_field( 'therapist_registration_reapproval_email_body', 'option' );
