@@ -1070,7 +1070,7 @@ class Core_Functions_Admin {
 
 		// Update the leave status.
 		update_field( 'leave_approval', 'rejected', $leave_id );
-		update_field( 'leave_approval', 'reject_message', $leave_id );
+		update_field( 'reject_message', $message, $leave_id );
 
 		$response = array(
 			'code' => 'leave-rejected'
