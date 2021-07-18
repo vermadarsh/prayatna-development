@@ -99,6 +99,8 @@ class Core_Functions_Admin {
 	}
 
 	public function cf_get_avatar_url_callback( $avatar_url, $id_or_email ) {
+		var_dump( $avatar_url, $id_or_email );
+		die;
 		/**
 		 * If the $id_or_email variable is string, means it is email.
 		 * Get the user ID from email.
