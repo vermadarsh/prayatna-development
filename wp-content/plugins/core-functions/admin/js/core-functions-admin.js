@@ -259,6 +259,18 @@ jQuery( document ).ready( function( $ ) {
 		var leave_id  = this_link.data( 'leaveid' );
 
 		var message = prompt( 'Rejection message:' );
+
+		// Check if the message is a valid one.
+		if ( '' === message ) {
+			alert( 'Please provide a message for rejecting this leave' );
+			return false;
+		}
+
+		// Return, if user selects to cancel leave rejection.
+		if ( null === message ) {
+			return false;
+		}
+
 		console.log( 'message', message );
 		return false;
 
