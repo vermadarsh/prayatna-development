@@ -1219,4 +1219,157 @@ class Core_Functions_Admin {
 
 		return $actions;
 	}
+
+	/**
+	 * AJAX served to approve the registration request.
+	 */
+	public function cf_approve_therapist_registration_callback() {
+		$action = filter_input( INPUT_POST, 'action', FILTER_SANITIZE_STRING );
+
+		// Return, if the action doesn't match.
+		if ( 'approve_therapist_registration' !== $action ) {
+			echo 0;
+			wp_die();
+		}
+
+		// Posted data.
+		$user_id    = (int) filter_input( INPUT_POST, 'user_id', FILTER_SANITIZE_NUMBER_INT );
+		var_dump( $user_id );
+		$user       = get_userdata( $user_id );
+		$first_name = get_user_meta( $user_id, 'first_name', true );
+
+		// Update the user status.
+		// update_user_meta( $user_id, 'cf_user_status', 'active' );
+
+		// Send the registration approval email.
+		$email_body = get_field( 'therapist_registration_approval_email_body', 'option' );
+		$email_body = str_replace( '{first_name}', $first_name, $email_body );
+		$email_body = str_replace( '{site_url}', home_url(), $email_body );
+		$email_body = str_replace( '{site_name}', get_bloginfo( 'name' ), $email_body );
+		$email_body = str_replace( '{login_link}', home_url( '/login/' ), $email_body );
+
+		echo $email_body;
+		die;
+
+		// Send the email now.
+		wp_mail(
+			$user->data->user_email,
+			__( 'Cognify - You\'re Most Welcome!!', 'cognify-core' ),
+			$email_body
+		);
+
+		// Send the ajax response.
+		$response = array(
+			'code'     => 'request-approved',
+			'message'  => __( 'Request Approved !! Reloading..', 'cognify-core' ),
+			'staff_id' => $staff_id,
+		);
+		wp_send_json_success( $response );
+		wp_die();
+	}
+
+	/**
+	 * AJAX served to decline the registration request.
+	 */
+	public function cf_decline_registration_request_callback() {
+		$action = filter_input( INPUT_POST, 'action', FILTER_SANITIZE_STRING );
+
+		// Return, if the action doesn't match.
+		if ( 'decline_registration_request' !== $action ) {
+			echo 0;
+			wp_die();
+		}
+
+		// Posted data.
+		$user_id = (int) filter_input( INPUT_POST, 'user_id', FILTER_SANITIZE_NUMBER_INT );
+		$reason  = filter_input( INPUT_POST, 'decline_reason', FILTER_SANITIZE_STRING );
+		$user    = get_userdata( $user_id );
+
+		// Update the user status and decline reason.
+		update_user_meta( $user_id, 'cognify_user_status', 'registration-declined' );
+		update_user_meta( $user_id, 'cognify_user_registration_decline_reason', $reason );
+
+		// Send the registration denial email.
+		$email_body = get_field( 'counselor_registration_denial_email_body', 'option' );
+		$email_body = str_replace( '{first_name}', cognify_get_user_full_name( $user_id ), $email_body );
+		$email_body = str_replace( '{site_url}', home_url(), $email_body );
+		$email_body = str_replace( '{site_name}', get_bloginfo( 'name' ), $email_body );
+		$email_body = str_replace( '{denial_reason}', $reason, $email_body );
+		$email_body = str_replace( '{admin_email}', get_option( 'admin_email' ), $email_body );
+
+		// Send the email now.
+		wp_mail(
+			$user->data->user_email,
+			__( 'Cognify Registration Request Declined', 'cognify-core' ),
+			$email_body
+		);
+
+		// Send the ajax response.
+		$response = array(
+			'code'    => 'request-declined',
+			'message' => __( 'Request Declined !! Reloading..', 'cognify-core' ),
+		);
+		wp_send_json_success( $response );
+		wp_die();
+	}
+
+	/**
+	 * AJAX served to reapprove user.
+	 */
+	public function cf_reapprove_registration_request_callback() {
+		$action = filter_input( INPUT_POST, 'action', FILTER_SANITIZE_STRING );
+
+		// Return, if the action doesn't match.
+		if ( 'reapprove_registration_request' !== $action ) {
+			echo 0;
+			wp_die();
+		}
+
+		// Posted data.
+		$user_id    = (int) filter_input( INPUT_POST, 'user_id', FILTER_SANITIZE_NUMBER_INT );
+		$user       = get_userdata( $user_id );
+		$fullname   = cognify_get_user_full_name( $user_id );
+		$first_name = get_user_meta( $user_id, 'first_name', true );
+
+		// Update the user status.
+		update_user_meta( $user_id, 'cognify_user_status', 'active' );
+
+		// Create the corresponding staff item.
+		$staff_id = wp_insert_post(
+			array(
+				'post_type'   => 'staff-items',
+				'post_title'  => "{$first_name} - {$user->data->user_email}",
+				'post_status' => 'publish',
+				'meta_input'  => array(
+					'linked_user' => $user_id,
+				),
+			)
+		);
+
+		// Update the user meta for the staff ID.
+		update_user_meta( $user_id, 'linked_staff_id', $staff_id );
+
+		// Send the suspension email.
+		$email_body = get_field( 'counselor_registration_reactivation_email_body', 'option' );
+		$email_body = str_replace( '{first_name}', $fullname, $email_body );
+		$email_body = str_replace( '{site_url}', home_url(), $email_body );
+		$email_body = str_replace( '{site_name}', get_bloginfo( 'name' ), $email_body );
+		$email_body = str_replace( '{admin_email}', get_option( 'admin_email' ), $email_body );
+		$email_body = str_replace( '{login_link}', home_url( '/login/' ), $email_body );
+
+		// Send the email now.
+		wp_mail(
+			$user->data->user_email,
+			__( 'Cognify - You\'re Most Welcome!!', 'cognify-core' ),
+			$email_body
+		);
+
+		// Send the ajax response.
+		$response = array(
+			'code'    => 'user-reapproved',
+			'message' => __( 'User account reactivated !! Reloading..', 'cognify-core' ),
+		);
+		wp_send_json_success( $response );
+		wp_die();
+	}
 }

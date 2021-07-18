@@ -354,6 +354,127 @@ jQuery( document ).ready( function( $ ) {
 	} );
 
 	/**
+	 * Approve the therapist.
+	 */
+	 $( document ).on( 'click', '.cf-approve-request', function() {
+		var this_link    = $( this );
+		var parent_tr_id = this_link.parents( 'tr' ).attr( 'id' );
+		var user_id      = parent_tr_id.replace( 'user-', '' );
+
+		// Block the row.
+		block_element( this_link.parents( 'tr' ) );
+
+		// Send the AJAX to approve the request.
+		var data = {
+			action: 'approve_therapist_registration',
+			user_id: user_id
+		};
+		$.ajax( {
+			dataType: 'JSON',
+			url: ajaxurl,
+			type: 'POST',
+			data: data,
+			success: function ( response ) {
+				if ( 'request-approved' !== response.data.code ) {
+					return false;
+				}
+
+				// Unblock the row.
+				unblock_element( this_link.parents( 'tr' ) );
+
+				// Show the success message.
+				cognify_show_notification( 'fa fa-check', notification_success_header, response.data.message, 'success' );
+
+				// Reload.
+				window.location.href = window.location.href;
+			},
+		} );
+	} );
+
+	/**
+	 * Reapprove the counselor.
+	 */
+	$( document ).on( 'click', '.cognify-reapprove-request', function() {
+		var this_link    = $( this );
+		var parent_tr_id = this_link.parents( 'tr' ).attr( 'id' );
+		var user_id      = parent_tr_id.replace( 'user-', '' );
+
+		// Block the row.
+		block_element( this_link.parents( 'tr' ) );
+
+		// Send the AJAX to approve the request.
+		var data = {
+			action: 'reapprove_therapist_registration',
+			user_id: user_id
+		};
+		$.ajax( {
+			dataType: 'JSON',
+			url: ajaxurl,
+			type: 'POST',
+			data: data,
+			success: function ( response ) {
+				if ( 'user-reapproved' !== response.data.code ) {
+					return false;
+				}
+
+				// Unblock the row.
+				unblock_element( this_link.parents( 'tr' ) );
+
+				// Show the success message.
+				cognify_show_notification( 'fa fa-check', notification_success_header, response.data.message, 'success' );
+
+				// Reload.
+				window.location.href = window.location.href;
+			},
+		} );
+	} );
+
+	/**
+	 * Decline the counselor.
+	 */
+	$( document ).on( 'click', '.cognify-decline-request', function() {
+		var this_link      = $( this );
+		var parent_tr_id   = this_link.parents( 'tr' ).attr( 'id' );
+		var user_id        = parent_tr_id.replace( 'user-', '' );
+		var decline_reason = prompt( counselor_decline_alert_msg );
+
+		// Skip if the valid reason is not provided.
+		if ( -1 === is_valid_string( decline_reason ) ) {
+			return false;
+		}
+
+		// Block the row.
+		block_element( this_link.parents( 'tr' ) );
+
+		// Send the AJAX to approve the request.
+		var data = {
+			action: 'decline_therapist_registration',
+			user_id: user_id,
+			decline_reason: decline_reason
+		};
+		$.ajax( {
+			dataType: 'JSON',
+			url: ajaxurl,
+			type: 'POST',
+			data: data,
+			success: function ( response ) {
+				if ( 'request-declined' !== response.data.code ) {
+					return false;
+				}
+
+				// Unblock the row.
+				unblock_element( this_link.parents( 'tr' ) );
+
+				// Show the success message.
+				cognify_show_notification( 'fa fa-check', notification_success_header, response.data.message, 'success' );
+
+				// Reload.
+				window.location.href = window.location.href;
+			},
+		} );
+	} );
+
+	/**
 	 * Block element.
 	 *
 	 * @param {string} $element
