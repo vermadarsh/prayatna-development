@@ -1422,6 +1422,9 @@ class Core_Functions_Admin {
 		// Therapist leaves.
 		$user_leaves = get_user_meta( $user_id, 'prayatna_leaves', true );
 
+		// Get the monthly salary.
+		$salary = (float) get_user_meta( $user_id, 'monthly_salary', true );
+
 		// Check if the user has leaves in last month.
 		if ( ! empty( $user_leaves[ $last_year ][ $last_month ] ) && is_array( $user_leaves[ $last_year ][ $last_month ] ) ) {
 			$fullday_leaves = 0;
@@ -1448,7 +1451,6 @@ class Core_Functions_Admin {
 			}
 
 			// Calculate the salary now.
-			$salary        = (float) get_user_meta( $user_id, 'monthly_salary', true ); // Get the monthly salary.
 			$num_of_days   = (int) gmdate( 't', mktime( 0, 0, 0, $last_month, 1, $last_year ) ); // Days in last month.
 			$perday_salary = ( $salary / $num_of_days ); // Perday salary.
 			$perday_salary = number_format( (float) $perday_salary, 2, '.', '' );
@@ -1458,9 +1460,10 @@ class Core_Functions_Admin {
 			$fullday_leaves_deduction = number_format( (float) $fullday_leaves_deduction, 2, '.', '' );
 			$halfday_leaves_deduction = $perday_salary * 0.5;
 			$halfday_leaves_deduction = number_format( (float) $halfday_leaves_deduction, 2, '.', '' );
-			var_dump( $perday_salary, $fullday_leaves_deduction, $halfday_leaves_deduction );
-			die;
+			$total_deduction          = $fullday_leaves_deduction + $halfday_leaves_deduction;
+			$salary                   = $salary - $total_deduction;
 		}
+		var_dump( $salary );
 		die;
 
 		// Send the suspension email.
