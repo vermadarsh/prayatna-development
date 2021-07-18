@@ -1450,9 +1450,12 @@ class Core_Functions_Admin {
 				$halfday_leaves  = $remaining_halfday_leaves;
 			}
 
-			// Deduct the 2 paid leaves.
-			if ( 2 <= $fullday_leaves ) {
-				$fullday_leaves -= 2;
+			// Get the paid leaves.
+			$paid_leaves = (int) get_field( 'paid_leaves_per_month', 'option' );
+
+			// Deduct the paid leaves.
+			if ( $paid_leaves <= $fullday_leaves ) {
+				$fullday_leaves -= $paid_leaves;
 			} else {
 				$fullday_leaves = 0;
 				$halfday_leaves = 0;
