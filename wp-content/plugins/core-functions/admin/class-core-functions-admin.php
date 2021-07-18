@@ -1437,6 +1437,13 @@ class Core_Functions_Admin {
 				}
 			}
 
+			// Convert the halfday leaves into fullday, if they are more than 1.
+			if ( 1 < $halfday_leaves ) {
+				var_dump( $halfday_leaves / 2 );
+				var_dump( $halfday_leaves % 2 );
+				die;
+			}
+
 			var_dump( 'fullday', $fullday_leaves );
 			var_dump( 'halfday', $halfday_leaves );
 			die;
