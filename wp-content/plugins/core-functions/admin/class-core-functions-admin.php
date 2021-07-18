@@ -1218,6 +1218,10 @@ class Core_Functions_Admin {
 			unset( $actions['view'] );
 		}
 
+		if ( array_key_exists( 'resetpassword', $actions ) ) {
+			unset( $actions['resetpassword'] );
+		}
+
 		debug( $actions );
 		die;
 

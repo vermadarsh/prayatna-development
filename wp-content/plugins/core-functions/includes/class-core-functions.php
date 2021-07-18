@@ -167,7 +167,7 @@ class Core_Functions {
 		$this->loader->add_action( 'wp_ajax_approve_leave', $plugin_admin, 'cf_approve_leave_callback' );
 		$this->loader->add_action( 'wp_ajax_reject_leave', $plugin_admin, 'cf_reject_leave_callback' );
 		$this->loader->add_action( 'wp_ajax_cancel_leave', $plugin_admin, 'cf_cancel_leave_callback' );
-		$this->loader->add_filter( 'user_row_actions', $plugin_admin, 'cf_user_row_actions_callback', 10, 2 );
+		$this->loader->add_filter( 'user_row_actions', $plugin_admin, 'cf_user_row_actions_callback', 99, 2 );
 		$this->loader->add_action( 'wp_ajax_approve_therapist_registration', $plugin_admin, 'cf_approve_therapist_registration_callback' );
 		$this->loader->add_action( 'wp_ajax_decline_therapist_registration', $plugin_admin, 'cf_decline_therapist_registration_callback' );
 		$this->loader->add_action( 'wp_ajax_reapprove_therapist_registration', $plugin_admin, 'cf_reapprove_therapist_registration_callback' );
