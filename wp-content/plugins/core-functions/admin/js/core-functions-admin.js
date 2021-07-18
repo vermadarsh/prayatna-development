@@ -221,7 +221,7 @@ jQuery( document ).ready( function( $ ) {
 		this_link.text( 'Please wait...' );
 
 		// Block element.
-		block_element( this_link );
+		block_element( this_link.parents( 'tr' ) );
 
 		// Send the AJAX to approve the request.
 		var data = {
@@ -234,18 +234,19 @@ jQuery( document ).ready( function( $ ) {
 			type: 'POST',
 			data: data,
 			success: function ( response ) {
-				if ( 'request-approved' !== response.data.code ) {
+				// If AJAX is invalid.
+				if ( 0 === response ) {
+					console.log( 'prayatna: invalid AJAX' );
 					return false;
 				}
 
-				// Unblock the row.
-				unblock_element( this_link.parents( 'tr' ) );
+				if ( 'leave-approved' === response.data.code ) {
+					// Unblock the row.
+					unblock_element( this_link.parents( 'tr' ) );
 
-				// Show the success message.
-				cognify_show_notification( 'fa fa-check', notification_success_header, response.data.message, 'success' );
-
-				// Reload.
-				window.location.href = window.location.href;
+					// Reload.
+					window.location.href = window.location.href;
+				}
 			},
 		} );
 	} );

@@ -1034,7 +1034,13 @@ class Core_Functions_Admin {
 		// Leave ID.
 		$leave_id = filter_input( INPUT_POST, 'leave_id', FILTER_SANITIZE_NUMBER_INT );
 
-		var_dump( $leave_id );
-		die;
+		// Update the leave status.
+		update_field( 'leave_approval', 'approved', $leave_id );
+
+		$response = array(
+			'code' => 'leave-approved'
+		);
+		wp_send_json_success( $response );
+		wp_die();
 	}
 }
