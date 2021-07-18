@@ -953,7 +953,7 @@ class Core_Functions_Admin {
 	public function cf_manage_leave_posts_custom_column( $column_name, $post_id ) {
 		// Check for leave dates status columns.
 		if ( 'leave_dates' === $column_name ) {
-			debug( get_post_meta( $post_id ) );
+			// debug( get_post_meta( $post_id ) );
 		}
 	}
 }
