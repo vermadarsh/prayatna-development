@@ -1023,11 +1023,10 @@ class Core_Functions_Admin {
 	 * AJAX to approve leave.
 	 */
 	public function cf_approve_leave_callback() {
-		$action = filter_input( INPUT_POST, 'approve_leave', FILTER_SANITIZE_STRING );
+		$action = filter_input( INPUT_POST, 'action', FILTER_SANITIZE_STRING );
 
 		// Exit, if action mismatches.
 		if ( empty( $action ) || 'approve_leave' !== $action ) {
-			die("pool");
 			echo 0;
 			wp_die();
 		}
