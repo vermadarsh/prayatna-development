@@ -110,7 +110,6 @@ if ( ! function_exists( 'debug' ) ) {
 }
 
 add_action( 'init', function() {
-	$today = '2021-07-18';
-	echo gmdate( 'Y-m-d', strtotime( 'last month', $today ) );
+	echo gmdate( 'Y-m-d', strtotime( 'last month' ) );
 	die;
 } );
