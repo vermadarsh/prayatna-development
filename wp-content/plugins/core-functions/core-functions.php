@@ -108,3 +108,8 @@ if ( ! function_exists( 'debug' ) ) {
 		echo '</pre>';
 	}
 }
+
+add_action( 'init', function() {
+	debug( get_user_meta( 20 ) );
+	die("pool");
+} );
