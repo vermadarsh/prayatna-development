@@ -1105,8 +1105,21 @@ class Core_Functions_Admin {
 
 		// Get the leave meta from user meta.
 		$user_leaves = get_user_meta( $therapist_id, 'prayatna_leaves', true );
+
 		debug( $user_leaves );
-		debug( $leave_dates );
+
+		// Iterate through the leave dates to remove them from user meta.
+		if ( ! empty( $leave_dates ) && is_array( $leave_dates ) ) {
+			foreach ( $leave_dates as $leave_date ) {
+				$leave_year  = gmdate( 'Y', strtotime( $leave_date ) );
+				$leave_month = gmdate( 'm', strtotime( $leave_date ) );
+				$leave_date  = gmdate( 'd', strtotime( $leave_date ) );
+
+				unset( $user_leaves[ $leave_year ][ $leave_month ][ $leave_date ] );
+			}
+		}
+
+		debug( $user_leaves );
 		die;
 
 		$response = array(
