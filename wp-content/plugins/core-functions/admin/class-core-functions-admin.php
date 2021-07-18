@@ -1036,6 +1036,35 @@ class Core_Functions_Admin {
 		// Leave ID.
 		$leave_id = filter_input( INPUT_POST, 'leave_id', FILTER_SANITIZE_NUMBER_INT );
 
+		// Get the leave dates.
+		$leave_from  = gmdate( 'Y-m-d', strtotime( get_post_meta( $leave_id, 'leave_from', true ) ) );
+		$leave_to    = gmdate( 'Y-m-d', strtotime( get_post_meta( $leave_id, 'to', true ) ) );
+		$leave_dates = cf_get_dates_within_2_dates( $leave_from, $leave_to );
+
+		// Get the leave author.
+		$therapist_id = get_post_field( 'post_author', $leave_id );
+
+		// Get the leave meta from user meta.
+		$user_leaves = get_user_meta( $therapist_id, 'prayatna_leaves', true );
+
+		// Iterate through the leave dates to remove them from user meta.
+		if ( ! empty( $leave_dates ) && is_array( $leave_dates ) ) {
+			foreach ( $leave_dates as $leave_date ) {
+				$leave_year  = gmdate( 'Y', strtotime( $leave_date ) );
+				$leave_month = gmdate( 'm', strtotime( $leave_date ) );
+				$leave_date  = gmdate( 'd', strtotime( $leave_date ) );
+
+				$user_leaves[ $leave_year ][ $leave_month ][ $leave_date ]['status']        = 'approved';
+				$user_leaves[ $leave_year ][ $leave_month ][ $leave_date ]['reject_reason'] = '';
+			}
+		}
+
+		debug( $user_leaves );
+		die;
+
+		// Update the remaining leaves to user meta.
+		update_user_meta( $therapist_id, 'prayatna_leaves', $user_leaves );
+
 		// Update the leave status.
 		update_field( 'leave_approval', 'approved', $leave_id );
 
