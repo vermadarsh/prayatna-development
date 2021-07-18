@@ -1106,8 +1106,6 @@ class Core_Functions_Admin {
 		// Get the leave meta from user meta.
 		$user_leaves = get_user_meta( $therapist_id, 'prayatna_leaves', true );
 
-		debug( $user_leaves );
-
 		// Iterate through the leave dates to remove them from user meta.
 		if ( ! empty( $leave_dates ) && is_array( $leave_dates ) ) {
 			foreach ( $leave_dates as $leave_date ) {
@@ -1119,11 +1117,14 @@ class Core_Functions_Admin {
 			}
 		}
 
-		debug( $user_leaves );
-		die;
+		// Update the remaining leaves to user meta.
+		update_user_meta( $therapist_id, 'prayatna_leaves', $user_leaves );
+
+		// Delete the leave post.
+		wp_delete_post( $leave_id, true );
 
 		$response = array(
-			'code' => 'leave-rejected'
+			'code' => 'leave-cancelled'
 		);
 		wp_send_json_success( $response );
 		wp_die();

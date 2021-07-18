@@ -342,7 +342,7 @@ jQuery( document ).ready( function( $ ) {
 					return false;
 				}
 
-				if ( 'leave-rejected' === response.data.code ) {
+				if ( 'leave-cancelled' === response.data.code ) {
 					// Unblock the row.
 					unblock_element( this_link.parents( 'tr' ) );
 
