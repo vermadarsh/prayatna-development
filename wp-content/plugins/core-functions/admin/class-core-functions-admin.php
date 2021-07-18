@@ -956,8 +956,8 @@ class Core_Functions_Admin {
 	public function cf_manage_leave_posts_custom_column( $column_name, $post_id ) {
 		// Check for leave dates status columns.
 		if ( 'leave_dates' === $column_name ) {
-			$leave_from = gmdate( 'Y-m-d', strtotime( get_post_meta( $post_id, 'leave_from', true ) ) );
-			$leave_to   = gmdate( 'Y-m-d', strtotime( get_post_meta( $post_id, 'to', true ) ) );
+			$leave_from = gmdate( 'd M, Y', strtotime( get_post_meta( $post_id, 'leave_from', true ) ) );
+			$leave_to   = gmdate( 'd M, Y', strtotime( get_post_meta( $post_id, 'to', true ) ) );
 
 			// Select the only date if from and to are same.
 			if ( $leave_from === $leave_to ) {
