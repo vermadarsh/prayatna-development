@@ -1477,7 +1477,7 @@ class Core_Functions_Admin {
 		die;
 
 		// Send the suspension email.
-		$email_body = get_field( 'therapist_registration_reapproval_email_body', 'option' );
+		$email_body = get_field( 'salary_slip_email_body', 'option' );
 		$email_body = str_replace( '{first_name}', $fullname, $email_body );
 		$email_body = str_replace( '{site_url}', home_url(), $email_body );
 		$email_body = str_replace( '{site_name}', get_bloginfo( 'name' ), $email_body );
