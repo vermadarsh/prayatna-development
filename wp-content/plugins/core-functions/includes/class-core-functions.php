@@ -166,6 +166,7 @@ class Core_Functions {
 		$this->loader->add_filter( 'post_row_actions', $plugin_admin, 'cf_post_row_actions_callback', 99, 2 );
 		$this->loader->add_action( 'wp_ajax_approve_leave', $plugin_admin, 'cf_approve_leave_callback' );
 		$this->loader->add_action( 'wp_ajax_reject_leave', $plugin_admin, 'cf_reject_leave_callback' );
+		$this->loader->add_action( 'wp_ajax_cancel_leave', $plugin_admin, 'cf_cancel_leave_callback' );
 	}
 
 	/**

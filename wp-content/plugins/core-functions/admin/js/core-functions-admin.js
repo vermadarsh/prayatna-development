@@ -314,17 +314,8 @@ jQuery( document ).ready( function( $ ) {
 		var leave_id             = this_link.data( 'leaveid' );
 		var confirm_cancellation = confirm( 'Do you really want to cancel this leave? This action won\'t be undone.' );
 
-		console.log( 'confirm_cancellation', confirm_cancellation );
-		return false;
-
-		// Check if the message is a valid one.
-		if ( '' === message ) {
-			alert( 'Please provide a message for rejecting this leave' );
-			return false;
-		}
-
-		// Return, if user selects to cancel leave rejection.
-		if ( null === message ) {
+		// Exit, if false.
+		if ( false === confirm_cancellation ) {
 			return false;
 		}
 
@@ -336,9 +327,8 @@ jQuery( document ).ready( function( $ ) {
 
 		// Send the AJAX to reject the request.
 		var data = {
-			action: 'reject_leave',
+			action: 'cancel_leave',
 			leave_id: leave_id,
-			message: message,
 		};
 		$.ajax( {
 			dataType: 'JSON',

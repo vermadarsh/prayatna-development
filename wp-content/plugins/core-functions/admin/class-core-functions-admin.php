@@ -1079,4 +1079,34 @@ class Core_Functions_Admin {
 		wp_send_json_success( $response );
 		wp_die();
 	}
+
+	/**
+	 * AJAX to cancel leave.
+	 */
+	public function cf_cancel_leave_callback() {
+		$action = filter_input( INPUT_POST, 'action', FILTER_SANITIZE_STRING );
+
+		// Exit, if action mismatches.
+		if ( empty( $action ) || 'cancel_leave' !== $action ) {
+			echo 0;
+			wp_die();
+		}
+
+		// Posted data.
+		$leave_id = filter_input( INPUT_POST, 'leave_id', FILTER_SANITIZE_NUMBER_INT );
+
+		// Get the leave dates.
+		$leave_from  = gmdate( 'Y-m-d', strtotime( get_post_meta( $leave_id, 'leave_from', true ) ) );
+		$leave_to    = gmdate( 'Y-m-d', strtotime( get_post_meta( $leave_id, 'to', true ) ) );
+		$leave_dates = cf_get_dates_within_2_dates( $leave_from, $leave_to );
+
+		debug( $leave_dates );
+		die;
+
+		$response = array(
+			'code' => 'leave-rejected'
+		);
+		wp_send_json_success( $response );
+		wp_die();
+	}
 }
