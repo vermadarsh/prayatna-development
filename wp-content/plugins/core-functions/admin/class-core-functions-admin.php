@@ -1441,14 +1441,13 @@ class Core_Functions_Admin {
 			if ( 1 < $halfday_leaves ) {
 				$convertible_fullday_leaves = (int) ( $halfday_leaves / 2 );
 				$remaining_halfday_leaves   = $halfday_leaves % 2;
-				var_dump( $convertible_fullday_leaves );
-				var_dump( $remaining_halfday_leaves );
-				die("pool");
+
+				// Update the leaves count now.
+				$fullday_leaves += $convertible_fullday_leaves;
+				$halfday_leaves += $remaining_halfday_leaves;
 			}
 
-			var_dump( 'fullday', $fullday_leaves );
-			var_dump( 'halfday', $halfday_leaves );
-			die;
+			var_dump( $fullday_leaves, $halfday_leaves );
 		}
 		die;
 
