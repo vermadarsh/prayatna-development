@@ -1253,7 +1253,7 @@ class Core_Functions_Admin {
 		$first_name = get_user_meta( $user_id, 'first_name', true );
 
 		// Update the user status.
-		// update_user_meta( $user_id, 'cf_user_status', 'active' );
+		update_user_meta( $user_id, 'cf_user_status', 'active' );
 
 		// Send the registration approval email.
 		$email_body = get_field( 'therapist_registration_approval_email_body', 'option' );
@@ -1293,11 +1293,13 @@ class Core_Functions_Admin {
 		// Posted data.
 		$user_id = (int) filter_input( INPUT_POST, 'user_id', FILTER_SANITIZE_NUMBER_INT );
 		$reason  = filter_input( INPUT_POST, 'decline_reason', FILTER_SANITIZE_STRING );
+
+		var_dump( $reason );
 		$user    = get_userdata( $user_id );
 
 		// Update the user status and decline reason.
-		update_user_meta( $user_id, 'cf_user_status', 'registration-declined' );
-		update_user_meta( $user_id, 'cf_user_registration_decline_reason', $reason );
+		// update_user_meta( $user_id, 'cf_user_status', 'registration-declined' );
+		// update_user_meta( $user_id, 'cf_user_registration_decline_reason', $reason );
 
 		// Send the registration denial email.
 		$email_body = get_field( 'counselor_registration_denial_email_body', 'option' );
@@ -1306,6 +1308,9 @@ class Core_Functions_Admin {
 		$email_body = str_replace( '{site_name}', get_bloginfo( 'name' ), $email_body );
 		$email_body = str_replace( '{denial_reason}', $reason, $email_body );
 		$email_body = str_replace( '{admin_email}', get_option( 'admin_email' ), $email_body );
+
+		echo $email_body;
+		die;
 
 		// Send the email now.
 		wp_mail(
