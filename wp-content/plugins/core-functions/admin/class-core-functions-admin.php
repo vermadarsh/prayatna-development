@@ -1119,7 +1119,6 @@ class Core_Functions_Admin {
 
 		// Update the remaining leaves to user meta.
 		update_user_meta( $therapist_id, 'prayatna_leaves', $user_leaves );
-		delete_user_meta( $therapist_id, 'prayatna_leaves' );
 
 		// Delete the leave post.
 		wp_delete_post( $leave_id, true );
