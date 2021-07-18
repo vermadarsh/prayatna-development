@@ -1251,7 +1251,7 @@ class Core_Functions_Admin {
 		 */
 		$current_date = (int) cf_get_current_date( 'd' );
 
-		if ( 1 <= $current_date && 7 <= $current_date ) {
+		if ( 1 <= $current_date && 7 >= $current_date ) {
 			if ( current_user_can( 'manage_options' ) && $is_therapist ) {
 				// Mail the salary slip.
 				$actions['mail_salary_slip'] = '<a href="javascript:void(0);" class="cf-email-salary-slip">' . __( 'Email Salary Slip', 'core-functions' ) . '</a>';
