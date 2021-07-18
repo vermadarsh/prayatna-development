@@ -1003,8 +1003,16 @@ class Core_Functions_Admin {
 
 			// Add actions to approve and reject leaves for admin.
 			if ( current_user_can( 'manage_options' ) ) {
-				$actions['approve_leave'] = '<a href="javascript:void(0);" data-leaveid="' . $post->ID . '" class="cf-approve-leave">' . __( 'Approve', 'core-functions' ) . '</a>';
-				$actions['reject_leave']  = '<a href="javascript:void(0);" data-leaveid="' . $post->ID . '" class="cf-reject-leave">' . __( 'Reject', 'core-functions' ) . '</a>';
+				$leave_status = get_field( 'leave_approval', $post->ID );
+
+				if ( 'approved' === $leave_status ) {
+					$actions['reject_leave']  = '<a href="javascript:void(0);" data-leaveid="' . $post->ID . '" class="cf-reject-leave">' . __( 'Reject', 'core-functions' ) . '</a>';
+				} elseif ( 'rejected' === $leave_status ) {
+					$actions['approve_leave'] = '<a href="javascript:void(0);" data-leaveid="' . $post->ID . '" class="cf-approve-leave">' . __( 'Approve', 'core-functions' ) . '</a>';
+				} else {
+					$actions['reject_leave']  = '<a href="javascript:void(0);" data-leaveid="' . $post->ID . '" class="cf-reject-leave">' . __( 'Reject', 'core-functions' ) . '</a>';
+					$actions['approve_leave'] = '<a href="javascript:void(0);" data-leaveid="' . $post->ID . '" class="cf-approve-leave">' . __( 'Approve', 'core-functions' ) . '</a>';
+				}
 			}
 
 			// If the status is pending, add a link to update the status.
