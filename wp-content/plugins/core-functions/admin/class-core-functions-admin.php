@@ -1450,18 +1450,28 @@ class Core_Functions_Admin {
 				$halfday_leaves  = $remaining_halfday_leaves;
 			}
 
-			// Calculate the salary now.
-			$num_of_days   = (int) gmdate( 't', mktime( 0, 0, 0, $last_month, 1, $last_year ) ); // Days in last month.
-			$perday_salary = ( $salary / $num_of_days ); // Perday salary.
-			$perday_salary = number_format( (float) $perday_salary, 2, '.', '' );
+			// Deduct the 2 paid leaves.
+			if ( 2 <= $fullday_leaves ) {
+				$fullday_leaves -= 2;
+			} else {
+				$fullday_leaves = 0;
+				$halfday_leaves = 0;
+			}
 
-			// Amount to be deducted.
-			$fullday_leaves_deduction = $perday_salary * $fullday_leaves;
-			$fullday_leaves_deduction = number_format( (float) $fullday_leaves_deduction, 2, '.', '' );
-			$halfday_leaves_deduction = $perday_salary * 0.5;
-			$halfday_leaves_deduction = number_format( (float) $halfday_leaves_deduction, 2, '.', '' );
-			$total_deduction          = $fullday_leaves_deduction + $halfday_leaves_deduction;
-			$salary                   = $salary - $total_deduction;
+			// Calculate the salary now, if there are leaves.
+			if ( 0 < $fullday_leaves && 0 < $halfday_leaves ) {
+				$num_of_days   = (int) gmdate( 't', mktime( 0, 0, 0, $last_month, 1, $last_year ) ); // Days in last month.
+				$perday_salary = ( $salary / $num_of_days ); // Perday salary.
+				$perday_salary = number_format( (float) $perday_salary, 2, '.', '' );
+
+				// Amount to be deducted.
+				$fullday_leaves_deduction = $perday_salary * $fullday_leaves;
+				$fullday_leaves_deduction = number_format( (float) $fullday_leaves_deduction, 2, '.', '' );
+				$halfday_leaves_deduction = $perday_salary * 0.5;
+				$halfday_leaves_deduction = number_format( (float) $halfday_leaves_deduction, 2, '.', '' );
+				$total_deduction          = $fullday_leaves_deduction + $halfday_leaves_deduction;
+				$salary                   = $salary - $total_deduction;
+			}
 		}
 		var_dump( $salary );
 		die;
