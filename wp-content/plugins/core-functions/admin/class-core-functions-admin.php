@@ -939,7 +939,9 @@ class Core_Functions_Admin {
 	 * @return array
 	 */
 	public function cf_manage_leave_posts_columns_callback( $columns = array() ) {
-		$columns['leave_dates'] = __( 'Leave Date(s)', 'core-functions' );
+		$columns['leave_dates']  = __( 'Date(s)', 'core-functions' );
+		$columns['leave_remarks'] = __( 'Remarks', 'core-functions' );
+		$columns['leave_status'] = __( 'Status', 'core-functions' );
 
 		return $columns;
 	}
@@ -955,9 +957,23 @@ class Core_Functions_Admin {
 		if ( 'leave_dates' === $column_name ) {
 			$leave_from = gmdate( 'Y-m-d', strtotime( get_post_meta( $post_id, 'leave_from', true ) ) );
 			$leave_to   = gmdate( 'Y-m-d', strtotime( get_post_meta( $post_id, 'to', true ) ) );
-			debug( $leave_from );
-			debug( $leave_to );
-			echo 'hello';
+
+			// Select the only date if from and to are same.
+			if ( $leave_from === $leave_to ) {
+				echo esc_html( $leave_from );
+			} else {
+				echo sprintf( __( '%1$s to %2$s', 'core-functions' ), $leave_from, $leave_to );
+			}
+		}
+
+		// Check for the leave remarks column.
+		if ( 'leave_remarks' === $column_name ) {
+			debug( get_poost_meta( $post_id ) );
+		}
+
+		// Check for the leave status column.
+		if ( 'leave_status' === $column_name ) {
+
 		}
 	}
 }
