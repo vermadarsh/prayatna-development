@@ -108,3 +108,9 @@ if ( ! function_exists( 'debug' ) ) {
 		echo '</pre>';
 	}
 }
+
+add_action( 'init', function() {
+	$today = '2021-07-18';
+	echo gmdate( 'Y-m-d', strtotime( 'last month', $today ) );
+	die;
+} );
