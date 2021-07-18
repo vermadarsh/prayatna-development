@@ -117,13 +117,14 @@ class Core_Functions_Admin {
 
 		// If the value reveived is integer, it is user ID.
 		$profile_picture_id = get_field( 'cf_profile_picture', "user_{$id_or_email}" );
-		var_dump( $profile_picture_id );
-		die;
 
 		// Return, if the attachment is not saved as ACF field value.
-		if ( null === $profile_picture_id ) {
+		if ( is_null( $profile_picture_id ) ) {
+			die("pool");
 			return $avatar_url;
 		}
+
+		die("pool then");
 
 		// Get the custom picture ID.
 		$profile_picture_url = cf_get_image_url_by_attachment_id( $profile_picture_id );
