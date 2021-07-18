@@ -1448,7 +1448,7 @@ class Core_Functions_Admin {
 			}
 
 			// Get the monthly salary.
-			$salary = get_field( 'monthly_salary', "user_{$user_id}" );
+			$salary = get_user_meta( $user_id, 'monthly_salary', true );
 			var_dump( $salary );
 			die;
 		}
