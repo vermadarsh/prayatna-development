@@ -48,7 +48,6 @@ $random_number = filter_input( INPUT_GET, 'atts', FILTER_SANITIZE_NUMBER_INT );
 							echo sprintf( __( 'The user account is already active. Click %1$shere%2$s to login.', 'core-functions' ), '<a href="' . home_url( '/login/' ) . '">', '</a>' );
 						} elseif ( 'pending' === $current_status ) {
 							update_user_meta( $user_id, 'cf_user_email_verification', 'verified' );
-							update_user_meta( $user_id, 'cf_user_status', 'active' );
 							$is_therapist = cf_is_user_therapist( $user_id );
 							$is_client    = cf_is_user_client( $user_id );
 							$is_student   = cf_is_user_student( $user_id );
