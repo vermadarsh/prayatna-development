@@ -981,7 +981,13 @@ class Core_Functions_Admin {
 
 		// Check for the leave status column.
 		if ( 'leave_status' === $column_name ) {
-			echo ucfirst( get_post_meta( $post_id, 'leave_approval', true ) );
+			$leave_status = get_post_meta( $post_id, 'leave_approval', true );
+			echo ucfirst( $leave_status );
+
+			// Display the reject message, if rejected.
+			if ( 'rejected' === $leave_status ) {
+				echo '<p>' . get_field( 'reject_message', $post_id ) . '</p>';
+			}
 		}
 	}
 
@@ -1013,14 +1019,6 @@ class Core_Functions_Admin {
 					$actions['reject_leave']  = '<a href="javascript:void(0);" data-leaveid="' . $post->ID . '" class="cf-reject-leave">' . __( 'Reject', 'core-functions' ) . '</a>';
 					$actions['approve_leave'] = '<a href="javascript:void(0);" data-leaveid="' . $post->ID . '" class="cf-approve-leave">' . __( 'Approve', 'core-functions' ) . '</a>';
 				}
-			}
-
-			// If the status is pending, add a link to update the status.
-			$status = get_post_meta( $post->ID, 'status', true );
-
-			if ( 'pending' === $status ) {
-				$meeting_id = get_post_meta( $post->ID, 'meeting_id', true );
-				$actions['mark_as_paid'] = '<a href="javascript:void(0);" data-meetingid="' . $meeting_id . '" class="cognify-mark-withdraw-request-paid">' . __( 'Mark as Paid', 'cognify-core' ) . '</a>';
 			}
 		}
 
