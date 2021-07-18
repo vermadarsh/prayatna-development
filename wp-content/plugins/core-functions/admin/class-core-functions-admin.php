@@ -98,9 +98,14 @@ class Core_Functions_Admin {
 		);
 	}
 
+	/**
+	 * Change the defailt avatar URL, if set by the admin.
+	 *
+	 * @param string     $avatar_url Avatar image URL.
+	 * @param int|string $id_or_email User's ID or email address.
+	 * @return string
+	 */
 	public function cf_get_avatar_url_callback( $avatar_url, $id_or_email ) {
-		var_dump( $avatar_url, $id_or_email );
-		die;
 		/**
 		 * If the $id_or_email variable is string, means it is email.
 		 * Get the user ID from email.
@@ -112,6 +117,8 @@ class Core_Functions_Admin {
 
 		// If the value reveived is integer, it is user ID.
 		$profile_picture_id = get_field( 'cf_profile_picture', "user_{$id_or_email}" );
+		var_dump( $profile_picture_id );
+		die;
 
 		// Return, if the attachment is not saved as ACF field value.
 		if ( null === $profile_picture_id ) {
