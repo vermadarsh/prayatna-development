@@ -1417,7 +1417,7 @@ class Core_Functions_Admin {
 
 		// Calculate the salary.
 		$last_year  = gmdate( 'Y', strtotime( 'last month' ) );
-		$last_month = gmdate( 'Y', strtotime( 'last month' ) );
+		$last_month = gmdate( 'm', strtotime( 'last month' ) );
 		var_dump( $last_year, $last_month );
 		die;
 
