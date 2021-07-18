@@ -961,9 +961,11 @@ class Core_Functions_Admin {
 
 			// Select the only date if from and to are same.
 			if ( $leave_from === $leave_to ) {
-				echo esc_html( $leave_from );
+				echo "<p>{$leave_from}</p>";
 			} else {
-				echo sprintf( __( '%1$s to %2$s', 'core-functions' ), $leave_from, $leave_to );
+				echo "<p>{$leave_from}</p>";
+				echo '-';
+				echo "<p>{$leave_to}</p>";
 			}
 		}
 
