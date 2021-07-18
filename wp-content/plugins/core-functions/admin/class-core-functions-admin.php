@@ -969,7 +969,7 @@ class Core_Functions_Admin {
 
 		// Check for the leave type column.
 		if ( 'leave_type' === $column_name ) {
-			echo get_post_meta( $post_id, 'leave_duration', true );
+			echo ucfirst( get_post_meta( $post_id, 'leave_duration', true ) );
 		}
 
 		// Check for the leave remarks column.
@@ -979,7 +979,7 @@ class Core_Functions_Admin {
 
 		// Check for the leave status column.
 		if ( 'leave_status' === $column_name ) {
-			echo get_post_meta( $post_id, 'leave_approval', true );
+			echo ucfirst( get_post_meta( $post_id, 'leave_approval', true ) );
 		}
 	}
 }
