@@ -159,9 +159,10 @@ class Core_Functions {
 		$this->loader->add_action( 'edit_user_profile', $plugin_admin, 'cf_extra_user_profile_fields' );
 		$this->loader->add_action( 'personal_options_update', $plugin_admin, 'cf_save_extra_user_profile_fields' );
 		$this->loader->add_action( 'edit_user_profile_update', $plugin_admin, 'cf_save_extra_user_profile_fields' );
-		$this->loader->add_filter('acf/prepare_field/name=leave_approval',$plugin_admin, 'cf_acf_read_only');
-		$this->loader->add_filter('acf/prepare_field/name=reject_message',$plugin_admin, 'cf_acf_read_only_reject_reason');
-		
+		$this->loader->add_filter( 'acf/prepare_field/name=leave_approval', $plugin_admin, 'cf_acf_read_only' );
+		$this->loader->add_filter( 'acf/prepare_field/name=reject_message', $plugin_admin, 'cf_acf_read_only_reject_reason' );
+		$this->loader->add_filter( 'manage_edit-leave_columns', $plugin_admin, 'cf_manage_leave_posts_columns_callback', 20 );
+		$this->loader->add_action( 'manage_leave_posts_custom_column', $plugin_admin, 'cf_manage_leave_posts_custom_column', 20, 2 );
 	}
 
 	/**

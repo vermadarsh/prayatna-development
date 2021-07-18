@@ -931,6 +931,29 @@ class Core_Functions_Admin {
 		}
 		return $field;
 	}
-	
-	
+
+	/**
+	 * Function to add custom columns to the leaves listing.
+	 *
+	 * @param $columns array Holds the default columns array.
+	 * @return array
+	 */
+	public function cf_manage_leave_posts_columns_callback( $columns = array() ) {
+		$columns['leave_dates'] = __( 'Leave Date(s)', 'core-functions' );
+
+		return $columns;
+	}
+
+	/**
+	 * Function to add custom columns content on the leaves listing.
+	 *
+	 * @param $column_name array Holds the column name.
+	 * @param $post_id array Holds the post ID.
+	 */
+	public function cf_manage_leave_posts_custom_column( $column_name, $post_id ) {
+		// Check for leave dates status columns.
+		if ( 'leave_dates' === $column_name ) {
+			debug( get_post_meta( $post_id ) );
+		}
+	}
 }
