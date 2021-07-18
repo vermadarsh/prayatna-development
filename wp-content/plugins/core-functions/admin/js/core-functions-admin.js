@@ -394,7 +394,7 @@ jQuery( document ).ready( function( $ ) {
 	} );
 
 	/**
-	 * Reapprove the counselor.
+	 * Reapprove the therapist.
 	 */
 	$( document ).on( 'click', '.cf-reapprove-request', function() {
 		var this_link    = $( this );
@@ -433,7 +433,7 @@ jQuery( document ).ready( function( $ ) {
 	} );
 
 	/**
-	 * Decline the counselor.
+	 * Decline the therapist.
 	 */
 	$( document ).on( 'click', '.cf-decline-request', function() {
 		var this_link      = $( this );
@@ -454,6 +454,45 @@ jQuery( document ).ready( function( $ ) {
 			action: 'decline_therapist_registration',
 			user_id: user_id,
 			decline_reason: decline_reason
+		};
+		$.ajax( {
+			dataType: 'JSON',
+			url: ajaxurl,
+			type: 'POST',
+			data: data,
+			success: function ( response ) {
+				if ( 'request-declined' !== response.data.code ) {
+					return false;
+				}
+
+				// Unblock the row.
+				unblock_element( this_link.parents( 'tr' ) );
+
+				// Show the success message.
+				cf_show_notification( 'fa fa-check', 'Success', response.data.message, 'success' );
+
+				setTimeout( function() {
+					window.location.href = window.location.href; // Reload.
+				}, 2000 );
+			},
+		} );
+	} );
+
+	/**
+	 * Mail the salary slip to the therapist.
+	 */
+	 $( document ).on( 'click', '.cf-mail-salary-slip', function() {
+		var this_link      = $( this );
+		var parent_tr_id   = this_link.parents( 'tr' ).attr( 'id' );
+		var user_id        = parent_tr_id.replace( 'user-', '' );
+
+		// Block the row.
+		block_element( this_link.parents( 'tr' ) );
+
+		// Send the AJAX to approve the request.
+		var data = {
+			action: 'mail_salary_slip_to_therapist',
+			user_id: user_id,
 		};
 		$.ajax( {
 			dataType: 'JSON',

@@ -1244,6 +1244,10 @@ class Core_Functions_Admin {
 		}
 
 		// Download salary slip.
+		if ( current_user_can( 'manage_options' ) ) {
+			// Mail the salary slip.
+			$actions['mail_salary_slip'] = '<a href="javascript:void(0);" class="cf-mail-salary-slip">' . __( 'Mail Salary Slip', 'core-functions' ) . '</a>';
+		}
 
 		return $actions;
 	}
@@ -1344,6 +1348,51 @@ class Core_Functions_Admin {
 
 		// Return, if the action doesn't match.
 		if ( 'reapprove_therapist_registration' !== $action ) {
+			echo 0;
+			wp_die();
+		}
+
+		// Posted data.
+		$user_id    = (int) filter_input( INPUT_POST, 'user_id', FILTER_SANITIZE_NUMBER_INT );
+		$user       = get_userdata( $user_id );
+		$fullname   = cf_get_user_full_name( $user_id );
+		$first_name = get_user_meta( $user_id, 'first_name', true );
+
+		// Update the user status.
+		update_user_meta( $user_id, 'cf_user_status', 'active' );
+
+		// Send the suspension email.
+		$email_body = get_field( 'therapist_registration_reapproval_email_body', 'option' );
+		$email_body = str_replace( '{first_name}', $fullname, $email_body );
+		$email_body = str_replace( '{site_url}', home_url(), $email_body );
+		$email_body = str_replace( '{site_name}', get_bloginfo( 'name' ), $email_body );
+		$email_body = str_replace( '{admin_email}', get_option( 'admin_email' ), $email_body );
+		$email_body = str_replace( '{login_link}', home_url( '/login/' ), $email_body );
+
+		// Send the email now.
+		wp_mail(
+			$user->data->user_email,
+			__( 'Prayatna Counselling - You\'re Most Welcome!!', 'core-functions' ),
+			$email_body
+		);
+
+		// Send the ajax response.
+		$response = array(
+			'code'    => 'user-reapproved',
+			'message' => __( 'User account reactivated !! Reloading..', 'core-functions' ),
+		);
+		wp_send_json_success( $response );
+		wp_die();
+	}
+
+	/**
+	 * AJAX served to reapprove user.
+	 */
+	public function cf_mail_salary_slip_to_therapist_callback() {
+		$action = filter_input( INPUT_POST, 'action', FILTER_SANITIZE_STRING );
+
+		// Return, if the action doesn't match.
+		if ( 'mail_salary_slip_to_therapist' !== $action ) {
 			echo 0;
 			wp_die();
 		}
