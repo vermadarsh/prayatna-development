@@ -1294,8 +1294,6 @@ class Core_Functions_Admin {
 		// Posted data.
 		$user_id = (int) filter_input( INPUT_POST, 'user_id', FILTER_SANITIZE_NUMBER_INT );
 		$reason  = filter_input( INPUT_POST, 'decline_reason', FILTER_SANITIZE_STRING );
-
-		var_dump( $reason );
 		$user    = get_userdata( $user_id );
 
 		// Update the user status and decline reason.
@@ -1303,7 +1301,7 @@ class Core_Functions_Admin {
 		// update_user_meta( $user_id, 'cf_user_registration_decline_reason', $reason );
 
 		// Send the registration denial email.
-		$email_body = get_field( 'counselor_registration_denial_email_body', 'option' );
+		$email_body = get_field( 'therapist_registration_denial_email_body', 'option' );
 		$email_body = str_replace( '{first_name}', cf_get_user_full_name( $user_id ), $email_body );
 		$email_body = str_replace( '{site_url}', home_url(), $email_body );
 		$email_body = str_replace( '{site_name}', get_bloginfo( 'name' ), $email_body );
@@ -1316,14 +1314,14 @@ class Core_Functions_Admin {
 		// Send the email now.
 		wp_mail(
 			$user->data->user_email,
-			__( 'cf Registration Request Declined', 'cf-core' ),
+			__( 'Prayatna Counselling - Registration Request Declined', 'core-functions' ),
 			$email_body
 		);
 
 		// Send the ajax response.
 		$response = array(
 			'code'    => 'request-declined',
-			'message' => __( 'Request Declined !! Reloading..', 'cf-core' ),
+			'message' => __( 'Request Declined !! Reloading..', 'core-functions' ),
 		);
 		wp_send_json_success( $response );
 		wp_die();
@@ -1366,7 +1364,7 @@ class Core_Functions_Admin {
 		update_user_meta( $user_id, 'linked_staff_id', $staff_id );
 
 		// Send the suspension email.
-		$email_body = get_field( 'counselor_registration_reactivation_email_body', 'option' );
+		$email_body = get_field( 'therapist_registration_reapproval_email_body', 'option' );
 		$email_body = str_replace( '{first_name}', $fullname, $email_body );
 		$email_body = str_replace( '{site_url}', home_url(), $email_body );
 		$email_body = str_replace( '{site_name}', get_bloginfo( 'name' ), $email_body );
