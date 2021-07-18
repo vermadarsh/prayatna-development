@@ -163,6 +163,7 @@ class Core_Functions {
 		$this->loader->add_filter( 'acf/prepare_field/name=reject_message', $plugin_admin, 'cf_acf_read_only_reject_reason' );
 		$this->loader->add_filter( 'manage_edit-leave_columns', $plugin_admin, 'cf_manage_leave_posts_columns_callback', 20 );
 		$this->loader->add_action( 'manage_leave_posts_custom_column', $plugin_admin, 'cf_manage_leave_posts_custom_column', 20, 2 );
+		$this->loader->add_filter( 'post_row_actions', $plugin_admin, 'cf_post_row_actions_callback', 99, 2 );
 	}
 
 	/**

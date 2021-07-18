@@ -984,4 +984,29 @@ class Core_Functions_Admin {
 			echo ucfirst( get_post_meta( $post_id, 'leave_approval', true ) );
 		}
 	}
+
+	/**
+	 * Add custom post row actions.
+	 *
+	 * @param array  $actions Holds the user row actions.
+	 * @param object $post Holds the post data object.
+	 * @return array
+	 */
+	public function cf_post_row_actions_callback( $actions = array(), $post ) {
+		// Add row actions to leaves.
+		if ( 'leave' === $post->post_type ) {
+			unset( $actions['inline hide-if-no-js'] );
+			$actions['post_id'] = sprintf( __( 'ID: %1$d', 'core-functions' ), $post->ID );
+
+			// If the status is pending, add a link to update the status.
+			$status = get_post_meta( $post->ID, 'status', true );
+
+			if ( 'pending' === $status ) {
+				$meeting_id = get_post_meta( $post->ID, 'meeting_id', true );
+				$actions['mark_as_paid'] = '<a href="javascript:void(0);" data-meetingid="' . $meeting_id . '" class="cognify-mark-withdraw-request-paid">' . __( 'Mark as Paid', 'cognify-core' ) . '</a>';
+			}
+		}
+
+		return $actions;
+	}
 }
