@@ -589,8 +589,9 @@ function cf_create_exporting_pdf($user_id,$first_name,$last_month_text,$total_le
 		$pdf->SetTitle( 'TCPDF Example 001' );
 		$pdf->SetSubject( 'TCPDF Tutorial' );
 		$pdf->SetKeywords( 'TCPDF, PDF, example, test, guide' );
+		$header_logo = get_field('site_logo','option');
 
-		$pdf->SetHeaderData( PDF_HEADER_LOGO, PDF_HEADER_LOGO_WIDTH, PDF_HEADER_TITLE . ' 001', PDF_HEADER_STRING, array(
+		$pdf->SetHeaderData( $header_logo, PDF_HEADER_LOGO_WIDTH, PDF_HEADER_TITLE . ' 001', PDF_HEADER_STRING, array(
 			0,
 			64,
 			255
@@ -635,87 +636,6 @@ function cf_salary_slip_body_html(){
 	$html = '';
 	ob_start();
 	?>
-	<style>
-		.salary-slip{
-      margin: 15px;
-      .empDetail {
-        width: 100%;
-        text-align: left;
-        border: 2px solid black;
-        border-collapse: collapse;
-        table-layout: fixed;
-      }
-      
-      .head {
-        margin: 10px;
-        margin-bottom: 50px;
-        width: 100%;
-      }
-      
-      .companyName {
-        text-align: right;
-        font-size: 25px;
-        font-weight: bold;
-      }
-      
-      .salaryMonth {
-        text-align: center;
-      }
-      
-      .table-border-bottom {
-        border-bottom: 1px solid;
-      }
-      
-      .table-border-right {
-        border-right: 1px solid;
-      }
-      
-      .myBackground {
-        padding-top: 10px;
-        text-align: left;
-        border: 1px solid black;
-        height: 40px;
-      }
-      
-      .myAlign {
-        text-align: center;
-        border-right: 1px solid black;
-      }
-      
-      .myTotalBackground {
-        padding-top: 10px;
-        text-align: left;
-        background-color: #EBF1DE;
-        border-spacing: 0px;
-      }
-      
-      .align-4 {
-        width: 25%;
-        float: left;
-      }
-      
-      .tail {
-        margin-top: 35px;
-      }
-      
-      .align-2 {
-        margin-top: 25px;
-        width: 50%;
-        float: left;
-      }
-      
-      .border-center {
-        text-align: center;
-      }
-      .border-center th, .border-center td {
-        border: 1px solid black;
-      }
-      
-      th, td {
-        padding-left: 6px;
-      }
-}
-	</style>
 	<div class="salary-slip" >
    <table class="empDetail">
       <tr height="100px" style='background-color: #c2d69b'>
