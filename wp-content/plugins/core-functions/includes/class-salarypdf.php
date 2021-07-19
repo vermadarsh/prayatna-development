@@ -18,7 +18,7 @@ class SALARYPDF extends TCPDF {
 		$store_website = site_url();
 		$store_email   = get_option( 'admin_email' );
 
-		$this->SetFont( 'robotocondensed', 'M', 12 );
+		$this->SetFont( 'helvetica', 'B', 12 );
 		$this->SetXY( 140, 14 );
 		$this->writeHTMLCell( 0, 0, '', '', $html, 0, 1, 0, true, 'top', true );
 		$this->Image( $logo_image_url, 10, 5, 40, '', $logo_file_extension, '', 'T', false, 800, 'L', false, false, 0, false, false, false );
