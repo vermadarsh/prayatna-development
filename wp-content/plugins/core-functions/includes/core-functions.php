@@ -748,8 +748,8 @@ function cf_salary_slip_body_html(){
 	</div>
 <?php 
 $html = ob_get_clean();
-debug($html);
-die;
+// debug($html);
+// die;
 return $html;	
 }
 
