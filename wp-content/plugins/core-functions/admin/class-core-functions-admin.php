@@ -1499,6 +1499,7 @@ class Core_Functions_Admin {
 			$user->data->user_email,
 			__( 'Prayatna Counselling - You\'re Most Welcome!!', 'core-functions' ),
 			$email_body,
+			'',
 			$attachments
 		);
 
