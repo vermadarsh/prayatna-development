@@ -591,7 +591,7 @@ function cf_create_exporting_pdf($user_id,$first_name,$last_month_text,$total_le
 		$pdf->SetKeywords( 'TCPDF, PDF, example, test, guide' );
 		$header_logo = get_field('site_logo','option');
 
-		$pdf->SetHeaderData( $header_logo, PDF_HEADER_LOGO_WIDTH, PDF_HEADER_TITLE . ' 001', PDF_HEADER_STRING, array(
+		$pdf->SetHeaderData( $header_logo, 200, 'Prayatna' . ' 001', 'Prayatna', array(
 			0,
 			64,
 			255
