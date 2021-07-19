@@ -12,6 +12,8 @@ class SALARYPDF extends TCPDF {
 		$this->SetFont('helvetica', 'B', 20);
 		// Title
 		$this->Cell(0, 15, '<< TCPDF Example 003 >>', 0, false, 'C', 0, '', 0, false, 'M', 'M');
+        debug($this);
+        die;
 	}
 	public function Footer() {
 	    // Position at 15 mm from bottom
