@@ -16,7 +16,7 @@ class SALARYPDF extends TCPDF {
 		// Set font
 		$this->SetFont('helvetica', 'B', 20);
 		// Title
-		$this->Cell(0, 15, '<< TCPDF Example 003 >>', 0, false, 'C', 0, '', 0, false, 'M', 'M');
+		$this->Cell(0, 15, 'Salary Slip', 0, false, 'C', 0, '', 0, false, 'M', 'M');
         // debug($this);
         // die;
 	}
