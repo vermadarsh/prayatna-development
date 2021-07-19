@@ -1477,8 +1477,8 @@ class Core_Functions_Admin {
 			}
 		}
 		echo cf_create_exporting_pdf();
-		debug($html);
-		die;
+		// debug($html);
+		// die;
 		var_dump( $salary );
 		
 
