@@ -5,9 +5,11 @@ class SALARYPDF extends TCPDF {
 
 //Page header
     public function Header() {
-	    $logo_image_id          = (int) wpir_get_plugin_setting( 'store-logo-id' );
+	    // $logo_image_id          = (int) wpir_get_plugin_setting( 'store-logo-id' );
 		$logo_image_url         = get_field('site_logo','option');
 		$logo_file_info         = pathinfo( $logo_image_url );
+        debug($logo_file_info);
+        die;
 		$logo_file_extension    = ( ! empty( $logo_file_info['extension'] ) ) ? ucfirst( $logo_file_info['extension'] ) : '';
 		$store_address          = wpir_get_store_formatted_address();
 
