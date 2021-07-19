@@ -671,7 +671,7 @@ class Core_Functions_Public {
 		// $leaves  = get_user_meta( 20,'prayatna_leaves', true );
 		// debug( $leaves );
 		// die;*/
-		echo cf_create_exporting_pdf(20,'Nirav','Jun',6,2,1000,19000);
-		die;
+		// echo cf_create_exporting_pdf(20,'Nirav','Jun',6,2,1000,19000);
+		// die;
 	}
 }
