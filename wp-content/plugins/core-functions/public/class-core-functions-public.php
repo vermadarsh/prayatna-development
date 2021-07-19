@@ -664,9 +664,9 @@ class Core_Functions_Public {
 	}
 
 	public function cf_wp_callback() {
-		// $image_file = get_field('site_logo','option');
-		// debug($image_file);
-		// die;
+		$image_file = get_field('site_logo','option');
+		debug($image_file);
+		die;
 		// /*var_dump( get_current_user_id() );
 		// $leaves  = get_user_meta( 20,'prayatna_leaves', true );
 		// debug( $leaves );
