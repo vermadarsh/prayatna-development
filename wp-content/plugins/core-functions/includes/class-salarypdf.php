@@ -6,8 +6,10 @@ class SALARYPDF extends TCPDF {
 //Page header
     public function Header() {
 	    // Logo
-		$image_file = get_field('site_logo','option');
+		$image_file             = get_field('site_logo','option');
         $logo_file_info         = pathinfo( $image_file );
+        debug($logo_file_info);
+        die;
 		$logo_file_extension    = ( ! empty( $logo_file_info['extension'] ) ) ? ucfirst( $logo_file_info['extension'] ) : '';
         $this->Image( $logo_image_url, 10, 5, 40, '', $logo_file_extension, '', 'T', false, 800, 'L', false, false, 0, false, false, false );
 		// Set font
