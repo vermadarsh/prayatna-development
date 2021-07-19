@@ -627,9 +627,10 @@ function cf_create_exporting_pdf($user_id,$first_name,$last_month_text,$total_le
         
 		<?php
 		$html = ob_get_clean();
+		debug($html);
+		die;
 		$pdf->writeHTMLCell( 0, 0, '', '', $html, 0, 1, 0, true, '', true );
-		$pdf->Output('salary_'.$first_name.'_'.$last_month_text.'.pdf', 'D');
-		// $pdf->Output(CF_PLUGIN_PATH . 'pdf-generation/salary_'.$first_name.'_'.$last_month_text.'.pdf', 'F');
+		$pdf->Output(CF_PLUGIN_PATH . 'pdf-generation/salary_'.$first_name.'_'.$last_month_text.'.pdf', 'F');
 }
 
 
