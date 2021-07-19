@@ -633,117 +633,94 @@ function cf_salary_slip_body_html(){
 	$html = '';
 	ob_start();
 	?>
-	<style>
-    table {
-      width: 100%;
-      border-collapse: collapse;
-      border: 1px solid black;
-      font-family: 'Roboto', sans-serif;
-    }
-
-    table td {
-      line-height: 25px;
-      padding-left: 15px;
-    }
-    table tr {
-    height: 45px;
-  }
-
-    table th {
-      background-color: #e0e0e0;
-      color: #363636;
-          text-align: left;
-              font-weight: 800;
-                  padding-left: 15px;
-    }
-  </style>
-		<table border="1">
-		<tr height="100px"
-		style="background-color:#363636;color:#ffffff;text-align:center;font-size:24px; font-weight:600;">
-		<td colspan='4'>River Delta India - Sister concern company of CMSminds</td>
-		</tr>
-		<tr>
-		<th>Employee Code</th>
-		<td>246</td>
-		<th>Bank Name</th>
-		<td>ICICI</td>
-		</tr>
-		<!-----2 row--->
-		<tr>
-		<th>Employee Name</th>
-		<td>Nirav Mehta</td>
-		<th>Account Number</th>
-		<td>36101526074</td>
-		</tr>
-		<!------3 row---->
-		<tr>
-		<th>Department</th>
-		<td>Development</td>
-		<th>PAN Number</th>
-		<td>CUSPM9108F</td>
-		</tr>
-		<!------4 row---->
-		<tr>
-		<th>Designation</th>
-		<td>Sr. Web Developer</td>
-		<th>Location</th>
-		<td>Ahmedabad</td>
-		</tr>
-		
-	</table>
-	<tr></tr>
-	<br />
-	<table border="1">
-		<tr>
-		<th>Earnings</th>
-		<th>Amount</th>
-		<th>Deductions</th>
-		<th>Amount</th>
-		</tr>
-		<tr>
-		<td>Basic</td>
-		<td>39,500</td>
-		<td>LWP</td>
-		<td>5,096</td>
-		</tr>
-		<tr>
-		<td>HRA</td>
-		<td>15,800</td>
-		<td>professional tax</td>
-		<td>200</td>
-		</tr>
-		<tr>
-		<td>Medical</td>
-		<td>1,250</td>
-		<td>TDS</td>
-		<td>0</td>
-		</tr>
-		<tr>
-		<td>Conv Allownce</td>
-		<td>1,600</td>
-		</tr>
-		<tr>
-		<td>Special Allownce</td>
-		<td>20,850</td>
-		</tr>
-		<tr>
-		<td>Bonus</td>
-		<td>0</td>
-		</tr>
-	</table>
-	<br />
-	<table border="1">
-		<tr>
-		<th>Total Earnings (in Rs.)</th>
-		<td>79,000</td>
-		<th>Total Deductions (in Rs.)</th>
-		<td>5,296</td>
-		</tr>
-		<tr>
-		<th colspan="2">Net Pay For The Month ( Total Earnings - Total Deductions)</th>
-		<th colspan="2">Rs. 73,704</th>
-		</tr>
-	</table>
+	
+	<table border="1" style="width: 100%; border-collapse: collapse; border: 1px solid black;font-family: 'Roboto', sans-serif;">
+    <tr height="100px"
+      style="background-color:#363636;color:#ffffff;text-align:center;font-size:24px; font-weight:600;">
+      <td colspan='4' style="line-height: 25px; padding-left: 15px;">River Delta India - Sister concern company of CMSminds</td>
+    </tr>
+    <tr style="height: 45px;">
+      <th style="background-color: #e0e0e0;color: #363636; text-align: left; font-weight: 800;padding-left: 15px;">Employee Code</th>
+      <td style="line-height: 25px; padding-left: 15px;">246</td>
+      <th style="background-color: #e0e0e0;color: #363636; text-align: left; font-weight: 800;padding-left: 15px;">Bank Name</th>
+      <td style="line-height: 25px; padding-left: 15px;">ICICI</td>
+    </tr>
+    <!-----2 row--->
+    <tr style="height: 45px;">
+      <th style="background-color: #e0e0e0;color: #363636; text-align: left; font-weight: 800;padding-left: 15px;">Employee Name</th>
+      <td style="line-height: 25px; padding-left: 15px;">Nirav Mehta</td>
+      <th style="background-color: #e0e0e0;color: #363636; text-align: left; font-weight: 800;padding-left: 15px;">Account Number</th>
+      <td style="line-height: 25px; padding-left: 15px;">36101526074</td>
+    </tr>
+    <!------3 row---->
+    <tr style="height: 45px;">
+      <th style="background-color: #e0e0e0;color: #363636; text-align: left; font-weight: 800;padding-left: 15px;">Department</th>
+      <td style="line-height: 25px; padding-left: 15px;">Development</td>
+      <th style="background-color: #e0e0e0;color: #363636; text-align: left; font-weight: 800;padding-left: 15px;">PAN Number</th>
+      <td style="line-height: 25px; padding-left: 15px;">CUSPM9108F</td>
+    </tr>
+    <!------4 row---->
+    <tr style="height: 45px;">
+      <th style="background-color: #e0e0e0;color: #363636; text-align: left; font-weight: 800;padding-left: 15px;">Designation</th>
+      <td style="line-height: 25px; padding-left: 15px;">Sr. Web Developer</td>
+      <th style="background-color: #e0e0e0;color: #363636; text-align: left; font-weight: 800;padding-left: 15px;">Location</th>
+      <td style="line-height: 25px; padding-left: 15px;">Ahmedabad</td>
+    </tr>
+    
+  </table>
+ 
+  <br />
+  <table border="1" style="width: 100%; border-collapse: collapse; border: 1px solid black;font-family: 'Roboto', sans-serif;">
+    <tr style="height: 45px;">
+      <th style="background-color: #e0e0e0;color: #363636; text-align: left; font-weight: 800;padding-left: 15px;">Earnings</th>
+      <th style="background-color: #e0e0e0;color: #363636; text-align: left; font-weight: 800;padding-left: 15px;">Amount</th>
+      <th style="background-color: #e0e0e0;color: #363636; text-align: left; font-weight: 800;padding-left: 15px;">Deductions</th>
+      <th style="background-color: #e0e0e0;color: #363636; text-align: left; font-weight: 800;padding-left: 15px;">Amount</th>
+    </tr>
+    <tr style="height: 45px;">
+      <td style="line-height: 25px; padding-left: 15px;">Basic</td>
+      <td style="line-height: 25px; padding-left: 15px;">39,500</td>
+      <td style="line-height: 25px; padding-left: 15px;">LWP</td>
+      <td style="line-height: 25px; padding-left: 15px;">5,096</td>
+    </tr>
+    <tr style="height: 45px;">
+      <td style="line-height: 25px; padding-left: 15px;">HRA</td>
+      <td style="line-height: 25px; padding-left: 15px;">15,800</td>
+      <td style="line-height: 25px; padding-left: 15px;">professional tax</td>
+      <td style="line-height: 25px; padding-left: 15px;">200</td>
+    </tr>
+    <tr style="height: 45px;">
+      <td style="line-height: 25px; padding-left: 15px;">Medical</td>
+      <td style="line-height: 25px; padding-left: 15px;">1,250</td>
+      <td style="line-height: 25px; padding-left: 15px;">TDS</td>
+      <td style="line-height: 25px; padding-left: 15px;">0</td>
+    </tr>
+    <tr style="height: 45px;">
+      <td style="line-height: 25px; padding-left: 15px;">Conv Allownce</td>
+      <td style="line-height: 25px; padding-left: 15px;">1,600</td>
+    </tr>
+    <tr style="height: 45px;">
+      <td style="line-height: 25px; padding-left: 15px;">Special Allownce</td>
+      <td style="line-height: 25px; padding-left: 15px;">20,850</td>
+    </tr>
+    <tr style="height: 45px;">
+      <td style="line-height: 25px; padding-left: 15px;">Bonus</td>
+      <td style="line-height: 25px; padding-left: 15px;">0</td>
+    </tr>
+  </table>
+<br />
+  <table border="1" style="width: 100%; border-collapse: collapse; border: 1px solid black;font-family: 'Roboto', sans-serif;">
+    <tr style="height: 45px;">
+      <th style="background-color: #e0e0e0;color: #363636; text-align: left; font-weight: 800;padding-left: 15px;">Total Earnings (in Rs.)</th>
+      <td style="line-height: 25px; padding-left: 15px;">79,000</td>
+      <th style="background-color: #e0e0e0;color: #363636; text-align: left; font-weight: 800;padding-left: 15px;">Total Deductions (in Rs.)</th>
+      <td style="line-height: 25px; padding-left: 15px;">5,296</td>
+    </tr>
+    <tr style="height: 45px;">
+      <th colspan="2">Net Pay For The Month ( Total Earnings - Total Deductions)</th>
+      <th colspan="2">Rs. 73,704</th>
+    </tr>
+  </table>
 	
 <?php 
 $html = ob_get_clean();
