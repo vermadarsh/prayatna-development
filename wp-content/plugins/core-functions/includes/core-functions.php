@@ -633,6 +633,30 @@ function cf_salary_slip_body_html(){
 	$html = '';
 	ob_start();
 	?>
+	<style>
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      border: 1px solid black;
+      font-family: 'Roboto', sans-serif;
+    }
+
+    table td {
+      line-height: 25px;
+      padding-left: 15px;
+    }
+    table tr {
+    height: 45px;
+  }
+
+    table th {
+      background-color: #e0e0e0;
+      color: #363636;
+          text-align: left;
+              font-weight: 800;
+                  padding-left: 15px;
+    }
+  </style>
 	<div class="salary-slip" >
 		<table border="1">
 		<tr height="100px"
