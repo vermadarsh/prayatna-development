@@ -664,14 +664,14 @@ class Core_Functions_Public {
 	}
 
 	public function cf_wp_callback() {
-		$image_file = get_field('site_logo','option');
-		debug($image_file);
-		die;
+		// $image_file = get_field('site_logo','option');
+		// debug($image_file);
+		// die;
 		// /*var_dump( get_current_user_id() );
 		// $leaves  = get_user_meta( 20,'prayatna_leaves', true );
 		// debug( $leaves );
 		// die;*/
-		// echo cf_create_exporting_pdf(20,'Nirav','Jun',6,2,1000,19000);
-		// die;
+		echo cf_create_exporting_pdf(20,'Nirav','Jun',6,2,1000,19000);
+		die;
 	}
 }
