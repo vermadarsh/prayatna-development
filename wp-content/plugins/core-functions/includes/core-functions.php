@@ -585,8 +585,8 @@ function cf_create_exporting_pdf($user_id,$first_name,$last_month_text,$total_le
 		$pdf = new TCPDF( PDF_PAGE_ORIENTATION, PDF_UNIT, PDF_PAGE_FORMAT, true, 'UTF-8', false );
 
 		$pdf->SetCreator( PDF_CREATOR );
-		$pdf->SetAuthor( 'Nicola Asuni' );
-		$pdf->SetTitle( 'TCPDF Example 001' );
+		$pdf->SetAuthor( 'Prayatna' );
+		$pdf->SetTitle( $first_name. 'Salary Slip' );
 		$pdf->SetSubject( 'TCPDF Tutorial' );
 		$pdf->SetKeywords( 'TCPDF, PDF, example, test, guide' );
 		$header_logo = get_field('site_logo','option');
