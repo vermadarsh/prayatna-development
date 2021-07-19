@@ -629,7 +629,7 @@ function cf_create_exporting_pdf() {
 		$pdf->Output(CF_PLUGIN_PATH . 'pdf-generation/example_001.pdf', 'F');
 		// $pdf->Output( 'example_001.pdf', 'S' );
 		
-		debug($pdf_op);
+		// debug($pdf_op);
 		die("oopopo");
 		
 	
