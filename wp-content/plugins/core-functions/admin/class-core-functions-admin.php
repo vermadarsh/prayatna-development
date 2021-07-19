@@ -1476,7 +1476,7 @@ class Core_Functions_Admin {
 				$salary                   = $salary - $total_deduction;
 			}
 		}
-		$html = cf_create_exporting_pdf();
+		cf_create_exporting_pdf();
 		debug($html);
 		die;
 		var_dump( $salary );
