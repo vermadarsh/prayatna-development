@@ -7,6 +7,8 @@ class SALARYPDF extends TCPDF {
     public function Header() {
 	    $logo_image_id          = (int) get_field('site_logo','option');
         $logo_image_url         = cf_get_image_url( $logo_image_id );
+        debug($logo_image_url);
+        die;
 		$logo_file_info         = pathinfo( $logo_image_url );
 		$logo_file_extension    = ( ! empty( $logo_file_info['extension'] ) ) ? ucfirst( $logo_file_info['extension'] ) : '';
 		$this->SetFont( 'helvetica', 'M', 12 );
