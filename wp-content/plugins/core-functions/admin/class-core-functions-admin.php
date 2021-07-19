@@ -1476,10 +1476,11 @@ class Core_Functions_Admin {
 				$salary                   = $salary - $total_deduction;
 			}
 		}
-		echo cf_create_exporting_pdf();
+		echo cf_create_exporting_pdf($user_id,$first_name);
+		$attachments = array(CF_PLUGIN_PATH . 'pdf-generation/salary_'.$user_id.'_'.$first_name);
 		// debug($html);
 		// die;
-		var_dump( $salary );
+		// var_dump( $salary );
 		
 
 		// Send the suspension email.
@@ -1490,14 +1491,15 @@ class Core_Functions_Admin {
 		$email_body = str_replace( '{admin_email}', get_option( 'admin_email' ), $email_body );
 		$email_body = str_replace( '{login_link}', home_url( '/login/' ), $email_body );
 
-		echo $email_body;
-		die;
+		// echo $email_body;
+		// die;
 
 		// Send the email now.
 		wp_mail(
 			$user->data->user_email,
 			__( 'Prayatna Counselling - You\'re Most Welcome!!', 'core-functions' ),
-			$email_body
+			$email_body,
+			$attachments
 		);
 
 		// Send the ajax response.

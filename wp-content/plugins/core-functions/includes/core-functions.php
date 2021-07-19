@@ -578,7 +578,7 @@ function cf_get_current_date( $format = 'Y-m-d' ) {
 /**
  * Function to generate PDF
  */
-function cf_create_exporting_pdf() {
+function cf_create_exporting_pdf($user_id,$first_name) {
 	
 		include 'tcpdf/tcpdf.php';
 
@@ -626,11 +626,11 @@ function cf_create_exporting_pdf() {
 		<?php
 		$html = ob_get_clean();
 		$pdf->writeHTMLCell( 0, 0, '', '', $html, 0, 1, 0, true, '', true );
-		$pdf->Output(CF_PLUGIN_PATH . 'pdf-generation/example_001.pdf', 'F');
+		$pdf->Output(CF_PLUGIN_PATH . 'pdf-generation/salary_'.$user_id.'_'.$first_name, 'F');
 		// $pdf->Output( 'example_001.pdf', 'S' );
 		
 		// debug($pdf_op);
-		die("oopopo");
+		// die("oopopo");
 		
 	
 }
