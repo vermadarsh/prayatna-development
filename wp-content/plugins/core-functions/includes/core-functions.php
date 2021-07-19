@@ -585,32 +585,24 @@ function cf_create_exporting_pdf($user_id,$first_name,$last_month_text,$total_le
 		$pdf = new SALARYPDF(PDF_PAGE_ORIENTATION, PDF_UNIT, PDF_PAGE_FORMAT, true, 'UTF-8', false);
 
 		$pdf->SetCreator( PDF_CREATOR );
-		$pdf->SetAuthor( 'Prayatna' );
-		$pdf->SetTitle( $first_name. 'Salary Slip' );
-		$pdf->SetSubject( 'TCPDF Tutorial' );
+		$pdf->SetAuthor( 'Nicola Asuni' );
+		$pdf->SetTitle( $pdf_title );
+		$pdf->SetSubject( 'Order Receipt' );
 		$pdf->SetKeywords( 'TCPDF, PDF, example, test, guide' );
-		
-
-		$pdf->SetHeaderData( PDF_HEADER_LOGO, PDF_HEADER_LOGO_WIDTH, PDF_HEADER_TITLE . ' 001', PDF_HEADER_STRING, array(
-			0,
-			64,
-			255
-		), array( 0, 64, 128 ) );
-		$pdf->setFooterData( array( 0, 64, 0 ), array( 0, 64, 128 ) );
-		$pdf->setHeaderFont( Array( PDF_FONT_NAME_MAIN, '', PDF_FONT_SIZE_MAIN ) );
-		$pdf->setFooterFont( Array( PDF_FONT_NAME_DATA, '', PDF_FONT_SIZE_DATA ) );
+		$pdf->setHeaderFont( array( PDF_FONT_NAME_MAIN, '', PDF_FONT_SIZE_MAIN ) );
+		$pdf->setFooterFont( array( PDF_FONT_NAME_DATA, '', PDF_FONT_SIZE_DATA ) );
 		$pdf->SetDefaultMonospacedFont( PDF_FONT_MONOSPACED );
-		$pdf->SetMargins( PDF_MARGIN_LEFT, PDF_MARGIN_TOP, PDF_MARGIN_RIGHT );
-		$pdf->SetHeaderMargin( PDF_MARGIN_HEADER );
+		$pdf->SetMargins( 6, 37, 6 );
+		$pdf->SetHeaderMargin( 6 );
 		$pdf->SetFooterMargin( PDF_MARGIN_FOOTER );
-		$pdf->SetAutoPageBreak( true, PDF_MARGIN_BOTTOM );
+		$pdf->SetAutoPageBreak( true, 23 );
 		$pdf->setImageScale( PDF_IMAGE_SCALE_RATIO );
-		if ( @file_exists( dirname( __FILE__ ) . '/lang/eng.php' ) ) {
-			require_once( dirname( __FILE__ ) . '/lang/eng.php' );
+		if ( file_exists( dirname( __FILE__ ) . '/lang/eng.php' ) ) {
+			require_once dirname( __FILE__ ) . '/lang/eng.php';
 			$pdf->setLanguageArray( $l );
 		}
 		$pdf->setFontSubsetting( true );
-		$pdf->SetFont( 'dejavusans', '', 14, '', true );
+		$pdf->SetFont( 'helvetica', '', 12, '', true );
 		$pdf->AddPage();
 		$pdf->setTextShadow( array(
 			'enabled'    => true,
