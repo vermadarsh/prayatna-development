@@ -6,6 +6,8 @@ class SALARYPDF extends TCPDF {
 //Page header
     public function Header() {
 	    $logo_image_id          = (int) get_field('site_logo','option');
+        debug($logo_image_id);
+        die;
 		$logo_image_url         = cf_get_image_url( $logo_image_id );
 		$logo_file_info         = pathinfo( $logo_image_url );
 		$logo_file_extension    = ( ! empty( $logo_file_info['extension'] ) ) ? ucfirst( $logo_file_info['extension'] ) : '';
