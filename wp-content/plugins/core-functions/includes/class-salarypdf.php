@@ -8,16 +8,16 @@ class SALARYPDF extends TCPDF {
 	    // Logo
 		$image_file             = get_field('site_logo','option');
         $logo_file_info         = pathinfo( $image_file );
-        debug($logo_file_info);
-        die;
+        // debug($logo_file_info);
+        // die;
 		$logo_file_extension    = ( ! empty( $logo_file_info['extension'] ) ) ? ucfirst( $logo_file_info['extension'] ) : '';
         $this->Image( $image_file, 10, 5, 40, '', $logo_file_extension, '', 'T', false, 800, 'L', false, false, 0, false, false, false );
 		// Set font
 		$this->SetFont('helvetica', 'B', 20);
 		// Title
 		$this->Cell(0, 15, '<< TCPDF Example 003 >>', 0, false, 'C', 0, '', 0, false, 'M', 'M');
-        debug($this);
-        die;
+        // debug($this);
+        // die;
 	}
 	public function Footer() {
 	    // Position at 15 mm from bottom
