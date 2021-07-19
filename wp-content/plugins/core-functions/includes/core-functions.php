@@ -579,7 +579,7 @@ function cf_get_current_date( $format = 'Y-m-d' ) {
  * Function to generate PDF
  */
 function cf_create_exporting_pdf() {
-	if ( isset( $_POST['ttpe-export-text-to-pdf'] ) ) {
+	
 		include 'tcpdf/tcpdf.php';
 
 		$pdf = new TCPDF( PDF_PAGE_ORIENTATION, PDF_UNIT, PDF_PAGE_FORMAT, true, 'UTF-8', false );
@@ -630,5 +630,5 @@ function cf_create_exporting_pdf() {
 		debug($pdf_op);
 		die("oopopo");
 		// $pdf->Output(CF_PLUGIN_PATH . 'example_001.pdf', 'S');
-	}
+	
 }
