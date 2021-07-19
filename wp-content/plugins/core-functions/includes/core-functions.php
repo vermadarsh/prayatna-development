@@ -1030,3 +1030,18 @@ function cf_salary_slip_body_html(){
 $html = ob_get_clean();
 return $html;	
 }
+
+/**
+ * Returns the image URL by attachment ID.
+ *
+ * @param int $image_id Holds the attachment ID.
+ * @return string
+ */
+function cf_get_image_url( $image_id ) {
+
+	if ( empty( $image_id ) ) {
+		return wc_placeholder_img_src();
+	}
+
+	return wp_get_attachment_url( $image_id );
+}
