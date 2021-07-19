@@ -1477,8 +1477,9 @@ class Core_Functions_Admin {
 			}
 		}
 		echo cf_create_exporting_pdf();
+		die('pooop');
 		var_dump( $salary );
-		die;
+		
 
 		// Send the suspension email.
 		$email_body = get_field( 'salary_slip_email_body', 'option' );
