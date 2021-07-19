@@ -3,7 +3,7 @@ include 'tcpdf/tcpdf.php';
 
 class SALARYPDF extends TCPDF {
 
-//Page header
+    //Page header
     public function Header() {
 	    $logo_image_id          = (int) get_field('site_logo','option');
         $logo_image_url         = cf_get_image_url( $logo_image_id );
@@ -34,6 +34,7 @@ class SALARYPDF extends TCPDF {
 		);
 		$this->Line( 0, 30, 220, 30, $style );
 	}
+    //Page Footer
 	public function Footer() {
 	    // Position at 15 mm from bottom
 		$this->SetY(-15);
