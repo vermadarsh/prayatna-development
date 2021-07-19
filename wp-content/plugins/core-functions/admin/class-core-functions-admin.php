@@ -1452,7 +1452,7 @@ class Core_Functions_Admin {
 
 			// Get the paid leaves.
 			$paid_leaves = (int) get_field( 'paid_leaves_per_month', 'option' );
-
+			$total_leaves = $fullday_leaves + $halfday_leaves;
 			// Deduct the paid leaves.
 			if ( $paid_leaves <= $fullday_leaves ) {
 				$fullday_leaves -= $paid_leaves;
@@ -1476,7 +1476,7 @@ class Core_Functions_Admin {
 				$salary                   = $salary - $total_deduction;
 			}
 		}
-		debug($fullday_leaves + $halfday_leaves);
+		debug($total_leaves);
 		die;
 		// var_dump( $salary );
 		
