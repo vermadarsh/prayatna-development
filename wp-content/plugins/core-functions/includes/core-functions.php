@@ -642,7 +642,7 @@ function cf_salary_slip_body_html(){
          <td colspan='4'>
             <img height="90px" src='https://organisationmedia.toggleflow.com/demo/logo.png' />
          </td>
-         <td colspan='4' class="companyName"> Co-Operative Bank Ltd.</td>
+         <td colspan='4' class="companyName" style="font-size: 50px;"> Co-Operative Bank Ltd.</td>
       </tr>
       <tr>
          <th>Name</th>
