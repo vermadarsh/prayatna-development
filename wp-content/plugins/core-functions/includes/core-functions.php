@@ -582,16 +582,40 @@ function cf_create_exporting_pdf($user_id,$first_name,$last_month_text,$total_le
 	
 		include 'tcpdf/tcpdf.php';
 
-		$pdf = new TCPDF( PDF_PAGE_ORIENTATION, PDF_UNIT, PDF_PAGE_FORMAT, true, 'UTF-8', false );
+		class SALARYPDF extends TCPDF {
+
+			//Page header
+			public function Header() {
+				// Logo
+				$image_file = get_field('site_logo','option');
+				$this->Image($image_file, 10, 10, 15, '', 'JPG', '', 'T', false, 300, '', false, false, 0, false, false, false);
+				// Set font
+				$this->SetFont('helvetica', 'B', 20);
+				// Title
+				$this->Cell(0, 15, '<< TCPDF Example 003 >>', 0, false, 'C', 0, '', 0, false, 'M', 'M');
+			}
+		
+			// Page footer
+			public function Footer() {
+				// Position at 15 mm from bottom
+				$this->SetY(-15);
+				// Set font
+				$this->SetFont('helvetica', 'I', 8);
+				// Page number
+				$this->Cell(0, 10, 'Page '.$this->getAliasNumPage().'/'.$this->getAliasNbPages(), 0, false, 'C', 0, '', 0, false, 'T', 'M');
+			}
+		}
+
+		$pdf = new MYPDF(PDF_PAGE_ORIENTATION, PDF_UNIT, PDF_PAGE_FORMAT, true, 'UTF-8', false);
 
 		$pdf->SetCreator( PDF_CREATOR );
 		$pdf->SetAuthor( 'Prayatna' );
 		$pdf->SetTitle( $first_name. 'Salary Slip' );
 		$pdf->SetSubject( 'TCPDF Tutorial' );
 		$pdf->SetKeywords( 'TCPDF, PDF, example, test, guide' );
-		$header_logo = get_field('site_logo','option');
+		
 
-		$pdf->SetHeaderData( $header_logo, 200, 'Prayatna' . ' 001', 'Prayatna', array(
+		$pdf->SetHeaderData( PDF_HEADER_LOGO, PDF_HEADER_LOGO_WIDTH, PDF_HEADER_TITLE . ' 001', PDF_HEADER_STRING, array(
 			0,
 			64,
 			255
