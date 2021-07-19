@@ -657,7 +657,6 @@ function cf_salary_slip_body_html(){
                   padding-left: 15px;
     }
   </style>
-	<div class="salary-slip" >
 		<table border="1">
 		<tr height="100px"
 		style="background-color:#363636;color:#ffffff;text-align:center;font-size:24px; font-weight:600;">
@@ -745,7 +744,7 @@ function cf_salary_slip_body_html(){
 		<th colspan="2">Rs. 73,704</th>
 		</tr>
 	</table>
-	</div>
+	
 <?php 
 $html = ob_get_clean();
 // debug($html);
