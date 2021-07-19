@@ -1476,11 +1476,8 @@ class Core_Functions_Admin {
 				$salary                   = $salary - $total_deduction;
 			}
 		}
-		$last_month_text  = gmdate( 'M', strtotime( 'last month' ) );
-		echo cf_create_exporting_pdf($user_id,$first_name,$last_month_text);
-		$attachments = array(CF_PLUGIN_PATH . 'pdf-generation/salary_'.$first_name.'_'.$last_month_text.'.pdf');
-		// debug($html);
-		// die;
+		debug($fullday_leaves + $halfday_leaves);
+		die;
 		// var_dump( $salary );
 		
 
@@ -1491,7 +1488,12 @@ class Core_Functions_Admin {
 		$email_body = str_replace( '{site_name}', get_bloginfo( 'name' ), $email_body );
 		$email_body = str_replace( '{admin_email}', get_option( 'admin_email' ), $email_body );
 		$email_body = str_replace( '{login_link}', home_url( '/login/' ), $email_body );
-
+		
+		// creating PDF for salary
+		
+		$last_month_text  = gmdate( 'M', strtotime( 'last month' ) );
+		echo cf_create_exporting_pdf($user_id,$first_name,$last_month_text);
+		$attachments = array(CF_PLUGIN_PATH . 'pdf-generation/salary_'.$first_name.'_'.$last_month_text.'.pdf');
 		// echo $email_body;
 		// die;
 
