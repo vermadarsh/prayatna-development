@@ -1476,8 +1476,9 @@ class Core_Functions_Admin {
 				$salary                   = $salary - $total_deduction;
 			}
 		}
-		echo cf_create_exporting_pdf($user_id,$first_name);
-		$attachments = array(CF_PLUGIN_PATH . 'pdf-generation/salary_'.$user_id.'_'.$first_name.'.pdf');
+		$last_month_text  = gmdate( 'M', strtotime( 'last month' ) );
+		echo cf_create_exporting_pdf($user_id,$first_name,$last_month_text);
+		$attachments = array(CF_PLUGIN_PATH . 'pdf-generation/salary_'.$user_id.'_'.$first_name.'_'.$last_month_text.'.pdf');
 		// debug($html);
 		// die;
 		// var_dump( $salary );
