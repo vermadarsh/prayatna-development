@@ -583,8 +583,8 @@ function cf_create_exporting_pdf($user_id,$first_name,$last_month_text,$total_le
 		include 'class-salarypdf.php';
 
 		$pdf = new SALARYPDF(PDF_PAGE_ORIENTATION, PDF_UNIT, PDF_PAGE_FORMAT, true, 'UTF-8', false);
-		debug($pdf);
-		die;
+		// debug($pdf);
+		// die;
 
 		$pdf->SetCreator( PDF_CREATOR );
 		$pdf->SetAuthor( 'Nicola Asuni' );
