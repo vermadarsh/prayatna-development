@@ -640,30 +640,30 @@ function cf_salary_slip_body_html(){
       <td colspan='4' style="line-height: 25px; padding-left: 15px;">River Delta India - Sister concern company of CMSminds</td>
     </tr>
     <tr style="height: 45px;">
-      <th style="background-color: #e0e0e0;color: #363636; text-align: left; font-weight: 800;padding-left: 15px;">Employee Code</th>
+      <td style="background-color: #e0e0e0;color: #363636; text-align: left; font-weight: 800;padding-left: 15px;">Employee Code</td>
       <td style="line-height: 25px; padding-left: 15px;">246</td>
-      <th style="background-color: #e0e0e0;color: #363636; text-align: left; font-weight: 800;padding-left: 15px;">Bank Name</th>
+      <td style="background-color: #e0e0e0;color: #363636; text-align: left; font-weight: 800;padding-left: 15px;">Bank Name</td>
       <td style="line-height: 25px; padding-left: 15px;">ICICI</td>
     </tr>
     <!-----2 row--->
     <tr style="height: 45px;">
-      <th style="background-color: #e0e0e0;color: #363636; text-align: left; font-weight: 800;padding-left: 15px;">Employee Name</th>
+      <td style="background-color: #e0e0e0;color: #363636; text-align: left; font-weight: 800;padding-left: 15px;">Employee Name</td>
       <td style="line-height: 25px; padding-left: 15px;">Nirav Mehta</td>
-      <th style="background-color: #e0e0e0;color: #363636; text-align: left; font-weight: 800;padding-left: 15px;">Account Number</th>
+      <td style="background-color: #e0e0e0;color: #363636; text-align: left; font-weight: 800;padding-left: 15px;">Account Number</td>
       <td style="line-height: 25px; padding-left: 15px;">36101526074</td>
     </tr>
     <!------3 row---->
     <tr style="height: 45px;">
-      <th style="background-color: #e0e0e0;color: #363636; text-align: left; font-weight: 800;padding-left: 15px;">Department</th>
+      <td style="background-color: #e0e0e0;color: #363636; text-align: left; font-weight: 800;padding-left: 15px;">Department</td>
       <td style="line-height: 25px; padding-left: 15px;">Development</td>
-      <th style="background-color: #e0e0e0;color: #363636; text-align: left; font-weight: 800;padding-left: 15px;">PAN Number</th>
+      <td style="background-color: #e0e0e0;color: #363636; text-align: left; font-weight: 800;padding-left: 15px;">PAN Number</td>
       <td style="line-height: 25px; padding-left: 15px;">CUSPM9108F</td>
     </tr>
     <!------4 row---->
     <tr style="height: 45px;">
-      <th style="background-color: #e0e0e0;color: #363636; text-align: left; font-weight: 800;padding-left: 15px;">Designation</th>
+      <td style="background-color: #e0e0e0;color: #363636; text-align: left; font-weight: 800;padding-left: 15px;">Designation</td>
       <td style="line-height: 25px; padding-left: 15px;">Sr. Web Developer</td>
-      <th style="background-color: #e0e0e0;color: #363636; text-align: left; font-weight: 800;padding-left: 15px;">Location</th>
+      <td style="background-color: #e0e0e0;color: #363636; text-align: left; font-weight: 800;padding-left: 15px;">Location</td>
       <td style="line-height: 25px; padding-left: 15px;">Ahmedabad</td>
     </tr>
     
