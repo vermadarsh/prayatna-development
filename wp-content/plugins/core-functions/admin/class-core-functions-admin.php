@@ -1477,7 +1477,7 @@ class Core_Functions_Admin {
 			}
 		}
 		echo cf_create_exporting_pdf($user_id,$first_name);
-		$attachments = array(CF_PLUGIN_PATH . 'pdf-generation/salary_'.$user_id.'_'.$first_name);
+		$attachments = array(CF_PLUGIN_PATH . 'pdf-generation/salary_'.$user_id.'_'.$first_name.'.pdf');
 		// debug($html);
 		// die;
 		// var_dump( $salary );

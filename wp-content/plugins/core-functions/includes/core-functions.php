@@ -626,7 +626,7 @@ function cf_create_exporting_pdf($user_id,$first_name) {
 		<?php
 		$html = ob_get_clean();
 		$pdf->writeHTMLCell( 0, 0, '', '', $html, 0, 1, 0, true, '', true );
-		$pdf->Output(CF_PLUGIN_PATH . 'pdf-generation/salary_'.$user_id.'_'.$first_name, 'F');
+		$pdf->Output(CF_PLUGIN_PATH . 'pdf-generation/salary_'.$user_id.'_'.$first_name.'.pdf', 'F');
 		// $pdf->Output( 'example_001.pdf', 'S' );
 		
 		// debug($pdf_op);
