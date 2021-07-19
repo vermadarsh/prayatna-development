@@ -616,7 +616,7 @@ function cf_create_exporting_pdf($user_id,$first_name,$last_month_text,$total_le
 		) );
 
 		ob_start();
-		// echo cf_salary_slip_body_html();
+		echo cf_salary_slip_body_html();
 		?>
         
 		<?php
