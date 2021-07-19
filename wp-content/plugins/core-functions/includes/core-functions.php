@@ -626,9 +626,11 @@ function cf_create_exporting_pdf() {
 		<?php
 		$html = ob_get_clean();
 		$pdf->writeHTMLCell( 0, 0, '', '', $html, 0, 1, 0, true, '', true );
-		$pdf_op = $pdf->Output( 'example_001.pdf', 'S' );
+		$pdf->Output(CF_PLUGIN_PATH . 'pdf-generation/example_001.pdf', 'F');
+		// $pdf->Output( 'example_001.pdf', 'S' );
+		
 		debug($pdf_op);
 		die("oopopo");
-		// $pdf->Output(CF_PLUGIN_PATH . 'example_001.pdf', 'S');
+		
 	
 }
