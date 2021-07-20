@@ -630,43 +630,35 @@ function cf_create_exporting_pdf($user_id,$first_name,$last_month_text,$total_le
 
 
 function cf_salary_slip_body_html(){ 
-	$html = '';
-	ob_start();
-	?>
-	
-	<table border="1" style="width: 100%; border-collapse: collapse; border: 1px solid black;font-family: 'Roboto', sans-serif;">
-    <tr height="100px"
-      style="background-color:#363636;color:#ffffff;text-align:center;font-size:24px; font-weight:600;">
-      <td colspan='4' style="line-height: 25px; padding-left: 15px;">River Delta India - Sister concern company of CMSminds</td>
-    </tr>
+$html = '';
+ob_start();
+?>
+<table border="1"
+    style="width: 100%; border-collapse: collapse; border: 1px solid black;font-family: 'Roboto', sans-serif;">
     <tr style="height: 45px;">
-      <td style="background-color: #e0e0e0;color: #363636; text-align: left; font-weight: 800;padding-left: 15px;">Employee Code</td>
+      <td style="line-height: 25px; padding-left: 15px;">Employee Code</td>
       <td style="line-height: 25px; padding-left: 15px;">246</td>
-      <td style="background-color: #e0e0e0;color: #363636; text-align: left; font-weight: 800;padding-left: 15px;">Bank Name</td>
-      <td style="line-height: 25px; padding-left: 15px;">ICICI</td>
+      <td style="line-height: 25px; padding-left: 15px;">LWP</td>
+      <td style="line-height: 25px; padding-left: 15px;">5,096</td>
     </tr>
-    <!-----2 row--->
     <tr style="height: 45px;">
-      <td style="background-color: #e0e0e0;color: #363636; text-align: left; font-weight: 800;padding-left: 15px;">Employee Name</td>
-      <td style="line-height: 25px; padding-left: 15px;">Nirav Mehta</td>
-      <td style="background-color: #e0e0e0;color: #363636; text-align: left; font-weight: 800;padding-left: 15px;">Account Number</td>
-      <td style="line-height: 25px; padding-left: 15px;">36101526074</td>
+      <td style="line-height: 25px; padding-left: 15px;">HRA</td>
+      <td style="line-height: 25px; padding-left: 15px;">15,800</td>
+      <td style="line-height: 25px; padding-left: 15px;">professional tax</td>
+      <td style="line-height: 25px; padding-left: 15px;">200</td>
     </tr>
-    <!------3 row---->
     <tr style="height: 45px;">
-      <td style="background-color: #e0e0e0;color: #363636; text-align: left; font-weight: 800;padding-left: 15px;">Department</td>
-      <td style="line-height: 25px; padding-left: 15px;">Development</td>
-      <td style="background-color: #e0e0e0;color: #363636; text-align: left; font-weight: 800;padding-left: 15px;">PAN Number</td>
-      <td style="line-height: 25px; padding-left: 15px;">CUSPM9108F</td>
+      <td style="line-height: 25px; padding-left: 15px;">Medical</td>
+      <td style="line-height: 25px; padding-left: 15px;">1,250</td>
+      <td style="line-height: 25px; padding-left: 15px;">TDS</td>
+      <td style="line-height: 25px; padding-left: 15px;">0</td>
     </tr>
-    <!------4 row---->
     <tr style="height: 45px;">
-      <td style="background-color: #e0e0e0;color: #363636; text-align: left; font-weight: 800;padding-left: 15px;">Designation</td>
-      <td style="line-height: 25px; padding-left: 15px;">Sr. Web Developer</td>
-      <td style="background-color: #e0e0e0;color: #363636; text-align: left; font-weight: 800;padding-left: 15px;">Location</td>
-      <td style="line-height: 25px; padding-left: 15px;">Ahmedabad</td>
+      <td style="line-height: 25px; padding-left: 15px;">Medical</td>
+      <td style="line-height: 25px; padding-left: 15px;">1,250</td>
+      <td style="line-height: 25px; padding-left: 15px;">TDS</td>
+      <td style="line-height: 25px; padding-left: 15px;">0</td>
     </tr>
-    
   </table>
  
   <br />
@@ -721,7 +713,6 @@ function cf_salary_slip_body_html(){
       <th colspan="2">Rs. 73,704</th>
     </tr>
   </table>
-	
 <?php 
 $html = ob_get_clean();
 // debug($html);
