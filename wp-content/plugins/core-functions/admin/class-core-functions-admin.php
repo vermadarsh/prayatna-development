@@ -276,6 +276,8 @@ class Core_Functions_Admin {
 				$userFname        = $user->user_firstname;
 				$userLname        = $user->user_lastname;
 				$userEmail        = $user->user_email;
+				debug($userEmail);
+				die;
 				$date1            = new DateTime( $leaveStartDate );
 				$unix1            = strtotime( $date1->format( 'Y-m-d' ) );
 				$date2            = new DateTime( $leaveEndDate );
