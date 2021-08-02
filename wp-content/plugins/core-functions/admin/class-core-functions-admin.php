@@ -276,8 +276,6 @@ class Core_Functions_Admin {
 				$userFname        = $user->user_firstname;
 				$userLname        = $user->user_lastname;
 				$userEmail        = $user->user_email;
-				debug($userEmail);
-				die;
 				$date1            = new DateTime( $leaveStartDate );
 				$unix1            = strtotime( $date1->format( 'Y-m-d' ) );
 				$date2            = new DateTime( $leaveEndDate );
@@ -373,7 +371,7 @@ class Core_Functions_Admin {
 					$email_template_body_rejected          = str_replace('{leave_reason}',$rejected_message,$email_template_body_rejected);
 					wp_mail($userEmail, $leave_reject_email_subject, $email_template_body_rejected, array('Content-Type: text/html; charset=UTF-8'));
 					// debug($leave_reject_email_subject);
-					debug($email_template_body_rejected);
+					// debug($email_template_body_rejected);
 				}
 			}
 		}
