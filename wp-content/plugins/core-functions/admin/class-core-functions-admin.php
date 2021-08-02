@@ -349,6 +349,8 @@ class Core_Functions_Admin {
 				$leave_type                   = get_field('leave_duration',$post_id);
 				$email_template_body_approved = get_field('leave_approved_email','option');
 				$email_template_body_rejected = get_field('leave_reject_email','option');
+				debug($leaves[ $leave_year ][ $leave_month ][ $leave_date ]['status']);
+				die;
 				if( 'approved' === $leaves[ $leave_year ][ $leave_month ][ $leave_date ]['status'] ) {
 					// Prepare the email template for approved leave.
 					$leave_approved_email_subject         = get_field('leave_approved_email_subject','option');
