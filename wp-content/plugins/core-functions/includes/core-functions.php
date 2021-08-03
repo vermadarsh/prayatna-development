@@ -294,6 +294,65 @@ function cf_register_client_log_cpt() {
 }
 
 /**
+ * Register Therapist Log CPT.
+ */
+function cf_register_therapist_log_cpt() {
+	$labels = array(
+		'name'               => __( 'Therapist Logs', 'core-functions' ),
+		'singular_name'      => __( 'Therapist Log', 'core-functions' ),
+		'menu_name'          => __( 'Therapist Logs', 'core-functions' ),
+		'name_admin_bar'     => __( 'Therapist Log', 'core-functions' ),
+		'add_new'            => __( 'New Therapist Log', 'core-functions' ),
+		'add_new_item'       => __( 'New Therapist Log', 'core-functions' ),
+		'new_item'           => __( 'New Therapist Log', 'core-functions' ),
+		'edit_item'          => __( 'Edit Therapist Log', 'core-functions' ),
+		'view_item'          => __( 'View Therapist Log', 'core-functions' ),
+		'all_items'          => __( 'Therapist Logs', 'core-functions' ),
+		'search_items'       => __( 'Search Therapist Logs', 'core-functions' ),
+		'parent_item_colon'  => __( 'Parent Therapist Logs:', 'core-functions' ),
+		'not_found'          => __( 'No Therapist Logs Found.', 'core-functions' ),
+		'not_found_in_trash' => __( 'No Therapist Logs Found In Trash.', 'core-functions' )
+	);
+
+	$args = array(
+		'labels'             => $labels,
+		'public'             => false,
+		'menu_icon'          => 'dashicons-welcome-write-blog',
+		'publicly_queryable' => true,
+		'show_ui'            => true,
+		'show_in_menu'       => true,
+		'query_var'          => true,
+		'rewrite'            => array(
+			'slug' => 'therapist-log'
+		),
+		'capability_type'    => 'post',
+		'capabilities'       => array(
+			'edit_post'          => 'edit_therapist-log',
+			'edit_posts'         => 'edit_therapist-logs',
+			'edit_others_posts'  => 'edit_other_therapist-logs',
+			'publish_posts'      => 'publish_therapist-logs',
+			'read_post'          => 'read_therapist-log',
+			'read_private_posts' => 'read_private_therapist-logs',
+			'delete_post'        => 'delete_therapist-log'
+		),
+		'has_archive'        => false,
+		'hierarchical'       => false,
+		'menu_position'      => null,
+		'supports'           => array(
+			'title', 'content', 'author'
+		)
+	);
+	register_post_type( 'therapist-log', $args );
+
+	$set = get_option( 'cpt_cf_therapist_log_flushed_rewrite_rules' );
+
+	if ( 'yes' !== $set ) {
+		flush_rewrite_rules( false );
+		update_option( 'cpt_cf_therapist_log_flushed_rewrite_rules', 'yes' );
+	}
+}
+
+/**
  * Register Learning Lounge CPT.
  */
 function cf_register_learning_lounge_log_cpt() {
