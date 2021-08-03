@@ -260,6 +260,7 @@ class Core_Functions_Public {
 		$gender            = filter_input( INPUT_POST, 'gender', FILTER_SANITIZE_STRING );
 		$temporary_address = filter_input( INPUT_POST, 'temporary_address', FILTER_SANITIZE_STRING );
 		$permanent_address = filter_input( INPUT_POST, 'permanent_address', FILTER_SANITIZE_STRING );
+		$therapist_salary  = filter_input( INPUT_POST, 'therapist_salary', FILTER_SANITIZE_STRING );
 
 		// Check if a user already exists with the email.
 		if ( email_exists( $email ) ) {
@@ -293,6 +294,7 @@ class Core_Functions_Public {
 			update_field( 'cf_temporary_address', $temporary_address, "user_{$user_id}" );
 			update_field( 'cf_permanent_address', $permanent_address, "user_{$user_id}" );
 			update_user_meta( $user_id, 'email_verification_random_number', $random_number );
+			update_user_meta( $user_id, 'monthly_salary', $therapist_salary );
 
 			// Set the user's role (and implicitly remove the previous role).
 			$user = new \WP_User( $user_id );

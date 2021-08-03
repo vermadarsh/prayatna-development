@@ -38,6 +38,7 @@ jQuery(document).ready( function( $ ) {
 		var temporary_address = $( '.therapist-temporary-address' ).val();
 		var permanent_address = $( '.therapist-permanent-address' ).val();
 		var profile_picture   = $( '#therapist-profile-picture' ).val();
+		var therapist_salary  = $('#therapist-salary').val();
 		var agree_tos         = ( $( '#therapist-registration-terms-n-conditions-acceptance' ).is( ':checked' ) ) ? true : false;
 		var error_message     = '';
 
@@ -125,6 +126,7 @@ jQuery(document).ready( function( $ ) {
 			gender: gender,
 			temporary_address: temporary_address,
 			permanent_address: permanent_address,
+			therapist_salary: therapist_salary
 		};
 		$.ajax( {
 			dataType: 'JSON',

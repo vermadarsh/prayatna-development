@@ -98,6 +98,15 @@ $heading = ( ! empty( $args['heading'] ) ) ? $args['heading'] : '';
 					<label class="custom-file-label" for="therapist-profile-picture"><?php esc_html_e( 'Upload Your Profile Picture. (maximum size 500Kb)*', 'core-functions' ); ?></label>
 				</div>
 			</div>
+			<!-- FIRST NAME -->
+			<div class="col-md-12">
+				<span class="input input--hfd">
+					<input class="width__100_percent input__field input__field--hfd" type="number" name="therapist-salary" id="therapist-salary" onkeypress="return /[0-9]/i.test(event.key)" />
+					<label class="input__label input__label--hfd" for="therapist-salary">
+						<span class="input__label-content input__label-content--hfd "><?php esc_html_e( 'First Name*', 'core-functions' ); ?></span>
+					</label>
+				</span>
+			</div>
 			<!-- TERMS & CONDITIONS ACCEPTANCE -->
 			<div class="col-md-12 top__margin__10">
 				<div class="custom-control custom-checkbox therapist-registration-acceptance">
