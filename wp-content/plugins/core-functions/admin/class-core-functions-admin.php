@@ -218,6 +218,7 @@ class Core_Functions_Admin {
 				array( $this, 'cf_child_for_client_log_callback' ),
 				$screen,
 				'normal',
+				'default'
 			);
 		}
 	}
