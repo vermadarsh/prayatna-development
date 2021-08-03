@@ -193,15 +193,15 @@ jQuery(document).ready( function( $ ) {
 
 	// Datepicker for date of birth fields.
 	if ( $( '.cf__date__field' ).length ) {
-		$( '.cf__date__field#therapist-dob' ).datepicker( {
-			dateFormat: 'dd-mm-yy',
-			changeMonth: true,
-			changeYear: true,
-			onSelect: function( dateText, inst ) {
-				$( '.cf__date__field' ).parent( 'span' ).addClass( 'input--filled' );
-			},
-			maxDate: 0
-		} );
+		// $( '.cf__date__field#therapist-dob' ).datepicker( {
+		// 	dateFormat: 'dd-mm-yy',
+		// 	changeMonth: true,
+		// 	changeYear: true,
+		// 	onSelect: function( dateText, inst ) {
+		// 		$( '.cf__date__field' ).parent( 'span' ).addClass( 'input--filled' );
+		// 	},
+		// 	maxDate: 0
+		// } );
 
 		$( '.cf__date__field.child-dob' ).datepicker( {
 			dateFormat: 'dd-mm-yy',
