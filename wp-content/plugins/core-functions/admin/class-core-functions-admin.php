@@ -228,6 +228,7 @@ class Core_Functions_Admin {
 	 * Metabox markup for child selection while creating/updating client log.
 	 */
 	public function cf_child_for_client_log_callback() {
+		die("poop");
 		$children       = cf_get_children();
 		$post_id        = filter_input( INPUT_GET, 'post', FILTER_SANITIZE_NUMBER_INT );
 		$selected_child = ( ! is_null( $post_id ) ) ? get_post_meta( $post_id, 'child', true ) : false;
