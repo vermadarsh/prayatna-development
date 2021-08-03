@@ -239,13 +239,13 @@ function cf_get_child_profile_registration_fields_html( $index ) {
  */
 function cf_register_client_log_cpt() {
 	$labels = array(
-		'name'               => __( 'Client Logs', 'core-functions' ),
-		'singular_name'      => __( 'Client Log', 'core-functions' ),
-		'menu_name'          => __( 'Client Logs', 'core-functions' ),
-		'name_admin_bar'     => __( 'Client Log', 'core-functions' ),
-		'add_new'            => __( 'New Client Log', 'core-functions' ),
-		'add_new_item'       => __( 'New Client Log', 'core-functions' ),
-		'new_item'           => __( 'New Client Log', 'core-functions' ),
+		'name'               => __( 'List of client logs', 'core-functions' ),
+		'singular_name'      => __( 'List of client log', 'core-functions' ),
+		'menu_name'          => __( 'List of client logs', 'core-functions' ),
+		'name_admin_bar'     => __( 'List of client log', 'core-functions' ),
+		'add_new'            => __( 'Add new', 'core-functions' ),
+		'add_new_item'       => __( 'Add new', 'core-functions' ),
+		'new_item'           => __( 'Add new', 'core-functions' ),
 		'edit_item'          => __( 'Edit Client Log', 'core-functions' ),
 		'view_item'          => __( 'View Client Log', 'core-functions' ),
 		'all_items'          => __( 'Client Logs', 'core-functions' ),
