@@ -68,7 +68,7 @@ $heading = ( ! empty( $args['heading'] ) ) ? $args['heading'] : '';
 			<!-- DOB -->
 			<div class="col-md-6 top__margin__10">
 				<span class="input input--hfd">
-					<input class="width__100_percent input__field input__field--hfd cf__date__field" type="text" name="therapist-dob" id="therapist-dob" />
+					<input class="width__100_percent input__field input__field--hfd cf__date__field" type="text" name="therapist-dob" id="therapist" />
 					<label class="input__label input__label--hfd" for="therapist-dob">
 						<span class="input__label-content input__label-content--hfd "><?php esc_html_e( 'DOB* (DD-MM-YYYY)', 'core-functions' ); ?></span>
 					</label>
