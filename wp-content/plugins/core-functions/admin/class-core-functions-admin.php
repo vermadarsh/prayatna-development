@@ -216,13 +216,6 @@ class Core_Functions_Admin {
 			$screens,
 			'normal',
 		);
-		// add_meta_box(
-		// 	'child-for-therapist-log',
-		// 	__( 'Child', 'core-functions' ),
-		// 	array( $this, 'cf_child_for_therapist_los_callback' ),
-		// 	'therapist-log',
-		// 	'normal',
-		// );
 	}
 
 	/**
