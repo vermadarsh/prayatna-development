@@ -200,9 +200,9 @@ class Core_Functions_Admin {
 		global $wp_meta_boxes;
 
 		// Check for client log metaboxes.
-		if ( empty( $wp_meta_boxes['client-log']['normal']['core']['authordiv'] ) ) {
-			return;
-		}
+		// if ( empty( $wp_meta_boxes['client-log']['normal']['core']['authordiv'] ) ) {
+		// 	return;
+		// }
 
 		// Change the title now.
 		$wp_meta_boxes['client-log']['normal']['core']['authordiv']['title'] = __( 'Therapist', 'core-functions' );
