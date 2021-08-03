@@ -248,7 +248,7 @@ function cf_register_client_log_cpt() {
 		'new_item'           => __( 'Add new', 'core-functions' ),
 		'edit_item'          => __( 'Edit Client Log', 'core-functions' ),
 		'view_item'          => __( 'View Client Log', 'core-functions' ),
-		'all_items'          => __( 'Client Logs', 'core-functions' ),
+		'all_items'          => __( 'List of client logs', 'core-functions' ),
 		'search_items'       => __( 'Search Client Logs', 'core-functions' ),
 		'parent_item_colon'  => __( 'Parent Client Logs:', 'core-functions' ),
 		'not_found'          => __( 'No Client Logs Found.', 'core-functions' ),
