@@ -215,6 +215,13 @@ class Core_Functions_Admin {
 			'client-log',
 			'normal',
 		);
+		add_meta_box(
+			'child-for-therapist-log',
+			__( 'Child', 'core-functions' ),
+			array( $this, 'cf_child_for_client_log_callback' ),
+			'therapist-log',
+			'normal',
+		);
 	}
 
 	/**
@@ -249,6 +256,10 @@ class Core_Functions_Admin {
 	public function cf_save_post_callback( $post_id,$post ) {
 		// Check for client log post type.
 		if ( 'client-log' === get_post_type( $post_id ) ) {
+			$child = filter_input( INPUT_POST, 'cf-child', FILTER_SANITIZE_STRING );
+			update_post_meta( $post_id, 'child', $child );
+		}
+		if ( 'therapist-log' === get_post_type( $post_id ) ) {
 			$child = filter_input( INPUT_POST, 'cf-child', FILTER_SANITIZE_STRING );
 			update_post_meta( $post_id, 'child', $child );
 		}
