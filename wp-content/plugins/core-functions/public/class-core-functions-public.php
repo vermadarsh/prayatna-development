@@ -216,6 +216,7 @@ class Core_Functions_Public {
 		cf_register_client_log_cpt(); // Register client log CPT.
 		cf_register_learning_lounge_log_cpt(); // Register learning lounge log CPT.
 		cf_register_leave_cpt(); // Register Leave Application CPT
+		cf_register_therapist_log_cpt(); // Register Therapist log CPT.
 	}
 
 	/**
