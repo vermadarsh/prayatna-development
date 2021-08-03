@@ -181,11 +181,11 @@ jQuery(document).ready( function( $ ) {
 									cf_show_notification( 'fa fa-check', 'Success', response.data.notification_text, 'success' );
 									setTimeout( function () {
 										location.reload();
-									}, 6000 );
+									}, 8000 );
 								}
 							},
 						} );
-					}, 4000 );
+					}, 8000 );
 				}
 			},
 		} );
@@ -455,7 +455,7 @@ jQuery(document).ready( function( $ ) {
 					cf_show_notification( 'fa fa-check', 'Success', response.data.notification_text, 'success' );
 					setTimeout( function () {
 						location.reload();
-					}, 6000 );
+					}, 8000 );
 				}
 			},
 		} );
