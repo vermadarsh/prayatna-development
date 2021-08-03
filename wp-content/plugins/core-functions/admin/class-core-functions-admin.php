@@ -225,34 +225,11 @@ class Core_Functions_Admin {
 		// );
 	}
 
-	public function cf_child_for_therapist_los_callback(){
-		die("pooop");
-		$children       = cf_get_children();
-		$post_id        = filter_input( INPUT_GET, 'post', FILTER_SANITIZE_NUMBER_INT );
-		$selected_child = ( ! is_null( $post_id ) ) ? get_post_meta( $post_id, 'child', true ) : false;
-
-		// Prepare the select html markup.
-		echo '<select name="cf-child" required>';
-		echo '<option value="">' . __( 'Select child', 'core-functions' ) . '</option>';
-		if ( ! empty( $children ) && is_array( $children ) ) {
-			foreach ( $children as $child_data ) {
-				$client_id     = $child_data['client_id'];
-				$first_name    = $child_data['first_name'];
-				$last_name     = $child_data['last_name'];
-				$dob           = $child_data['dob'];
-				$option_string = sprintf( __( 'Parent-#%1$s - %2$s %3$s - %4$s', 'core-functions' ), $client_id, $first_name, $last_name, $dob );
-				$option_val    = sanitize_title( $option_string );
-				$selected      = ( false !== $selected_child && $selected_child === $option_val ) ? 'selected' : '';
-				echo '<option ' . $selected . ' value="' . $option_val . '">' . $option_string . '</option>';
-			}
-		}
-		echo '</select>';
-	}
-
 	/**
 	 * Metabox markup for child selection while creating/updating client log.
 	 */
 	public function cf_child_for_client_log_callback() {
+		die("pooop");
 		$children       = cf_get_children();
 		$post_id        = filter_input( INPUT_GET, 'post', FILTER_SANITIZE_NUMBER_INT );
 		$selected_child = ( ! is_null( $post_id ) ) ? get_post_meta( $post_id, 'child', true ) : false;
