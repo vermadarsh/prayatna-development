@@ -639,6 +639,14 @@ class Core_Functions_Admin {
 			}
 		}
 
+		// Post type - Therapist Logs.
+		if ( 'therapist-log' === $post_type ) {
+			// If not admin, show the leaves created by self.
+			if ( ! current_user_can( 'manage_options' ) ) {
+				$query->set( 'author', get_current_user_id() );
+			}
+		}
+
 		return $query;
 	}
 
