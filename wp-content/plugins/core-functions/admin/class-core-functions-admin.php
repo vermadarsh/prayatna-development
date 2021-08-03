@@ -208,7 +208,7 @@ class Core_Functions_Admin {
 		$wp_meta_boxes['client-log']['normal']['core']['authordiv']['title'] = __( 'Therapist', 'core-functions' );
 
 		// Screens for child metabox.
-		$screens = array( 'client-log', 'leave' );
+		$screens = array( 'client-log', 'therapist-log' );
 
 		foreach ( $screens as $screen ) {
 			// Add a custom metabox to display all the children.
